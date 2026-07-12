@@ -6,6 +6,7 @@ Living checklist for the Lush Qatar WooCommerce → Shopify migration. Update st
 
 - [x] IP geo-lock on lush.qa (was Qatar/UAE/UK) — removed
 - [x] WooCommerce admin access — provided
+- [x] WooCommerce REST API (read-only) — key "DotAim read access for migration" created & verified 2026-07-12 (read-only; we do not write to the WP site)
 - [ ] Server SSH (preferred) / FTP access — pending from Sibin (needed for steps that can't run from wp-admin)
 - [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover
 - [x] Shopify dev store — CLI authenticated 2026-07-12 (see Environment & tooling below)
@@ -24,21 +25,39 @@ Working setup lives in the git repo `repo/` (private GitHub `webmasterish/lush.q
 - **Shopify CLI:** `@shopify/cli` v4.4.0 installed globally via nvm (no sudo). Store interaction is via `shopify store execute` / `shopify store graphiql`.
 - **Dev store connection:** authenticated 2026-07-12 as `shopify.partner@dotaim.com` against `lush-qatar.myshopify.com` via `shopify store auth`. Scopes granted: read/write for products, customers, orders, content, themes. The online access token is stored in the CLI's own config, not the repo. Verified: shop "Lush Qatar", currency QAR, Development plan.
   - Re-run `shopify store auth` to add scopes later (e.g. URL redirects, discounts). Orders older than 60 days need the protected `read_all_orders` scope (requires app approval).
-- **Store setup TODO:** store timezone is `America/New_York` — set to **Asia/Qatar** in Settings → General (no Admin API mutation exists for shop timezone).
+- **Timezone:** set to (GMT+3) Riyadh on 2026-07-12 in Settings → General (the list has no Qatar entry; Riyadh is the GMT+3 equivalent, no DST). Not API-settable.
+- **Reference store (KSA):** `lushsa.myshopify.com` — DotAim has access. Connect **read-only** (`read_products,read_themes,read_content,read_publications`) when mirroring settings/theme; deferred to the store-setup/theme phase.
+- **Source (WooCommerce):** read-only REST API key in `shopify/migration_from_woocommerce/.env`; verified reachable 2026-07-12. We do not write to the WP site.
+- **Demo:** see `demo-plan.md` for the July 14 demo reference document (in progress).
 
 ## Phase 1 — Discovery & planning
 
 - [ ] Confirm all access (esp. server SSH/FTP)
 - [ ] Export and document current data structure
-- [ ] Assess data volumes vs. scope (500 products / 5,000 customers / 5,000 orders); flag if the data-migration cost needs revising
+- [x] Assess data volumes vs. scope — done 2026-07-12 via WooCommerce REST API. See **Source data assessment** below.
 - [ ] Document current DNS (registrar, Cloudflare zone, records)
 - [ ] Finalize the migration checklist and URL/redirect map plan
+
+### Source data assessment (2026-07-12, via WooCommerce REST API)
+
+| Entity | Count | Notes |
+|---|---|---|
+| Products | 538 | 407 simple + 131 variable (variations expand into Shopify variants); **over the 500 baseline** |
+| Product categories | 61 | → Shopify collections |
+| Product tags | 584 | |
+| Orders | 3,184 | under the 5,000 baseline; orders older than 60 days need the protected `read_all_orders` scope to export |
+| Customers (with accounts) | 1,950 | under 5,000; guest-order customers are additional (not in this count) |
+| Coupons | 0 | |
+| Blog posts | 3 | WP `wp/v2/posts` |
+| Pages | 16 | WP `wp/v2/pages` |
+
+Scope note: products (538) slightly exceed the 500 baseline in the preliminary $500 data-migration line. Otherwise within scope. Flag the marginal overage to the client when confirming the final data-migration figure.
 
 ## Phase 2 — Shopify store setup
 
 - [ ] Shopify Grow plan active (MENA pricing ~$54/$72; client's card on file)
 - [ ] Be Yours theme purchased & installed
-- [ ] Set store timezone to Asia/Qatar (currently America/New_York; Settings → General — not API-settable)
+- [x] Store timezone set to (GMT+3) Riyadh — 2026-07-12, Settings → General (Qatar not in the list; Riyadh is the GMT+3 equivalent)
 - [ ] Base store config: markets, currency (QAR), languages (AR/EN), local Qatar payment gateway (Shopify Payments is NOT available in Qatar), shipping, taxes
 
 ## Phase 3 — Data migration
