@@ -58,5 +58,5 @@ Secrets live in a gitignored `.env` inside `shopify/migration_from_woocommerce/`
 - **Gmail** / **Google Calendar** — client communications and scheduling.
 - **Google Drive** — proposals, invoices, project documents.
 - **context7** — fetch current Shopify/library docs; prefer it over memory for API/CLI/config details.
-- **Shopify** — the Shopify AI Toolkit (`github.com/Shopify/Shopify-AI-Toolkit`) `shopify-onboarding-merchant` skill is the intended path for importing WooCommerce data into the Shopify dev store.
+- **Shopify** — relevant skills from the Shopify AI Toolkit (`github.com/Shopify/Shopify-AI-Toolkit`) are **vendored into `.claude/skills/` with telemetry stripped** (see `.claude/skills/README.md`). `shopify-onboarding-merchant` is the path for connecting the store and importing WooCommerce data; `shopify-use-shopify-cli` drives the CLI. Add `shopify-admin` and `shopify-liquid` (same telemetry-stripping treatment) at the data-migration and theme phases.
 - Analytics will be **Google Analytics**, added later when needed. (Matomo is not used on this project.)
