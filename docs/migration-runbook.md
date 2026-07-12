@@ -8,12 +8,23 @@ Living checklist for the Lush Qatar WooCommerce → Shopify migration. Update st
 - [x] WooCommerce admin access — provided
 - [ ] Server SSH (preferred) / FTP access — pending from Sibin (needed for steps that can't run from wp-admin)
 - [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover
+- [x] Shopify dev store — CLI authenticated 2026-07-12 (see Environment & tooling below)
 
 Store references:
 - Source: WooCommerce (WordPress) at `lush.qa`
 - Target dev store: `https://admin.shopify.com/store/lush-qatar` · `https://lush-qatar.myshopify.com/`
 - Theme: Be Yours by RoarTheme (client buys the $350 license, tied to lush.qa domain)
 - Design/functionality benchmark: Lush KSA `lush.sa.com` (client wants Qatar to mirror it)
+
+## Environment & tooling (set up 2026-07-12)
+
+Working setup lives in the git repo `repo/` (private GitHub `webmasterish/lush.qa`); run Claude Code from `repo/`. Private material (journal, invoices, meetings, proposals, screenshots) stays in the parent dir, outside the repo.
+
+- **Skills:** `shopify-onboarding-merchant` and `shopify-use-shopify-cli` vendored into `.claude/skills/` with Shopify telemetry stripped (see `.claude/skills/README.md`). Add `shopify-liquid` at the theme phase; `shopify-admin` only if we need offline Admin GraphQL schema search/validation.
+- **Shopify CLI:** `@shopify/cli` v4.4.0 installed globally via nvm (no sudo). Store interaction is via `shopify store execute` / `shopify store graphiql`.
+- **Dev store connection:** authenticated 2026-07-12 as `shopify.partner@dotaim.com` against `lush-qatar.myshopify.com` via `shopify store auth`. Scopes granted: read/write for products, customers, orders, content, themes. The online access token is stored in the CLI's own config, not the repo. Verified: shop "Lush Qatar", currency QAR, Development plan.
+  - Re-run `shopify store auth` to add scopes later (e.g. URL redirects, discounts). Orders older than 60 days need the protected `read_all_orders` scope (requires app approval).
+- **Store setup TODO:** store timezone is `America/New_York` — set to **Asia/Qatar** in Settings → General (no Admin API mutation exists for shop timezone).
 
 ## Phase 1 — Discovery & planning
 
@@ -27,6 +38,7 @@ Store references:
 
 - [ ] Shopify Grow plan active (MENA pricing ~$54/$72; client's card on file)
 - [ ] Be Yours theme purchased & installed
+- [ ] Set store timezone to Asia/Qatar (currently America/New_York; Settings → General — not API-settable)
 - [ ] Base store config: markets, currency (QAR), languages (AR/EN), local Qatar payment gateway (Shopify Payments is NOT available in Qatar), shipping, taxes
 
 ## Phase 3 — Data migration
