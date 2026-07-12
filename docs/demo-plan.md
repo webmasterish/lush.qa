@@ -24,6 +24,16 @@ Brand + IT + one representative per store (from the July 14 invite: Dee, Ann, Ni
 - **How loaded:** pulled from Woo via read-only REST, pushed to the dev store via the Admin API (`shopify store execute`). Raw pull saved to `shopify/migration_from_woocommerce/__/wp/data/` (gitignored) as the first read-only data snapshot / backup layer.
 - **Payments:** Shopify **Bogus Gateway** enabled for any live checkout (test card `1` = success); API-created orders need no gateway.
 
+### Seed build status (2026-07-13)
+
+Loaded into the dev store via `scripts/pull_demo_source.py` (read-only Woo pull → `__/wp/data/`) + `scripts/push_demo_seed.py` (Admin API):
+- ✅ 14 top-seller products (ACTIVE, variants + gallery images imported)
+- ✅ 6 collections populated (Bath and Shower 9, 5 Star Reviews 8, Best Sellers 7, Hair 2, Bath Bombs 2, Body 2)
+- ✅ 3 customers
+- ⏳ Orders — **blocked**: `orderCreate` requires an **offline** access token, but the CLI's `store auth` uses an online token. Resolve by creating a custom app with an offline Admin API token (see runbook). Then run `push_demo_seed.py orders`.
+
+All seed objects are tagged `demo-seed`; `push_demo_seed.py wipe` (or filtering by tag) removes them before the real migration.
+
 ## Client action items to cover during the demo
 
 - **Staff/user access during development** — decide who gets access to the dev store and with which roles. In particular, get **Dee** added with sufficient permissions, because **she needs to add the store's credit card details to purchase the Be Yours theme** and activate the plan/apps. (Open question: dev-store limitations around billing/staff — confirm the mechanics; may require selecting a plan / store transfer first.)
