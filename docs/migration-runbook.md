@@ -36,6 +36,8 @@ Working setup lives in the git repo `repo/` (private GitHub `webmasterish/lush.q
 - [ ] Export and document current data structure
 - [x] Assess data volumes vs. scope — done 2026-07-12 via WooCommerce REST API. See **Source data assessment** below.
 - [ ] Document current DNS (registrar, Cloudflare zone, records)
+- [ ] Arrange full-site backup (files + DB) with a restore point via Sibin/IT before cutover — **no backup plugins** (WP site is already plugin-heavy)
+- [ ] Save read-only content snapshot (REST exports + media) to `shopify/migration_from_woocommerce/__/wp/data/` (gitignored) — doubles as a data backup layer
 - [ ] Finalize the migration checklist and URL/redirect map plan
 
 ### Source data assessment (2026-07-12, via WooCommerce REST API)

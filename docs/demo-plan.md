@@ -18,16 +18,17 @@ Brand + IT + one representative per store (from the July 14 invite: Dee, Ann, Ni
 
 ## Demo data (disposable seed — deleted before the full migration)
 
-- ~15–20 representative real products across a few categories, with images.
-- 2–3 collections.
-- A small number of customers and orders (see open question on real vs synthetic).
-- Loaded via the Admin API (`shopify store execute`) from the WooCommerce source.
-- For any live storefront checkout walkthrough: use Shopify test mode / **Bogus Gateway** (test card `1` = success), no real payment.
+- **Products:** the store's actual **top sellers by all-history units** (MTD is too sparse — 16 orders, everything tied at 2 units, so not representative). e.g. Scrubee, Oval Tin, Super Milk, Sticky Dates, Let The Good Times Roll, Ro's Argan, Big Shampoo, Rose Jam — ~15–20 spanning the top real categories (Bath and Shower, Body, Hair, Bath Bombs, Fragrances, Shower Moisturisers), with images.
+- **Collections:** a few top categories / merchandising collections (Bath and Shower, Best Sellers, Trending Now, New Products).
+- **Customers/orders:** a couple of the **most recent real orders + their customers** (client's own data, their own staff viewing — not a privacy issue; kept small and disposable). Recent = easier to compare against source.
+- **How loaded:** pulled from Woo via read-only REST, pushed to the dev store via the Admin API (`shopify store execute`). Raw pull saved to `shopify/migration_from_woocommerce/__/wp/data/` (gitignored) as the first read-only data snapshot / backup layer.
+- **Payments:** Shopify **Bogus Gateway** enabled for any live checkout (test card `1` = success); API-created orders need no gateway.
 
 ## Client action items to cover during the demo
 
 - **Staff/user access during development** — decide who gets access to the dev store and with which roles. In particular, get **Dee** added with sufficient permissions, because **she needs to add the store's credit card details to purchase the Be Yours theme** and activate the plan/apps. (Open question: dev-store limitations around billing/staff — confirm the mechanics; may require selecting a plan / store transfer first.)
 - Theme purchase (Be Yours, $350) and Shopify plan selection (Grow, MENA pricing) — billed directly to the client via Shopify.
+- **Backups** — ask Sibin/IT to take, or confirm the host already runs, a full-site backup (files + DB) with a known restore point before cutover. No backup plugins (the WP site is already plugin-heavy).
 - What the team needs to provide next.
 
 ## Proposed agenda (to refine)
@@ -41,7 +42,7 @@ Brand + IT + one representative per store (from the July 14 invite: Dee, Ann, Ni
 
 ## Open questions / to decide
 
-- Demo customers/orders: real (their own data, own staff viewing) vs synthetic — and how many.
+- Demo customers/orders: resolved — a couple of recent real ones.
 - Dev-store billing/staff mechanics for Dee to purchase the theme.
 - Final date/time confirmation and who presents which part.
 - Anything else the team specifically wants to see.
