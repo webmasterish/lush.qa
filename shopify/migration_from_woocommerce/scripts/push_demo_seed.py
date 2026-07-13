@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Push the demo seed from __/wp/data/ into the Shopify dev store via the Admin API
-(through `shopify store execute`). Idempotent: created IDs are tracked in
+Push the demo seed from __/wp/data/ into the Shopify dev store via the Admin API.
+Uses the offline Admin API token (SHOPIFY_ADMIN_API_TOKEN in .env) when present —
+required for orderCreate — and otherwise falls back to `shopify store execute`
+(the CLI's online token). Idempotent: created IDs are tracked in
 __/wp/data/_shopify_state.json so steps compose and re-runs skip existing items.
 
 Usage:
@@ -20,6 +22,7 @@ import argparse
 import json
 import subprocess
 import sys
+import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -28,15 +31,19 @@ STATE_FILE = DATA / "_shopify_state.json"
 ENV = HERE.parent / ".env"
 TAG = "demo-seed"
 
-# our 6 demo collections (Woo category name -> just the name; created as custom collections)
-def env_val(key):
+
+def env_val(key, default=None):
     for line in ENV.read_text().splitlines():
         line = line.strip()
         if line.startswith(key + "="):
             return line.split("=", 1)[1].strip()
+    if default is not None:
+        return default
     raise KeyError(key)
 
 STORE = env_val("SHOPIFY_STORE_DOMAIN")
+API_VERSION = env_val("SHOPIFY_API_VERSION", "2025-07")
+ADMIN_TOKEN = env_val("SHOPIFY_ADMIN_API_TOKEN", "")
 
 
 def load(name):
@@ -54,6 +61,18 @@ def save_state(s):
 
 
 def gql(query, variables=None, mutate=False):
+    # Prefer the offline Admin API token (works for all mutations incl. orderCreate);
+    # fall back to the CLI's online token when the token isn't set yet.
+    if ADMIN_TOKEN:
+        url = f"https://{STORE}/admin/api/{API_VERSION}/graphql.json"
+        body = json.dumps({"query": query, "variables": variables or {}}).encode()
+        req = urllib.request.Request(url, data=body, method="POST", headers={
+            "Content-Type": "application/json", "X-Shopify-Access-Token": ADMIN_TOKEN})
+        with urllib.request.urlopen(req, timeout=90) as r:
+            payload = json.load(r)
+        if payload.get("errors"):
+            raise RuntimeError(f"GraphQL errors: {payload['errors']}")
+        return payload["data"]
     tmp = DATA / "_last_response.json"
     args = ["shopify", "store", "execute", "--store", STORE, "--json",
             "-q", query, "--output-file", str(tmp)]
