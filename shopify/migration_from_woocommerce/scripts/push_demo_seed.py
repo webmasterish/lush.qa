@@ -240,40 +240,64 @@ def do_customers():
 
 
 # --------------------------------------------------------------------- orders
-def do_orders():
+def _seeded_variants():
+    """First variant (id, title, price) for each seeded product, in seed order."""
     s = state()
-    orders = load("orders")
-    q = ("mutation O($order: OrderCreateOrderInput!){ orderCreate(order:$order){ order{ id name } "
-         "userErrors{ field message } } }")
-    for o in orders:
-        num = str(o["number"])
-        if num in [x.get("woo_number") for x in s["orders"]]:
-            continue
-        cur = o.get("currency", "QAR")
-        line_items = [{"title": li["name"], "quantity": li["quantity"],
-                       "priceSet": {"shopMoney": {"amount": str(li.get("price") or "0"), "currencyCode": cur}}}
-                      for li in o.get("line_items", [])]
-        b = o.get("billing") or {}
-        order = {
-            "currency": cur,
-            "lineItems": line_items,
-            "financialStatus": "PAID",
-            "processedAt": o.get("date_created_gmt") and o["date_created_gmt"] + "Z",
-            "tags": [TAG],
-        }
-        if b.get("email"):
-            order["email"] = b["email"]
-        addr = {k2: b.get(k1) for k1, k2 in [
-            ("first_name", "firstName"), ("last_name", "lastName"), ("address_1", "address1"),
-            ("city", "city"), ("postcode", "zip"), ("country", "countryCode"), ("phone", "phone")] if b.get(k1)}
-        if addr:
-            order["billingAddress"] = addr
+    gids = [info["gid"] for info in s["products"].values()]
+    q = ("query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product{ id title "
+         "variants(first:1){ nodes{ id price } } } } }")
+    out = []
+    for n in gql(q, {"ids": gids}).get("nodes", []):
+        vs = (n or {}).get("variants", {}).get("nodes") if n else None
+        if vs:
+            out.append({"title": n["title"], "variantId": vs[0]["id"], "price": vs[0]["price"]})
+    return out
+
+
+def do_orders():
+    """Rebuild the demo orders as real seeded customers buying real seeded products
+    (variant-linked, customer-associated). The live recent Woo orders are guest
+    checkouts with no billing and off-catalog items, so they can't be linked."""
+    s = state()
+    for o in s.get("orders", []):  # replace any previously-created demo orders
+        try:
+            gql("mutation($id:ID!){ orderDelete(orderId:$id){ deletedId userErrors{message} } }",
+                {"id": o["gid"]}, mutate=True)
+            print(f"  - removed old order {o.get('name')}")
+        except Exception as e:
+            print(f"  ! delete {o.get('gid')}: {e}")
+    s["orders"] = []
+
+    variants = _seeded_variants()
+    customers = list(s["customers"].values())
+    if not variants or not customers:
+        print("  need seeded products and customers first (run products + customers)")
+        save_state(s); return
+
+    # customer index, [(variant index, qty), ...], processed date
+    plans = [
+        (0, [(0, 1), (8, 2)], "2026-07-10T14:20:00Z"),
+        (1, [(3, 1), (7, 1)], "2026-07-11T09:05:00Z"),
+        (2, [(1, 1), (13, 2)], "2026-07-12T18:40:00Z"),
+    ]
+    q = ("mutation O($order: OrderCreateOrderInput!){ orderCreate(order:$order){ "
+         "order{ id name } userErrors{ field message } } }")
+    for ci, items, when in plans:
+        cust = customers[ci % len(customers)]
+        line_items = [{"variantId": variants[vi % len(variants)]["variantId"], "quantity": qty,
+                       "priceSet": {"shopMoney": {"amount": str(variants[vi % len(variants)]["price"]),
+                                                  "currencyCode": "QAR"}}}
+                      for vi, qty in items]
+        order = {"currency": "QAR", "customer": {"toAssociate": {"id": cust}},
+                 "lineItems": line_items, "financialStatus": "PAID",
+                 "processedAt": when, "tags": [TAG]}
         try:
             node = check_errors(gql(q, {"order": order}, mutate=True), "orderCreate")
-            s["orders"].append({"woo_number": num, "gid": node["order"]["id"], "name": node["order"]["name"]})
-            print(f"  + order: {node['order']['name']} (woo #{num})")
+            s["orders"].append({"gid": node["order"]["id"], "name": node["order"]["name"]})
+            titles = ", ".join(f"{variants[vi % len(variants)]['title']}x{qty}" for vi, qty in items)
+            print(f"  + {node['order']['name']} -> customer {cust.split('/')[-1]}  [{titles}]")
         except RuntimeError as e:
-            print(f"  ! order #{num}: {e}")
+            print(f"  ! order for customer {cust}: {e}")
     save_state(s)
 
 

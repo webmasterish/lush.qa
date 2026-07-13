@@ -30,7 +30,7 @@ Loaded into the dev store via `scripts/pull_demo_source.py` (read-only Woo pull 
 - ✅ 14 top-seller products (ACTIVE, variants + gallery images imported)
 - ✅ 6 collections populated (Bath and Shower 9, 5 Star Reviews 8, Best Sellers 7, Hair 2, Bath Bombs 2, Body 2)
 - ✅ 3 customers
-- ✅ 3 orders (paid) — via the offline Admin API token minted with `scripts/get_admin_token.py` (Dev Dashboard app "DotAim - Lush Qatar Store Ops"). Guest checkouts, so not customer-linked; totals are line-item only.
+- ✅ 3 orders (paid) — real seeded customers buying real seeded products (variant-linked, customer-associated), via the offline Admin API token from `scripts/get_admin_token.py`. Note: the live recent Woo orders are guest checkouts with empty billing and off-catalog items, so orders were composed from the seeded catalog + customers rather than copied 1:1.
 
 All seed objects are tagged `demo-seed`; `push_demo_seed.py wipe` (or filtering by tag) removes them before the real migration.
 
