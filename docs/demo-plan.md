@@ -30,7 +30,7 @@ Loaded into the dev store via `scripts/pull_demo_source.py` (read-only Woo pull 
 - ✅ 14 top-seller products (ACTIVE, variants + gallery images imported)
 - ✅ 6 collections populated (Bath and Shower 9, 5 Star Reviews 8, Best Sellers 7, Hair 2, Bath Bombs 2, Body 2)
 - ✅ 3 customers
-- ⏳ Orders — **blocked**: `orderCreate` requires an **offline** access token, but the CLI's `store auth` uses an online token. Resolve by creating a custom app with an offline Admin API token (see runbook). Then run `push_demo_seed.py orders`.
+- ✅ 3 orders (paid) — via the offline Admin API token minted with `scripts/get_admin_token.py` (Dev Dashboard app "DotAim - Lush Qatar Store Ops"). Guest checkouts, so not customer-linked; totals are line-item only.
 
 All seed objects are tagged `demo-seed`; `push_demo_seed.py wipe` (or filtering by tag) removes them before the real migration.
 
