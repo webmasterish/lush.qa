@@ -10,7 +10,7 @@
   "target": {
     "platform": "shopify",
     "store_domain": "lush-qatar.myshopify.com",
-    "api_version": "2025-07",
+    "api_version": "2026-01",
     "primary_locale": "en",
     "secondary_locales": ["ar"],
     "currency": "QAR",

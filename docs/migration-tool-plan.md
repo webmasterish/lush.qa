@@ -6,7 +6,7 @@ Executable build plan for the tool specified in `migration-tool-prd.md` (read th
 
 1. **Never write to WooCommerce.** All source access is GET with Basic auth + a browser-like User-Agent (PRD §7).
 2. **All Shopify writes target the dev store** `lush-qatar.myshopify.com` using `SHOPIFY_ADMIN_API_TOKEN` from `config/projects/lush-qatar.env`.
-3. Before coding each Shopify mutation/query, fetch its current `2025-07` input shape with the **context7** MCP tool (Shopify dev docs). Do not code GraphQL from memory. If a PRD-named mutation is superseded, use the current equivalent and note it in a code comment.
+3. Before coding each Shopify mutation/query, fetch its current `2026-01` input shape with the **context7** MCP tool (Shopify dev docs). Do not code GraphQL from memory. If a PRD-named mutation is superseded, use the current equivalent and note it in a code comment.
 4. Stack is pinned (PRD §4): Node ≥20 ESM (dev machine has v24; latest package versions fine), express, better-sqlite3, dotenv, native fetch on the backend (no other backend deps, no TypeScript there); frontend is Vite + React (JSX) + Tailwind + shadcn/ui in `ui/`.
 5. When something ambiguous comes up, pick the option that is **safer for the source data and reversible on the dev store**, log the decision as a code comment, and continue. Do not stop to ask.
 6. Smoke tests use `--limit 10`. Clean up between iterations with the `wipe` CLI command (only ever deletes id_map-tracked records).
@@ -82,7 +82,7 @@ All paths below are relative to the tool root `shopify/migration_from_woocommerc
 
 **Tasks**
 
-1. Verify via context7 how `orderCreate` in `2025-07` expresses: past `processedAt`, notification suppression, inventory bypass, financial status/transactions, order name/number override. Note findings in code comments.
+1. Verify via context7 how `orderCreate` in `2026-01` expresses: past `processedAt`, notification suppression, inventory bypass, financial status/transactions, order name/number override. Note findings in code comments.
 2. `src/entities/orders.js` per PRD §10.5: status mapping table, customer link via id_map with unlinked-email fallback (guest orders are common), line linking by `variation_id`/`product_id` → SKU → custom line, fee/coupon lines, partial-refund metafield rule, tax/shipping/discount lines, QAR, order-number preservation (or metafield fallback), `source_invoice_number` metafield, immutability in all modes.
 3. Unit tests: status mapping (every Woo status in the PRD table), an order with one mapped and one unmapped line, a guest order, an order with a partial refund.
 
@@ -107,6 +107,7 @@ All paths below are relative to the tool root `shopify/migration_from_woocommerc
 **Tasks**
 
 1. `verify` run type per PRD §15 (counts, 5-record spot checks per entity, orphans list) persisted into `stats.verify`; CLI `verify` command prints the report.
+1b. Incremental extraction per PRD §10.1 (`modified_after` from max staged `extracted_at` minus 1h; `--full` CLI flag / `extract_full` option to force complete re-fetch; categories always full; per-run `info` note about deletions being invisible to incremental runs). Test: incremental run after a full extract finishes in seconds and stages only recently-modified records.
 2. Prove the PRD §13 mode matrix end-to-end (this is a test task, not new code beyond fixes it uncovers): edit one migrated product's title in WooCommerce admin **— exception to Rule 1, done manually by the operator; the agent instead simulates it by editing the staged payload's title and re-hashing —** then `load --mode sync_changed`: exactly that product updates. `--mode force_all`: all update. Orders untouched in both.
 3. CLI `rebuild-map` per PRD §12: page each resource type reading namespace metafields → repopulate `id_map`; `warn` on the old-orders scope limitation. Test: delete `var/migration-tool.sqlite`, re-extract, `rebuild-map`, then `load --mode create_missing --limit 10` → all skipped (map correctly rebuilt).
 

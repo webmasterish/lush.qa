@@ -63,6 +63,9 @@ export function getDb() {
     mkdirSync(VAR_DIR, { recursive: true });
     db = new Database(join(VAR_DIR, "migration-tool.sqlite"));
     db.pragma("journal_mode = WAL");
+    // A CLI extract and the server can run concurrently; wait instead of
+    // throwing SQLITE_BUSY on write contention.
+    db.pragma("busy_timeout = 10000");
     db.exec(DDL);
   }
   return db;

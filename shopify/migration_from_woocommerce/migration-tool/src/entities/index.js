@@ -1,2 +1,271 @@
-// Stub — implemented per docs/migration-tool-plan.md milestones.
-export default {};
+// Entity registry + dependency graph (PRD §9.2), the extract stage
+// (PRD §10.1), and the generic mode-aware load stage (PRD §13).
+import { sha256, nowIso, stableStringify, decodeSlug } from "../util.js";
+import { RunCancelled } from "../runner.js";
+import { transformCategory, loadCategory } from "./categories.js";
+import { transformProduct, loadProduct } from "./products.js";
+
+export const ENTITIES = {
+  categories: {
+    path: "products/categories",
+    langAware: true,
+    dependencies: [],
+    params: {},
+    transform: transformCategory,
+    load: loadCategory,
+  },
+  // status=any is explicit: drafts must migrate (40% of the lush.qa catalog)
+  // so historical orders keep real product links. Trash is never extracted.
+  products: {
+    path: "products",
+    langAware: true,
+    dependencies: ["categories"],
+    params: { status: "any" },
+    transform: transformProduct,
+    load: loadProduct,
+  },
+  customers: { path: "customers", langAware: false, dependencies: [], params: {} },
+  orders: { path: "orders", langAware: false, dependencies: ["customers", "products"], params: {}, immutable: true },
+};
+
+// Dependency-safe processing order.
+export const ENTITY_ORDER = ["categories", "products", "customers", "orders"];
+
+export function parseEntities(input) {
+  if (!input || input === "all") return [...ENTITY_ORDER];
+  const names = input.split(",").map((s) => s.trim()).filter(Boolean);
+  const unknown = names.filter((n) => !ENTITIES[n]);
+  if (unknown.length) {
+    throw new Error(`Unknown entities: ${unknown.join(", ")}. Valid: ${ENTITY_ORDER.join(", ")}`);
+  }
+  return names;
+}
+
+// Expand selection with dependencies (recursively), return in ENTITY_ORDER.
+export function expandEntities(selected, includeDependencies = true) {
+  const set = new Set(selected);
+  if (includeDependencies) {
+    let grew = true;
+    while (grew) {
+      grew = false;
+      for (const name of [...set]) {
+        for (const dep of ENTITIES[name].dependencies) {
+          if (!set.has(dep)) {
+            set.add(dep);
+            grew = true;
+          }
+        }
+      }
+    }
+  }
+  return ENTITY_ORDER.filter((n) => set.has(n));
+}
+
+// Extract one entity into staging. Returns per-language counts, e.g.
+// { en: 538, ar: 526 } or { "-": 3184 } for language-neutral entities.
+export async function extractEntity(ctx, name, options = {}) {
+  const { woo, db, project, log, isCancelled } = ctx;
+  const def = ENTITIES[name];
+  const primary = project.source.primary_lang;
+  const langs = def.langAware
+    ? options.langs?.length
+      ? options.langs
+      : [primary, ...project.source.secondary_langs]
+    : ["-"];
+
+  const upsert = db.prepare(
+    `INSERT OR REPLACE INTO staging (project, entity, lang, source_id, en_id, payload, hash, extracted_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+
+  const counts = {};
+  for (const lang of langs) {
+    const params = { ...def.params };
+    if (def.langAware && lang !== "-") params.lang = lang;
+
+    // WPML sometimes filters the orders endpoint by language: probe totals
+    // and use lang=all when it exposes more records (PRD §10.1).
+    if (name === "orders") {
+      const [plain, all] = [await woo.getTotal(def.path, params), await woo.getTotal(def.path, { ...params, lang: "all" })];
+      if (all > plain) {
+        params.lang = "all";
+        log("info", { entity: name, action: "extract", message: `Orders endpoint is language-filtered (${plain} plain vs ${all} with lang=all); using lang=all.` });
+      }
+    }
+
+    const records = await woo.fetchAll(def.path, params, {
+      limit: options.limit ?? null,
+      onPage: ({ page, totalPages, fetched }) =>
+        log("debug", { entity: name, action: "extract", message: `Fetched page ${page}/${totalPages} (${fetched} records)${lang !== "-" ? ` [${lang}]` : ""}` }),
+    });
+
+    let fallbackSkips = 0;
+    for (const rec of records) {
+      if (isCancelled()) throw new RunCancelled();
+
+      // WPML returns untranslated originals as language fallback (e.g.
+      // lang=ar includes EN records with no AR translation). Staging them
+      // under the wrong lang would feed English text to the AR translation
+      // step — discard them; the record is already staged under its real lang.
+      if (def.langAware && lang !== "-" && rec.lang && rec.lang !== lang) {
+        fallbackSkips++;
+        continue;
+      }
+
+      // Variable products: embed variations so the staged payload is complete.
+      if (name === "products" && rec.type === "variable") {
+        rec._variations = await woo.fetchAll(`products/${rec.id}/variations`, {}, {});
+      }
+
+      // Canonical EN linkage via the WPML translations map.
+      let enId = rec.id;
+      if (def.langAware) {
+        const linked = rec.translations?.[primary];
+        if (linked) {
+          enId = Number(linked);
+        } else if (lang !== primary && lang !== "-") {
+          log("warn", { entity: name, source_id: rec.id, action: "extract", message: `Orphan ${lang} record: no ${primary} sibling in translations map; staged with en_id = own id.` });
+        }
+      }
+
+      const payload = JSON.stringify(rec);
+      upsert.run(project.name, name, lang, rec.id, enId, payload, sha256(payload), nowIso());
+    }
+
+    counts[lang] = records.length - fallbackSkips;
+    log("info", {
+      entity: name,
+      action: "extract",
+      message: `Staged ${counts[lang]} ${name}${lang !== "-" ? ` [${lang}]` : ""}.${fallbackSkips ? ` Discarded ${fallbackSkips} WPML language-fallback records (payload lang mismatch).` : ""}`,
+    });
+  }
+  return counts;
+}
+
+// PRD §12: metafields identifying every migrated resource.
+export function buildMetafields(project, enId, hash, extras = {}) {
+  const ns = project.metafield_namespace;
+  const fields = [
+    { namespace: ns, key: "source", type: "single_line_text_field", value: project.source_label },
+    { namespace: ns, key: "source_id", type: "single_line_text_field", value: String(enId) },
+    { namespace: ns, key: "source_hash", type: "single_line_text_field", value: hash },
+    { namespace: ns, key: "synced_at", type: "date_time", value: nowIso() },
+  ];
+  for (const [key, value] of Object.entries(extras)) {
+    if (value != null && value !== "") {
+      fields.push({ namespace: ns, key, type: "single_line_text_field", value: String(value) });
+    }
+  }
+  return fields;
+}
+
+// PRD §13 mode matrix. Returns "create" | "update" | "skip".
+export function decideAction(mode, mapped, hash, immutable) {
+  if (!mapped) return "create";
+  if (immutable) return "skip";
+  if (mode === "force_all") return "update";
+  if (hash !== mapped.hash_at_sync && mode === "sync_changed") return "update";
+  return "skip";
+}
+
+// Generic load stage: staged EN rows ordered by en_id, offset/limit slice,
+// transform -> mode decision -> entity load -> id_map upsert (PRD §9.1, §13).
+export async function loadEntity(ctx, name, options = {}) {
+  const { db, project, log, isCancelled } = ctx;
+  const def = ENTITIES[name];
+  if (!def.load) throw new Error(`Entity '${name}' has no loader yet (see migration-tool-plan.md milestones)`);
+  const mode = options.mode ?? "create_missing";
+  const primary = def.langAware ? project.source.primary_lang : "-";
+
+  let sql = `SELECT source_id, payload FROM staging WHERE project = ? AND entity = ? AND lang = ? ORDER BY en_id`;
+  const args = [project.name, name, primary];
+  if (options.limit != null) {
+    sql += ` LIMIT ? OFFSET ?`;
+    args.push(options.limit, options.offset ?? 0);
+  } else if (options.offset) {
+    sql += ` LIMIT -1 OFFSET ?`;
+    args.push(options.offset);
+  }
+  const rows = db.prepare(sql).all(...args);
+
+  // Source has duplicate AR translations for some records; ORDER BY makes the
+  // pick deterministic (newest source_id wins).
+  const getAr = db.prepare(
+    `SELECT payload FROM staging WHERE project = ? AND entity = ? AND lang = ? AND en_id = ? ORDER BY source_id DESC LIMIT 1`
+  );
+  const getMapped = db.prepare(`SELECT * FROM id_map WHERE project = ? AND entity = ? AND source_id = ?`);
+  const upsertMap = db.prepare(
+    `INSERT OR REPLACE INTO id_map (project, entity, source_id, target_id, target_handle, hash_at_sync, synced_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
+  );
+
+  // Helpers shared by transforms.
+  const secondary = project.source.secondary_langs?.[0];
+  const helpers = {
+    namespace: project.metafield_namespace,
+    weightUnit: project.source.weight_unit ?? "kg",
+    locationId: def === ENTITIES.products || def === ENTITIES.orders ? await ctx.shopify.getPrimaryLocationId() : null,
+    resolveCollection: (wooCatId) =>
+      getMapped.get(project.name, "categories", wooCatId)?.target_id ?? null,
+    parentHandle: (wooCatId) => {
+      const row = db
+        .prepare(`SELECT payload FROM staging WHERE project = ? AND entity = 'categories' AND lang = ? AND source_id = ?`)
+        .get(project.name, primary === "-" ? project.source.primary_lang : primary, wooCatId);
+      return row ? decodeSlug(JSON.parse(row.payload).slug) : null;
+    },
+  };
+
+  const stats = { created: 0, updated: 0, skipped: 0, failed: 0 };
+  for (const row of rows) {
+    if (isCancelled()) throw new RunCancelled();
+    const en = JSON.parse(row.payload);
+    const arRow = def.langAware && secondary ? getAr.get(project.name, name, secondary, row.source_id) : null;
+    const ar = arRow ? JSON.parse(arRow.payload) : null;
+
+    try {
+      const { input, extras = {}, warnings = [] } = def.transform(en, ar, helpers);
+      for (const w of warnings) {
+        log("warn", { entity: name, source_id: row.source_id, action: "load", message: w });
+      }
+      const hash = sha256(stableStringify({ input, extras }));
+      const mapped = getMapped.get(project.name, name, row.source_id);
+      const action = decideAction(mode, mapped, hash, def.immutable ?? false);
+
+      if (action === "skip") {
+        const changed = mapped && hash !== mapped.hash_at_sync;
+        stats.skipped++;
+        log(changed ? "info" : "debug", {
+          entity: name,
+          source_id: row.source_id,
+          action: "skip",
+          message: changed ? `changed at source but mode=${mode}${def.immutable ? " (entity is immutable)" : ""}; skipped` : "unchanged; skipped",
+        });
+        continue;
+      }
+
+      const metafields = buildMetafields(project, row.source_id, hash, extras);
+      const started = Date.now();
+      const { targetId, handle } = await def.load(ctx, action, input, metafields, mapped);
+      upsertMap.run(project.name, name, row.source_id, targetId, handle ?? null, hash, nowIso());
+      stats[action === "create" ? "created" : "updated"]++;
+      log("info", {
+        entity: name,
+        source_id: row.source_id,
+        action,
+        message: `${action}d ${targetId} (${Date.now() - started}ms)`,
+        data: { target_id: targetId, handle },
+      });
+    } catch (e) {
+      if (e instanceof RunCancelled) throw e;
+      stats.failed++;
+      log("error", {
+        entity: name,
+        source_id: row.source_id,
+        action: "fail",
+        message: e.message,
+        data: e.userErrors ? { userErrors: e.userErrors } : null,
+      });
+    }
+  }
+  return stats;
+}

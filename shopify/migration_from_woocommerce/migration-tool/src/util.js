@@ -18,3 +18,30 @@ export function sha256(input) {
 export function nowIso() {
   return new Date().toISOString();
 }
+
+// Woo names/descriptions arrive HTML-entity-encoded ("Lotions &amp; Butter").
+export function decodeEntities(s) {
+  if (!s) return s ?? "";
+  return s
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'")
+    .replace(/&#8211;/g, "–")
+    .replace(/&nbsp;/g, " ");
+}
+
+export function stripHtml(s) {
+  if (!s) return "";
+  return decodeEntities(s.replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim();
+}
+
+// Woo slugs are percent-encoded for Arabic; Shopify handles must be decoded.
+export function decodeSlug(slug) {
+  try {
+    return decodeURIComponent(slug ?? "");
+  } catch {
+    return slug ?? "";
+  }
+}

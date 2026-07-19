@@ -110,7 +110,7 @@ shopify/migration_from_woocommerce/
   "target": {
     "platform": "shopify",
     "store_domain": "lush-qatar.myshopify.com",
-    "api_version": "2025-07",
+    "api_version": "2026-01",
     "primary_locale": "en",
     "secondary_locales": ["ar"],
     "currency": "QAR",
@@ -250,7 +250,7 @@ Runs are queued in `runs` (status `queued`); a single in-process worker loop exe
 
 ## 10. Entity specifications
 
-For every Shopify mutation used, first pull the current input shape for API version `2025-07` via **context7** (`/websites/shopify_dev` or the GraphQL Admin API reference). Mutation names below are the intended ones; if a name has been superseded in `2025-07`, use the current equivalent and note it in code comments.
+For every Shopify mutation used, first pull the current input shape for API version `2026-01` via **context7** (`/websites/shopify_dev` or the GraphQL Admin API reference). Mutation names below are the intended ones; if a name has been superseded in `2026-01`, use the current equivalent and note it in code comments.
 
 ### 10.1 Extraction (all entities)
 
@@ -258,10 +258,12 @@ For every Shopify mutation used, first pull the current input shape for API vers
 - Products: pass `status=any` **explicitly** — drafts must be extracted (they become Shopify DRAFT products, invisible on the storefront but linkable from historical orders; 219 of lush.qa's 538 products are drafts). Trashed products (`status=trash`, 4 on lush.qa) are intentionally **not** extracted; order lines referencing them fall back to custom line items (§10.5).
 - Paginate until the `X-WP-TotalPages` header is exhausted. Record totals from `X-WP-Total`.
 - Language-bearing entities (`products`, `categories`): extract once per lang (`lang=en`, then `lang=ar`); store each row with its `lang` and set `en_id` from the record's `translations.en`. Rows missing a `translations.en` value: store with `en_id = source_id` and log `warn` (orphan translation).
+- **Discard WPML language-fallback records**: a `lang=<secondary>` request also returns untranslated originals whose payload `lang` field is the primary language — skip any record whose payload `lang` mismatches the requested language (verified on lush.qa: 217 products + 8 categories). Duplicate secondary-language translations exist in the source; the load-stage sibling lookup must be deterministic (newest source_id wins).
 - Variations: for each variable product (`type == "variable"`), also fetch `GET /products/{id}/variations?per_page=100` and embed the result into the staged product payload as `_variations`.
 - `customers`: `lang='-'`, paginate `role=all` default ordering.
 - `orders`: `lang='-'`. Extract **without** a `lang` param first; if the fetched total is materially below the known count (3,184 for Lush Qatar), retry with `lang=all` and use whichever returns more. (WPML sometimes filters order endpoints by language.)
 - Extract is a full upsert into `staging` (replace payload/hash per PK). `limit` applies per entity per lang.
+- **Incremental refresh** (the source server is very slow — full pulls take 30+ min): once an entity has a completed full extract, subsequent extract runs default to passing `modified_after=<max(extracted_at) for that entity minus 1h overlap>` for products/customers/orders; categories are always re-fetched in full (single page, and taxonomy terms have no modified filter). An `extract_full: true` run option forces a complete re-fetch. Caveat (log as `info` on every incremental run): incremental extracts cannot detect source-side deletions — run one full extract before the final pre-cutover verify.
 
 ### 10.2 Categories → Collections
 
@@ -283,7 +285,7 @@ For every Shopify mutation used, first pull the current input shape for API vers
   - Tags → tags. Vendor = `brands[0].name` when present (lush.qa: "Lush"); empty otherwise.
   - Barcode = `global_unique_id` when present. Inventory policy: `backorders != "no"` → CONTINUE, else DENY. Sale price applies only if `date_on_sale_from/to` make it currently active.
   - Dimensions (L/W/H) → metafields `dotaim_migration.dimensions` (JSON string), since Shopify has no native fields.
-- Load: `productSet` (preferred — idempotent create-or-update by id, covers options/variants; verify whether it accepts media/files and collection memberships in `2025-07` via context7; if not, use `productCreateMedia` for images and `collectionAddProductsV2` for membership as follow-up calls in the same record's load step).
+- Load: `productSet` (preferred — idempotent create-or-update by id, covers options/variants; verify whether it accepts media/files and collection memberships in `2026-01` via context7; if not, use `productCreateMedia` for images and `collectionAddProductsV2` for membership as follow-up calls in the same record's load step).
 - Inventory: resolve the store's primary location GID once (query `locations(first:1)`), cache it in memory, set quantities via `inventorySetQuantities` (or the current equivalent).
 - Collection membership from the product's Woo category IDs → mapped collection GIDs; unmapped category → `warn`, continue.
 
