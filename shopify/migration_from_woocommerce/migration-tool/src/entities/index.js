@@ -26,6 +26,7 @@ export const ENTITIES = {
     langAware: true,
     dependencies: ["categories"],
     params: { status: "any" },
+    incremental: true,
     transform: transformProduct,
     load: loadProduct,
     translationValues: productTranslationValues,
@@ -44,6 +45,7 @@ export const ENTITIES = {
     langAware: false,
     dependencies: ["customers", "products"],
     params: {},
+    incremental: true,
     immutable: true,
     transform: transformOrder,
     load: loadOrder,
@@ -100,10 +102,33 @@ export async function extractEntity(ctx, name, options = {}) {
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
   );
 
+  // Incremental refresh (PRD §10.1): products/orders support modified_after;
+  // categories/customers do not (verified live). Never incremental for
+  // limited test runs; --full forces a complete re-fetch. Deletions at the
+  // source are invisible to incremental runs.
+  let since = null;
+  if (def.incremental && !options.extract_full && options.limit == null) {
+    const prev = db
+      .prepare(`SELECT MAX(extracted_at) m FROM staging WHERE project = ? AND entity = ?`)
+      .get(project.name, name)?.m;
+    if (prev) {
+      since = new Date(Date.parse(prev) - 3600_000).toISOString().replace(/\.\d{3}Z$/, "");
+      log("info", {
+        entity: name,
+        action: "extract",
+        message: `Incremental extract: modified_after=${since} (1h overlap). Source deletions are NOT detected — run a full extract (--full) before the final pre-cutover verify.`,
+      });
+    }
+  }
+
   const counts = {};
   for (const lang of langs) {
     const params = { ...def.params };
     if (def.langAware && lang !== "-") params.lang = lang;
+    if (since) {
+      params.modified_after = since;
+      params.dates_are_gmt = "true";
+    }
 
     // WPML sometimes filters the orders endpoint by language: probe totals
     // and use lang=all when it exposes more records (PRD §10.1).

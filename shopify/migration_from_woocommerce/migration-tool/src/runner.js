@@ -70,8 +70,17 @@ export async function executeRun(cfg, runId) {
     // Lazy import avoids a circular dependency (entities/index.js imports
     // RunCancelled from this module).
     const { extractEntity, loadEntity } = await import("./entities/index.js");
+    const { verifyEntity } = await import("./verify.js");
+    const { rebuildMap } = await import("./rebuild.js");
 
-    if (run.type === "extract") {
+    if (run.type === "verify") {
+      for (const name of entities) {
+        stats[name] = { verify: await verifyEntity(ctx, name) };
+        ctx.updateStats();
+      }
+    } else if (run.type === "rebuild-map") {
+      stats.rebuilt = await rebuildMap(ctx);
+    } else if (run.type === "extract") {
       for (const name of entities) {
         stats[name] = { extracted: await extractEntity(ctx, name, options) };
         ctx.updateStats();
@@ -88,6 +97,10 @@ export async function executeRun(cfg, runId) {
       }
       for (const name of entities) {
         Object.assign(stats[name], await loadEntity(ctx, name, options));
+        ctx.updateStats();
+      }
+      for (const name of entities) {
+        stats[name].verify = await verifyEntity(ctx, name);
         ctx.updateStats();
       }
     } else {

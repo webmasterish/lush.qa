@@ -42,6 +42,7 @@ function buildOptions(flags) {
   }
   if (flags.langs) options.langs = flags.langs.split(",").map((s) => s.trim()).filter(Boolean);
   if (flags.mode) options.mode = flags.mode;
+  if (flags.full === "true") options.extract_full = true;
   options.include_dependencies = flags["include-dependencies"] !== "false";
   return options;
 }
@@ -67,7 +68,7 @@ async function main() {
     return;
   }
 
-  if (["extract", "load", "full"].includes(command)) {
+  if (["extract", "load", "full", "verify", "rebuild-map"].includes(command)) {
     let entities, options;
     try {
       entities = expandEntities(parseEntities(flags.entities), flags["include-dependencies"] !== "false");
@@ -82,7 +83,7 @@ async function main() {
     process.exit(status === "success" ? 0 : 1);
   }
 
-  console.error(`Unknown command '${command}'. Available: extract, load, full (verify/wipe/rebuild-map/mint-token arrive in later milestones).`);
+  console.error(`Unknown command '${command}'. Available: extract, load, full, verify, rebuild-map (wipe/mint-token arrive in M7).`);
   process.exit(1);
 }
 

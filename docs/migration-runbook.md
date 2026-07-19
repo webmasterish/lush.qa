@@ -90,6 +90,7 @@ Detailed feature list is in `lush-migration-project-context.md` (§8). Highlight
 
 ## Phase 5 — Testing & QA
 
+- [ ] Review `client-data-quality-notes.md` with Dee (source content issues found during migration; agree on any cleanup)
 - [ ] Internal (DotAim) verification of each migrated entity against source counts and spot-checks
 - [ ] Redirect verification (sample of old URLs resolve/301 correctly)
 - [ ] Client verification pass (they confirm data + features)
