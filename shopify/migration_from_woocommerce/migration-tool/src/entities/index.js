@@ -393,6 +393,11 @@ export async function loadEntity(ctx, name, options = {}) {
       });
     } catch (e) {
       if (e instanceof RunCancelled) throw e;
+      if (e.softSkip) {
+        stats.skipped++;
+        log("warn", { entity: name, source_id: row.source_id, action: "skip", message: e.softSkip });
+        continue;
+      }
       stats.failed++;
       log("error", {
         entity: name,

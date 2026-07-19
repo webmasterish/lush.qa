@@ -2,7 +2,7 @@
 // productSet (2026-01) handles options/variants/files/collections/metafields
 // in one call; list fields are replaced wholesale, which matches our
 // source-of-truth sync semantics.
-import { decodeEntities, decodeSlug, stripHtml } from "../util.js";
+import { decodeEntities, decodeSlug, stripHtml, encodeImageUrl } from "../util.js";
 
 const WEIGHT_UNITS = { kg: "KILOGRAMS", g: "GRAMS", lbs: "POUNDS", oz: "OUNCES" };
 
@@ -64,7 +64,7 @@ export function transformProduct(en, ar, helpers) {
   for (const img of en.images ?? []) {
     if (!img.src || seen.has(img.src)) continue;
     seen.add(img.src);
-    files.push({ originalSource: img.src, alt: img.alt || undefined, contentType: "IMAGE" });
+    files.push({ originalSource: encodeImageUrl(img.src), alt: img.alt || undefined, contentType: "IMAGE" });
   }
 
   const input = {
@@ -100,7 +100,7 @@ export function transformProduct(en, ar, helpers) {
       taxable: v.tax_status !== "none",
       ...priceFields(v),
       ...inventoryFields(v, helpers.locationId, weightUnit),
-      ...(v.image?.src ? { file: { originalSource: v.image.src, contentType: "IMAGE" } } : {}),
+      ...(v.image?.src ? { file: { originalSource: encodeImageUrl(v.image.src), contentType: "IMAGE" } } : {}),
       metafields: [
         { namespace: helpers.namespace, key: "source_id", type: "single_line_text_field", value: String(v.id) },
       ],

@@ -40,11 +40,14 @@ export function recoverStaleRuns() {
   }
 }
 
-export function createRun(cfg, type, entities, options = {}) {
+// initialStatus 'queued' → the server worker picks it up; 'running' → the
+// caller executes it itself (CLI foreground). Inserting directly as
+// 'running' closes the race where the worker could grab a CLI-owned run.
+export function createRun(cfg, type, entities, options = {}, initialStatus = "queued") {
   const db = getDb();
   const res = db
-    .prepare("INSERT INTO runs (project, type, entities, options, status, created_at) VALUES (?, ?, ?, ?, 'queued', ?)")
-    .run(cfg.project.name, type, JSON.stringify(entities), JSON.stringify(options), nowIso());
+    .prepare("INSERT INTO runs (project, type, entities, options, status, created_at, heartbeat_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
+    .run(cfg.project.name, type, JSON.stringify(entities), JSON.stringify(options), initialStatus, nowIso(), nowIso());
   return Number(res.lastInsertRowid);
 }
 

@@ -109,6 +109,12 @@ export async function loadCustomer(ctx, action, input, metafields, mapped) {
     const customer = await mutate(ctx, action, payload, mapped?.target_id);
     return { targetId: customer.id, handle: customer.email };
   } catch (e) {
+    // Junk/test registrations in the source (bot or security-scan traffic)
+    // carry emails Shopify rejects — not migratable, not a tool failure.
+    if (e.userErrors?.some((u) => /email is invalid/i.test(u.message))) {
+      e.softSkip = `source email rejected as invalid (junk/test registration): ${input.email}`;
+      throw e;
+    }
     // PRD §10.4: if Shopify rejects the phone, retry once without it.
     const phoneError = e.userErrors?.some((u) => (u.field ?? []).join(".").includes("phone") || /phone/i.test(u.message));
     if (phoneError && (payload.phone || payload.addresses?.some((a) => a.phone))) {

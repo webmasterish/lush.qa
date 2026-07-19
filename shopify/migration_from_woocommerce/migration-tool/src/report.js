@@ -21,16 +21,23 @@ export function buildReport(cfg) {
   lines.push(`Generated ${new Date().toISOString()} · source ${cfg.project.source.url} · target ${cfg.project.target.store_domain}`);
   lines.push("");
 
-  // Latest verify snapshot and latest load stats per entity.
+  // Latest verify snapshot + latest load (current failure state) + cumulative
+  // translated/published across all runs.
   const latestVerify = {};
   const latestLoad = {};
+  const cumulative = {};
   for (const run of db
     .prepare(`SELECT id, type, stats, started_at, finished_at FROM runs WHERE project = ? AND stats IS NOT NULL ORDER BY id DESC`)
     .all(project)) {
     const stats = JSON.parse(run.stats);
     for (const name of ENTITY_ORDER) {
       if (stats[name]?.verify && !latestVerify[name]) latestVerify[name] = { run: run.id, ...stats[name].verify };
-      if (stats[name]?.created !== undefined && !latestLoad[name]) latestLoad[name] = { run: run.id, ...stats[name] };
+      if (stats[name]?.created !== undefined) {
+        if (!latestLoad[name]) latestLoad[name] = { run: run.id, ...stats[name] };
+        const c = (cumulative[name] ??= { translated: 0, published: 0 });
+        c.translated += stats[name].translated ?? 0;
+        c.published += stats[name].published ?? 0;
+      }
     }
   }
 
@@ -54,8 +61,9 @@ export function buildReport(cfg) {
         ? `issues: ${[...(v.flags ?? []), ...(v.spot_mismatches ?? [])].length} (run ${v.run})`
         : `ok (run ${v.run}${v.orphans ? `, ${v.orphans} source-deleted`: ""})`
       : "not run";
+    const c = cumulative[name];
     lines.push(
-      `| ${name} | ${stagedStr} | ${mapped} | ${v?.live ?? "—"} | ${l?.failed ?? "—"} | ${l?.translated ?? "—"} | ${l?.published ?? "—"} | ${verdict} |`
+      `| ${name} | ${stagedStr} | ${mapped} | ${v?.live ?? "—"} | ${l?.failed ?? "—"} | ${c?.translated || "—"} | ${c?.published || "—"} | ${verdict} |`
     );
   }
   lines.push("");

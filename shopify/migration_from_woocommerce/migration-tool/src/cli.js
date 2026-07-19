@@ -81,7 +81,7 @@ async function main() {
       console.error(`Invalid arguments: ${e.message}`);
       process.exit(1);
     }
-    const runId = createRun(cfg, command, entities, options);
+    const runId = createRun(cfg, command, entities, options, "running");
     const { status, stats } = await executeRun(cfg, runId);
     console.log(JSON.stringify({ run: runId, status, stats }, null, 2));
     process.exit(status === "success" ? 0 : 1);
@@ -98,7 +98,7 @@ async function main() {
       console.error(`Invalid arguments: ${e.message}`);
       process.exit(1);
     }
-    const runId = createRun(cfg, "wipe", entities, { confirm: Boolean(flags.confirm) });
+    const runId = createRun(cfg, "wipe", entities, { confirm: Boolean(flags.confirm) }, "running");
     getDb().prepare("UPDATE runs SET status = 'running', started_at = datetime('now') WHERE id = ?").run(runId);
     const ctx = {
       db: getDb(),
@@ -136,7 +136,7 @@ async function main() {
     const { defineMetafields } = await import("./definitions.js");
     const { createShopifyClient } = await import("./connectors/shopify.js");
     const { logEvent } = await import("./log.js");
-    const runId = createRun(cfg, "define-metafields", [], {});
+    const runId = createRun(cfg, "define-metafields", [], {}, "running");
     getDb().prepare("UPDATE runs SET status = 'running', started_at = datetime('now') WHERE id = ?").run(runId);
     try {
       const stats = await defineMetafields({

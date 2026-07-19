@@ -37,6 +37,14 @@ export function stripHtml(s) {
   return decodeEntities(s.replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim();
 }
 
+// Shopify's file fetcher rejects URLs with raw non-ASCII characters (e.g.
+// "SCOOBYDOO™_Bath_Bomb.jpg"). Encode only those, leaving existing
+// percent-encoding untouched (encodeURI would double-encode it).
+export function encodeImageUrl(url) {
+  if (!url) return url;
+  return url.replace(/[^\x21-\x7e]/g, (c) => encodeURIComponent(c));
+}
+
 // Woo slugs are percent-encoded for Arabic; Shopify handles must be decoded.
 export function decodeSlug(slug) {
   try {

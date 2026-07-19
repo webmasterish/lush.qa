@@ -73,7 +73,26 @@ export async function verifyEntity(ctx, name) {
 
   const report = { staged, mapped, live, flags: [], spot_mismatches: [], orphans: 0, orphan_samples: [] };
   if (live != null && mapped > live) {
-    report.flags.push(`id_map has ${mapped} records but Shopify only has ${live} — some mapped records are missing from the store`);
+    // Shopify count queries are eventually consistent and lag after bulk
+    // imports. Before flagging, deep-check by paging the actual ids.
+    const { listAll } = await import("./wipe.js");
+    try {
+      const liveIds = new Set((await listAll(shopify, name)).map((n) => n.id));
+      const missing = db
+        .prepare(`SELECT source_id, target_id FROM id_map WHERE project = ? AND entity = ?`)
+        .all(project.name, name)
+        .filter((r) => !liveIds.has(r.target_id));
+      if (missing.length) {
+        report.flags.push(
+          `${missing.length} mapped records are genuinely missing from the store (source ids: ${missing.slice(0, 10).map((m) => m.source_id).join(", ")}${missing.length > 10 ? ", …" : ""})`
+        );
+      } else {
+        report.live_deep_checked = liveIds.size;
+        log("info", { entity: name, action: "verify", message: `count query said ${live} but all ${mapped} mapped ids verified present by paging (count index lagging — not an issue)` });
+      }
+    } catch (e) {
+      report.flags.push(`id_map has ${mapped} but count query says ${live}; deep check failed (${e.message}) — re-run verify later`);
+    }
   }
 
   // Spot checks: 5 random mapped records.

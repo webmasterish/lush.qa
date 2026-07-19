@@ -34,14 +34,15 @@ const WIPE_ORDER = ["orders", "customers", "products", "categories"];
 
 // scope 'all': page through EVERY resource of the type on the store (demo
 // data, manual test data — regardless of origin). Backed up to var/ first.
-const LIST_QUERIES = {
+// Also reused by verify's deep count check.
+export const LIST_QUERIES = {
   orders: `query ($cursor: String) { orders(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id name } } }`,
   customers: `query ($cursor: String) { customers(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id email } } }`,
   products: `query ($cursor: String) { products(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id title handle } } }`,
   categories: `query ($cursor: String) { collections(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id title handle } } }`,
 };
 
-async function listAll(shopify, name) {
+export async function listAll(shopify, name) {
   const out = [];
   let cursor = null;
   for (;;) {
