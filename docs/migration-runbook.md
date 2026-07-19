@@ -58,6 +58,8 @@ Scope note: products (538) slightly exceed the 500 baseline in the preliminary $
 
 ## Phase 2 — Shopify store setup
 
+- [ ] Invite Dee as Shopify staff (broad permissions incl. billing; see instructions shared 2026-07-19) so finance can add the company card
+- [ ] Client card on file (Settings > Billing > Payment methods) — prerequisite for theme + plan
 - [ ] Shopify Grow plan active (MENA pricing ~$54/$72; client's card on file)
 - [ ] Be Yours theme purchased & installed
 - [x] Store timezone set to (GMT+3) Riyadh — 2026-07-12, Settings → General (Qatar not in the list; Riyadh is the GMT+3 equivalent)
