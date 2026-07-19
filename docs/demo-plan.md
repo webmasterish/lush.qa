@@ -4,7 +4,7 @@ Working document for the demo/training walkthrough. Two purposes:
 1. **Internal reference** for Bassam to run the session smoothly.
 2. A **client-facing reference document** to share with attendees at the start of the meeting, conveying a professional, structured process. Time is reserved at the end for questions.
 
-Status: draft — details to be filled in together before the session. The demo is currently targeted for **July 14** (per project calendar).
+Status: **delivered 2026-07-14** (ran ~2h vs. the scheduled 1h; went well). This is now a historical record of the demo prep + what was seeded into the dev store. The client-facing handout on the day was a slide deck ("Lush Qatar - Shopify Admin - Getting Started", shared via Google Drive; local copy in `../meetings/2026-07-14/`), not the earlier draft reference doc in this repo.
 
 ## Audience
 

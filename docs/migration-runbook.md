@@ -29,7 +29,7 @@ Working setup lives in the git repo `repo/` (private GitHub `webmasterish/lush.q
 - **Timezone:** set to (GMT+3) Riyadh on 2026-07-12 in Settings → General (the list has no Qatar entry; Riyadh is the GMT+3 equivalent, no DST). Not API-settable.
 - **Reference store (KSA):** `lushsa.myshopify.com` — DotAim has access. Connect **read-only** (`read_products,read_themes,read_content,read_publications`) when mirroring settings/theme; deferred to the store-setup/theme phase.
 - **Source (WooCommerce):** read-only REST API key in `shopify/migration_from_woocommerce/.env`; verified reachable 2026-07-12. We do not write to the WP site.
-- **Demo:** see `demo-plan.md` for the July 14 demo reference document (in progress).
+- **Demo / getting-started session:** delivered **2026-07-14** (ran ~2h vs. the scheduled 1h; a lot to cover, went well). Walkthrough of the Shopify admin against the seeded dev store (see `demo-plan.md` for the seed). The client-facing handout used was a slide deck, "Lush Qatar - Shopify Admin - Getting Started" (shared with attendees via Google Drive at the start; local copy in the private `../meetings/2026-07-14/`). Not committed — it is a one-off deliverable, kept in the private meetings dir + Drive.
 
 ## Phase 1 — Discovery & planning
 
