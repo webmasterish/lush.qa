@@ -59,7 +59,11 @@ async function main() {
   }
 
   getDb();
-  recoverStaleRuns();
+  // Recovery only before commands that execute runs — read-only commands
+  // (report, summary, mint-token) must never touch other processes' runs.
+  if (["extract", "load", "full", "verify", "rebuild-map", "wipe"].includes(command)) {
+    recoverStaleRuns();
+  }
 
   if (!command) {
     const summary = configSummary(cfg);
@@ -113,6 +117,19 @@ async function main() {
       console.error(e.message);
       process.exit(1);
     }
+  }
+
+  if (command === "report") {
+    const { buildReport } = await import("./report.js");
+    const md = buildReport(cfg);
+    if (flags.out) {
+      const { writeFileSync } = await import("node:fs");
+      writeFileSync(flags.out, md + "\n");
+      console.log(`Report written to ${flags.out}`);
+    } else {
+      console.log(md);
+    }
+    process.exit(0);
   }
 
   if (command === "define-metafields") {

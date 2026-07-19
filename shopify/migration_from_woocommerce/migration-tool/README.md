@@ -36,9 +36,22 @@ node src/cli.js --project lush-qatar rebuild-map                       # recover
 node src/cli.js --project lush-qatar wipe --entities all --confirm lush-qatar.myshopify.com
 node src/cli.js --project lush-qatar wipe --entities all --scope all --confirm lush-qatar.myshopify.com   # ALL store data incl. demo/manual (backed up to var/ first)
 node src/cli.js --project lush-qatar mint-token url                    # then: mint-token exchange "<redirected-url>"
+node src/cli.js --project lush-qatar define-metafields                 # named metafield definitions for the migration namespace (idempotent)
+node src/cli.js --project lush-qatar report [--out file.md]            # migration status report (markdown, read-only, safe mid-run)
 ```
 
 Options: `--limit N`, `--offset N` (stable source-id ordering, chunks never overlap), `--mode create_missing|sync_changed|force_all`, `--include-dependencies false`, `--full` (extract).
+
+## Bootstrapping a new project (reuse checklist)
+
+For a new Woo→Shopify migration (WPML source supported out of the box), no code changes on the common path:
+
+1. `config/projects/<name>.json` — copy `lush-qatar.json`, adjust store URLs, locales, currency, `source_label`. Keep `production: false` + `allow_wipe: true` while targeting a dev store.
+2. `config/projects/<name>.env` — copy `.env.example`; add a **read-only** Woo REST key and the Shopify Dev Dashboard app credentials; mint the offline token (`mint-token url` / `exchange`).
+3. `node src/cli.js --project <name>` — validates config and connectivity expectations.
+4. `define-metafields` — create the migration-namespace definitions.
+5. `extract --entities all --limit 10` then `load --entities all --limit 10` — smoke test, check results in the store admin.
+6. `wipe --entities all --confirm <store-domain>` to clear the smoke test, then run the full migration (UI or CLI).
 
 ## Notes
 

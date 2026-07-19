@@ -67,6 +67,14 @@ export function getDb() {
     // throwing SQLITE_BUSY on write contention.
     db.pragma("busy_timeout = 10000");
     db.exec(DDL);
+    // v2 migration: heartbeat for cross-process liveness (CLI and server
+    // share this DB; stale-run recovery must not kill a run that another
+    // process is actively executing).
+    try {
+      db.exec("ALTER TABLE runs ADD COLUMN heartbeat_at TEXT");
+    } catch {
+      // column already exists
+    }
   }
   return db;
 }

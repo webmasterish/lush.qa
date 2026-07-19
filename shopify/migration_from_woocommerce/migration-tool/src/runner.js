@@ -19,14 +19,24 @@ export function requestCancel(runId) {
   cancelRequests.add(runId);
 }
 
-// Any run left 'running' by a crashed/restarted process is unrecoverable
-// in-memory state: mark it failed (completed work is preserved in staging /
-// id_map; a create_missing re-run resumes naturally).
+// Any run left 'running' by a crashed process is unrecoverable in-memory
+// state: mark it failed (completed work is preserved; create_missing
+// resumes). BUT the CLI and server share this DB — a run may be legitimately
+// executing in another process. Only treat a run as stale when it shows no
+// sign of life: no fresh heartbeat AND no recent event.
+// Generous threshold: order loads legitimately go quiet for 61s+ while
+// waiting out the dev-store orders-per-minute cap.
+const STALE_AFTER_MS = 300_000;
+
 export function recoverStaleRuns() {
   const db = getDb();
-  for (const r of db.prepare("SELECT id FROM runs WHERE status = 'running'").all()) {
+  for (const r of db.prepare("SELECT id, heartbeat_at FROM runs WHERE status = 'running'").all()) {
+    const beat = r.heartbeat_at ? Date.parse(r.heartbeat_at) : 0;
+    const lastEvent = db.prepare("SELECT ts FROM run_events WHERE run_id = ? ORDER BY id DESC LIMIT 1").get(r.id);
+    const lastSeen = Math.max(beat, lastEvent ? Date.parse(lastEvent.ts) : 0);
+    if (Date.now() - lastSeen < STALE_AFTER_MS) continue; // alive in another process
     db.prepare("UPDATE runs SET status = 'failed', finished_at = ? WHERE id = ?").run(nowIso(), r.id);
-    logEvent(r.id, "error", { action: "system", message: "Run was still 'running' at process startup (restart/crash); marked failed. Completed work is preserved." });
+    logEvent(r.id, "error", { action: "system", message: "Run showed no activity for 5 minutes and was still 'running' (crashed process); marked failed. Completed work is preserved." });
   }
 }
 
@@ -49,8 +59,16 @@ export async function executeRun(cfg, runId) {
   const entities = JSON.parse(run.entities);
   const options = JSON.parse(run.options);
 
-  db.prepare("UPDATE runs SET status = 'running', started_at = ? WHERE id = ?").run(nowIso(), runId);
+  db.prepare("UPDATE runs SET status = 'running', started_at = ?, heartbeat_at = ? WHERE id = ?").run(nowIso(), nowIso(), runId);
   logEvent(runId, "info", { action: "system", message: `Run ${runId} started: ${run.type} [${entities.join(", ")}] ${JSON.stringify(options)}` });
+  const heartbeat = setInterval(() => {
+    try {
+      db.prepare("UPDATE runs SET heartbeat_at = ? WHERE id = ?").run(nowIso(), runId);
+    } catch {
+      // best-effort; the event log is the fallback liveness signal
+    }
+  }, 5000);
+  heartbeat.unref?.();
 
   const stats = {};
   const ctx = {
@@ -122,6 +140,7 @@ export async function executeRun(cfg, runId) {
     }
   }
 
+  clearInterval(heartbeat);
   db.prepare("UPDATE runs SET status = ?, stats = ?, finished_at = ? WHERE id = ?").run(status, JSON.stringify(stats), nowIso(), runId);
   cancelRequests.delete(runId);
   logEvent(runId, "info", { action: "system", message: `Run ${runId} finished: ${status}` });
