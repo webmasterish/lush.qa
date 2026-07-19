@@ -4,6 +4,7 @@ import { sha256, nowIso, stableStringify, decodeSlug } from "../util.js";
 import { RunCancelled } from "../runner.js";
 import { transformCategory, loadCategory } from "./categories.js";
 import { transformProduct, loadProduct } from "./products.js";
+import { transformCustomer, loadCustomer } from "./customers.js";
 
 export const ENTITIES = {
   categories: {
@@ -24,7 +25,14 @@ export const ENTITIES = {
     transform: transformProduct,
     load: loadProduct,
   },
-  customers: { path: "customers", langAware: false, dependencies: [], params: {} },
+  customers: {
+    path: "customers",
+    langAware: false,
+    dependencies: [],
+    params: {},
+    transform: transformCustomer,
+    load: loadCustomer,
+  },
   orders: { path: "orders", langAware: false, dependencies: ["customers", "products"], params: {}, immutable: true },
 };
 
@@ -203,6 +211,7 @@ export async function loadEntity(ctx, name, options = {}) {
   const secondary = project.source.secondary_langs?.[0];
   const helpers = {
     namespace: project.metafield_namespace,
+    phoneCountry: project.phone_default_country,
     weightUnit: project.source.weight_unit ?? "kg",
     locationId: def === ENTITIES.products || def === ENTITIES.orders ? await ctx.shopify.getPrimaryLocationId() : null,
     resolveCollection: (wooCatId) =>
@@ -223,7 +232,12 @@ export async function loadEntity(ctx, name, options = {}) {
     const ar = arRow ? JSON.parse(arRow.payload) : null;
 
     try {
-      const { input, extras = {}, warnings = [] } = def.transform(en, ar, helpers);
+      const { input, extras = {}, warnings = [], skip } = def.transform(en, ar, helpers);
+      if (skip) {
+        stats.skipped++;
+        log("warn", { entity: name, source_id: row.source_id, action: "skip", message: skip });
+        continue;
+      }
       for (const w of warnings) {
         log("warn", { entity: name, source_id: row.source_id, action: "load", message: w });
       }

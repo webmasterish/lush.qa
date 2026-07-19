@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { transformCategory } from "../src/entities/categories.js";
+import { transformCustomer, normalizePhone } from "../src/entities/customers.js";
 import { transformProduct } from "../src/entities/products.js";
 import { decideAction } from "../src/entities/index.js";
 import { stableStringify, decodeEntities, stripHtml, decodeSlug } from "../src/util.js";
@@ -136,6 +137,37 @@ test("variable product: options + variants from _variations", () => {
 test("ar slug lands in extras for redirects", () => {
   const { extras } = transformProduct(baseSimple, { slug: "%d9%84%d9%88%d8%b4%d9%86" }, helpers);
   assert.equal(extras.source_ar_slug, "لوشن");
+});
+
+test("phone normalization table (PRD §10.4)", () => {
+  assert.equal(normalizePhone("55816215", "+974"), "+97455816215");
+  assert.equal(normalizePhone("0097455816215", "+974"), "+97455816215");
+  assert.equal(normalizePhone("97455816215", "+974"), "+97455816215");
+  assert.equal(normalizePhone("+974 5581 6215", "+974"), "+97455816215");
+  assert.equal(normalizePhone("+961-81-227726", "+974"), "+96181227726");
+  assert.equal(normalizePhone("", "+974"), null);
+  assert.equal(normalizePhone("abc", "+974"), null);
+});
+
+test("customer: email dedup key lowercased, no-email skips, addresses", () => {
+  assert.ok(transformCustomer({ email: "" }, null, { phoneCountry: "+974" }).skip);
+  const billing = { first_name: "Dee", last_name: "O", address_1: "West Bay", city: "Doha", postcode: "", country: "QA", state: "", phone: "66405856" };
+  const { input } = transformCustomer(
+    { email: "Dee@Example.COM", first_name: "Dee", last_name: "O", billing, shipping: { ...billing, phone: "" } },
+    null,
+    { phoneCountry: "+974" }
+  );
+  assert.equal(input.email, "dee@example.com");
+  assert.equal(input.phone, "+97466405856");
+  assert.equal(input.addresses.length, 1);
+  assert.equal(input.addresses[0].countryCode, "QA");
+  assert.equal(input.emailMarketingConsent, undefined);
+  const twoAddr = transformCustomer(
+    { email: "a@b.c", billing, shipping: { ...billing, address_1: "Other St", phone: "" } },
+    null,
+    { phoneCountry: "+974" }
+  );
+  assert.equal(twoAddr.input.addresses.length, 2);
 });
 
 test("mode matrix (PRD §13) incl. order immutability", () => {
