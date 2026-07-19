@@ -104,7 +104,7 @@ async function main() {
       isCancelled: () => false,
     };
     try {
-      const stats = await wipe(ctx, entities, flags.confirm);
+      const stats = await wipe(ctx, entities, flags.confirm, flags.scope ?? "tracked");
       getDb().prepare("UPDATE runs SET status = 'success', stats = ?, finished_at = datetime('now') WHERE id = ?").run(JSON.stringify(stats), runId);
       console.log(JSON.stringify({ run: runId, stats }, null, 2));
       process.exit(0);

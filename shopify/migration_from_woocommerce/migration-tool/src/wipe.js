@@ -32,19 +32,52 @@ const DELETE_MUTATIONS = {
 // Reverse dependency order so referenced resources go last.
 const WIPE_ORDER = ["orders", "customers", "products", "categories"];
 
-export async function wipe(ctx, entities, confirm) {
+// scope 'all': page through EVERY resource of the type on the store (demo
+// data, manual test data — regardless of origin). Backed up to var/ first.
+const LIST_QUERIES = {
+  orders: `query ($cursor: String) { orders(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id name } } }`,
+  customers: `query ($cursor: String) { customers(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id email } } }`,
+  products: `query ($cursor: String) { products(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id title handle } } }`,
+  categories: `query ($cursor: String) { collections(first: 100, after: $cursor) { pageInfo { hasNextPage endCursor } nodes { id title handle } } }`,
+};
+
+async function listAll(shopify, name) {
+  const out = [];
+  let cursor = null;
+  for (;;) {
+    const data = await shopify.gql(LIST_QUERIES[name], { cursor });
+    const conn = Object.values(data)[0];
+    out.push(...conn.nodes);
+    if (!conn.pageInfo.hasNextPage) return out;
+    cursor = conn.pageInfo.endCursor;
+  }
+}
+
+export async function wipe(ctx, entities, confirm, scope = "tracked") {
   const { db, project, shopify, log } = ctx;
   if (project.target.production) throw new Error("wipe refused: project is flagged production");
   if (!project.target.allow_wipe) throw new Error("wipe refused: allow_wipe is false in project config");
   if (confirm !== project.target.store_domain) {
     throw new Error(`wipe refused: --confirm must be exactly '${project.target.store_domain}'`);
   }
+  if (!["tracked", "all"].includes(scope)) throw new Error(`wipe: invalid scope '${scope}' (tracked|all)`);
 
   const del = db.prepare(`DELETE FROM id_map WHERE project = ? AND entity = ? AND source_id = ?`);
   const stats = {};
   for (const name of WIPE_ORDER.filter((n) => entities.includes(n))) {
     const m = DELETE_MUTATIONS[name];
-    const rows = db.prepare(`SELECT source_id, target_id FROM id_map WHERE project = ? AND entity = ?`).all(project.name, name);
+    let rows;
+    if (scope === "all") {
+      const found = await listAll(shopify, name);
+      const { writeFileSync, mkdirSync } = await import("node:fs");
+      mkdirSync("var", { recursive: true });
+      const backupFile = `var/backup-wipe-all-${name}-${new Date().toISOString().slice(0, 10)}.json`;
+      writeFileSync(backupFile, JSON.stringify(found, null, 1));
+      log("info", { entity: name, action: "wipe", message: `scope=all: ${found.length} ${name} on the store; ids/names backed up to ${backupFile}` });
+      rows = found.map((n) => ({ source_id: null, target_id: n.id }));
+    } else {
+      rows = db.prepare(`SELECT source_id, target_id FROM id_map WHERE project = ? AND entity = ?`).all(project.name, name);
+    }
     stats[name] = { deleted: 0, failed: 0 };
     for (const r of rows) {
       if (ctx.isCancelled()) return stats;
@@ -53,7 +86,8 @@ export async function wipe(ctx, entities, confirm) {
         const errs = m.errs(d);
         if (errs?.length) throw new Error(errs.map((e) => e.message).join("; "));
         if (!m.ok(d)) throw new Error("no deleted id returned");
-        del.run(project.name, name, r.source_id);
+        if (r.source_id != null) del.run(project.name, name, r.source_id);
+        else db.prepare(`DELETE FROM id_map WHERE project = ? AND entity = ? AND target_id = ?`).run(project.name, name, r.target_id);
         if (name === "products") {
           // Variant mappings die with their product.
           db.prepare(`DELETE FROM id_map WHERE project = ? AND entity = 'variants' AND target_id LIKE '%ProductVariant%' AND source_id IN (

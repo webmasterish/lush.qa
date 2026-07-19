@@ -416,6 +416,8 @@ node src/cli.js --project lush-qatar mint-token          # OAuth code flow → o
 
 CLI runs execute in the foreground, stream events to stdout, and exit non-zero on run failure. `wipe` deletes **only** resources listed in `id_map` (our own creations), requires `--confirm <store domain>` to match the config, and refuses when `production: true` or `allow_wipe: false`. Wipe exists for dev-store iteration (e.g. clearing a 10-product test), and also clears the corresponding `id_map` rows.
 
+`wipe --scope all` (added 2026-07-19, LitExtension "clear current data" parity): deletes **every** resource of the selected types on the store regardless of origin (demo/manual data included) — same guards, and the ids/names of everything deleted are backed up to `var/backup-wipe-all-<entity>-<date>.json` first. Used to reset a dev store to a clean slate before a full migration.
+
 ## 18. Error handling and rate limits
 
 - **WooCommerce**: sequential page fetches; on HTTP 429/5xx/network error retry ×3 with backoff 1s/2s/4s; then fail the run (extraction is all-or-nothing per entity).

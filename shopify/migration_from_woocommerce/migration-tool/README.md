@@ -34,6 +34,7 @@ node src/cli.js --project lush-qatar full    --entities all            # extract
 node src/cli.js --project lush-qatar verify  --entities all
 node src/cli.js --project lush-qatar rebuild-map                       # recover id_map from Shopify metafields
 node src/cli.js --project lush-qatar wipe --entities all --confirm lush-qatar.myshopify.com
+node src/cli.js --project lush-qatar wipe --entities all --scope all --confirm lush-qatar.myshopify.com   # ALL store data incl. demo/manual (backed up to var/ first)
 node src/cli.js --project lush-qatar mint-token url                    # then: mint-token exchange "<redirected-url>"
 ```
 
