@@ -64,6 +64,12 @@ export async function executeRun(cfg, runId) {
     isCancelled: () => cancelRequests.has(runId),
     updateStats: () => db.prepare("UPDATE runs SET stats = ? WHERE id = ?").run(JSON.stringify(stats), runId),
   };
+  // Live progress: stages call this as they go so the UI shows mid-entity
+  // stats and cancelled runs keep their partial numbers.
+  ctx.setStats = (name, s) => {
+    stats[name] = { ...(stats[name] ?? {}), ...s };
+    ctx.updateStats();
+  };
 
   let status = "success";
   try {

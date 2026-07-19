@@ -83,7 +83,59 @@ async function main() {
     process.exit(status === "success" ? 0 : 1);
   }
 
-  console.error(`Unknown command '${command}'. Available: extract, load, full, verify, rebuild-map (wipe/mint-token arrive in M7).`);
+  if (command === "wipe") {
+    const { wipe } = await import("./wipe.js");
+    const { createShopifyClient } = await import("./connectors/shopify.js");
+    const { logEvent } = await import("./log.js");
+    let entities;
+    try {
+      entities = parseEntities(flags.entities);
+    } catch (e) {
+      console.error(`Invalid arguments: ${e.message}`);
+      process.exit(1);
+    }
+    const runId = createRun(cfg, "wipe", entities, { confirm: Boolean(flags.confirm) });
+    getDb().prepare("UPDATE runs SET status = 'running', started_at = datetime('now') WHERE id = ?").run(runId);
+    const ctx = {
+      db: getDb(),
+      project: cfg.project,
+      shopify: createShopifyClient(cfg.env),
+      log: (level, fields) => logEvent(runId, level, fields),
+      isCancelled: () => false,
+    };
+    try {
+      const stats = await wipe(ctx, entities, flags.confirm);
+      getDb().prepare("UPDATE runs SET status = 'success', stats = ?, finished_at = datetime('now') WHERE id = ?").run(JSON.stringify(stats), runId);
+      console.log(JSON.stringify({ run: runId, stats }, null, 2));
+      process.exit(0);
+    } catch (e) {
+      getDb().prepare("UPDATE runs SET status = 'failed', finished_at = datetime('now') WHERE id = ?").run(runId);
+      console.error(e.message);
+      process.exit(1);
+    }
+  }
+
+  if (command === "mint-token") {
+    const { mintTokenUrl, mintTokenExchange } = await import("./mint-token.js");
+    const sub = process.argv.includes("url") ? "url" : process.argv.includes("exchange") ? "exchange" : null;
+    try {
+      if (sub === "url") {
+        console.log(mintTokenUrl(cfg));
+      } else if (sub === "exchange") {
+        const arg = process.argv[process.argv.indexOf("exchange") + 1];
+        if (!arg) throw new Error('Provide the code: mint-token exchange "<redirected-url-or-code>"');
+        console.log(await mintTokenExchange(cfg, arg));
+      } else {
+        throw new Error("Usage: mint-token url | mint-token exchange <code-or-url>");
+      }
+      process.exit(0);
+    } catch (e) {
+      console.error(e.message);
+      process.exit(1);
+    }
+  }
+
+  console.error(`Unknown command '${command}'. Available: extract, load, full, verify, rebuild-map, wipe, mint-token.`);
   process.exit(1);
 }
 

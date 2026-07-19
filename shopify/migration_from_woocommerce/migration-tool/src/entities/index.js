@@ -311,11 +311,16 @@ export async function loadEntity(ctx, name, options = {}) {
   const translating = Boolean(def.translationValues && secondaryLocale);
   if (translating) await ensureSecondaryLocales(ctx);
 
-  const stats = { created: 0, updated: 0, skipped: 0, failed: 0 };
+  const stats = { created: 0, updated: 0, skipped: 0, failed: 0, total: rows.length, processed: 0 };
   if (translating) stats.translated = 0;
   if (def.publish) stats.published = 0;
   for (const row of rows) {
-    if (isCancelled()) throw new RunCancelled();
+    if (isCancelled()) {
+      ctx.setStats?.(name, stats);
+      throw new RunCancelled();
+    }
+    stats.processed++;
+    if (stats.processed % 10 === 0) ctx.setStats?.(name, stats);
     const en = JSON.parse(row.payload);
     const arRow = def.langAware && secondary ? getAr.get(project.name, name, secondary, row.source_id) : null;
     const ar = arRow ? JSON.parse(arRow.payload) : null;
@@ -398,5 +403,6 @@ export async function loadEntity(ctx, name, options = {}) {
       });
     }
   }
+  ctx.setStats?.(name, stats);
   return stats;
 }

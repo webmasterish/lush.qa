@@ -10,7 +10,9 @@
   "scripts": {
     "start": "node src/server.js",
     "cli": "node src/cli.js",
-    "test": "node --test"
+    "test": "node --test",
+    "ui:build": "npm --prefix ui run build",
+    "ui:dev": "npm --prefix ui run dev"
   },
   "dependencies": {
     "better-sqlite3": "12.11.1",
