@@ -34,6 +34,20 @@ export async function loadCategory(ctx, action, input, metafields, mapped) {
   const payload = { ...input, metafields };
   let data;
   if (action === "create") {
+    // collectionCreate does NOT error on a duplicate handle — it silently
+    // suffixes (handle-2). Adopt any existing collection with this handle
+    // (e.g. from the demo seed) instead of creating a near-duplicate.
+    const existing = await ctx.shopify.gql(
+      `query ($q: String!) { collections(first: 1, query: $q) { nodes { id handle } } }`,
+      { q: `handle:'${input.handle}'` }
+    );
+    const found = existing.collections?.nodes?.[0];
+    if (found && found.handle === input.handle) {
+      action = "update";
+      mapped = { target_id: found.id };
+    }
+  }
+  if (action === "create") {
     data = await ctx.shopify.gql(
       `mutation ($input: CollectionInput!) { collectionCreate(input: $input) { ${COLLECTION_FIELDS} } }`,
       { input: payload }

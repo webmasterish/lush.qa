@@ -122,7 +122,8 @@ export function transformProduct(en, ar, helpers) {
 
   const extras = {};
   const dims = en.dimensions ?? {};
-  if (dims.length || dims.width || dims.height) {
+  const hasDim = (v) => v && v !== "0";
+  if (hasDim(dims.length) || hasDim(dims.width) || hasDim(dims.height)) {
     extras.dimensions = JSON.stringify(dims);
   }
   if (ar?.slug) extras.source_ar_slug = decodeSlug(ar.slug);
@@ -131,21 +132,16 @@ export function transformProduct(en, ar, helpers) {
 
 export async function loadProduct(ctx, action, input, metafields, mapped) {
   const variables = { input: { ...input, metafields }, synchronous: true };
-  let query;
-  if (action === "create") {
-    query = `mutation ($input: ProductSetInput!, $synchronous: Boolean!) {
-      productSet(input: $input, synchronous: $synchronous) {
-        product { id handle } userErrors { field message }
-      }
-    }`;
-  } else {
-    query = `mutation ($input: ProductSetInput!, $synchronous: Boolean!, $identifier: ProductSetIdentifiers!) {
-      productSet(input: $input, synchronous: $synchronous, identifier: $identifier) {
-        product { id handle } userErrors { field message }
-      }
-    }`;
-    variables.identifier = { id: mapped.target_id };
-  }
+  // Create uses identifier-by-handle: adopt-or-create. If the store already
+  // has a product with this handle (e.g. from the demo seed), it's claimed
+  // and overwritten with source data instead of failing on a handle
+  // collision. Updates target the mapped id directly.
+  const query = `mutation ($input: ProductSetInput!, $synchronous: Boolean!, $identifier: ProductSetIdentifiers!) {
+    productSet(input: $input, synchronous: $synchronous, identifier: $identifier) {
+      product { id handle } userErrors { field message }
+    }
+  }`;
+  variables.identifier = action === "create" ? { handle: input.handle } : { id: mapped.target_id };
   const data = await ctx.shopify.gql(query, variables);
   const result = data.productSet;
   if (result.userErrors?.length) {
