@@ -59,3 +59,9 @@ coverage/
 # Tooling / MCP output
 # ------------------------------------------------------------------------------
 .playwright-mcp/
+
+# ------------------------------------------------------------------------------
+# Migration tool runtime state (sqlite DB, logs) and UI build output
+# (*.env, *.sqlite, node_modules/, dist/, __* are already covered above)
+# ------------------------------------------------------------------------------
+shopify/migration_from_woocommerce/migration-tool/var/

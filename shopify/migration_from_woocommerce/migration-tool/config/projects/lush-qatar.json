@@ -1,0 +1,23 @@
+{
+  "name": "lush-qatar",
+  "source": {
+    "platform": "woocommerce",
+    "url": "https://lush.qa",
+    "primary_lang": "en",
+    "secondary_langs": ["ar"],
+    "multilingual_plugin": "wpml"
+  },
+  "target": {
+    "platform": "shopify",
+    "store_domain": "lush-qatar.myshopify.com",
+    "api_version": "2025-07",
+    "primary_locale": "en",
+    "secondary_locales": ["ar"],
+    "currency": "QAR",
+    "production": false,
+    "allow_wipe": true
+  },
+  "phone_default_country": "+974",
+  "metafield_namespace": "dotaim_migration",
+  "source_label": "woocommerce:lush.qa"
+}
