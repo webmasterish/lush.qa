@@ -15,6 +15,63 @@ const MODES = [
   ["force_all", "Force all", "Update everything regardless of change detection (orders never update)."],
 ];
 
+function HelpPanel() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div>
+          <CardTitle className="text-base">How runs work</CardTitle>
+          <CardDescription>Nothing starts until you press "Start run" at the bottom of this page.</CardDescription>
+        </div>
+        <Button variant="outline" size="sm" onClick={() => setOpen(!open)}>{open ? "Hide help" : "Show help"}</Button>
+      </CardHeader>
+      {open && (
+        <CardContent className="space-y-4 text-sm">
+          <div>
+            <p className="font-medium mb-1">Run types</p>
+            <ul className="list-disc ml-5 space-y-1 text-muted-foreground">
+              <li><span className="text-foreground font-medium">extract</span> — copies data from WooCommerce into the tool's local staging database. Writes nothing to Shopify. After the first pull, products and orders refresh incrementally (only changed records); categories and customers always re-fetch fully.</li>
+              <li><span className="text-foreground font-medium">load</span> — pushes staged data into Shopify: creates or updates records, registers Arabic translations, publishes products/collections to the Online Store, and marks everything with migration metafields.</li>
+              <li><span className="text-foreground font-medium">full</span> — extract, then load, then verify, in one go. The normal choice.</li>
+              <li><span className="text-foreground font-medium">verify</span> — compares source counts vs migrated vs the live store and spot-checks records. Writes nothing.</li>
+              <li><span className="text-foreground font-medium">rebuild-map</span> — recovery only: rebuilds the local id map by reading the migration metafields back from Shopify.</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-medium mb-1">Modes (for load / full)</p>
+            <ul className="list-disc ml-5 space-y-1 text-muted-foreground">
+              <li><span className="text-foreground font-medium">Create missing</span> — only records never migrated before. Safe to re-run any time: everything already done skips instantly, so this is also how you continue after a cancel or failure.</li>
+              <li><span className="text-foreground font-medium">Sync changed</span> — Create missing plus updates for records edited on the WooCommerce side since their last sync. Orders are never updated, only added.</li>
+              <li><span className="text-foreground font-medium">Force all</span> — re-pushes every record whether changed or not. Rarely needed.</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-medium mb-1">Stopping and continuing (chunking)</p>
+            <p className="text-muted-foreground">
+              Leave Limit empty to process everything, and press Cancel on the run page whenever you want to stop — completed work is always kept. Re-running the same setup with Create missing continues exactly where it stopped. No offset math needed. Limit/Offset exist for small controlled test slices (records are ordered by source id, so offset chunks never overlap).
+            </p>
+          </div>
+          <div>
+            <p className="font-medium mb-1">Shopify limitation — orders</p>
+            <p className="text-muted-foreground">
+              Development stores allow only ~5 new orders per minute, so the full order history (~3,190 orders) needs ~11 hours of total running time no matter how it is split. Cancel and resume as often as you like — the total is the same. The tool waits out the cap automatically. The cap disappears once the store is on a paid plan.
+            </p>
+          </div>
+          <div>
+            <p className="font-medium mb-1">Recommended full migration sequence</p>
+            <ol className="list-decimal ml-5 space-y-1 text-muted-foreground">
+              <li><span className="text-foreground">full · products</span> (categories join automatically as a dependency) · Create missing · no limit — roughly 1.5–2 hours.</li>
+              <li><span className="text-foreground">full · customers</span> · Create missing · no limit — well under an hour.</li>
+              <li><span className="text-foreground">full · orders</span> · Create missing · no limit — cancel and resume at your convenience until it completes (see the orders limitation above).</li>
+            </ol>
+          </div>
+        </CardContent>
+      )}
+    </Card>
+  );
+}
+
 export default function NewRun() {
   const [type, setType] = useState("full");
   const [selected, setSelected] = useState(["products"]);
@@ -61,7 +118,8 @@ export default function NewRun() {
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h1 className="text-2xl font-semibold">New run</h1>
+      <h1 className="text-2xl font-semibold">Set up a run</h1>
+      <HelpPanel />
 
       <Card>
         <CardHeader>

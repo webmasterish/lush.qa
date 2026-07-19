@@ -21,15 +21,6 @@ export default function Dashboard() {
     return () => (live = false, clearInterval(t));
   }, []);
 
-  const testRun = async () => {
-    const { id } = await post("/api/runs", {
-      type: "load",
-      entities: ["products"],
-      options: { limit: 10, mode: "create_missing", include_dependencies: true },
-    });
-    location.hash = `#/runs/${id}`;
-  };
-
   if (error) return <p className="text-destructive p-6">{error} — is the server running?</p>;
   if (!status) return <p className="p-6 text-muted-foreground">Loading…</p>;
 
@@ -44,9 +35,14 @@ export default function Dashboard() {
             {status.target.production && <Badge variant="destructive" className="ml-2">production</Badge>}
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="secondary" onClick={testRun}>Test run (10 products)</Button>
-          <Button onClick={() => (location.hash = "#/new")}>New run</Button>
+        <div className="text-right">
+          <Button
+            title="Opens the run setup screen. Nothing starts until you press Start on that screen."
+            onClick={() => (location.hash = "#/new")}
+          >
+            Set up a run →
+          </Button>
+          <p className="text-[11px] text-muted-foreground mt-1">opens setup only — nothing starts yet</p>
         </div>
       </div>
 
@@ -77,6 +73,7 @@ export default function Dashboard() {
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Recent runs</CardTitle>
+          <CardDescription>most recent 50 — the full history stays in the local database and log files</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>

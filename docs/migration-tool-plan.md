@@ -133,12 +133,17 @@ All paths below are relative to the tool root `shopify/migration_from_woocommerc
 
 ## M8 — Full migration rehearsal + docs
 
+Note (2026-07-19): the store was reset with `wipe --scope all` (demo data included) and the run history cleared; **Bassam drives the M8 runs himself from the web UI** in the order products → customers → orders (orders via cancel/resume around the dev-store 5/min cap). The agent's M8 work is the support tasks below plus fixing whatever the full runs surface.
+
 **Tasks**
 
-1. `wipe` everything, then `full --entities all` (no limit) on the dev store. Watch for: variant-limit failures, image fetch failures, throttling behavior, order-total mismatches. Fix, wipe, repeat until the PRD §20 acceptance list passes end-to-end.
+0. Before the full product load: create **metafield definitions** for the `dotaim_migration` namespace keys on each owner type (`metafieldDefinitionCreate` — verify shape via context7), so migration metafields appear structured (with descriptions) in the admin instead of "unstructured". Idempotent: skip existing definitions.
+0b. `report` CLI command: generates a client-facing migration report (markdown) from the latest verify snapshot per entity + run stats — counts per entity and language, spot-check results, failures with reasons, durations. This feeds the report for Dee (see M8 task 4).
+1. `full --entities all` (no limit) on the dev store. Watch for: variant-limit failures, image fetch failures, throttling behavior, order-total mismatches. Fix and re-run (Create missing resumes) until the PRD §20 acceptance list passes end-to-end.
 2. Write `shopify/migration_from_woocommerce/migration-tool/README.md`: setup (nvm/node, npm i in both packages, ui:build, project config), CLI reference, UI walkthrough, "new project bootstrap" section (PRD §20.8), known limitations (guest customers, order immutability, partial refunds, no pages/blog/redirects yet).
 3. Update `docs/migration-runbook.md`: check off the Phase 3 entities covered by the rehearsal, and add a line pointing Phase 3 execution at this tool + README.
 4. Record final rehearsal stats (counts, failures + reasons, duration) in the README under "Lush Qatar rehearsal results".
+5. **Client report for Dee**: from the `report` command output + `client-data-quality-notes.md`, draft the client-facing migration report (client conventions: warm professional tone, no em-dashes, no internal jargon): what was migrated (counts per entity, both languages), what was verified and how, known source-data notes with suggested handling, and what happens next (ongoing sync until launch). Deliver via the usual channel (email/Drive) after Bassam reviews.
 
 **Acceptance**
 
