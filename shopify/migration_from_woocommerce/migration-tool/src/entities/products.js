@@ -138,7 +138,8 @@ export async function loadProduct(ctx, action, input, metafields, mapped) {
   // collision. Updates target the mapped id directly.
   const query = `mutation ($input: ProductSetInput!, $synchronous: Boolean!, $identifier: ProductSetIdentifiers!) {
     productSet(input: $input, synchronous: $synchronous, identifier: $identifier) {
-      product { id handle } userErrors { field message }
+      product { id handle variants(first: 250) { nodes { id selectedOptions { name value } } } }
+      userErrors { field message }
     }
   }`;
   variables.identifier = action === "create" ? { handle: input.handle } : { id: mapped.target_id };
@@ -149,5 +150,27 @@ export async function loadProduct(ctx, action, input, metafields, mapped) {
       userErrors: result.userErrors,
     });
   }
-  return { targetId: result.product.id, handle: result.product.handle };
+
+  // Variant-level id_map entries so order line items can link to variants:
+  // key = Woo variation id (variable) or the product's own source id (simple),
+  // matched to created variants by option-value signature.
+  // Response selectedOptions are {name, value}; input optionValues are
+  // {optionName, name} — normalize both to "option=value".
+  const sig = (opts) =>
+    opts.map((o) => ("value" in o ? `${o.name}=${o.value}` : `${o.optionName}=${o.name}`)).sort().join("|");
+  const created = new Map(
+    (result.product.variants?.nodes ?? []).map((v) => [sig(v.selectedOptions), v.id])
+  );
+  const extraMappings = [];
+  for (const v of input.variants) {
+    const targetVariantId = created.get(sig(v.optionValues));
+    if (!targetVariantId) continue;
+    const variationSourceId = v.metafields?.[0]?.value; // set in transform for variable products
+    extraMappings.push({
+      entity: "variants",
+      source_id: variationSourceId ? Number(variationSourceId) : null, // null -> caller uses product source id
+      target_id: targetVariantId,
+    });
+  }
+  return { targetId: result.product.id, handle: result.product.handle, extraMappings };
 }

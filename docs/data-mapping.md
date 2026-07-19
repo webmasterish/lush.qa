@@ -19,6 +19,8 @@ Findings from inspecting real `wc/v3` payloads that shape the mapping below:
 - **Guest orders are common** (2 of 3 recent orders had `customer_id: 0`).
 - **PDF invoice plugin** (`wpo_wcpdf_invoice_number`) maintains a separate client-facing invoice number sequence — preserve it as a metafield.
 - Customer `meta_data` contains legacy `opencart_pass`/`opencart_salt` (the Woo store was itself migrated from OpenCart once) — ignore.
+- **Legacy order line semantics (verified 2026-07-19):** 2020-era orders (from the old OpenCart→Woo import) store the **unit price** in the line-item `total` field, so line totals don't sum to the order total. Modern orders use standard semantics (`total` = line total). The tool detects this per order by checking which interpretation reproduces the order total (±0.05) and tags affected orders with metafield `source_line_semantics`; orders matching neither interpretation import with a warning.
+- **Dev-store order cap:** Shopify trial/dev stores allow max ~5 `orderCreate` per minute — the full 3,190-order load is an overnight job on the dev store (cap lifts on a paid plan). The loader waits out the window automatically when hit.
 
 ## Products
 

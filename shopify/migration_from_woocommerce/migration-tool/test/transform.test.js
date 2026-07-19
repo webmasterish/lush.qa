@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { transformCategory } from "../src/entities/categories.js";
 import { transformCustomer, normalizePhone } from "../src/entities/customers.js";
+import { transformOrder, STATUS_MAP } from "../src/entities/orders.js";
 import { transformProduct } from "../src/entities/products.js";
 import { decideAction } from "../src/entities/index.js";
 import { stableStringify, decodeEntities, stripHtml, decodeSlug } from "../src/util.js";
@@ -168,6 +169,105 @@ test("customer: email dedup key lowercased, no-email skips, addresses", () => {
     { phoneCountry: "+974" }
   );
   assert.equal(twoAddr.input.addresses.length, 2);
+});
+
+const orderHelpers = {
+  currency: "QAR",
+  resolveVariant: (li) => (li.variation_id === 11 || li.product_id === 90 ? "gid://shopify/ProductVariant/1" : null),
+  resolveCustomer: (rec) => (rec.customer_id === 7 ? "gid://shopify/Customer/70" : null),
+};
+
+const baseOrder = {
+  number: "18859",
+  status: "processing",
+  currency: "QAR",
+  total: "515.00",
+  shipping_total: "55.00",
+  total_tax: "0.00",
+  discount_total: "0.00",
+  date_created_gmt: "2026-07-18T10:00:00",
+  customer_id: 7,
+  customer_note: "",
+  billing: { first_name: "A", last_name: "B", email: "Guest@X.COM", address_1: "St 1", city: "Doha", country: "QA", phone: "55816215" },
+  shipping: { first_name: "A", last_name: "B", address_1: "St 1", city: "Doha", country: "QA" },
+  line_items: [
+    { name: "Sea Spray", product_id: 90, variation_id: 0, quantity: 2, total: "260.00", total_tax: "0.00", sku: "3767" },
+    { name: "Ghost Product", product_id: 999, variation_id: 0, quantity: 1, total: "200.00", total_tax: "0.00", sku: "" },
+  ],
+  shipping_lines: [{ method_title: "Delivery", total: "55.00" }],
+  fee_lines: [],
+  tax_lines: [],
+  refunds: [],
+  wpo_wcpdf_invoice_number: 612,
+  payment_method_title: "Cash on delivery",
+};
+
+test("order: statuses map per PRD table", () => {
+  for (const [woo, expected] of Object.entries({ pending: "PENDING", "on-hold": "PENDING", processing: "PAID", completed: "PAID", refunded: "REFUNDED", cancelled: "VOIDED", failed: "VOIDED" })) {
+    assert.equal(STATUS_MAP[woo].financial, expected);
+  }
+  assert.equal(STATUS_MAP.completed.fulfilled, true);
+  assert.equal(STATUS_MAP.processing.fulfilled, false);
+});
+
+test("order: mapped + unmapped lines, transaction, addresses, metafields extras", () => {
+  const { input, extras, warnings } = transformOrder(baseOrder, null, orderHelpers);
+  assert.equal(input.name, "#18859");
+  assert.equal(input.financialStatus, "PAID");
+  assert.equal(input.fulfillmentStatus, undefined);
+  assert.equal(input.processedAt, "2026-07-18T10:00:00Z");
+  assert.equal(input.customerId, "gid://shopify/Customer/70");
+  assert.equal(input.email, "guest@x.com");
+  assert.equal(input.lineItems[0].variantId, "gid://shopify/ProductVariant/1");
+  assert.equal(input.lineItems[0].priceSet.shopMoney.amount, "130.00");
+  assert.equal(input.lineItems[1].variantId, undefined);
+  assert.equal(input.shippingLines[0].priceSet.shopMoney.amount, "55.00");
+  assert.equal(input.transactions[0].amountSet.shopMoney.amount, "515.00");
+  assert.equal(extras.source_order_number, "18859");
+  assert.equal(extras.source_invoice_number, "612");
+  assert.equal(extras.source_payment_method, "Cash on delivery");
+  assert.equal(warnings.length, 1);
+});
+
+test("order: guest + unknown status + partial refund + empty order", () => {
+  const guest = transformOrder({ ...baseOrder, customer_id: 0, status: "weird", refunds: [{ id: 1, total: "-10" }] }, null, orderHelpers);
+  assert.equal(guest.input.customerId, undefined);
+  assert.equal(guest.input.financialStatus, "PENDING");
+  assert.deepEqual(guest.input.tags, ["source-status:weird"]);
+  assert.ok(guest.extras.source_refunds);
+  assert.equal(guest.input.transactions, undefined);
+  assert.ok(transformOrder({ ...baseOrder, line_items: [], fee_lines: [] }, null, orderHelpers).skip);
+});
+
+test("order: legacy unit-price line semantics detected and corrected", () => {
+  const legacy = transformOrder(
+    {
+      ...baseOrder,
+      total: "460.00",
+      shipping_total: "0.00",
+      total_tax: "0.00",
+      line_items: [
+        { name: "Mamma Mia", product_id: 1, variation_id: 0, quantity: 2, total: "200.00", total_tax: "0", sku: "" },
+        { name: "Knock Out", product_id: 2, variation_id: 0, quantity: 1, total: "60.00", total_tax: "0", sku: "" },
+      ],
+      shipping_lines: [],
+    },
+    null,
+    orderHelpers
+  );
+  assert.equal(legacy.input.lineItems[0].priceSet.shopMoney.amount, "200.00");
+  assert.equal(legacy.extras.source_line_semantics, "unit-price (legacy OpenCart-era import)");
+  const modern = transformOrder(baseOrder, null, orderHelpers);
+  assert.equal(modern.input.lineItems[0].priceSet.shopMoney.amount, "130.00");
+  assert.equal(modern.extras.source_line_semantics, undefined);
+});
+
+test("order: completed is fulfilled; refunded keeps sale transaction", () => {
+  const done = transformOrder({ ...baseOrder, status: "completed" }, null, orderHelpers);
+  assert.equal(done.input.fulfillmentStatus, "FULFILLED");
+  const refunded = transformOrder({ ...baseOrder, status: "refunded" }, null, orderHelpers);
+  assert.equal(refunded.input.financialStatus, "REFUNDED");
+  assert.equal(refunded.input.transactions.length, 1);
 });
 
 test("mode matrix (PRD §13) incl. order immutability", () => {

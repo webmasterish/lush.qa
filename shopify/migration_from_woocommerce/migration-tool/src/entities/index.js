@@ -5,6 +5,7 @@ import { RunCancelled } from "../runner.js";
 import { transformCategory, loadCategory } from "./categories.js";
 import { transformProduct, loadProduct } from "./products.js";
 import { transformCustomer, loadCustomer } from "./customers.js";
+import { transformOrder, loadOrder } from "./orders.js";
 
 export const ENTITIES = {
   categories: {
@@ -33,7 +34,15 @@ export const ENTITIES = {
     transform: transformCustomer,
     load: loadCustomer,
   },
-  orders: { path: "orders", langAware: false, dependencies: ["customers", "products"], params: {}, immutable: true },
+  orders: {
+    path: "orders",
+    langAware: false,
+    dependencies: ["customers", "products"],
+    params: {},
+    immutable: true,
+    transform: transformOrder,
+    load: loadOrder,
+  },
 };
 
 // Dependency-safe processing order.
@@ -222,7 +231,51 @@ export async function loadEntity(ctx, name, options = {}) {
         .get(project.name, primary === "-" ? project.source.primary_lang : primary, wooCatId);
       return row ? decodeSlug(JSON.parse(row.payload).slug) : null;
     },
+    currency: project.target.currency,
   };
+
+  if (name === "orders") {
+    // Line-item resolution index from staged products: variation/product id
+    // -> variants id_map, with SKU fallback and AR->EN translation hops
+    // (orders placed on the Arabic site reference AR product ids).
+    const enLang = project.source.primary_lang;
+    const skuToKey = new Map(); // sku -> variants id_map key (variation id or simple product id)
+    const arToEn = new Map(); // AR product id -> EN product id
+    for (const r of db
+      .prepare(`SELECT source_id, en_id, lang, payload FROM staging WHERE project = ? AND entity = 'products'`)
+      .all(project.name)) {
+      if (r.lang !== enLang) {
+        arToEn.set(r.source_id, r.en_id);
+        continue;
+      }
+      const p = JSON.parse(r.payload);
+      if (p.type === "variable") {
+        for (const v of p._variations ?? []) if (v.sku) skuToKey.set(v.sku, v.id);
+      } else if (p.sku) {
+        skuToKey.set(p.sku, r.source_id);
+      }
+    }
+    const variantGid = (key) => (key ? getMapped.get(project.name, "variants", key)?.target_id ?? null : null);
+    helpers.resolveVariant = (li) => {
+      // 1. direct variation id; 2. simple product id (EN or via AR->EN);
+      // 3. SKU index (covers AR variation ids, which share the variation SKU).
+      return (
+        variantGid(li.variation_id) ??
+        variantGid(li.product_id) ??
+        variantGid(arToEn.get(li.product_id)) ??
+        variantGid(skuToKey.get(li.sku))
+      );
+    };
+    const byEmail = db.prepare(`SELECT target_id FROM id_map WHERE project = ? AND entity = 'customers' AND target_handle = ?`);
+    helpers.resolveCustomer = (rec) => {
+      if (rec.customer_id) {
+        const m = getMapped.get(project.name, "customers", rec.customer_id);
+        if (m) return m.target_id;
+      }
+      const email = rec.billing?.email?.trim().toLowerCase();
+      return email ? byEmail.get(project.name, email)?.target_id ?? null : null;
+    };
+  }
 
   const stats = { created: 0, updated: 0, skipped: 0, failed: 0 };
   for (const row of rows) {
@@ -259,8 +312,11 @@ export async function loadEntity(ctx, name, options = {}) {
 
       const metafields = buildMetafields(project, row.source_id, hash, extras);
       const started = Date.now();
-      const { targetId, handle } = await def.load(ctx, action, input, metafields, mapped);
+      const { targetId, handle, extraMappings = [] } = await def.load(ctx, action, input, metafields, mapped);
       upsertMap.run(project.name, name, row.source_id, targetId, handle ?? null, hash, nowIso());
+      for (const em of extraMappings) {
+        upsertMap.run(project.name, em.entity, em.source_id ?? row.source_id, em.target_id, null, hash, nowIso());
+      }
       stats[action === "create" ? "created" : "updated"]++;
       log("info", {
         entity: name,
