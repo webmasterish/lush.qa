@@ -262,6 +262,16 @@ test("order: legacy unit-price line semantics detected and corrected", () => {
   assert.equal(modern.extras.source_line_semantics, undefined);
 });
 
+test("order: zero-total completed order gets no transaction (Shopify rejects 0.00 sales)", () => {
+  const free = transformOrder(
+    { ...baseOrder, status: "completed", total: "0.00", shipping_total: "0.00", line_items: [{ name: "Freebie", product_id: 1, variation_id: 0, quantity: 1, total: "0.00", total_tax: "0", sku: "" }], shipping_lines: [] },
+    null,
+    orderHelpers
+  );
+  assert.equal(free.input.transactions, undefined);
+  assert.equal(free.input.financialStatus, "PAID");
+});
+
 test("order: completed is fulfilled; refunded keeps sale transaction", () => {
   const done = transformOrder({ ...baseOrder, status: "completed" }, null, orderHelpers);
   assert.equal(done.input.fulfillmentStatus, "FULFILLED");

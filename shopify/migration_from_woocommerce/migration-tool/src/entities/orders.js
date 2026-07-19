@@ -121,7 +121,9 @@ export function transformOrder(rec, _ar, helpers) {
   }
 
   // A sale happened for paid/refunded orders; pending/voided get none.
-  if (["PAID", "REFUNDED"].includes(status.financial)) {
+  // Zero-total orders (free/fully discounted) get none either — Shopify
+  // rejects SALE transactions with amount 0.
+  if (["PAID", "REFUNDED"].includes(status.financial) && Number(rec.total ?? 0) > 0) {
     input.transactions = [
       { kind: "SALE", status: "SUCCESS", amountSet: money(rec.total ?? 0, currency), gateway: rec.payment_method_title || undefined },
     ];
