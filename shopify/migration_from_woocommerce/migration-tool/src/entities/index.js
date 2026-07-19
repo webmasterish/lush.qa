@@ -2,8 +2,9 @@
 // (PRD §10.1), and the generic mode-aware load stage (PRD §13).
 import { sha256, nowIso, stableStringify, decodeSlug } from "../util.js";
 import { RunCancelled } from "../runner.js";
-import { transformCategory, loadCategory } from "./categories.js";
-import { transformProduct, loadProduct } from "./products.js";
+import { transformCategory, loadCategory, categoryTranslationValues } from "./categories.js";
+import { transformProduct, loadProduct, productTranslationValues } from "./products.js";
+import { ensureSecondaryLocales, registerTranslations } from "../translations.js";
 import { transformCustomer, loadCustomer } from "./customers.js";
 import { transformOrder, loadOrder } from "./orders.js";
 
@@ -15,6 +16,8 @@ export const ENTITIES = {
     params: {},
     transform: transformCategory,
     load: loadCategory,
+    translationValues: categoryTranslationValues,
+    publish: true,
   },
   // status=any is explicit: drafts must migrate (40% of the lush.qa catalog)
   // so historical orders keep real product links. Trash is never extracted.
@@ -25,6 +28,8 @@ export const ENTITIES = {
     params: { status: "any" },
     transform: transformProduct,
     load: loadProduct,
+    translationValues: productTranslationValues,
+    publish: true,
   },
   customers: {
     path: "customers",
@@ -277,7 +282,13 @@ export async function loadEntity(ctx, name, options = {}) {
     };
   }
 
+  const secondaryLocale = project.target.secondary_locales?.[0] ?? null;
+  const translating = Boolean(def.translationValues && secondaryLocale);
+  if (translating) await ensureSecondaryLocales(ctx);
+
   const stats = { created: 0, updated: 0, skipped: 0, failed: 0 };
+  if (translating) stats.translated = 0;
+  if (def.publish) stats.published = 0;
   for (const row of rows) {
     if (isCancelled()) throw new RunCancelled();
     const en = JSON.parse(row.payload);
@@ -318,6 +329,31 @@ export async function loadEntity(ctx, name, options = {}) {
         upsertMap.run(project.name, em.entity, em.source_id ?? row.source_id, em.target_id, null, hash, nowIso());
       }
       stats[action === "create" ? "created" : "updated"]++;
+
+      // Sales channel: migrated products/collections must be visible on the
+      // Online Store. Non-fatal — the record itself loaded fine.
+      if (def.publish) {
+        try {
+          await ctx.shopify.publishToOnlineStore(targetId);
+          stats.published++;
+        } catch (e) {
+          log("warn", { entity: name, source_id: row.source_id, action: "load", message: `publish to Online Store failed: ${e.message}` });
+        }
+      }
+
+      // Secondary-locale translations (PRD §11). Non-fatal per record.
+      if (translating) {
+        if (ar) {
+          try {
+            const count = await registerTranslations(ctx, targetId, secondaryLocale, def.translationValues(ar));
+            if (count > 0) stats.translated++;
+          } catch (e) {
+            log("warn", { entity: name, source_id: row.source_id, action: "load", message: `translation registration failed: ${e.message}` });
+          }
+        } else {
+          log("warn", { entity: name, source_id: row.source_id, action: "load", message: `no ${secondaryLocale} sibling in source; skipped translation` });
+        }
+      }
       log("info", {
         entity: name,
         source_id: row.source_id,

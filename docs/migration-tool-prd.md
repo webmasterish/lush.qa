@@ -270,6 +270,7 @@ For every Shopify mutation used, first pull the current input shape for API vers
 - Transform per `data-mapping.md`: manual (custom) collections; title, `descriptionHtml`, handle from decoded EN slug, image, SEO title/description (fallback rule — no SEO plugin on source).
 - Hierarchy flattening: every category becomes a flat collection; the parent category's **handle** is stored as metafield `parent_category` (empty for roots). The theme-phase navigation menus consume this; the tool itself builds no menus.
 - Load: `collectionCreate` / `collectionUpdate`. Membership is set from the product side (§10.3).
+- **Sales channel:** publish every migrated collection to the **Online Store** publication (`publishablePublish`; resolve the publication id once via the `publications` query). API-created resources are not automatically visible on the storefront.
 - Metafields (§12) + AR translation (§11).
 
 ### 10.3 Products
@@ -288,6 +289,7 @@ For every Shopify mutation used, first pull the current input shape for API vers
 - Load: `productSet` (preferred — idempotent create-or-update by id, covers options/variants; verify whether it accepts media/files and collection memberships in `2026-01` via context7; if not, use `productCreateMedia` for images and `collectionAddProductsV2` for membership as follow-up calls in the same record's load step).
 - Inventory: resolve the store's primary location GID once (query `locations(first:1)`), cache it in memory, set quantities via `inventorySetQuantities` (or the current equivalent).
 - Collection membership from the product's Woo category IDs → mapped collection GIDs; unmapped category → `warn`, continue.
+- **Sales channel:** publish every migrated product to the **Online Store** publication (same mechanism as collections, §10.2). DRAFT products are published too — the channel assignment applies once they go active.
 
 ### 10.4 Customers
 

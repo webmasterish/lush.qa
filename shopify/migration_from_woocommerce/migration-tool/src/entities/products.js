@@ -130,6 +130,16 @@ export function transformProduct(en, ar, helpers) {
   return { input, extras, warnings };
 }
 
+// Secondary-locale values registered as translations after load (PRD §11).
+export function productTranslationValues(ar) {
+  return {
+    title: decodeEntities(ar.name),
+    body_html: ar.description || "",
+    meta_title: decodeEntities(ar.name),
+    meta_description: stripHtml(ar.description).slice(0, 320),
+  };
+}
+
 export async function loadProduct(ctx, action, input, metafields, mapped) {
   const variables = { input: { ...input, metafields }, synchronous: true };
   // Create uses identifier-by-handle: adopt-or-create. If the store already

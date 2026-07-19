@@ -97,6 +97,7 @@ All paths below are relative to the tool root `shopify/migration_from_woocommerc
 
 1. `src/translations.js` per PRD §11: `shopLocales` check + `shopLocaleEnable("ar")` (actionable error if `write_translations` scope is missing); `translatableResource` digest fetch; `translationsRegister` for products + collections (title, body/description, SEO where translatable); AR-slug metafield; missing-AR-sibling skip with `warn`.
 2. Call the translation step from the product/collection load path (after create/update) and count `translated` in stats.
+3. **Sales channel (added 2026-07-19 per Bassam):** publish every migrated product and collection to the Online Store publication (`publishablePublish`, PRD §10.2/§10.3), non-fatal per record, counted as `published` in stats.
 
 **Acceptance**
 

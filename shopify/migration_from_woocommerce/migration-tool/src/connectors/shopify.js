@@ -71,5 +71,30 @@ export function createShopifyClient(env) {
     return locationId;
   }
 
-  return { gql, getPrimaryLocationId };
+  let onlineStoreId = null;
+  async function getOnlineStorePublicationId() {
+    if (!onlineStoreId) {
+      const data = await gql(`{ publications(first: 10) { nodes { id name } } }`);
+      onlineStoreId = data.publications?.nodes?.find((p) => p.name === "Online Store")?.id;
+      if (!onlineStoreId) throw new Error("No 'Online Store' publication found — is the Online Store sales channel installed?");
+    }
+    return onlineStoreId;
+  }
+
+  // Publish a product/collection to the Online Store channel (idempotent).
+  async function publishToOnlineStore(resourceId) {
+    const publicationId = await getOnlineStorePublicationId();
+    const data = await gql(
+      `mutation ($id: ID!, $input: [PublicationInput!]!) {
+        publishablePublish(id: $id, input: $input) { userErrors { field message } }
+      }`,
+      { id: resourceId, input: [{ publicationId }] }
+    );
+    const errs = data.publishablePublish?.userErrors;
+    if (errs?.length) {
+      throw Object.assign(new Error(errs.map((e) => e.message).join("; ")), { userErrors: errs });
+    }
+  }
+
+  return { gql, getPrimaryLocationId, getOnlineStorePublicationId, publishToOnlineStore };
 }
