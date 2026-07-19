@@ -27,7 +27,7 @@ export default function App() {
           <span className="text-xs text-muted-foreground">WooCommerce → Shopify</span>
         </div>
       </header>
-      <main className="max-w-5xl mx-auto px-6 py-6">
+      <main className="max-w-6xl mx-auto px-6 py-6">
         {runMatch ? <RunPage id={runMatch[1]} /> : hash.startsWith("#/new") ? <NewRun /> : <Dashboard />}
       </main>
     </div>

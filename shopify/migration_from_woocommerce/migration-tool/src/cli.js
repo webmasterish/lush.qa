@@ -115,6 +115,27 @@ async function main() {
     }
   }
 
+  if (command === "define-metafields") {
+    const { defineMetafields } = await import("./definitions.js");
+    const { createShopifyClient } = await import("./connectors/shopify.js");
+    const { logEvent } = await import("./log.js");
+    const runId = createRun(cfg, "define-metafields", [], {});
+    getDb().prepare("UPDATE runs SET status = 'running', started_at = datetime('now') WHERE id = ?").run(runId);
+    try {
+      const stats = await defineMetafields({
+        project: cfg.project,
+        shopify: createShopifyClient(cfg.env),
+        log: (level, fields) => logEvent(runId, level, fields),
+      });
+      getDb().prepare("UPDATE runs SET status = 'success', stats = ?, finished_at = datetime('now') WHERE id = ?").run(JSON.stringify(stats), runId);
+      process.exit(stats.failed ? 1 : 0);
+    } catch (e) {
+      getDb().prepare("UPDATE runs SET status = 'failed', finished_at = datetime('now') WHERE id = ?").run(runId);
+      console.error(e.message);
+      process.exit(1);
+    }
+  }
+
   if (command === "mint-token") {
     const { mintTokenUrl, mintTokenExchange } = await import("./mint-token.js");
     const sub = process.argv.includes("url") ? "url" : process.argv.includes("exchange") ? "exchange" : null;
