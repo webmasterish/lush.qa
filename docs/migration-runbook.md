@@ -48,7 +48,7 @@ Working setup lives in the git repo `repo/` (private GitHub `webmasterish/lush.q
 | Products | 538 | 407 simple + 131 variable (variations expand into Shopify variants); **over the 500 baseline** |
 | Product categories | 61 | → Shopify collections |
 | Product tags | 584 | |
-| Orders | 3,184 | under the 5,000 baseline; orders older than 60 days need the protected `read_all_orders` scope to export |
+| Orders | 3,184 | under the 5,000 baseline; the protected `read_all_orders` scope (for reading orders older than 60 days) is **granted** on the Dev Dashboard app (approved during July test imports) |
 | Customers (with accounts) | 1,950 | under 5,000; guest-order customers are additional (not in this count) |
 | Coupons | 0 | |
 | Blog posts | 3 | WP `wp/v2/posts` |
@@ -64,6 +64,8 @@ Scope note: products (538) slightly exceed the 500 baseline in the preliminary $
 - [ ] Base store config: markets, currency (QAR), languages (AR/EN), local Qatar payment gateway (Shopify Payments is NOT available in Qatar), shipping, taxes
 
 ## Phase 3 — Data migration
+
+Executed with the in-house migration tool ("migration-tool", at `shopify/migration_from_woocommerce/migration-tool/`) — requirements in `migration-tool-prd.md`, build plan in `migration-tool-plan.md` (decided 2026-07-19: Node.js rewrite; the Python `scripts/` were throwaway test tooling, moved to `legacy/` for reference — delete only after asking Bassam at project end).
 
 Per `data-mapping.md`, in dependency order:
 - [ ] Products (+ variants, images, SEO)

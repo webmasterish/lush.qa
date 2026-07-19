@@ -22,6 +22,7 @@ The git repo is `repo/`. Its **parent directory** (one level up, `../`) is Bassa
 Companion docs in `docs/`:
 - `data-mapping.md` — WooCommerce → Shopify field mapping; the spec the migration scripts implement.
 - `migration-runbook.md` — the phased plan + per-entity checklist + QA steps; a living doc updated as work proceeds.
+- `migration-tool-prd.md` + `migration-tool-plan.md` — requirements and milestone build plan for the in-house migration tool (Node.js, reusable across projects); written to be executed as-is.
 
 ## Layout
 
