@@ -53,6 +53,36 @@ For a new Woo→Shopify migration (WPML source supported out of the box), no cod
 5. `extract --entities all --limit 10` then `load --entities all --limit 10` — smoke test, check results in the store admin.
 6. `wipe --entities all --confirm <store-domain>` to clear the smoke test, then run the full migration (UI or CLI).
 
+## Lush Qatar migration results (completed 2026-07-20)
+
+Full migration into the dev store `lush-qatar.myshopify.com`, driven from the web UI.
+
+| Entity | Source | Migrated | Live in store | Not migrated (reason) |
+|---|---|---|---|---|
+| Collections | 61 | 61 | 61 | — |
+| Products | 538 (EN) / 526 (AR) | 537 | 537 | 1 — product 9026 has variations not linked to its Size attribute in WooCommerce (source defect; migrates automatically once fixed) |
+| Customers | 1,954 accounts | 1,915 | 3,084 total (1,915 migrated + 1,169 auto-created from guest order history) | 39 — junk registrations with invalid emails from bot/scan traffic |
+| Orders | 3,192 | 3,179 | 3,179 | 13 — orders with no line items and 0.00 total |
+
+- 429 products and 53 collections carry Arabic translations (the rest have no Arabic content in the source).
+- All products and collections are published to the Online Store channel.
+- Total load time: products+collections 28m, customers 29m, orders ~11h across three sessions (dev-store cap of ~5 orders/min; lifts on a paid plan).
+- Verify (run 12): counts reconciled per entity, 0 spot-check mismatches, 0 orphans.
+- Full machine-generated detail: `node src/cli.js --project lush-qatar report`.
+
+### PRD §20 acceptance criteria
+
+| # | Criterion | Result | Evidence |
+|---|---|---|---|
+| 1 | Full run completes with expected counts + verify passes | **PASS** | Run 9 (`full`, all entities, 9h 15m) + run 12 verify: 61 / 537 / 1,915 / 3,179, 0 mismatches, 0 orphans |
+| 2 | Arabic content present on products/collections | **PASS** | Spot check: product "The Comforter" → `ذا كومفورتر` (title, body, SEO); collection "Bath Bombs" → `أملاح المغطس`; both locales published |
+| 3 | Every migrated resource carries the migration metafields | **PASS** | Spot check order #2587 carries source, source_id, source_hash, synced_at, source_order_number, source_payment_method, source_line_semantics; 28 named definitions created |
+| 4 | Repeat `create_missing` run creates nothing | **PASS** | Run 13: created 0 across all four entities (61 / 537 / 1,954 / 3,192 skipped) |
+| 5 | `sync_changed` updates only edited records | **PASS** | M6 test: simulated source edit → exactly 1 product updated, 9 skipped; store restored from source afterwards |
+| 6 | Chunked limit/offset runs do not overlap | **PASS** | M1/M2: limit 10 offset 0 then limit 10 offset 10 migrated records 1–20 in stable source-id order |
+| 7 | Drivable from the web UI (browser closable) and the CLI | **PASS** | All four production loads run from the UI by the operator; cancel/resume exercised three times on orders; CLI used for verify/report/wipe |
+| 8 | New project needs only config + env, no code changes | **PARTIAL** | Design and bootstrap checklist in place (see above); not yet exercised against a real second store — verify at the next project |
+
 ## Notes
 
 - Modes: `create_missing` (default, resumes anything), `sync_changed` (pushes source edits; orders are immutable), `force_all` (re-push everything).

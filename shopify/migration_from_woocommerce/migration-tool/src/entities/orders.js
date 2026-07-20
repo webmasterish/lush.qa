@@ -92,21 +92,46 @@ export function transformOrder(rec, _ar, helpers) {
   }
   if (!lineItems.length) return { skip: "order has no line items; nothing to import" };
 
+  const rawEmail = rec.billing?.email ? rec.billing.email.trim().toLowerCase() : null;
+  // Shopify rejects malformed addresses outright (e.g. ".name@gmail.com").
+  const emailValid = rawEmail ? /^[^\s@.][^\s@]*@[^\s@.]+\.[^\s@]+$/.test(rawEmail) : false;
+
   const input = {
     name: `#${rec.number}`,
     currency,
     processedAt: rec.date_created_gmt ? `${rec.date_created_gmt}Z` : undefined,
     financialStatus: status.financial,
-    email: rec.billing?.email ? rec.billing.email.trim().toLowerCase() : undefined,
     note: rec.customer_note || undefined,
     lineItems,
   };
   if (status.fulfilled) input.fulfillmentStatus = "FULFILLED";
   if (status.tag) input.tags = [status.tag];
 
-  const customerId = helpers.resolveCustomer(rec);
-  if (customerId) input.customerId = customerId;
-  else if (rec.customer_id) warnings.push(`customer ${rec.customer_id} not in id_map; order imported unlinked (email only)`);
+  const customer = helpers.resolveCustomer(rec);
+  const extras = { source_order_number: String(rec.number) };
+
+  if (customer) {
+    input.customerId = customer.id;
+    // The order's billing email may belong to a DIFFERENT customer (people
+    // order under a second address). Shopify then refuses the order with
+    // "email has already been taken", so send the email only when it matches
+    // the linked customer; the original is preserved as a metafield.
+    if (emailValid && customer.email && rawEmail !== customer.email) {
+      extras.source_billing_email = rawEmail;
+      warnings.push(`billing email ${rawEmail} differs from the linked customer's (${customer.email}); order linked to the customer and the billing email kept as a metafield`);
+    } else if (emailValid) {
+      input.email = rawEmail;
+    }
+  } else if (emailValid) {
+    // Guest order: Shopify attaches (or creates) a customer for this email.
+    input.email = rawEmail;
+    if (rec.customer_id) warnings.push(`customer ${rec.customer_id} not in id_map; order imported unlinked (email only)`);
+  }
+
+  if (rawEmail && !emailValid) {
+    extras.source_billing_email = rawEmail;
+    warnings.push(`billing email ${rawEmail} is malformed and was rejected by Shopify; order imported without a contact email (kept as a metafield)`);
+  }
 
   const billing = orderAddress(rec.billing);
   const shipping = orderAddress(rec.shipping);
@@ -129,7 +154,6 @@ export function transformOrder(rec, _ar, helpers) {
     ];
   }
 
-  const extras = { source_order_number: String(rec.number) };
   if (rec.wpo_wcpdf_invoice_number) extras.source_invoice_number = String(rec.wpo_wcpdf_invoice_number);
   if (rec.payment_method_title) {
     extras.source_payment_method = rec.transaction_id

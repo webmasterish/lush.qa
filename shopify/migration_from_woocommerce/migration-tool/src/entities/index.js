@@ -297,13 +297,18 @@ export async function loadEntity(ctx, name, options = {}) {
       );
     };
     const byEmail = db.prepare(`SELECT target_id FROM id_map WHERE project = ? AND entity = 'customers' AND target_handle = ?`);
+    // Returns { id, email } — the transform needs the linked customer's own
+    // email to detect conflicts with the order's billing email (Shopify
+    // rejects an order email that belongs to a different customer).
     helpers.resolveCustomer = (rec) => {
       if (rec.customer_id) {
         const m = getMapped.get(project.name, "customers", rec.customer_id);
-        if (m) return m.target_id;
+        if (m) return { id: m.target_id, email: m.target_handle ?? null };
       }
       const email = rec.billing?.email?.trim().toLowerCase();
-      return email ? byEmail.get(project.name, email)?.target_id ?? null : null;
+      if (!email) return null;
+      const byMail = byEmail.get(project.name, email);
+      return byMail ? { id: byMail.target_id, email } : null;
     };
   }
 

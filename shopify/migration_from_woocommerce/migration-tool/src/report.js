@@ -4,7 +4,7 @@
 // so it is safe to run while a load is in progress. This output is the raw
 // material for the client-facing report.
 import { getDb } from "./db.js";
-import { ENTITY_ORDER } from "./entities/index.js";
+import { ENTITY_ORDER, ENTITIES } from "./entities/index.js";
 
 const fmtDur = (a, b) => {
   if (!a || !b) return "";
@@ -68,7 +68,42 @@ export function buildReport(cfg) {
   }
   lines.push("");
 
-  // Failures with reasons (grouped).
+  // Outstanding = source records still not migrated. Everything else that
+  // ever errored has since been resolved by a later run, so it is reported
+  // separately to avoid overstating problems.
+  lines.push(`## Records not migrated (outstanding)`);
+  lines.push("");
+  let outstandingTotal = 0;
+  for (const name of ENTITY_ORDER) {
+    const primary = ENTITIES[name].langAware ? cfg.project.source.primary_lang : "-";
+    const missing = db
+      .prepare(
+        `SELECT s.source_id FROM staging s
+         WHERE s.project = ? AND s.entity = ? AND s.lang = ?
+         AND NOT EXISTS (SELECT 1 FROM id_map i WHERE i.project = s.project AND i.entity = s.entity AND i.source_id = s.source_id)`
+      )
+      .all(project, name, primary);
+    if (!missing.length) continue;
+    outstandingTotal += missing.length;
+    lines.push(`### ${name} (${missing.length})`);
+    for (const r of missing.slice(0, 30)) {
+      const lastErr = db
+        .prepare(
+          `SELECT message, level FROM run_events
+           WHERE entity = ? AND source_id = ? AND level IN ('error','warn')
+           AND run_id IN (SELECT id FROM runs WHERE project = ?)
+           ORDER BY id DESC LIMIT 1`
+        )
+        .get(name, r.source_id, project);
+      lines.push(`- source id ${r.source_id}: ${lastErr?.message ?? "no reason recorded"}`);
+    }
+    if (missing.length > 30) lines.push(`- …and ${missing.length - 30} more`);
+    lines.push("");
+  }
+  if (outstandingTotal === 0) lines.push("None — every source record is either migrated or intentionally skipped.");
+  lines.push("");
+
+  // Historical errors that later runs resolved (context, not open issues).
   const errors = db
     .prepare(
       `SELECT entity, message, COUNT(*) n FROM run_events
@@ -76,7 +111,7 @@ export function buildReport(cfg) {
        GROUP BY entity, message ORDER BY n DESC LIMIT 30`
     )
     .all(project);
-  lines.push(`## Failures (${errors.reduce((a, e) => a + e.n, 0)} events, grouped)`);
+  lines.push(`## Error events across all runs (most since resolved by later runs)`);
   lines.push("");
   if (errors.length === 0) lines.push("None recorded.");
   for (const e of errors) lines.push(`- **${e.entity ?? "system"}** ×${e.n}: ${e.message}`);

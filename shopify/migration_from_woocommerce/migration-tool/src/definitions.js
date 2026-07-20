@@ -37,6 +37,7 @@ const DEFINITIONS = {
     source_order_number: [P + "Source order number", TEXT, "Order number in the source store"],
     source_invoice_number: [P + "Source invoice number", TEXT, "PDF invoice number from the source store's invoicing plugin"],
     source_payment_method: [P + "Source payment method", TEXT, "Payment method title (and transaction id) from the source store; reference only"],
+    source_billing_email: [P + "Billing email (source)", TEXT, "Billing email from the source order, kept here when it could not be set on the order (belongs to a different customer account, or malformed)"],
     source_refunds: [P + "Source refunds (raw)", TEXT, "Raw refunds data for orders with partial refunds (imported as-is)"],
     source_line_semantics: [P + "Line semantics (legacy)", TEXT, "Set when the source order stored unit prices in line totals (legacy data); totals were corrected on import"],
     source_discount_total: [P + "Source discount total", TEXT, "Order-level discount total from the source store (already reflected in line prices)"],

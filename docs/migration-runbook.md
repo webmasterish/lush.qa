@@ -69,11 +69,13 @@ Scope note: products (538) slightly exceed the 500 baseline in the preliminary $
 
 Executed with the in-house migration tool ("migration-tool", at `shopify/migration_from_woocommerce/migration-tool/`) — requirements in `migration-tool-prd.md`, build plan in `migration-tool-plan.md` (decided 2026-07-19: Node.js rewrite; the Python `scripts/` were throwaway test tooling, moved to `legacy/` for reference — delete only after asking Bassam at project end).
 
+**Status: core entities migrated and verified 2026-07-20** (full results + acceptance sweep in `shopify/migration_from_woocommerce/migration-tool/README.md`). Ongoing `sync_changed` runs keep the store current until cutover.
+
 Per `data-mapping.md`, in dependency order:
-- [ ] Products (+ variants, images, SEO)
-- [ ] Categories → collections
-- [ ] Customers
-- [ ] Orders (+ line items)
+- [x] Products (+ variants, images, SEO) — 537 of 538 (product 9026 pending a WooCommerce-side variation fix)
+- [x] Categories → collections — 61 of 61
+- [x] Customers — 1,915 of 1,954 (39 junk registrations excluded)
+- [x] Orders (+ line items) — 3,179 of 3,192 (13 empty orders excluded)
 - [ ] CMS pages
 - [ ] Blog
 - [ ] URL redirects (301s for all changed paths)

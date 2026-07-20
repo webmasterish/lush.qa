@@ -174,7 +174,8 @@ test("customer: email dedup key lowercased, no-email skips, addresses", () => {
 const orderHelpers = {
   currency: "QAR",
   resolveVariant: (li) => (li.variation_id === 11 || li.product_id === 90 ? "gid://shopify/ProductVariant/1" : null),
-  resolveCustomer: (rec) => (rec.customer_id === 7 ? "gid://shopify/Customer/70" : null),
+  resolveCustomer: (rec) =>
+    rec.customer_id === 7 ? { id: "gid://shopify/Customer/70", email: "guest@x.com" } : null,
 };
 
 const baseOrder = {
@@ -260,6 +261,41 @@ test("order: legacy unit-price line semantics detected and corrected", () => {
   const modern = transformOrder(baseOrder, null, orderHelpers);
   assert.equal(modern.input.lineItems[0].priceSet.shopMoney.amount, "130.00");
   assert.equal(modern.extras.source_line_semantics, undefined);
+});
+
+test("order: billing email belonging to another customer is kept as a metafield, not sent", () => {
+  const conflict = transformOrder(
+    { ...baseOrder, billing: { ...baseOrder.billing, email: "second.address@x.com" } },
+    null,
+    orderHelpers
+  );
+  assert.equal(conflict.input.customerId, "gid://shopify/Customer/70");
+  assert.equal(conflict.input.email, undefined, "conflicting email must not be sent");
+  assert.equal(conflict.extras.source_billing_email, "second.address@x.com");
+  assert.ok(conflict.warnings.some((w) => /differs from the linked customer/.test(w)));
+  // Matching email is still sent normally.
+  const match = transformOrder(baseOrder, null, orderHelpers);
+  assert.equal(match.input.email, "guest@x.com");
+  assert.equal(match.extras.source_billing_email, undefined);
+});
+
+test("order: malformed billing email is dropped and preserved as a metafield", () => {
+  const bad = transformOrder(
+    { ...baseOrder, customer_id: 0, billing: { ...baseOrder.billing, email: ".teeaey9@gmail.com" } },
+    null,
+    orderHelpers
+  );
+  assert.equal(bad.input.email, undefined);
+  assert.equal(bad.extras.source_billing_email, ".teeaey9@gmail.com");
+  assert.ok(bad.warnings.some((w) => /malformed/.test(w)));
+  // Guest order with a valid email keeps normal behaviour.
+  const guest = transformOrder(
+    { ...baseOrder, customer_id: 0, billing: { ...baseOrder.billing, email: "walkin@x.com" } },
+    null,
+    orderHelpers
+  );
+  assert.equal(guest.input.email, "walkin@x.com");
+  assert.equal(guest.input.customerId, undefined);
 });
 
 test("order: zero-total completed order gets no transaction (Shopify rejects 0.00 sales)", () => {
