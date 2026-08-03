@@ -1,0 +1,38 @@
+{%- comment -%}
+  Renders a comparison table icon: a custom uploaded image, or a preset SVG.
+
+  Accepts:
+  - icon: {String} preset icon name from icon-accordion ('none' renders nothing)
+  - custom_icon: {Image} custom icon image (takes precedence over preset)
+  - alt: {String} alt text for the custom icon (HTML is stripped)
+  - size: {Number} icon size in px (section icon_size setting)
+  - class: {String} wrapper class(es), e.g. 'comparison-table__criteria-icon'
+  - justify: {String} optional justify-self utility suffix for mobile
+  - justify_md: {String} optional justify-self utility suffix for desktop
+
+  Usage:
+  {% render 'comparison-table-icon', icon: criteria_icon, custom_icon: custom_icon, alt: criteria_text, size: section.settings.icon_size, class: 'comparison-table__criteria-icon' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign has_preset_icon = false
+  if icon != blank and icon != 'none'
+    assign has_preset_icon = true
+  endif
+  assign icon_alt = alt | strip_html
+-%}
+
+{%- if custom_icon != blank or has_preset_icon -%}
+  <div class="{{ class }}{% if justify %} justify-self-{{ justify }}{% endif %}{% if justify_md %} md:justify-self-{{ justify_md }}{% endif %}">
+    {%- if custom_icon != blank -%}
+      {%- assign icon_retina_size = size | times: 2 -%}
+      {%- capture icon_srcset -%}
+        {{ custom_icon | image_url: width: size }} 1x,
+        {{ custom_icon | image_url: width: icon_retina_size }} 2x
+      {%- endcapture -%}
+      {{ custom_icon | image_url: width: size | image_tag: loading: 'lazy', alt: icon_alt, class: 'comparison-table__custom-icon', srcset: icon_srcset }}
+    {%- else -%}
+      {%- render 'icon-accordion', icon: icon -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,19 @@
+{% comment %} snippets > voice-search-button.liquid
+  Web Speech API microphone button for search fields, rendered inside a
+  .field next to the search input when settings.voice_search_enabled is on.
+  voice-search.js removes the element on browsers without SpeechRecognition
+  (and after a denied mic permission), so unsupported visitors never see it;
+  without JS it is hidden via .no-js CSS. Icon follows the theme icon
+  contract: stroke currentColor, stroke-width from --icon-weight, no fill.
+{% endcomment %}
+{%- if settings.voice_search_enabled -%}
+  <voice-search-button data-listening-text="{{ 'general.search.listening' | t }}">
+    <button type="button" class="search__button voice-search__button focus-inset" aria-label="{{ 'general.search.voice_search' | t }}" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-mic" fill="none" viewBox="0 0 14 18">
+        <rect x="4.5" y="1" width="5" height="9.5" rx="2.5" stroke="currentColor" fill="none"/>
+        <path d="M1 8.5a6 6 0 0 0 12 0" stroke="currentColor" stroke-linecap="round" fill="none"/>
+        <path d="M7 14.5V17" stroke="currentColor" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+  </voice-search-button>
+{%- endif -%}

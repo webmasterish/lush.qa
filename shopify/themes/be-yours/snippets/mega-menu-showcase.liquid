@@ -1,0 +1,159 @@
+{% comment %} snippets > mega-menu-showcase.liquid
+  Commerce showcase mega menu (header block "mega_menu_showcase", matched
+  to a top-level menu item by title, same binding as the classic mega_menu
+  block — the showcase wins when both match).
+
+  Layout: a vertical rail of the item's child links (tabs) | the active
+  tab's content | an optional promo card. Child links that point to a
+  collection show that collection's first N products as mini cards
+  (existing badge system: theme.label metafields + sale badge); other
+  child links list their own children. A trust bar built from the
+  header's "menu_icon_badge" blocks closes the panel.
+
+  Rail items are real links: the first click selects the tab, a click on
+  the active tab navigates to it. Tab switching lives in menu-dropdown.js
+  via delegation on <mega-menu>, so it survives the deferred-content
+  innerHTML swap. Defaults to deferred loading: product grids are costly
+  and the header renders on every page.
+{% endcomment %}
+{%- liquid
+  assign menu_handle = link.title | handleize
+  assign products_limit = block.settings.products_per_tab | default: 6
+  assign card_ratio = block.settings.card_image_ratio | default: 'square'
+  assign promo_ratio = block.settings.promo_image_ratio | default: 'fill'
+  assign view_all_url = block.settings.view_all_link | default: link.url
+  assign badge_items = section.blocks | where: 'type', 'menu_icon_badge'
+  assign has_promo = false
+  if block.settings.promo_image != blank
+    assign has_promo = true
+  endif
+
+  assign defer_enabled = block.settings.defer_loading
+-%}
+{%- capture deferred_mode -%}{%- render 'deferred-loading-mode', enabled: defer_enabled -%}{%- endcapture -%}
+{%- assign show_placeholder = false -%}
+{%- if deferred_mode == 'placeholder' -%}
+  {%- assign show_placeholder = true -%}
+{%- endif -%}
+<mega-menu
+  class="is-megamenu is-showcase"
+  {%- if show_placeholder %}
+    data-deferred-section
+    data-section-id="{{ section.id }}"
+    data-trigger="hover"
+    data-callback="deferredLoadCallback"
+  {%- endif -%}
+>
+  <a href="{{ link.url }}" class="header__menu-item{% if link.active or link.child_active %} header__active-menu-item{% endif %} header__menu-item--top list-menu__item focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+    {%- liquid
+      assign item_title = link.title | escape
+      if enable_highlight and highlight_labels contains item_title
+        render 'highlight-text', hl_enable: true, hl_input: item_title, hl_phrases: highlight_labels, hl_style: highlight_style, hl_animateWrap: true
+      else
+        echo '<span class="label">'
+        echo item_title
+        echo '</span>'
+      endif
+    -%}
+  </a>
+
+  {%- if show_placeholder -%}
+    <div class="list-menu-dropdown hidden" data-deferred-content data-content-id="mega-menu-{{ menu_handle }}">
+      <div class="page-width">
+        {%- render 'deferred-placeholder', type: 'spinner', height: '420px' -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="list-menu-dropdown hidden" data-content-id="mega-menu-{{ menu_handle }}">
+      <div class="page-width">
+        <div class="mega-showcase{% if has_promo %} mega-showcase--with-promo{% endif %}">
+          <nav class="mega-showcase__rail" aria-label="{{ link.title | escape }}">
+            {%- for childlink in link.links -%}
+              <a
+                href="{{ childlink.url }}"
+                class="mega-showcase__tab focus-inset"
+                data-showcase-tab="{{ forloop.index0 }}"
+                {% if forloop.first %}data-active{% endif %}
+                {% if childlink.current %} aria-current="page"{% endif %}
+              >
+                <span class="label">{{ childlink.title | escape }}</span>
+                {% render 'icon', icon: 'caret' %}
+              </a>
+            {%- endfor -%}
+            <a href="{{ view_all_url }}" class="mega-showcase__shop-all button button--small button--full-width focus-inset">
+              {{ 'sections.collection_list.view_all' | t }}
+            </a>
+          </nav>
+
+          <div class="mega-showcase__panels">
+            {%- for childlink in link.links -%}
+              <div class="mega-showcase__panel" data-showcase-panel="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}>
+                {%- if childlink.type == 'collection_link' and childlink.object.products.size > 0 -%}
+                  <div class="mega-showcase__grid">
+                    {%- for product in childlink.object.products limit: products_limit -%}
+                      {%- render 'mega-showcase-card', product: product, card_ratio: card_ratio -%}
+                    {%- endfor -%}
+                  </div>
+                {%- elsif childlink.links != blank -%}
+                  <ul class="mega-showcase__links list-menu list-unstyled" role="list">
+                    {%- for grandchildlink in childlink.links -%}
+                      <li>
+                        <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item focus-inset{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                          <span class="label">{{ grandchildlink.title | escape }}</span>
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if has_promo -%}
+            <div class="mega-showcase__promo{% if promo_ratio == 'fill' %} mega-showcase__promo--fill{% endif %} mega-menu__promo mega-menu__promo--overlay">
+              <a class="mega-menu__promo-link media-wrapper"{% if block.settings.promo_link != blank %} href="{{ block.settings.promo_link }}"{% else %} role="link" aria-disabled="true"{% endif %}>
+                <div class="image-animate media{% unless promo_ratio == 'fill' %} media--{{ promo_ratio }}{% endunless %}">
+                  {{ block.settings.promo_image | image_url: width: 800 | image_tag:
+                    loading: 'lazy',
+                    class: 'motion-reduce',
+                    sizes: '(min-width: 990px) 30rem, 50vw',
+                    widths: '300, 460, 600, 800',
+                    is: 'lazy-image'
+                  }}
+                </div>
+                {%- if block.settings.promo_heading != blank or block.settings.promo_text != blank -%}
+                  <div class="mega-menu__promo-content">
+                    {%- if block.settings.promo_heading != blank -%}
+                      <div class="mega-menu__promo-heading">
+                        <span class="label">{{ block.settings.promo_heading | escape }}</span>
+                      </div>
+                    {%- endif -%}
+                    <div class="mega-menu__promo-subheading">{{ block.settings.promo_text | escape }}</div>
+                  </div>
+                {%- endif -%}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if badge_items.size > 0 -%}
+          <div class="mega-showcase__badge-bar">
+            {%- for item in badge_items limit: 4 -%}
+              <div class="mega-showcase__badge-item" {{ item.shopify_attributes }}>
+                {% render 'icon', icon: item.settings.icon %}
+                <div class="mega-showcase__badge-text">
+                  {%- if item.settings.heading != blank -%}
+                    <span class="mega-showcase__badge-heading label">{{ item.settings.heading | escape }}</span>
+                  {%- endif -%}
+                  {%- if item.settings.text != blank -%}
+                    <span class="mega-showcase__badge-sub">{{ item.settings.text | escape }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</mega-menu>

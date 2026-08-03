@@ -1,0 +1,69 @@
+{% comment %} snippets > header-search-inline.liquid
+  Always-visible search bar for the header, desktop (>= 990px) only.
+  Rendered when the header's "search_style" setting is "inline"; the
+  center-split logo position has no free grid space and keeps the icon.
+  Mobile and tablet keep the icon + modal (this element is display:none
+  there), so the search-modal markup must stay in the header alongside.
+  When predictive search is off this degrades to a plain GET form.
+{% endcomment %}
+{%- liquid
+  assign input_id = 'Search-Inline-' | append: section.id
+-%}
+<div class="header-search-inline">
+  {%- if settings.predictive_search_enabled -%}
+    <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}" data-per-page="{{ settings.predictive_search_per_page }}">
+  {%- endif -%}
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search header-search-inline__form">
+      <div class="field">
+        <button type="submit" class="search__button focus-inset" aria-label="{{ 'general.search.search' | t }}">
+          <svg class="icon icon-search" aria-hidden="true" focusable="false">
+            <use href="#icon-search"></use>
+          </svg>
+        </button>
+        <input
+          id="{{ input_id }}"
+          class="search__input field__input"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          aria-label="{{ 'general.search.search' | t }}"
+          {%- if settings.predictive_search_enabled %}
+            role="combobox"
+            aria-expanded="false"
+            aria-owns="predictive-search-results-list"
+            aria-controls="predictive-search-results-list"
+            aria-haspopup="listbox"
+            aria-autocomplete="list"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          {% endif -%}
+        />
+        <label class="visually-hidden" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+        <input type="hidden" name="type" value="{{ settings.search_results }}"/>
+        <input type="hidden" name="options[prefix]" value="last"/>
+        {%- render 'voice-search-button' -%}
+        {%- if settings.predictive_search_enabled -%}
+          <div class="predictive-search__loading-state">
+            {% render 'icon', icon: 'spinner' %}
+          </div>
+          <button type="reset" class="search__button focus-inset" aria-label="{{ 'general.search.clear' | t }}">
+            {% render 'icon', icon: 'close-alt' %}
+          </button>
+          {%- comment -%} predictive-search.js requires a button[type="button"]; kept off-screen — the reset button covers clearing in this compact layout. {%- endcomment -%}
+          <button type="button" class="search__button focus-inset hidden" aria-label="{{ 'accessibility.close' | t }}" tabindex="-1">
+            {% render 'icon', icon: 'close-alt' %}
+          </button>
+        {%- endif -%}
+      </div>
+      {%- if settings.predictive_search_enabled -%}
+        <div class="predictive-search predictive-search--inline" tabindex="-1" data-predictive-search></div>
+        <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+      {%- endif -%}
+    </form>
+  {%- if settings.predictive_search_enabled -%}
+    </predictive-search>
+  {%- endif -%}
+</div>

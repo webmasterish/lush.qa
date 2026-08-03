@@ -1,0 +1,317 @@
+/* Similar products drawer — one global modal (sections/similar-products.liquid)
+   opened from product-card triggers. Body-class plumbing mirrors quick view:
+   scroll lock, scrollbar compensation, the .transition-body::after dim. */
+
+.similar-products--open,
+.similar-products--opening,
+.similar-products--closing {
+  overflow: hidden;
+}
+
+.similar-products--open .shopify-section-header.shopify-section-header-sticky,
+.similar-products--opening .shopify-section-header.shopify-section-header-sticky,
+.similar-products--closing:not(.mini-cart--opening) .shopify-section-header.shopify-section-header-sticky {
+  z-index: 16;
+}
+
+/* Sticky collection filters/sort otherwise outrank the dim (same drop
+   quick view applies) */
+.similar-products--open #main-facet-filters.shopify-section-filters-sticky,
+.similar-products--opening #main-facet-filters.shopify-section-filters-sticky,
+.similar-products--closing:not(.mini-cart--opening) #main-facet-filters.shopify-section-filters-sticky {
+  z-index: 15;
+}
+
+.similar-products--open .transition-content,
+.similar-products--opening .transition-content,
+.similar-products--closing .transition-content,
+.similar-products--open .header-wrapper,
+.similar-products--opening .header-wrapper,
+.similar-products--closing .header-wrapper,
+.similar-products--open .announcement-bar,
+.similar-products--opening .announcement-bar,
+.similar-products--closing .announcement-bar {
+  padding-inline-end: var(--scrollbar-width);
+}
+
+.similar-products--open .transition-body::after,
+.similar-products--opening .transition-body::after {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+.similar-products--open .similar-products,
+.similar-products--opening .similar-products,
+.similar-products--closing .similar-products {
+  visibility: visible;
+}
+
+/* The trigger summary lives at the end of the document flow; keep it
+   fixed so focusing it (MenuDrawer's trapFocus on open) can never
+   scroll the page. Visually-hidden equivalent, minus in-flow position. */
+.similar-products__summary {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0.1rem;
+  height: 0.1rem;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  list-style: none;
+}
+
+.similar-products__summary::marker,
+.similar-products__summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Clicks on the dim fall through to the body — MenuDrawer's body-click
+   handler closes the drawer, same trick quick view relies on. */
+.similar-products {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.similar-products__panel {
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  color: rgb(var(--color-foreground));
+  background: var(--gradient-background);
+  background-color: rgb(var(--color-background));
+  box-shadow: 0 0 4rem rgba(var(--color-foreground), 0.2);
+  /* Cards reuse the desktop mega-showcase styles, which read the header
+     color vars — the drawer runs on page colors */
+  --color-header-foreground: var(--color-foreground);
+  --color-header-border: var(--color-border);
+}
+
+@supports (max-height: 80dvh) {
+  .similar-products__panel {
+    max-height: 80dvh;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .similar-products {
+    align-items: center;
+  }
+
+  .similar-products__panel {
+    width: min(56rem, calc(100vw - 10rem));
+    max-height: min(72rem, calc(100vh - 10rem));
+    padding: 3rem;
+  }
+}
+
+.similar-products--open .similar-products__panel,
+.similar-products--opening .similar-products__panel {
+  animation: similar-products-in var(--duration-long) ease;
+}
+
+.similar-products--closing .similar-products__panel {
+  animation: similar-products-out var(--duration-long) ease both;
+}
+
+@keyframes similar-products-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes similar-products-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .similar-products--open .similar-products__panel,
+  .similar-products--opening .similar-products__panel,
+  .similar-products--closing .similar-products__panel {
+    animation: none;
+  }
+}
+
+.similar-products__heading {
+  margin: 0 0 2rem;
+  padding-inline-end: 4rem;
+}
+
+.similar-products__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  height: 4.4rem;
+  width: 4.4rem;
+  border-radius: 50%;
+  color: rgb(var(--color-foreground));
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.similar-products__close .icon {
+  pointer-events: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: transform var(--duration-default) ease;
+}
+
+@media screen and (hover: hover) {
+  .similar-products__close:hover .icon {
+    transform: rotate(90deg);
+  }
+}
+
+.similar-products__content {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-inline-end: 0.6rem;
+}
+
+/* Fetched content swaps in mid-open — fade it instead of popping */
+.similar-products__grid,
+.similar-products__empty {
+  animation: fade-in var(--duration-default) ease;
+}
+
+.similar-products__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .similar-products__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem 2rem;
+  }
+}
+
+.similar-products__empty {
+  margin: 4rem 0;
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* ---------------------------------------------------------------------------
+   Card triggers
+   Sold-out cards: <similar-products-button> replaces the disabled Sold out
+   button and inherits the quick-buy button classes — only cursor/display
+   need help (custom elements are inline by default).
+   "All" mode: an icon riser on the card media, mirroring the quick view
+   magnifier (scale-in on card hover), stacked below it.
+--------------------------------------------------------------------------- */
+similar-products-button.button {
+  display: flex;
+  cursor: pointer;
+}
+
+/* Visible by default: touch devices get no hover reveal, and the quick
+   view magnifier never shows there either, so the top corner is free.
+   Hover-capable devices tuck it away below (same reveal as the
+   magnifier). */
+.similar-products__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(var(--color-foreground));
+  transition: transform var(--duration-default) ease;
+}
+
+.similar-products__trigger::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgb(var(--color-background));
+  box-shadow: 0 0 4rem rgba(var(--color-foreground), 0.2);
+}
+
+.similar-products__trigger .icon {
+  pointer-events: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  stroke-width: var(--icon-weight);
+}
+
+@media screen and (min-width: 750px) {
+  .similar-products__trigger {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+}
+
+@media (hover: hover) {
+  .similar-products__trigger {
+    top: 6rem;
+    transform: scale(0);
+  }
+
+  /* Without the quick view magnifier above it, take its spot */
+  .card-wrapper:not(:has(quick-view-drawer)) .similar-products__trigger {
+    top: 1.5rem;
+  }
+
+  .card-wrapper:hover .similar-products__trigger {
+    transform: scale(1);
+    transition-delay: var(--duration-short);
+  }
+}
+
+@media (hover: hover) and (min-width: 750px) {
+  .similar-products__trigger {
+    top: 7rem;
+  }
+
+  .card-wrapper:not(:has(quick-view-drawer)) .similar-products__trigger {
+    top: 1.5rem;
+  }
+}

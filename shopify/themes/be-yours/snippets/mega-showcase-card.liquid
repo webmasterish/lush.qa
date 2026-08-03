@@ -1,0 +1,71 @@
+{% comment %} snippets > mega-showcase-card.liquid
+  Product mini card for the mega menu showcase — one source for the desktop
+  dropdown panel (mega-menu-showcase) and the menu drawer panel
+  (drawer-showcase). Badge logic mirrors the product card: theme.label
+  metafields first, then sold out, then the sale badge.
+
+  Accepts:
+  - product: {Object} product to render
+  - card_ratio: {String} media ratio modifier (square/portrait/landscape/wide)
+{% endcomment %}
+<a href="{{ product.url }}" class="mega-showcase__card focus-inset">
+  <div class="mega-showcase__card-media media-wrapper">
+    {%- if product.featured_media -%}
+      <div class="media media--{{ card_ratio }}">
+        <img
+          srcset="{{ product.featured_media | image_url: width: 180 }} 1x, {{ product.featured_media | image_url: width: 360 }} 2x"
+          src="{{ product.featured_media | image_url: width: 180 }}"
+          alt="{{ product.featured_media.alt | default: product.title | escape }}"
+          width="180"
+          height="{{ 180 | divided_by: product.featured_media.preview_image.aspect_ratio | round }}"
+          loading="lazy"
+          is="lazy-image"
+        />
+      </div>
+    {%- endif -%}
+    <div class="mega-showcase__badge">
+      {%- if product.metafields.theme.label.value != blank -%}
+        {%- capture badge_styles -%}
+          {%- if product.metafields.theme.label_color.value != blank -%}
+            --color-badge-background: {{ product.metafields.theme.label_color.value }}; --color-badge-border: var(--color-badge-background);
+            {%- assign input_bg_color = product.metafields.theme.label_color.value -%}
+            {%- assign asif_contrast_black = input_bg_color | color_contrast: '#000000' -%}
+            {%- assign asif_contrast_white = input_bg_color | color_contrast: '#ffffff' -%}
+            {%- if asif_contrast_black > asif_contrast_white -%}
+              {%- assign chosen_text_color = '#000000' -%}
+            {%- else -%}
+              {%- assign chosen_text_color = '#ffffff' -%}
+            {%- endif -%}
+            --color-badge-foreground: {{ chosen_text_color }};
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- for label in product.metafields.theme.label.value limit: 1 -%}
+          <span class="badge"{% if badge_styles != blank %} style="{{ badge_styles }}"{% endif %}>{{ label | escape }}</span>
+        {%- endfor -%}
+      {%- elsif product.available == false -%}
+        <span class="badge badge--soldout" aria-hidden="true">{{ 'products.product.sold_out' | t }}</span>
+      {%- elsif product.compare_at_price > product.price and settings.sale_badge_basis != 'disable' -%}
+        <span class="badge badge--onsale" aria-hidden="true">
+          {%- case settings.sale_badge_basis %}
+          {%- when 'text' -%}
+            {{ 'products.product.on_sale' | t }}
+          {%- when 'percentage' -%}
+            &#8211;{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
+          {%- when 'value' -%}
+            &#8211;{% if settings.currency_code_enabled %}{{ product.compare_at_price | minus: product.price | money_with_currency }}{% else %}{{ product.compare_at_price | minus: product.price | money }}{% endif %}
+          {%- else %}
+            {%- if product.variants.size == 1 -%}
+              &#8211;{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
+            {%- else -%}
+              {{ 'products.product.on_sale' | t }}
+            {%- endif -%}
+          {%- endcase %}
+        </span>
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="mega-showcase__card-title">
+    <span class="label">{{ product.title | escape }}</span>
+  </div>
+  {% render 'price', product: product %}
+</a>

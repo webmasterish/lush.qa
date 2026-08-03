@@ -1,0 +1,65 @@
+{% comment %} sections > similar-products.liquid
+  Global "Similar products" drawer, rendered statically from theme.liquid
+  (so section.id is the stable literal "similar-products"). Product cards
+  render <similar-products-button> triggers (sold-out cards always when
+  the feature is on; every card in "all" mode) and this single modal
+  serves them all.
+
+  The same file doubles as the fetch target: similar-products.js requests
+  {{ routes.product_recommendations_url }}?section_id=similar-products —
+  Shopify re-renders this section with the recommendations object
+  performed, and the [data-similar-grid] block below (empty on normal
+  page loads) carries the product cards back. Cards reuse the compact
+  mega-showcase-card snippet; recommendations come from Shopify's ML and
+  are merchant-tunable via the Search & Discovery app.
+{% endcomment %}
+{%- if settings.similar_products_mode != 'disabled' -%}
+  <link rel="stylesheet" href="{{ 'component-similar-products.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'component-similar-products.css' | asset_url | stylesheet_tag }}</noscript>
+  <script src="{{ 'similar-products.js' | asset_url }}" defer="defer"></script>
+
+  <similar-products-drawer
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&limit=6&intent=related"
+    data-empty-text="{{ 'products.product.similar_products_empty' | t | escape }}"
+  >
+    <details>
+      {%- comment -%} Fixed-position (CSS): the section sits at the end of
+        the document, and focusing an in-flow hidden summary would scroll
+        the page to the bottom on open. {%- endcomment -%}
+      <summary class="similar-products__summary" tabindex="-1" aria-hidden="true">{{ 'products.product.similar_products' | t }}</summary>
+      <div class="similar-products">
+        <div class="similar-products__panel" role="dialog" aria-modal="true" aria-label="{{ 'products.product.similar_products' | t | escape }}" tabindex="-1">
+          <button class="similar-products__close" type="button" aria-label="{{ 'accessibility.close' | t }}">
+            <svg class="icon icon-close" aria-hidden="true" focusable="false">
+              <use href="#icon-close"></use>
+            </svg>
+          </button>
+          <h2 class="similar-products__heading h5">{{ 'products.product.similar_products' | t }}</h2>
+          <div class="similar-products__content" data-similar-content>
+            {%- render 'deferred-placeholder', type: 'spinner', height: '200px' -%}
+          </div>
+        </div>
+      </div>
+    </details>
+  </similar-products-drawer>
+
+  {%- if recommendations.performed -%}
+    <div data-similar-grid hidden>
+      {%- if recommendations.products_count > 0 -%}
+        <div class="similar-products__grid">
+          {%- for product in recommendations.products -%}
+            {%- render 'mega-showcase-card', product: product, card_ratio: 'square' -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.similar-products.name",
+  "settings": []
+}
+{% endschema %}

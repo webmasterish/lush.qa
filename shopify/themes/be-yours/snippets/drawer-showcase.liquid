@@ -1,0 +1,132 @@
+{% comment %} snippets > drawer-showcase.liquid
+  The mega menu showcase rendered inside the menu drawer submenu (header
+  block "mega_menu_showcase" with "Show in mobile menu" on, matched to a
+  top-level item by title — same binding as the desktop panel).
+
+  Where desktop shows a tab rail, the drawer panel stacks the content
+  flat, as a small catalog: each child collection is a heading +
+  a two-up grid of product cards (shared snippet mega-showcase-card),
+  link-list children become flat link groups, then the shop-all button,
+  the promo card and the icon badge bar close the panel. No nested
+  <details> in here: summaries injected after a deferred load would miss
+  MenuDrawer's listeners, and ones present at construction would get its
+  slide-in/trapFocus treatment — flat content sidesteps both.
+
+  Deferred by default like the desktop panel, with its own content id
+  (drawer-showcase-*) so the loader never grabs the desktop layout. The
+  "visible" trigger fires when the submenu slides in (until then the
+  panel is inside a closed <details> — no boxes, no intersection).
+
+  Accepts:
+  - link: {Object} top-level linklist item
+  - block: {Object} the matched mega_menu_showcase block
+{% endcomment %}
+{%- liquid
+  assign menu_handle = link.title | handleize
+  assign products_limit = block.settings.products_per_tab | default: 6
+  assign card_ratio = block.settings.card_image_ratio | default: 'square'
+  assign view_all_url = block.settings.view_all_link | default: link.url
+  assign badge_items = section.blocks | where: 'type', 'menu_icon_badge'
+  assign has_promo = false
+  if block.settings.promo_image != blank
+    assign has_promo = true
+  endif
+
+  assign defer_enabled = block.settings.defer_loading
+-%}
+{%- capture deferred_mode -%}{%- render 'deferred-loading-mode', enabled: defer_enabled -%}{%- endcapture -%}
+
+{%- if deferred_mode == 'placeholder' -%}
+  <div class="drawer-showcase" data-deferred-section data-section-id="{{ section.id }}" data-trigger="visible">
+    <div data-deferred-content data-content-id="drawer-showcase-{{ menu_handle }}">
+      {%- render 'deferred-placeholder', type: 'spinner', height: '320px' -%}
+    </div>
+  </div>
+{%- else -%}
+  <div class="drawer-showcase">
+    <div data-content-id="drawer-showcase-{{ menu_handle }}">
+      {%- for childlink in link.links -%}
+        {%- if childlink.type == 'collection_link' and childlink.object.products.size > 0 -%}
+          <div class="drawer-showcase__group">
+            <div class="drawer-showcase__heading">
+              <span class="drawer-showcase__title label">{{ childlink.title | escape }}</span>
+              <a href="{{ childlink.url }}" class="drawer-showcase__view-all focus-inset"{% if childlink.current %} aria-current="page"{% endif %}>
+                {{ 'sections.collection_list.view_all' | t }}
+              </a>
+            </div>
+            <div class="drawer-showcase__grid">
+              {%- for product in childlink.object.products limit: products_limit -%}
+                {%- render 'mega-showcase-card', product: product, card_ratio: card_ratio -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- elsif childlink.links != blank -%}
+          <div class="drawer-showcase__group">
+            <div class="drawer-showcase__heading">
+              <a href="{{ childlink.url }}" class="drawer-showcase__title label focus-inset"{% if childlink.current %} aria-current="page"{% endif %}>{{ childlink.title | escape }}</a>
+            </div>
+            <ul class="drawer-showcase__links list-unstyled" role="list">
+              {%- for grandchildlink in childlink.links -%}
+                <li>
+                  <a href="{{ grandchildlink.url }}" class="drawer-showcase__link focus-inset"{% if grandchildlink.current %} aria-current="page"{% endif %}>{{ grandchildlink.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- else -%}
+          <a href="{{ childlink.url }}" class="menu-drawer__menu-item list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+            {{ childlink.title | escape }}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <a href="{{ view_all_url }}" class="drawer-showcase__shop-all button button--small button--full-width focus-inset">
+        {{ 'sections.collection_list.view_all' | t }}
+      </a>
+
+      {%- if has_promo -%}
+        {%- liquid
+          assign promo_alt = block.settings.promo_heading | escape
+          assign promo_tag = 'div'
+          if block.settings.promo_link != blank
+            assign promo_tag = 'a'
+          endif
+        -%}
+        <{{ promo_tag }}{% if promo_tag == 'a' %} href="{{ block.settings.promo_link }}"{% endif %} class="menu-drawer__promo drawer-showcase__promo focus-inset">
+          <div class="menu-drawer__promo-media">
+            {{ block.settings.promo_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: promo_alt, widths: '450, 600, 900', sizes: '(min-width: 750px) 410px, calc(100vw - 8rem)' }}
+          </div>
+          {%- if block.settings.promo_heading != blank or block.settings.promo_text != blank -%}
+            <span class="menu-drawer__promo-heading">
+              <span>
+                {{ block.settings.promo_heading | escape }}
+                {%- if block.settings.promo_text != blank -%}
+                  <span class="drawer-showcase__promo-sub">{{ block.settings.promo_text | escape }}</span>
+                {%- endif -%}
+              </span>
+              {%- if promo_tag == 'a' %}{% render 'icon', icon: 'arrow' %}{% endif -%}
+            </span>
+          {%- endif -%}
+        </{{ promo_tag }}>
+      {%- endif -%}
+
+      {%- if badge_items.size > 0 -%}
+        <div class="drawer-showcase__badge-bar">
+          {%- for item in badge_items limit: 4 -%}
+            <div class="drawer-showcase__badge-item">
+              {% render 'icon', icon: item.settings.icon %}
+              <div class="drawer-showcase__badge-text">
+                {%- if item.settings.heading != blank -%}
+                  <span class="drawer-showcase__badge-heading label">{{ item.settings.heading | escape }}</span>
+                {%- endif -%}
+                {%- if item.settings.text != blank -%}
+                  <span class="drawer-showcase__badge-sub">{{ item.settings.text | escape }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

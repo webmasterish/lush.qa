@@ -1,0 +1,729 @@
+.menu-mobile--open,
+.menu-mobile--opening,
+.menu-mobile--closing {
+  overflow: hidden;
+}
+
+.menu-mobile--open .transition-content,
+.menu-mobile--opening .transition-content,
+.menu-mobile--closing .transition-content,
+.menu-mobile--open .header-wrapper,
+.menu-mobile--opening .header-wrapper,
+.menu-mobile--closing .header-wrapper,
+.menu-mobile--open .announcement-bar,
+.menu-mobile--opening .announcement-bar,
+.menu-mobile--closing .announcement-bar {
+  padding-inline-end: var(--scrollbar-width);
+}
+
+.menu-mobile--open .shopify-section-header-sticky,
+.menu-mobile--opening .shopify-section-header-sticky,
+.menu-mobile--closing .shopify-section-header-sticky {
+  min-height: var(--header-bottom-position);
+}
+
+@media screen and (min-width: 750px) {
+  .menu-mobile--open #MainContent,
+  .menu-mobile--open .shopify-section-footer,
+  .menu-mobile--opening #MainContent,
+  .menu-mobile--opening .shopify-section-footer {
+    transform: translateX(4rem);
+  }
+}
+
+.menu-mobile--open .menu-drawer-container summary.header__icon--menu::after,
+.menu-mobile--opening .menu-drawer-container summary.header__icon--menu::after {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+@media screen and (min-width: 750px) {
+  .menu-mobile--open .transition-body::after,
+  .menu-mobile--opening .transition-body::after {
+    opacity: 1;
+    pointer-events: visible;
+  }
+
+  .menu-mobile--open .shopify-section-announcement-bar,
+  .menu-mobile--opening .shopify-section-announcement-bar,
+  .menu-mobile--closing .shopify-section-announcement-bar {
+    position: relative;
+    z-index: 100;
+  }
+
+  .menu-mobile--open .shopify-section-header:not(.shopify-section-header-sticky),
+  .menu-mobile--opening .shopify-section-header:not(.shopify-section-header-sticky),
+  .menu-mobile--closing .shopify-section-header:not(.shopify-section-header-sticky) {
+    position: relative;
+    z-index: 99;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .menu-mobile--open .shopify-section-header:not(.shopify-section-header-sticky) .header-wrapper,
+  .menu-mobile--opening .shopify-section-header:not(.shopify-section-header-sticky) .header-wrapper,
+  .menu-mobile--closing .shopify-section-header:not(.shopify-section-header-sticky) .header-wrapper {
+    z-index: 30;
+    overflow: hidden;
+  }
+
+  .menu-mobile--open drawer-close-button.header__icon--menu::after {
+    transform: scale(1);
+    transition-delay: var(--duration-long);
+  }
+}
+
+.menu-mobile--open .shopify-section-header-hidden {
+  transform: none;
+}
+
+.menu-drawer {
+  position: fixed;
+  transform: translateX(-100%);
+  visibility: hidden;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: calc(100% - 4rem);
+  padding: 0;
+  background-color: rgb(var(--color-background));
+  overflow-x: hidden;
+}
+
+.js .menu-drawer {
+  height: 100%;
+}
+
+@supports (height: 100dvh) {
+  .js .menu-drawer {
+    height: 100dvh;
+  }
+}
+
+.js .shopify-section-header-sticky.shopify-section-header-hidden .menu-drawer {
+  height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  .js .shopify-section-header-sticky.shopify-section-header-hidden .menu-drawer {
+    height: 100dvh;
+  }
+}
+
+.js details[open] > .menu-drawer,
+.js details[open] > .menu-drawer__submenu {
+  transition-property: transform, visibility;
+  transition-duration: var(--duration-long);
+  transition-timing-function: ease;
+}
+
+.no-js details[open] > .menu-drawer,
+.js details[open].menu-opening > .menu-drawer,
+details[open].menu-opening > .menu-drawer__submenu {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.menu-drawer-container summary.header__icon--menu::after {
+  content: '';
+  display: block;
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: url(cross.svg), url(cross.png), zoom-out;
+  pointer-events: none;
+  transition: opacity var(--duration-long) ease;
+  background-color: rgba(var(--color-overlay), 0.5);
+}
+
+@media screen and (min-width: 750px) {
+  .menu-drawer {
+    position: absolute;
+    width: 45rem;
+    top: 100%;
+    border: 0.1rem solid rgb(var(--color-border));
+    border-inline-start: 0;
+  }
+
+  .js .menu-drawer {
+    border: none;
+    border-top: 0.1rem solid rgb(var(--color-border));
+    height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
+  }
+
+  .no-js .menu-drawer {
+    height: auto;
+  }
+
+  .menu-drawer-container summary.header__icon--menu::after {
+    content: none;
+  }
+}
+
+.menu-drawer__inner-container {
+  position: relative;
+  height: 100%;
+}
+
+.menu-drawer__navigation-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  /* Stop scroll chaining to the page behind the drawer (iOS) */
+  overscroll-behavior: contain;
+}
+
+.menu-drawer__navigation {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  margin-top: 6rem;
+  border-top: 0.1rem solid rgb(var(--color-border));
+  /* This is the drawer's real scroller — keep its overscroll contained */
+  overscroll-behavior: contain;
+}
+
+.menu-drawer__menu {
+  padding-inline-start: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .menu-drawer__menu {
+    padding-inline-start: 3rem;
+  }
+
+  .menu-drawer__navigation {
+    margin-top: 0;
+    border-top: 0;
+  }
+}
+
+.menu-drawer__inner-submenu {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.menu-drawer__inner-submenu .menu-drawer__menu-item {
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+
+.no-js .menu-drawer__navigation {
+  padding: 0;
+}
+
+.no-js .menu-drawer__submenu ul {
+  border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+
+.menu-drawer__menu-item {
+  font-family: var(--font-navigation-family);
+  flex: 0 0 100%;
+  font-size: 1.8rem;
+  padding: 1.5rem 0;
+  text-decoration: none;
+  color: rgb(var(--color-link));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+
+.header-wrapper--uppercase .menu-drawer__menu-item {
+  text-transform: uppercase;
+}
+
+.header-wrapper--uppercase .menu-drawer__submenu .menu-drawer__menu-item {
+  text-transform: none;
+}
+
+.menu-drawer__menu > li:last-child > .menu-drawer__menu-item,
+.menu-drawer__menu > li:last-child > details > summary > .menu-drawer__menu-item {
+  border-bottom: 0;
+}
+
+.no-js .menu-drawer__menu-item {
+  font-size: 1.6rem;
+}
+
+.no-js .menu-drawer__submenu .menu-drawer__submenu .menu-drawer__menu-item {
+  padding-inline-start: 9rem;
+}
+
+.no-js .menu-drawer__menu-item .icon-caret {
+  right: 3rem;
+}
+
+.js .menu-drawer__menu-item .icon-caret,
+.no-js .menu-drawer .icon-arrow {
+  display: none;
+}
+
+.menu-drawer .icon-arrow {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-inline-end: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .menu-drawer .icon-arrow {
+    margin-inline-end: 3rem;
+  }
+}
+
+.js .menu-drawer__submenu {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(var(--color-background));
+  box-shadow: 0 0 0 0.2rem rgb(var(--color-border));
+  z-index: 1;
+  transform: translateX(100%);
+  visibility: hidden;
+}
+
+/* Submenus span the full drawer (see the nav transform note above);
+   on mobile keep the drawer's close (X) strip above them tappable. */
+@media screen and (max-width: 749px) {
+  .js .menu-drawer__navigation > .menu-drawer__menu > li > details > .menu-drawer__submenu {
+    top: 6rem;
+  }
+}
+
+.js .menu-drawer__submenu .menu-drawer__submenu {
+  overflow-y: auto;
+}
+
+.menu-drawer__topbar {
+  display: flex;
+  border-bottom: 0.1rem solid rgb(var(--color-border));
+}
+
+.no-js .menu-drawer__topbar {
+  display: none;
+}
+
+.menu-drawer__close-button {
+  flex: 0 0 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(180deg);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: rgb(var(--color-link));
+}
+
+.menu-drawer__close-button .icon {
+  margin-inline-end: 0 !important;
+}
+
+.menu-drawer__topbar .menu-drawer__menu-item {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.8rem;
+  padding: 1.5rem 2.2rem;
+  padding-inline-start: 0;
+  border-bottom: 0;
+}
+
+.menu-drawer__topbar .menu-drawer__menu-item::before {
+  content: '';
+  height: 2rem;
+  border-inline-start: 0.1rem solid rgb(var(--color-border));
+  padding-inline-end: 1.5rem;
+}
+
+.menu-drawer__localization {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1.5rem;
+  position: relative;
+  padding: 1rem 1.5rem;
+}
+
+.menu-drawer__localization::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--color-background));
+}
+
+.menu-drawer__localization::after {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  right: 1.5rem;
+  top: 0;
+  left: 1.5rem;
+  height: 2rem;
+  border-radius: 100%;
+  box-shadow: 0 0 4rem rgba(var(--color-foreground), 0.2);
+}
+
+.menu-drawer__localization .localization-form {
+  padding: 0;
+}
+
+.menu-drawer__localization .disclosure {
+  position: static;
+}
+
+.menu-drawer__localization .disclosure .icon-localization {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.menu-drawer__localization .disclosure__list {
+  bottom: 100%;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-top: 0.1rem solid rgb(var(--color-border));
+}
+
+.menu-drawer__localization .disclosure__item {
+  justify-content: center;
+}
+
+.menu-drawer__utility-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 0.5rem;
+  column-gap: 1.5rem;
+  padding: 1.5rem;
+  border-top: 0.1rem solid rgb(var(--color-border));
+}
+
+@media screen and (min-width: 750px) {
+  .menu-drawer__utility-links {
+    column-gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+.menu-drawer .list-social:empty {
+  display: none;
+}
+
+.js details[open] > .menu-drawer [data-animate] {
+  opacity: 0;
+  transform: translateX(-4rem);
+  transition-property: transform, opacity;
+  transition-timing-function: ease;
+  transition-duration: var(--duration-long);
+}
+
+.js details[open] > .menu-drawer [data-animate-delay-1] {
+  transition-delay: var(--duration-default);
+}
+
+.js details[open] > .menu-drawer [data-animate-delay-2] {
+  transition-delay: calc(var(--duration-default) + 100ms);
+}
+
+.js details[open].menu-opening > .menu-drawer [data-animate],
+.no-js details[open] > .menu-drawer [data-animate] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* The nav's entrance must LAND on `none`, not translateX(0): a landed
+   non-none transform makes the nav the containing block for the
+   absolutely positioned submenus, squeezing every panel into the nav
+   strip between the drawer topbar and its promo/footer — on small phones
+   with a promo configured that leaves almost no panel height. `none`
+   interpolates as identity (the slide-in is unchanged) and submenus
+   anchor to the full drawer, covering the footer while open. */
+.js details[open].menu-opening > .menu-drawer .menu-drawer__navigation[data-animate] {
+  transform: none;
+}
+
+
+
+/* Inner <button> gives the close control keyboard focus + an accessible name */
+drawer-close-button .drawer-close-button__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------------
+   Menu drawer promo slot
+   Optional image/heading/link card filling the space between the menu and
+   the drawer footer. Configured in the header section settings.
+--------------------------------------------------------------------------- */
+.menu-drawer__promo {
+  position: relative;
+  display: block;
+  margin: 2.4rem 2rem 0.8rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+@media screen and (min-width: 750px) {
+  .menu-drawer__promo {
+    margin-inline: 3rem;
+  }
+}
+
+.menu-drawer__promo-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform var(--duration-long) ease;
+}
+
+@media screen and (hover: hover) {
+  .menu-drawer__promo:hover .menu-drawer__promo-media img {
+    transform: scale(1.04);
+  }
+}
+
+.menu-drawer__promo-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.menu-drawer__promo-heading .icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+  margin-inline-end: 0; /* generic .menu-drawer .icon-arrow adds 2rem */
+}
+
+/* Heading overlaid on the image with a soft scrim */
+.menu-drawer__promo-media + .menu-drawer__promo-heading {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 4rem 1.6rem 1.4rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  color: #fff;
+}
+
+/* Heading-only variant (no image): quiet bordered card */
+.menu-drawer__promo > .menu-drawer__promo-heading:first-child {
+  border: 0.1rem solid rgba(var(--color-border), 0.9);
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+}
+
+/* Bottom scroll hint: the nav is the internal scroller (promo/footer stay
+   pinned below it). A sticky fade rides its bottom edge while more menu
+   items sit below the fold; HeaderDrawer toggles .menu-drawer--can-scroll
+   and the fade dissolves once the list reaches its end. */
+.menu-drawer__navigation::after {
+  content: '';
+  display: block;
+  position: sticky;
+  bottom: 0;
+  height: 6rem;
+  margin-top: -6rem;
+  background: linear-gradient(to top, rgb(var(--color-background)) 10%, rgba(var(--color-background), 0));
+  opacity: 0;
+  transition: opacity var(--duration-default) ease;
+  pointer-events: none;
+}
+
+.menu-drawer--can-scroll .menu-drawer__navigation::after {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   Menu drawer showcase panel
+   The mega_menu_showcase block repeated inside the drawer submenu: child
+   collections become heading + two-up card grids, link-list children flat
+   link groups, closed by the shop-all button, promo card and icon badge
+   bar (snippet drawer-showcase). Cards reuse the desktop
+   .mega-showcase__card styles, which read the header color vars — remap
+   those to the drawer palette (the drawer sits on page colors, and the
+   header's own colors can differ).
+--------------------------------------------------------------------------- */
+.drawer-showcase {
+  --color-header-foreground: var(--color-foreground);
+  --color-header-border: var(--color-border);
+  padding: 0 2rem 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .drawer-showcase {
+    padding-inline: 3rem;
+  }
+}
+
+.drawer-showcase__group {
+  padding-block: 2rem;
+  border-bottom: 0.1rem solid rgba(var(--color-border), 0.6);
+}
+
+.drawer-showcase__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.drawer-showcase__title {
+  font-family: var(--font-navigation-family);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+}
+
+.drawer-showcase__view-all {
+  flex: 0 0 auto;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-underline-offset: 0.3rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+@media screen and (hover: hover) {
+  .drawer-showcase__view-all:hover {
+    color: rgb(var(--color-foreground));
+    text-decoration: underline;
+  }
+}
+
+.drawer-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.drawer-showcase__links li + li {
+  margin-top: 0.2rem;
+}
+
+.drawer-showcase__link {
+  display: block;
+  padding: 0.6rem 0;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.drawer-showcase__link[aria-current='page'] {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+@media screen and (hover: hover) {
+  .drawer-showcase__link:hover {
+    color: rgb(var(--color-foreground));
+  }
+}
+
+/* Plain child links reuse the menu item row — trim it to panel scale */
+.drawer-showcase > div > .menu-drawer__menu-item {
+  font-size: 1.6rem;
+  padding: 1.4rem 0;
+}
+
+.drawer-showcase__shop-all {
+  margin-top: 2.4rem;
+}
+
+/* The generic promo card carries drawer-level margins — it sits inside
+   the panel's own padding here */
+.drawer-showcase .drawer-showcase__promo {
+  margin: 2rem 0 0;
+}
+
+.drawer-showcase__promo-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  opacity: 0.85;
+}
+
+.drawer-showcase__badge-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem 1.2rem;
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid rgba(var(--color-border), 0.6);
+}
+
+.drawer-showcase__badge-item {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.drawer-showcase__badge-item .icon {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  stroke-width: var(--icon-weight);
+  /* generic .menu-drawer .icon-arrow-style rules add trailing margin */
+  margin-inline-end: 0;
+}
+
+.drawer-showcase__badge-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+}
+
+.drawer-showcase__badge-heading {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.drawer-showcase__badge-sub {
+  font-size: 1.1rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
