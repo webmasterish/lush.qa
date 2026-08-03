@@ -79,13 +79,21 @@ content_flags() {
   for g in "${CONTENT[@]}"; do printf '%s\n%s\n' "$flag" "$g"; done
 }
 
-run_theme() {
+# Every CLI call goes through here. The Theme Access password is passed via the
+# environment, never as --password: command-line arguments are visible to any
+# local user via `ps`, and these tokens grant read/write on the client's themes.
+sh_theme() {
   local env="$1"; shift
-  assert_ksa_read_only "$env" "$1"
   local token; token="$(token_for "$env")"
   [[ -n "$token" && "$token" != "shptka_" ]] ||
     die "no Theme Access password set for '$env' in $ENV_FILE"
-  shopify theme "$@" --environment "$env" --path "$THEME_DIR" --password "$token"
+  SHOPIFY_CLI_THEME_TOKEN="$token" shopify theme "$@"
+}
+
+run_theme() {
+  local env="$1"; shift
+  assert_ksa_read_only "$env" "$1"
+  sh_theme "$env" "$@" --environment "$env" --path "$THEME_DIR"
 }
 
 # Pull the current remote state of a Qatar theme into a timestamped, gitignored
@@ -98,7 +106,7 @@ snapshot_theme() {
   dir="$SNAP_DIR/${env}-${ts}"
   mkdir -p "$dir"
   note "snapshot: remote '$env' (theme $id) → __reference/snapshots/${env}-${ts}"
-  shopify theme pull --store "$QA_STORE" --theme "$id" --path "$dir" --password "$(token_for "$env")"
+  sh_theme "$env" pull --store "$QA_STORE" --theme "$id" --path "$dir"
 }
 
 usage() {
@@ -178,8 +186,8 @@ case "$cmd" in
     # --force skips the CLI's interactive confirmation, which cannot be answered
     # in a non-interactive session. The source theme and the new name are both
     # explicit arguments, and duplicating is additive, so nothing is at risk.
-    shopify theme duplicate --store "$QA_STORE" --theme "$id" \
-      --name "$name" --force --password "$(token_for "$env")"
+    sh_theme "$env" duplicate --store "$QA_STORE" --theme "$id" \
+      --name "$name" --force
     ;;
 
   backup)
@@ -188,8 +196,8 @@ case "$cmd" in
     [[ -n "$id" ]] || die "no theme id for '$env' in shopify.theme.toml"
     name="restore point $(date -u +%Y-%m-%d) — $env"
     note "duplicating '$env' (theme $id) as \"$name\""
-    shopify theme duplicate --store "$QA_STORE" --theme "$id" \
-      --name "$name" --password "$(token_for "$env")"
+    sh_theme "$env" duplicate --store "$QA_STORE" --theme "$id" \
+      --name "$name" --force
     ;;
 
   # --- local development ----------------------------------------------------
@@ -213,15 +221,14 @@ case "$cmd" in
     dir="$REF_DIR/probe/${env}-${id}"
     mkdir -p "$dir"
     note "probing theme $id on $store → __reference/probe/${env}-${id}"
-    shopify theme pull --store "$store" --theme "$id" --path "$dir" \
-      --only config/settings_schema.json --only config/settings_data.json \
-      --password "$(token_for "$env")"
+    sh_theme "$env" pull --store "$store" --theme "$id" --path "$dir" \
+      --only config/settings_schema.json --only config/settings_data.json
     ;;
 
   list)
     case "$env" in
-      ksa*) shopify theme list --store "$KSA_STORE" --password "$(token_for ksa)" ;;
-      *)    shopify theme list --store "$QA_STORE" --password "$(token_for build)" ;;
+      ksa*) sh_theme ksa list --store "$KSA_STORE" ;;
+      *)    sh_theme build list --store "$QA_STORE" ;;
     esac
     ;;
 
@@ -243,8 +250,8 @@ case "$cmd" in
     esac
     mkdir -p "$REF_DIR/$ref_dir"
     note "pulling $ref_what → __reference/$ref_dir (read-only)"
-    shopify theme pull --store "$ref_store" --theme "$ref_id" \
-      --path "$REF_DIR/$ref_dir" --password "$(token_for "$ref_tok")"
+    sh_theme "$ref_tok" pull --store "$ref_store" --theme "$ref_id" \
+      --path "$REF_DIR/$ref_dir"
     ;;
 
   *) die "unknown command '$cmd' (list | pull-code | pull-content | pull-ref | check | push-code | push-content | backup | dev)" ;;
