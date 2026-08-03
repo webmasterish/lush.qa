@@ -9,7 +9,9 @@ Living checklist for the Lush Qatar WooCommerce → Shopify migration. Update st
 - [x] WooCommerce REST API (read-only) — key "DotAim read access for migration" created & verified 2026-07-12 (read-only; we do not write to the WP site)
 - [ ] Server SSH (preferred) / FTP access — pending from Sibin (needed for steps that can't run from wp-admin)
 - [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover
-- [x] Shopify dev store — CLI authenticated 2026-07-12 (see Environment & tooling below)
+- [x] Shopify store — CLI authenticated 2026-07-12 (see Environment & tooling below). **Session invalidated by the 2026-07-28 ownership transfer** (401); the migration app's offline token is unaffected and still works.
+- [ ] Theme Access password for `lush-qatar.myshopify.com` — needed to start the theme phase
+- [x] Theme Access password for the KSA store (pull-only reference) — generated 2026-08-03
 
 Store references:
 - Source: WooCommerce (WordPress) at `lush.qa`
@@ -27,7 +29,7 @@ Working setup lives in the git repo `repo/` (private GitHub `webmasterish/lush.q
   - Re-run `shopify store auth` to add scopes later (e.g. URL redirects, discounts). Orders older than 60 days need the protected `read_all_orders` scope (requires app approval).
   - **Online vs offline token:** `shopify store auth` issues an **online** token, which is fine for products/collections/customers but **`orderCreate` (and bulk order import) require an offline token**. Legacy "Develop apps" custom apps were deprecated 2026-01-01; the current path is a **Dev Dashboard app**. **Done:** app **"DotAim - Lush Qatar Store Ops"** created (single-store, "exclusive to your store"); offline token minted via OAuth code flow with `scripts/get_admin_token.py` and stored as `SHOPIFY_ADMIN_API_TOKEN` in `.env`. The token is a `shpca_…` app token; `push_demo_seed.py` and future migration scripts call the Admin GraphQL endpoint with it. Note: `read_all_orders` is a protected scope (needs Shopify approval) for migrating orders older than 60 days.
 - **Timezone:** set to (GMT+3) Riyadh on 2026-07-12 in Settings → General (the list has no Qatar entry; Riyadh is the GMT+3 equivalent, no DST). Not API-settable.
-- **Reference store (KSA):** `lushsa.myshopify.com` — DotAim has access. Connect **read-only** (`read_products,read_themes,read_content,read_publications`) when mirroring settings/theme; deferred to the store-setup/theme phase.
+- **Reference store (KSA):** `ckdthc-qn.myshopify.com` (`lush.sa.com`) — DotAim has access. **The handle is randomized; `lushsa.myshopify.com` recorded here previously was an assumption and is wrong** (verified 2026-08-03 from the storefront's `Shopify.shop`). Connected pull-only for the theme phase via a Theme Access password (`theme.sh pull-ref ksa`). Runs **Be Yours 8.4.0**; storefront loads no third-party app extensions, so its customization is mostly theme settings rather than forked code.
 - **Source (WooCommerce):** read-only REST API key in `shopify/migration_from_woocommerce/.env`; verified reachable 2026-07-12. We do not write to the WP site.
 - **Demo / getting-started session:** delivered **2026-07-14** (ran ~2h vs. the scheduled 1h; a lot to cover, went well). Walkthrough of the Shopify admin against the seeded dev store (see `demo-plan.md` for the seed). The client-facing handout used was a slide deck, "Lush Qatar - Shopify Admin - Getting Started" (shared with attendees via Google Drive at the start; local copy in the private `../meetings/2026-07-14/`). Not committed — it is a one-off deliverable, kept in the private meetings dir + Drive.
 
@@ -58,10 +60,11 @@ Scope note: products (538) slightly exceed the 500 baseline in the preliminary $
 
 ## Phase 2 — Shopify store setup
 
-- [ ] Invite Dee as Shopify staff (broad permissions incl. billing; see instructions shared 2026-07-19) so finance can add the company card
-- [ ] Client card on file (Settings > Billing > Payment methods) — prerequisite for theme + plan
-- [ ] Shopify Grow plan active (MENA pricing ~$54/$72; client's card on file)
-- [ ] Be Yours theme purchased & installed
+- [x] Invite Dee as Shopify staff (broad permissions incl. billing; see instructions shared 2026-07-19) so finance can add the company card
+- [x] Client card on file (Settings > Billing > Payment methods) — prerequisite for theme + plan
+- [x] **Store ownership transferred to the client 2026-07-28** (`amfgqatar@almana.com`). It is no longer a development store; DotAim works on it as staff. This invalidated the previous Shopify CLI session — theme work re-authenticates via Theme Access passwords (see `theme-phase.md`).
+- [x] Shopify Grow plan active (MENA pricing ~$54/$72; client's card on file) — API reports plan "Shopify", `partnerDevelopment: false`
+- [x] Be Yours theme purchased — 2026-07-29
 - [x] Store timezone set to (GMT+3) Riyadh — 2026-07-12, Settings → General (Qatar not in the list; Riyadh is the GMT+3 equivalent)
 - [ ] Base store config: markets, currency (QAR), languages (AR/EN), local Qatar payment gateway (Shopify Payments is NOT available in Qatar), shipping, taxes
 
@@ -80,7 +83,9 @@ Per `data-mapping.md`, in dependency order:
 - [ ] Blog
 - [ ] URL redirects (301s for all changed paths)
 
-## Phase 4 — Features & functionality
+## Phase 4 — Theme, features & functionality
+
+**Working model, environments and milestones: `theme-phase.md`. Admin-side configuration: `store-settings-ledger.md`.** The three unfinished Phase 3 items above (CMS pages, blog, URL redirects) are scheduled inside that phase, at T5.
 
 Detailed feature list is in `lush-migration-project-context.md` (§8). Highlights:
 - [ ] Navigation: mega menu, smart search, advanced filtering, mobile nav
