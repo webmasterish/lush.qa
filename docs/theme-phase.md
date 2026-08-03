@@ -156,11 +156,13 @@ Then, regardless of route:
 - [ ] Create the `Lush QA — build (DotAim)` theme by duplicating the live 9.2.0 — first write to the Qatar store
 
 ### T1 — Customization inventory
-- [ ] Schema comparison: `settings_schema.json` and section schemas, 8.4 vs 9.2 → in-both / 8.4-only / 9.2-only
-- [ ] Customization diff: `ksa-8.4-vanilla` vs `ksa-8.4-live` (or the fallback route)
-- [ ] Triage into port / skip / rebuild-for-9.2, written up as the porting list
-- [ ] Inventory KSA's installed apps and any that the storefront depends on → cost and client approval if any are paid
-- [ ] Inventory KSA metafield definitions the theme reads (badges, ingredients) vs. what the migration created on Qatar
+**Done 2026-08-03 — output is `theme-porting-list.md`, which the build runs against.**
+- [x] Schema comparison, 8.4 vs 9.2 → 98 of 101 settings shared; 81 of KSA's 86 set values transcribe directly
+- [x] Section inventory → 56 of the 58 types KSA uses exist in 9.2; both gaps are DotAim's own code
+- [x] Customization diff → 10 custom files identified, including the ingredients feature and a floating WhatsApp button
+- [x] Arabic locale assessed → 413 valid keys to port, 86 new keys to translate, ~2,984 non-theme keys to drop
+- [x] Metafields the theme reads → `custom.ingredients`, `custom.ingredient_benefits`, `custom.ingredients_cards`, `custom.ingredient_type`
+- [ ] Inventory KSA's installed apps → cost and client approval if any are paid (storefront shows none, but the admin list is unchecked)
 
 ### T2 — Foundation parity
 - [ ] Theme settings: colors, typography, buttons, spacing, layout
