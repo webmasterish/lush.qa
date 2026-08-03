@@ -168,6 +168,20 @@ case "$cmd" in
     ;;
 
   # --- restore points -------------------------------------------------------
+  duplicate)
+    [[ "$env" == ksa* ]] && die "the KSA store is reference-only."
+    name="${3:-}"
+    [[ -n "$name" ]] || die "usage: ./theme.sh duplicate <env> \"<new theme name>\""
+    id="$(theme_id_for "$env")"
+    [[ -n "$id" ]] || die "no theme id for '$env' in shopify.theme.toml"
+    note "duplicating '$env' (theme $id) as \"$name\" on $QA_STORE"
+    # --force skips the CLI's interactive confirmation, which cannot be answered
+    # in a non-interactive session. The source theme and the new name are both
+    # explicit arguments, and duplicating is additive, so nothing is at risk.
+    shopify theme duplicate --store "$QA_STORE" --theme "$id" \
+      --name "$name" --force --password "$(token_for "$env")"
+    ;;
+
   backup)
     [[ "$env" == ksa* ]] && die "the KSA store is reference-only."
     id="$(theme_id_for "$env")"

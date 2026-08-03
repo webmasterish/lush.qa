@@ -49,7 +49,7 @@ The failure mode this guards against: a `theme push` of code silently overwritin
 | Theme | Role | Purpose |
 |---|---|---|
 | `Be Yours` 9.1.0 | unpublished | Untouched vanilla reference. Never edited, never pushed to. Our diff baseline. |
-| `Lush QA — build (DotAim)` | unpublished | The build target, created in T0 as a **duplicate of the live 9.2.0 theme** — same version, and it preserves the branding already configured. All pushes and all theme-editor work happen here. Shared with Dee for review via a preview link. |
+| `Lush QA - build (DotAim)` (#152710447243) | unpublished | The build target, created 2026-08-03 as a **duplicate of the live 9.2.0 theme** — same version, and it preserves the branding already configured. All pushes and all theme-editor work happen here. Shared with Dee for review via a preview link. Name uses a plain hyphen: the client sees the theme library. |
 | `Lush Qatar - Be Yours Theme` 9.2.0 | **live** | Already serving the store. Untouched until go-live, which is a `theme publish` promotion of the build theme, never a push. |
 | `development-*` | development | Ephemeral, created by `theme dev`. Local hot-reload only. |
 
@@ -153,7 +153,7 @@ Then, regardless of route:
 - [x] Theme IDs recorded in `shopify.theme.toml`
 - [ ] Pull `ksa-8.4.0-live`, `qatar-9.1.0-vanilla`, `qatar-9.2.0-live` into `__reference/`
 - [ ] Check for an archived KSA theme copy from the original project (only route to an exact 8.4 baseline)
-- [ ] Create the `Lush QA — build (DotAim)` theme by duplicating the live 9.2.0 — first write to the Qatar store
+- [x] Create the `Lush QA - build (DotAim)` theme (#152710447243) by duplicating the live 9.2.0 — 2026-08-03, first write to the Qatar store
 
 ### T1 — Customization inventory
 **Done 2026-08-03 — output is `theme-porting-list.md`, which the build runs against.**

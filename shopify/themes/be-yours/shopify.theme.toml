@@ -10,10 +10,11 @@
 #   ../theme.sh list
 
 [environments.build]
-# "Lush QA — build (DotAim)" — the build target. All pushes land here.
-# Does not exist yet; created in T0 from a duplicate of the live 9.2 theme.
+# "Lush QA - build (DotAim)" — the build target. All pushes land here.
+# Created 2026-08-03 as a duplicate of the live 9.2.0 theme, so it starts with
+# the branding already configured. Unpublished; Dee reviews it by preview link.
 store = "lush-qatar.myshopify.com"
-# theme = "TODO-T0"
+theme = "152710447243"
 
 [environments.live]
 # "Lush Qatar - Be Yours Theme" — Be Yours 9.2.0, customized (64 settings).
