@@ -1,0 +1,31 @@
+# Shopify CLI theme environments for the Lush Qatar store.
+#
+# Do NOT run `shopify theme` directly against these — use ../theme.sh, which
+# enforces the code/content split described in docs/theme-phase.md.
+#
+# Theme Access passwords are deliberately absent here: they live in ../.env
+# (gitignored) and are passed by the wrapper as --password.
+#
+# Theme IDs are filled in during T0, once the themes exist. Find them with:
+#   ../theme.sh list
+
+[environments.build]
+# "Lush QA — build (DotAim)" — the build target. All pushes land here.
+# Does not exist yet; created in T0 from a duplicate of the live 9.2 theme.
+store = "lush-qatar.myshopify.com"
+# theme = "TODO-T0"
+
+[environments.live]
+# "Lush Qatar - Be Yours Theme" — Be Yours 9.2.0, customized (64 settings).
+# Currently serving the store. Pull-only; the wrapper refuses to push to it.
+# Go-live is a `theme publish` promotion of the build theme, never a push.
+store = "lush-qatar.myshopify.com"
+theme = "152566169739"
+live = true
+
+[environments.vanilla]
+# "Be Yours" — 9.1.0, verified untouched (settings_data still on the "Be Yours"
+# preset). Our diff baseline. Never edited, never pushed to.
+# One minor version behind the live 9.2.0 — account for that when diffing.
+store = "lush-qatar.myshopify.com"
+theme = "152138383499"

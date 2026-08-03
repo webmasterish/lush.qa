@@ -1,0 +1,237 @@
+#!/usr/bin/env bash
+# DotAim — Lush Qatar theme workflow wrapper.
+#
+# Enforces the surface split documented in docs/theme-phase.md:
+#   surface A (code)    — repo is the source of truth, pushed to the store
+#   surface B (content) — the store is the source of truth, pulled into the repo
+#
+# Guarantees:
+#   - the KSA store is read-only; every write verb against it is refused
+#   - the live theme is never pushed to
+#   - code pushes never carry theme-editor content
+#   - every push is preceded by a local snapshot of the remote theme, so any
+#     push can be rolled back even if the remote had drifted from git
+#
+# Usage: ./theme.sh <command> [environment]
+set -euo pipefail
+
+HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+THEME_DIR="$HERE/be-yours"
+REF_DIR="$HERE/__reference"
+SNAP_DIR="$REF_DIR/snapshots"
+ENV_FILE="$HERE/.env"
+TOML="$THEME_DIR/shopify.theme.toml"
+QA_STORE="lush-qatar.myshopify.com"
+# Verified 2026-08-03 from the public storefront (Shopify.shop). The store has a
+# randomized handle — it is NOT lushsa.myshopify.com, which earlier docs assumed.
+KSA_STORE="ckdthc-qn.myshopify.com"
+
+# Surface B — theme editor territory. Everything else is code.
+CONTENT=(
+  "config/settings_data.json"
+  "templates/*.json"
+  "templates/customers/*.json"
+  "sections/*.json"
+)
+
+die() { printf '\033[31merror:\033[0m %s\n' "$*" >&2; exit 1; }
+note() { printf '\033[36m→\033[0m %s\n' "$*"; }
+
+load_env() {
+  [[ -f "$ENV_FILE" ]] ||
+    die "missing $ENV_FILE — copy .env.example and add the Theme Access passwords (see docs/theme-phase.md, T0)"
+  set -a; . "$ENV_FILE"; set +a
+}
+
+token_for() {
+  case "$1" in
+    build|live|vanilla) printf '%s' "${QA_THEME_TOKEN:-}" ;;
+    ksa|ksa-vanilla)    printf '%s' "${KSA_THEME_TOKEN:-}" ;;
+    *) die "unknown environment '$1' (build | live | vanilla | ksa)" ;;
+  esac
+}
+
+# Theme ID for an environment, read from shopify.theme.toml (commented-out
+# placeholders are ignored, so an unfilled ID fails loudly rather than silently).
+theme_id_for() {
+  [[ -f "$TOML" ]] || die "missing $TOML"
+  awk -v want="[environments.$1]" '
+    $0 == want { inblk = 1; next }
+    /^\[/ { inblk = 0 }
+    inblk && $1 == "theme" { gsub(/"/, "", $3); print $3; exit }
+  ' "$TOML"
+}
+
+# The KSA store is reference-only. This is the single choke point: any verb that
+# could write is refused before the CLI is ever invoked.
+assert_ksa_read_only() {
+  local env="$1" verb="$2"
+  [[ "$env" == ksa* ]] || return 0
+  case "$verb" in
+    pull|list|info|check) return 0 ;;
+    *) die "KSA is strictly read-only — refusing '$verb'. Only pull/list/info are allowed against $KSA_STORE." ;;
+  esac
+}
+
+# Expand the CONTENT list into repeated --only / --ignore flags.
+content_flags() {
+  local flag="$1" g
+  for g in "${CONTENT[@]}"; do printf '%s\n%s\n' "$flag" "$g"; done
+}
+
+run_theme() {
+  local env="$1"; shift
+  assert_ksa_read_only "$env" "$1"
+  local token; token="$(token_for "$env")"
+  [[ -n "$token" && "$token" != "shptka_" ]] ||
+    die "no Theme Access password set for '$env' in $ENV_FILE"
+  shopify theme "$@" --environment "$env" --path "$THEME_DIR" --password "$token"
+}
+
+# Pull the current remote state of a Qatar theme into a timestamped, gitignored
+# directory. Rollback path for anything a push would overwrite.
+snapshot_theme() {
+  local env="$1" id ts dir
+  id="$(theme_id_for "$env")"
+  [[ -n "$id" ]] || die "no theme id for '$env' in shopify.theme.toml — fill it in (T0) so pushes can be snapshotted"
+  ts="$(date -u +%Y%m%dT%H%M%SZ)"
+  dir="$SNAP_DIR/${env}-${ts}"
+  mkdir -p "$dir"
+  note "snapshot: remote '$env' (theme $id) → __reference/snapshots/${env}-${ts}"
+  shopify theme pull --store "$QA_STORE" --theme "$id" --path "$dir" --password "$(token_for "$env")"
+}
+
+usage() {
+  cat <<'EOF'
+DotAim — Lush Qatar theme workflow. See docs/theme-phase.md.
+
+read-only
+  ./theme.sh list         [build|ksa]      themes, IDs and roles
+  ./theme.sh pull-code    [build|live]     recover admin code-editor edits
+  ./theme.sh pull-content [build|live]     pull theme-editor settings — then commit
+  ./theme.sh pull-ref  ksa-live|ksa-8.5|qa-vanilla|qa-live   reference snapshot
+  ./theme.sh probe   <build|ksa> <theme-id>      read a theme's version + whether
+                                                 it is customized (2 small files)
+  ./theme.sh check                         theme check (local, no network)
+
+writes to the Qatar store
+  ./theme.sh push-code    [build]          push theme code (never editor content)
+  ./theme.sh push-content build --yes      overwrite editor settings (KSA port only)
+  ./theme.sh backup       [build]          server-side duplicate as a restore point
+  ./theme.sh dev          [build]          local dev server, editor sync on
+
+Environments: build (default) | live (pull-only) | vanilla | ksa, ksa-vanilla (read-only)
+Pushes snapshot the remote theme first; set NO_SNAPSHOT=1 to skip.
+EOF
+}
+
+cmd="${1:-}"; env="${2:-build}"
+[[ -n "$cmd" && "$cmd" != "-h" && "$cmd" != "--help" ]] || { usage; exit 1; }
+load_env
+
+case "$cmd" in
+
+  # --- surface A: code ------------------------------------------------------
+  push-code)
+    [[ "$env" == "live" ]] &&
+      die "refusing to push to the live theme. Go-live is 'shopify theme publish' promoting the build theme."
+    [[ "$env" == ksa* ]] && die "the KSA store is reference-only; never push to it."
+    [[ "${NO_SNAPSHOT:-}" == "1" ]] || snapshot_theme "$env"
+    note "pushing code to '$env' (theme-editor content excluded)"
+    mapfile -t ign < <(content_flags --ignore)
+    run_theme "$env" push --nodelete "${ign[@]}"
+    ;;
+
+  pull-code)
+    note "pulling code from '$env' (recovers admin code-editor edits)"
+    mapfile -t ign < <(content_flags --ignore)
+    run_theme "$env" pull "${ign[@]}"
+    ;;
+
+  # --- surface B: theme editor content --------------------------------------
+  pull-content)
+    note "pulling theme-editor content from '$env' — commit the result"
+    mapfile -t only < <(content_flags --only)
+    run_theme "$env" pull "${only[@]}"
+    ;;
+
+  push-content)
+    # Only for the deliberate KSA settings port (T2/T3). Overwrites the store's
+    # theme-editor state, so it is opt-in.
+    [[ "${3:-}" == "--yes" ]] ||
+      die "push-content overwrites theme-editor settings on '$env'. Re-run with --yes if that is intended."
+    [[ "$env" == "live" || "$env" == ksa* ]] && die "not allowed against '$env'."
+    [[ "${NO_SNAPSHOT:-}" == "1" ]] || snapshot_theme "$env"
+    note "pushing theme-editor content to '$env'"
+    mapfile -t only < <(content_flags --only)
+    run_theme "$env" push --nodelete "${only[@]}"
+    ;;
+
+  # --- restore points -------------------------------------------------------
+  backup)
+    [[ "$env" == ksa* ]] && die "the KSA store is reference-only."
+    id="$(theme_id_for "$env")"
+    [[ -n "$id" ]] || die "no theme id for '$env' in shopify.theme.toml"
+    name="restore point $(date -u +%Y-%m-%d) — $env"
+    note "duplicating '$env' (theme $id) as \"$name\""
+    shopify theme duplicate --store "$QA_STORE" --theme "$id" \
+      --name "$name" --password "$(token_for "$env")"
+    ;;
+
+  # --- local development ----------------------------------------------------
+  dev)
+    [[ "$env" == ksa* ]] && die "the KSA store is reference-only; 'dev' uploads a development theme."
+    note "starting dev server against '$env' with theme-editor sync"
+    run_theme "$env" dev --theme-editor-sync
+    ;;
+
+  check)
+    shopify theme check --path "$THEME_DIR"
+    ;;
+
+  # Read a theme's identity without pulling it: settings_schema.json carries
+  # theme_version, settings_data.json shows whether it is still on defaults.
+  probe)
+    id="${3:-}"
+    [[ -n "$id" ]] || die "usage: ./theme.sh probe <build|ksa> <theme-id>"
+    assert_ksa_read_only "$env" pull
+    case "$env" in ksa*) store="$KSA_STORE" ;; *) store="$QA_STORE" ;; esac
+    dir="$REF_DIR/probe/${env}-${id}"
+    mkdir -p "$dir"
+    note "probing theme $id on $store → __reference/probe/${env}-${id}"
+    shopify theme pull --store "$store" --theme "$id" --path "$dir" \
+      --only config/settings_schema.json --only config/settings_data.json \
+      --password "$(token_for "$env")"
+    ;;
+
+  list)
+    case "$env" in
+      ksa*) shopify theme list --store "$KSA_STORE" --password "$(token_for ksa)" ;;
+      *)    shopify theme list --store "$QA_STORE" --password "$(token_for build)" ;;
+    esac
+    ;;
+
+  # --- read-only reference snapshots (gitignored) ---------------------------
+  # The CLI prompts for which theme to pull when no ID is given — pick the one
+  # named in the note.
+  # Theme IDs and versions confirmed by `probe` on 2026-08-03.
+  pull-ref)
+    case "$env" in
+      ksa-live)     ref_store="$KSA_STORE"; ref_tok="ksa";     ref_id=184102060346; ref_dir="ksa-8.4.0-live"
+                    ref_what="KSA LIVE — the parity target (customized, 88 settings)" ;;
+      ksa-8.5)      ref_store="$KSA_STORE"; ref_tok="ksa";     ref_id=184533385530; ref_dir="ksa-8.5.0-unpublished"
+                    ref_what="KSA's unpublished 8.5.0 update — not the parity target" ;;
+      qa-vanilla)   ref_store="$QA_STORE";  ref_tok="vanilla"; ref_id=152138383499; ref_dir="qatar-9.1.0-vanilla"
+                    ref_what="Qatar's UNTOUCHED 9.1.0 — the diff baseline" ;;
+      qa-live)      ref_store="$QA_STORE";  ref_tok="live";    ref_id=152566169739; ref_dir="qatar-9.2.0-live"
+                    ref_what="Qatar LIVE 9.2.0 — currently serving the store" ;;
+      *) die "pull-ref takes 'ksa-live', 'ksa-8.5', 'qa-vanilla' or 'qa-live'" ;;
+    esac
+    mkdir -p "$REF_DIR/$ref_dir"
+    note "pulling $ref_what → __reference/$ref_dir (read-only)"
+    shopify theme pull --store "$ref_store" --theme "$ref_id" \
+      --path "$REF_DIR/$ref_dir" --password "$(token_for "$ref_tok")"
+    ;;
+
+  *) die "unknown command '$cmd' (list | pull-code | pull-content | pull-ref | check | push-code | push-content | backup | dev)" ;;
+esac

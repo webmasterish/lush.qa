@@ -1,0 +1,10 @@
+# Files that live alongside the theme in the repo but are not theme files.
+#
+# NOTE: .shopifyignore applies to BOTH push and pull. The code/content split is
+# therefore NOT expressed here — settings_data.json and the template JSON must
+# stay pullable. That split is enforced by ../theme.sh via --only/--ignore.
+
+shopify.theme.toml
+.shopifyignore
+.theme-check.yml
+README.md
