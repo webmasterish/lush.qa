@@ -175,6 +175,17 @@ case "$cmd" in
     run_theme "$env" push --nodelete "${only[@]}"
     ;;
 
+  rename)
+    [[ "$env" == ksa* ]] && die "the KSA store is reference-only."
+    [[ "$env" == "live" ]] && die "refusing to rename the live theme."
+    name="${3:-}"
+    [[ -n "$name" ]] || die "usage: ./theme.sh rename <env> \"<new theme name>\""
+    id="$(theme_id_for "$env")"
+    [[ -n "$id" ]] || die "no theme id for '$env' in shopify.theme.toml"
+    note "renaming '$env' (theme $id) to \"$name\""
+    sh_theme "$env" rename --store "$QA_STORE" --theme "$id" --name "$name"
+    ;;
+
   # --- restore points -------------------------------------------------------
   duplicate)
     [[ "$env" == ksa* ]] && die "the KSA store is reference-only."

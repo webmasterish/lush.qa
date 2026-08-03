@@ -4,13 +4,14 @@
 # enforces the code/content split described in docs/theme-phase.md.
 #
 # Theme Access passwords are deliberately absent here: they live in ../.env
-# (gitignored) and are passed by the wrapper as --password.
+# (gitignored) and reach the CLI via SHOPIFY_CLI_THEME_TOKEN, never as a
+# command-line argument (those are visible to any local user via `ps`).
 #
-# Theme IDs are filled in during T0, once the themes exist. Find them with:
+# Theme IDs confirmed 2026-08-03. Re-check them any time with:
 #   ../theme.sh list
 
 [environments.build]
-# "Lush QA - build (DotAim)" — the build target. All pushes land here.
+# "Be Yours - Lush Qatar (by DotAim)" — the build target. All pushes land here.
 # Created 2026-08-03 as a duplicate of the live 9.2.0 theme, so it starts with
 # the branding already configured. Unpublished; Dee reviews it by preview link.
 store = "lush-qatar.myshopify.com"

@@ -5,7 +5,7 @@ How we build the Lush Qatar storefront to mirror Lush KSA. Covers the three surf
 ## Where things stand (2026-08-03)
 
 - Store is **client-owned** since the 2026-07-28 transfer, on a paid **Shopify (Grow)** plan — no longer a development store. Currency QAR, timezone Asia/Riyadh, locales `en` (primary) + `ar`, both published.
-- **Be Yours purchased 2026-07-29.** A trial copy was installed 2026-07-13 for the demo; which themes exist in the library now is unconfirmed (T0 answers this).
+- **Be Yours purchased 2026-07-29.** A trial copy was installed 2026-07-13 for the demo. The full library is inventoried below.
 - **Data migration is done for core entities** (collections, products, customers, orders). Still open from Phase 3 and now landing inside this phase: **CMS pages, blog, URL redirects**.
 - **Reference benchmark:** `lush.sa.com` runs **Be Yours 8.4.0** ("Updated copy of Be Yours"). Its storefront loads no third-party app extensions beyond Shopify's web-pixels-manager, and every asset filename is stock Be Yours. **KSA's customization is overwhelmingly theme settings and section configuration, not a code fork.** RTL is live on `/ar` (`<html lang="ar" dir="rtl">`).
 - **Qatar is on Be Yours 9.2 — a major version ahead of KSA's 8.4.** This is the single most important constraint on the parity method below: settings and templates cannot be copied across that gap, they have to be transcribed against a schema comparison.
@@ -49,7 +49,7 @@ The failure mode this guards against: a `theme push` of code silently overwritin
 | Theme | Role | Purpose |
 |---|---|---|
 | `Be Yours` 9.1.0 | unpublished | Untouched vanilla reference. Never edited, never pushed to. Our diff baseline. |
-| `Lush QA - build (DotAim)` (#152710447243) | unpublished | The build target, created 2026-08-03 as a **duplicate of the live 9.2.0 theme** — same version, and it preserves the branding already configured. All pushes and all theme-editor work happen here. Shared with Dee for review via a preview link. Name uses a plain hyphen: the client sees the theme library. |
+| `Be Yours - Lush Qatar (by DotAim)` (#152710447243) | unpublished | The build target, created 2026-08-03 as a **duplicate of the live 9.2.0 theme** — same version, and it preserves the branding already configured. All pushes and all theme-editor work happen here. Shared with Dee for review via a preview link. Name uses a plain hyphen: the client sees the theme library. |
 | `Lush Qatar - Be Yours Theme` 9.2.0 | **live** | Already serving the store. Untouched until go-live, which is a `theme publish` promotion of the build theme, never a push. |
 | `development-*` | development | Ephemeral, created by `theme dev`. Local hot-reload only. |
 
@@ -153,7 +153,7 @@ Then, regardless of route:
 - [x] Theme IDs recorded in `shopify.theme.toml`
 - [ ] Pull `ksa-8.4.0-live`, `qatar-9.1.0-vanilla`, `qatar-9.2.0-live` into `__reference/`
 - [ ] Check for an archived KSA theme copy from the original project (only route to an exact 8.4 baseline)
-- [x] Create the `Lush QA - build (DotAim)` theme (#152710447243) by duplicating the live 9.2.0 — 2026-08-03, first write to the Qatar store
+- [x] Create the `Be Yours - Lush Qatar (by DotAim)` theme (#152710447243) by duplicating the live 9.2.0 — 2026-08-03, first write to the Qatar store
 
 ### T1 — Customization inventory
 **Done 2026-08-03 — output is `theme-porting-list.md`, which the build runs against.**
