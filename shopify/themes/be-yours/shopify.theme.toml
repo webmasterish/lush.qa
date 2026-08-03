@@ -11,19 +11,15 @@
 #   ../theme.sh list
 
 [environments.build]
-# "Be Yours - Lush Qatar (by DotAim)" — the build target. All pushes land here.
-# Created 2026-08-03 as a duplicate of the live 9.2.0 theme, so it starts with
-# the branding already configured. Unpublished; Dee reviews it by preview link.
+# "Be Yours - Lush Qatar (by DotAim)" — Be Yours 9.2.0, the one theme we work
+# on. Created 2026-08-03 as a duplicate of the previous live theme, published
+# 2026-08-04. Pre-launch it is both the build target and the published theme:
+# the storefront is password-protected, so there is nothing to shield from
+# customers, and a single clearly named theme is easier for the client to
+# follow. Pushes therefore pass --allow-live; the safety net is the pre-push
+# snapshot plus the git baseline.
 store = "lush-qatar.myshopify.com"
 theme = "152710447243"
-
-[environments.live]
-# "Lush Qatar - Be Yours Theme" — Be Yours 9.2.0, customized (64 settings).
-# Currently serving the store. Pull-only; the wrapper refuses to push to it.
-# Go-live is a `theme publish` promotion of the build theme, never a push.
-store = "lush-qatar.myshopify.com"
-theme = "152566169739"
-live = true
 
 [environments.vanilla]
 # "Be Yours" — 9.1.0, verified untouched (settings_data still on the "Be Yours"

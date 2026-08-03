@@ -48,10 +48,13 @@ The failure mode this guards against: a `theme push` of code silently overwritin
 
 | Theme | Role | Purpose |
 |---|---|---|
-| `Be Yours` 9.1.0 | unpublished | Untouched vanilla reference. Never edited, never pushed to. Our diff baseline. |
-| `Be Yours - Lush Qatar (by DotAim)` (#152710447243) | unpublished | The build target, created 2026-08-03 as a **duplicate of the live 9.2.0 theme** — same version, and it preserves the branding already configured. All pushes and all theme-editor work happen here. Shared with Dee for review via a preview link. Name uses a plain hyphen: the client sees the theme library. |
-| `Lush Qatar - Be Yours Theme` 9.2.0 | **live** | Already serving the store. Untouched until go-live, which is a `theme publish` promotion of the build theme, never a push. |
+| `Be Yours - Lush Qatar (by DotAim)` (#152710447243) | **live** | Be Yours 9.2.0. The one theme we work on. All pushes and all theme-editor work happen here. |
+| `Be Yours` 9.1.0 (#152138383499) | unpublished | Untouched vanilla reference. Never edited, never pushed to. Our diff baseline. |
 | `development-*` | development | Ephemeral, created by `theme dev`. Local hot-reload only. |
+
+**Pre-launch there is deliberately no separate build theme.** The storefront is password-protected, so a published theme shields nobody from unfinished work, and a library full of similarly named themes is harder for a non-technical brand team to read than one obvious theme. Rollback comes from the git baseline and the pre-push snapshots instead — see Reversibility. Strict published-theme protection returns at launch, when the stakes change.
+
+Cleared out on 2026-08-04: `Horizon` (Shopify's unused default) and `Lush Qatar - Be Yours Theme` (the previous live theme, whose content survives in the git baseline commit and in `__reference/qatar-9.2.0-live/`).
 
 ## Auth
 
@@ -94,12 +97,12 @@ shopify/themes/
 ## Rules of engagement
 
 1. **Code pushes never include surface B.** Always `theme.sh push-code`, which sets `--ignore` for `settings_data.json`, `templates/*.json`, `templates/customers/*.json`, `sections/*.json`.
-2. **Never push to the live theme.** `push-code live` is refused by the wrapper. Go-live is `theme publish`, promoting the build theme.
+2. **Back up before structural work.** Since pushes land on the published theme, run `./theme.sh backup` before header/footer or template changes. A broken push is fixed by restoring the pre-push snapshot, not by switching themes.
 3. **Pull content before and after any theme-editor session** (`theme.sh pull-content`), and commit it. That commit is the record of what changed in the editor.
 4. **Never push to KSA.** The `ksa` environment is pull-only and the wrapper refuses to push to it.
 5. **Surface C changes get a ledger line the same day** — page, setting, value, date. If it is not in `store-settings-ledger.md`, it does not exist at handover.
 6. **`theme check` clean before every commit of theme code.**
-7. **Dee reviews via a preview link on the build theme**, never by being pointed at the live theme.
+7. **Dee reviews the store itself**, which is password-protected until launch. No preview links to juggle — the theme she opens is the theme we are building.
 8. **Confirm before every store-touching command.** In force from 2026-08-03 at Bassam's request, until the setup has proven itself: no command that reads from or writes to either store runs without his explicit go-ahead, stated in advance as *what it does, which store, read or write*. Local commands (`check`, diffs, file edits) do not need it.
 
 ## Reversibility
@@ -108,10 +111,10 @@ Nothing in this phase should be a one-way door.
 
 | What changed | How it is rolled back |
 |---|---|
-| Theme code (surface A) | Git. `git revert` + `push-code`. |
+| Theme code (surface A) | Git. `git revert` + `push-code`. The baseline commit (`a6ea76d`) is the untouched starting state. |
 | Theme editor content (surface B) | Git, provided `pull-content` was run after the editor session — that commit *is* the record. Without it there is no record, which is why rule 3 exists. |
 | Any push, including drift that was never in git | The pre-push snapshot in `__reference/snapshots/<env>-<timestamp>/` holds the exact remote state from immediately before. Push it back to restore. |
-| A larger change, or one spanning both surfaces | `./theme.sh backup` first — a server-side theme duplicate that is restorable independently of the local machine. |
+| A larger change, or one spanning both surfaces | `./theme.sh backup` first — a server-side theme duplicate that is restorable independently of the local machine. Required before structural work, since pushes land on the published theme. |
 | Individual Liquid files | Shopify's code-editor Timeline can revert a single file, but it is per-file and admin-only. Treat it as a convenience, never as the rollback plan. |
 | Store settings (surface C) | **No mechanism exists.** The ledger records the previous value alongside the new one, and that is the only way back. |
 
@@ -194,7 +197,7 @@ Per context doc §8: mega menu, smart search with suggestions, advanced filterin
 - [ ] `theme check` clean; Lighthouse pass
 - [ ] Full AR/RTL sweep, mobile + desktop, both locales
 - [ ] Side-by-side parity review against KSA
-- [ ] Dee's review on the preview link, then publish
+- [ ] Dee's review on the password-protected storefront, then launch (DNS cutover, per the runbook's Phase 6)
 
 ## Open with Bassam
 
