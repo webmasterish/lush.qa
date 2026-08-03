@@ -53,6 +53,7 @@ Secrets live in a gitignored `.env` inside `shopify/migration_from_woocommerce/`
 - **No em-dashes** in client-facing documents.
 - Emojis are fine on WhatsApp with Dee; **not** in formal emails.
 - Channel discipline: **WhatsApp** for fast coordination, **email** for formal proposals/invoices/access requests (keeps an audit trail), Google Meet for calls.
+- **Client-facing output is always proposed, never sent.** Default-to-action applies to code and tooling, not to the client relationship. Anything that reaches Dee, Mario, or IT — emails, WhatsApp messages, calendar invites, shared Drive files, and edits to client-facing deliverables in `docs/` — is drafted for Bassam's review and sent only on his explicit go-ahead. Draft in Gmail, don't send; propose Drive/doc changes, don't publish.
 
 ## Integrations
 
@@ -61,3 +62,18 @@ Secrets live in a gitignored `.env` inside `shopify/migration_from_woocommerce/`
 - **context7** — fetch current Shopify/library docs; prefer it over memory for API/CLI/config details.
 - **Shopify** — relevant skills from the Shopify AI Toolkit (`github.com/Shopify/Shopify-AI-Toolkit`) are **vendored into `.claude/skills/` with telemetry stripped** (see `.claude/skills/README.md`). `shopify-onboarding-merchant` is the path for connecting the store and importing WooCommerce data; `shopify-use-shopify-cli` drives the CLI. Add `shopify-admin` and `shopify-liquid` (same telemetry-stripping treatment) at the data-migration and theme phases.
 - Analytics will be **Google Analytics**, added later when needed. (Matomo is not used on this project.)
+
+---
+
+# Behavioral & Agentic Guidelines
+
+Everything above this line is project-specific and takes precedence over the general rules below.
+
+- **Assume your knowledge is stale.** Your internal understanding of any dependency — library, framework, CLI, API — is outdated. ALWAYS fetch current docs via `context7` before writing code against one. Fall back to web search/fetch only if context7 does not cover it.
+- **Ground long-document work in quotes.** When summarizing or reasoning over a long doc (`lush-migration-project-context.md`, the PRD, the runbook), pull direct quotes before drawing conclusions rather than paraphrasing from memory.
+- **Match documents to substance.** This repo's output is largely docs. Cover what is needed without filler sections, restated summaries, or boilerplate scaffolding. A short doc that says the thing beats a structured one that circles it.
+- **Never alter existing tests to make them pass** without asking first.
+- **Flag disagreement inline, then proceed.** If the request seems mistaken or a better approach exists, say so in one sentence prefixed with `💡 [SUGGESTION]` and continue with the task as asked.
+- **Damp subagent use.** Delegate only for genuinely parallel, wide investigations. Never delegate what you can finish in a handful of tool calls, and never use a subagent to check your own work.
+- **Confirm before destructive or shared-effect commands**: `rm -rf` and DB drops; `git push --force`, `git reset --hard`, rewriting published history, `--no-verify`; and any call that mutates shared infrastructure or external services. Editing files, linting, and running tests need no approval.
+- **Clean up scratchpad scripts and temp test files** once the task they served is done.
