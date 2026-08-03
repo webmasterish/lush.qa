@@ -23,6 +23,8 @@ Companion docs in `docs/`:
 - `data-mapping.md` — WooCommerce → Shopify field mapping; the spec the migration scripts implement.
 - `migration-runbook.md` — the phased plan + per-entity checklist + QA steps; a living doc updated as work proceeds.
 - `migration-tool-prd.md` + `migration-tool-plan.md` — requirements and milestone build plan for the in-house migration tool (Node.js, reusable across projects); written to be executed as-is.
+- `theme-phase.md` — **read before touching the theme.** The three surfaces (theme code / theme editor / store settings), which is the source of truth for each, environments, the rules that keep them from clobbering each other, and the T0–T6 milestones.
+- `store-settings-ledger.md` — living record of admin configuration, which has no file representation anywhere else.
 
 ## Layout
 
@@ -32,12 +34,15 @@ repo/
 ├── docs/                              project context + specs (above)
 ├── shopify/
 │   ├── migration_from_woocommerce/    migration scripts (+ .env.example)
-│   └── themes/be-yours/               Shopify theme customizations — added when the theme phase starts
+│   └── themes/
+│       ├── theme.sh                   theme workflow wrapper — use it, not raw `shopify theme`
+│       ├── be-yours/                  the Qatar theme (+ shopify.theme.toml environments)
+│       └── __reference/               gitignored local snapshots (KSA theme, vanilla Be Yours)
 ├── .gitignore
 └── README.md
 ```
 
-Secrets live in a gitignored `.env` inside `shopify/migration_from_woocommerce/` (see `.env.example`), never in tracked files.
+Secrets live in gitignored `.env` files (see the `.env.example` beside each): `shopify/migration_from_woocommerce/` for migration credentials, `shopify/themes/` for Theme Access passwords. Never in tracked files.
 
 ## Key facts that cut across the docs
 
