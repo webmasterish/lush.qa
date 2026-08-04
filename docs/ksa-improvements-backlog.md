@@ -26,8 +26,7 @@ The corrected versions of 1–3 are already in Qatar's `shopify/themes/be-yours/
 | 5 | **RTL is hardcoded in `layout/theme.liquid`** (`if request.locale.iso_code == 'ar'` → force rtl) because their `ar.json` is missing `localization.text_direction_trigger`. | Forks a stock theme file, so it must be re-applied after every theme update. Setting the locale key instead gives identical behaviour with no fork — that is what Qatar does. |
 | 6 | **Customizations live inside `snippets/css-variables.liquid`** — the brand font, the riyal-symbol font, and the Arabic letter-spacing fix are all edited into a stock file. | Same problem: every theme update risks losing or conflicting with them. Qatar keeps the equivalent in its own `snippets/dotaim-custom-styles.liquid`, rendered from one line in `theme.liquid`. |
 | 7 | **An unpublished 8.5.0 theme sits in the library, descended from the old 8.3.3 theme, not from what is live.** | If anyone publishes it, the store loses its favicon and reverts three social links to Shopify's demo URLs. Worth deleting or clearly renaming. Detail in `ksa-theme-update-assessment.md`. |
-
-| 9 | **The mega menu is misconfigured.** The `mega_menu` block's `menu_title` is `"Skincare"`, but KSA's menu has no top-level item by that name (theirs are Face, Body Care, Hair Care…). The block therefore never renders — which is why its three `seasonal_deal` promos, all still holding Be Yours demo copy, are invisible on the live site. Either point it at a real menu item and write real content, or remove it. |
+| 9 | **The mega menu is misconfigured.** The `mega_menu` block's `menu_title` is `"Skincare"`, but KSA's menu has no top-level item by that name (theirs are Face, Body Care, Hair Care…). | The block never renders, which is why its three `seasonal_deal` promos — all still holding Be Yours demo copy — are invisible on the live site. Either point it at a real menu item and write real content, or remove it. |
 
 ## Housekeeping
 
