@@ -15,7 +15,7 @@
      store's Files, so it is versioned in git, travels with the theme, and
      cannot be broken by someone deleting a file in the admin. */
   @font-face {
-    font-family: 'LushHandwritten';
+    font-family: 'LushHandwritten_Bd';
     src: url('{{ 'LushHandwritten_Bd.woff2' | asset_url }}') format('woff2'),
          url('{{ 'LushHandwritten_Bd.woff' | asset_url }}') format('woff');
     font-weight: normal;
@@ -24,11 +24,17 @@
   }
 
   :root {
+    /* The brand face as its own variable, so it can be applied to specific
+       elements independently of what the heading font happens to be. Lush
+       UK/HQ and Lush Lebanon use this face for headlines only, not for
+       prices and UI text -- see the note in docs/theme-porting-list.md. */
+    --font-lush-handwritten: 'LushHandwritten_Bd', var(--font-body-family);
+
     /* Overrides the theme's Heading font setting. Shopify's font picker only
        offers its own library, so a custom brand face has to be forced here.
        NOTE: this means changing "Heading font" in the theme editor has no
        effect. Recorded in docs/store-settings-ledger.md. */
-    --font-heading-family: 'LushHandwritten', var(--font-body-family);
+    --font-heading-family: var(--font-lush-handwritten);
   }
 
   /* Arabic is cursive: its letters join. The theme applies letter-spacing in

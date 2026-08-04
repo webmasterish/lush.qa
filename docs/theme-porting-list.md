@@ -103,6 +103,14 @@ Enabled sections in order (13 more sit disabled in the template and can be ignor
 
 Every one of these section types exists in Qatar 9.2. Content, images and collection targets are Qatar's own — and every referenced image must be uploaded to Qatar's Files, since `shopify://` URLs are per-store.
 
+## Open design question — where the brand face applies
+
+Qatar currently applies `LushHandwritten_Bd` to **all headings**, because that is what KSA does and Dee asked for a mirror of the Saudi store.
+
+**Lush UK/HQ and Lush Lebanon use it for headlines only** — not for prices, buttons or UI text — which is the more accurate reading of the brand. Bassam's view (2026-08-04) is that Saudi will likely be brought in line with UK eventually.
+
+Nothing to do now. The groundwork is in place: the face is exposed as its own `--font-lush-handwritten` variable in `snippets/dotaim-custom-styles.liquid`, separate from `--font-heading-family`, so narrowing its scope later is a matter of pointing specific elements at the variable rather than unpicking a global override.
+
 ## 8. Explicitly skip
 
 - The **`SAR` riyal font** — Qatar is QAR.
