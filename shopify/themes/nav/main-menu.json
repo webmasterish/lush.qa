@@ -1,0 +1,280 @@
+{
+  "_source": "Derived from lush.qa WooCommerce category hierarchy, 2026-08-04. See docs/navigation-plan.md.",
+  "_note": "Collections referenced by handle; the apply script resolves handles to IDs at run time.",
+  "handle": "main-menu",
+  "title": "Main menu",
+  "items": [
+    {
+      "title": "Bath and Shower",
+      "collection": "bath-and-shower",
+      "items": [
+        {
+          "title": "Bath Bombs",
+          "collection": "bathbomb"
+        },
+        {
+          "title": "Body Scrubs",
+          "collection": "body-scrubs"
+        },
+        {
+          "title": "Bubble Bars",
+          "collection": "bubble-bar"
+        },
+        {
+          "title": "Luxury Bath Oils",
+          "collection": "luxury-bath-oils"
+        },
+        {
+          "title": "Shower gels & Jellies",
+          "collection": "shower-gels"
+        },
+        {
+          "title": "Shower Moisturisers",
+          "collection": "shower-moisturisers"
+        },
+        {
+          "title": "Soap",
+          "collection": "soap"
+        }
+      ]
+    },
+    {
+      "title": "Face",
+      "collection": "face",
+      "items": [
+        {
+          "title": "Cleansers & Scrubs",
+          "collection": "cleansers-scrubs"
+        },
+        {
+          "title": "Face Masks",
+          "collection": "face-masks"
+        },
+        {
+          "title": "Lip Scrubs & Balms",
+          "collection": "lip-scrubs-balms-face"
+        },
+        {
+          "title": "Make Up",
+          "collection": "make-up-face"
+        },
+        {
+          "title": "Moisturisers",
+          "collection": "moisturisers"
+        },
+        {
+          "title": "Oral Care",
+          "collection": "oral-care"
+        },
+        {
+          "title": "Shaving",
+          "collection": "shaving"
+        },
+        {
+          "title": "Toners",
+          "collection": "toners"
+        }
+      ]
+    },
+    {
+      "title": "Body",
+      "collection": "body",
+      "items": [
+        {
+          "title": "Body Lotions & Body Butter",
+          "collection": "body-lotions"
+        },
+        {
+          "title": "Deodorants & Dusting Powders",
+          "collection": "deodorants-powders"
+        },
+        {
+          "title": "Foot Care",
+          "collection": "foot-care"
+        },
+        {
+          "title": "Hand Care",
+          "collection": "hand-care-body"
+        },
+        {
+          "title": "Massage Bars",
+          "collection": "massage-bars"
+        },
+        {
+          "title": "Sun Care",
+          "collection": "sun-care"
+        }
+      ]
+    },
+    {
+      "title": "Hair",
+      "collection": "hair",
+      "items": [
+        {
+          "title": "Afro Hair Care",
+          "collection": "afro-hair-care"
+        },
+        {
+          "title": "Conditioners",
+          "collection": "conditioners"
+        },
+        {
+          "title": "Hair Treatments",
+          "collection": "hair-treatments"
+        },
+        {
+          "title": "Henna",
+          "collection": "henna"
+        },
+        {
+          "title": "Shampoo",
+          "collection": "shampoo"
+        },
+        {
+          "title": "Hair Styling",
+          "collection": "styling"
+        }
+      ]
+    },
+    {
+      "title": "Fragrances",
+      "collection": "fragrances",
+      "items": [
+        {
+          "title": "Body Sprays",
+          "collection": "body-sprays"
+        },
+        {
+          "title": "Candles",
+          "collection": "candles"
+        },
+        {
+          "title": "Glitter Mist",
+          "collection": "glitter-mist"
+        },
+        {
+          "title": "Home Fragrance",
+          "collection": "home-fragrance"
+        },
+        {
+          "title": "Perfumes",
+          "collection": "perfumes"
+        },
+        {
+          "title": "Solid Perfume",
+          "collection": "solid-perfume"
+        }
+      ]
+    },
+    {
+      "title": "Gifts",
+      "collection": "gifts",
+      "items": [
+        {
+          "title": "Gifts between 200 - 500 QAR",
+          "collection": "gifts-between-200-500-qar"
+        },
+        {
+          "title": "Gifts over 500 QAR",
+          "collection": "gifts-over-500-qar"
+        },
+        {
+          "title": "Gifts under 200 QAR",
+          "collection": "gifts-under-200-qar"
+        },
+        {
+          "title": "Knot Wraps",
+          "collection": "knot-wraps"
+        }
+      ]
+    },
+    {
+      "title": "Fresh",
+      "collection": "fresh",
+      "items": [
+        {
+          "title": "Fresh Cleansers",
+          "collection": "fresh-cleansers-2"
+        },
+        {
+          "title": "Fresh Masks",
+          "collection": "fresh-masks-2"
+        }
+      ]
+    },
+    {
+      "title": "Collaborations",
+      "collection": "collaborations",
+      "items": [
+        {
+          "title": "Scooby-Doo! X LUSH",
+          "collection": "scooby-doo-x-lush"
+        },
+        {
+          "title": "The Super Mario Galaxy Movie × Lush",
+          "collection": "the-super-mario-galaxy-movie-x-lush"
+        }
+      ]
+    },
+    {
+      "title": "New Products",
+      "collection": "new-products",
+      "items": [
+        {
+          "title": "Lunar New Year",
+          "collection": "lunar-new-year"
+        }
+      ]
+    },
+    {
+      "title": "Sleep Better",
+      "collection": "sleep-better",
+      "items": [
+        {
+          "title": "Lavender Range/Sleepy",
+          "collection": "lavender-range-sleepy-2"
+        }
+      ]
+    },
+    {
+      "title": "Muscle Recovery",
+      "collection": "muscle-recovery",
+      "items": [
+        {
+          "title": "Magnesium Range",
+          "collection": "magnesium-range"
+        }
+      ]
+    },
+    {
+      "title": "Lifestyle",
+      "collection": "lifestyle",
+      "items": [
+        {
+          "title": "Apparel",
+          "collection": "apparel"
+        }
+      ]
+    },
+    {
+      "title": "Best Sellers",
+      "collection": "best-sellers"
+    },
+    {
+      "title": "5 Star Reviews",
+      "collection": "5-star-reviews"
+    },
+    {
+      "title": "Trending Now",
+      "collection": "trending-now"
+    },
+    {
+      "title": "Lush Party",
+      "collection": "lush-party"
+    },
+    {
+      "title": "Sun Care",
+      "collection": "sun-care"
+    }
+  ]
+}
