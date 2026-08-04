@@ -38,7 +38,7 @@ KSA's footer group carries an AI-generated theme block configured as a floating 
 
 **Correction (2026-08-04): that block is `disabled` on KSA and does not render** — confirmed against the live storefront, which loads no WhatsApp script. So it is working code that was never switched on, not a feature in production.
 
-This covers the floating-button half of the **$200 WhatsApp integration** line in the Qatar scope. Port the block, swap the number for Qatar's. Order confirmations and shipping updates are a separate app-level piece and are not in the theme.
+**Decision 2026-08-04: not being added.** It is disabled on KSA, so nothing is being mirrored by leaving it out. The $200 WhatsApp integration line stays in scope as app-level work (order confirmations, shipping updates); the floating button can be revisited then.
 
 ## 3. Settings needing a decision
 
