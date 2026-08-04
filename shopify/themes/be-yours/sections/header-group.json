@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.header-group.name",
   "type": "header",
@@ -53,12 +44,12 @@
         "show_navigation": true,
         "direction": "left",
         "speed": 1.6,
-        "colors_text": "#fbf7f1",
-        "colors_background": "#acaaa6",
+        "colors_text": "#ffffff",
+        "colors_background": "#1a1b18",
         "gradient_background": "",
-        "colors_highlight": "#d9b97a",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "colors_highlight": "#ffb503",
+        "padding_top": 2,
+        "padding_bottom": 2
       }
     },
     "header": {
@@ -155,15 +146,15 @@
       ],
       "settings": {
         "logo": "{{ shop.brand.logo }}",
-        "logo_height": 50,
-        "mobile_logo_height": 44,
+        "logo_height": 48,
+        "mobile_logo_height": 40,
         "logo_position": "top-center",
         "menu": "main-menu",
         "menu_mobile": "main-menu",
         "enable_dropdown_menu": true,
         "show_line_separator": true,
         "uppercase_menu_items": true,
-        "cart_icon": "cart",
+        "cart_icon": "bag",
         "icon_weight": "1.3",
         "enable_country_selector": true,
         "enable_language_selector": true,
@@ -172,22 +163,22 @@
         "transparent_logo": "",
         "enable_transparent_header": true,
         "enable_transparent_header_collection": true,
-        "enable_transparent_header_custom": "transparent-menu",
+        "enable_transparent_header_custom": "",
         "show_transparent_header_border": false,
         "transparent_text_color": "#ffffff",
-        "enable_highlight": true,
+        "enable_highlight": false,
         "highlight_labels": "Skincare",
-        "highlight_style": "squiggle",
-        "enable_sidebar": true,
+        "highlight_style": "marker",
+        "enable_sidebar": false,
         "sidebar_heading": "Must-see this week",
         "mobile_logo_position": "center",
-        "colors_text": "#1a1b18",
+        "colors_text": "#282828",
         "colors_border": "#d2d5d9",
-        "colors_background": "#fbf7f1",
+        "colors_background": "#ffffff",
         "gradient_background": "",
-        "colors_highlight": "#d9b97a",
-        "padding_top": 12,
-        "padding_bottom": 12
+        "colors_highlight": "#faeaa1",
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     }
   },

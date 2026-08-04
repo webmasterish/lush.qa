@@ -29,12 +29,14 @@ Present on KSA-live, absent from stock Be Yours. This is DotAim's own work from 
 | `templates/page.consultation-request.json` | Consultation request page | Built on an `apps` section — check which app |
 | `templates/page.newsletter-signup.json` | Newsletter signup page | |
 | `config/markets.json` | Market configuration | KSA-specific values, structure only |
-| `blocks/ai_gen_block_5ca9f34.liquid` | **Floating WhatsApp button** | See §2 |
+| `blocks/ai_gen_block_5ca9f34.liquid` | **Floating WhatsApp button** — present but **disabled** on KSA | See §2 |
 | `templates/index.context.sa.json` | KSA market-contextual homepage | **Skip** — KSA-only |
 
 ## 2. The WhatsApp button already exists
 
 KSA's footer group carries an AI-generated theme block configured as a floating WhatsApp button: phone `+966553337052`, WhatsApp green `#25d366`, hover `#128c7e`, with size and spacing settings. It is the `_blocks` entry that showed up as a missing section type.
+
+**Correction (2026-08-04): that block is `disabled` on KSA and does not render** — confirmed against the live storefront, which loads no WhatsApp script. So it is working code that was never switched on, not a feature in production.
 
 This covers the floating-button half of the **$200 WhatsApp integration** line in the Qatar scope. Port the block, swap the number for Qatar's. Order confirmations and shipping updates are a separate app-level piece and are not in the theme.
 
@@ -85,6 +87,14 @@ Worth raising with Bassam: KSA and Qatar sell largely the same Lush products, so
 Beyond the standard set: `page.branches`, `page.consultation-request`, `page.newsletter-signup`, `page.store-locator`, `page.about` and `page.about-modern`, `page.contact` and `page.contact-with-map`, `page.faq`, `page.plant-drop`, `page.visit`, `page.sidebar`, plus `product.pre-order`, `product.product-landing`, `product.gift-card`, `product.modal`.
 
 Which of these Qatar needs depends on the 16 CMS pages still to migrate (Phase 3, scheduled at T5). Match them up before building templates nobody will use.
+
+## 7a. Header and footer — done and blocked
+
+**Done 2026-08-04:** visual settings ported and verified live — announcement bar `#1a1b18` on `#ffb503` highlight, header white on `#282828` with the marker highlight and bag cart icon, footer black with white headings, KSA's padding and logo heights, social icons and payment icons off, policy links on.
+
+**Deliberately not ported:** the `seasonal_deal` blocks and mega-menu promos in KSA's header. They hold unedited Be Yours demo copy ("THE PERFECT PRESENT … includes a cuddly teddy bear", "MEET OUR NEW BAE!", the literal placeholder "Add a tagline") and **render nowhere on the live Saudi site** — verified, zero occurrences in the page. Mirroring KSA there would mean importing dormant demo content.
+
+**Blocked:** logos (per-store file URLs, need uploading to Qatar's Files), announcement copy (Saudi riyal threshold and delivery window; needs Dee, plus Arabic), and every menu (see `navigation-plan.md`).
 
 ## 7. KSA homepage — the parity target
 

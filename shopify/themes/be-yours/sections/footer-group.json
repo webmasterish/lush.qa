@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.footer-group.name",
   "type": "footer",
@@ -43,19 +34,24 @@
       ],
       "settings": {
         "newsletter_enable": true,
-        "newsletter_heading": "Exclusive benefits",
+        "newsletter_heading": "Want more LUSH?",
         "newsletter_text": "<p>Apply for our free membership to receive exclusive deals, news, and events.</p>",
-        "show_social": true,
+        "show_social": false,
         "social_heading": "",
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "payment_enable": true,
+        "payment_enable": false,
         "copyright_text": "All rights reserved.",
-        "colors_text": "#42474c",
-        "colors_heading": "#6b7177",
-        "colors_link": "#1a1b18",
+        "colors_text": "#f3f3f3",
+        "colors_heading": "#ffffff",
+        "colors_link": "#f3f3f3",
         "colors_border": "#d2d5d9",
-        "colors_background": "#fbf7f1"
+        "colors_background": "#000000",
+        "colors_highlight": "#ffb503",
+        "enable_highlight": false,
+        "highlight_style": "marker",
+        "show_policy": true,
+        "show_divider": false
       }
     }
   },
