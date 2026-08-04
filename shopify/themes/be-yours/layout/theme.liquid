@@ -52,6 +52,7 @@
 
     {%- liquid
       render 'css-variables'
+      render 'dotaim-custom-styles'
       echo 'base.css' | asset_url | stylesheet_tag: preload: true
       
       if text_direction == 'rtl'

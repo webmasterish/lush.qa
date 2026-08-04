@@ -1,0 +1,41 @@
+{%- comment -%}
+  DotAim customizations that have no theme setting to express them.
+
+  Kept in this snippet, rendered from layout/theme.liquid immediately after
+  'css-variables', so that stock theme files stay unforked and a Be Yours
+  update only ever conflicts on the single render line in theme.liquid.
+
+  Ported from Lush KSA (lush.sa.com), which instead edited snippets/
+  css-variables.liquid directly. Deliberately NOT ported: KSA's 'SAR'
+  riyal-symbol font and .sar_symbol rule, which are Saudi-only. Qatar is QAR.
+{%- endcomment -%}
+
+{%- style -%}
+  /* Lush brand heading face. Held in the theme's own assets rather than the
+     store's Files, so it is versioned in git, travels with the theme, and
+     cannot be broken by someone deleting a file in the admin. */
+  @font-face {
+    font-family: 'LushHandwritten';
+    src: url('{{ 'LushHandwritten_Bd.woff2' | asset_url }}') format('woff2'),
+         url('{{ 'LushHandwritten_Bd.woff' | asset_url }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    /* Overrides the theme's Heading font setting. Shopify's font picker only
+       offers its own library, so a custom brand face has to be forced here.
+       NOTE: this means changing "Heading font" in the theme editor has no
+       effect. Recorded in docs/store-settings-ledger.md. */
+    --font-heading-family: 'LushHandwritten', var(--font-body-family);
+  }
+
+  /* Arabic is cursive: its letters join. The theme applies letter-spacing in
+     15 places in base.css (up to 0.3rem) and rtl.css does not reset it, which
+     visually severs those joins. Ported from KSA, where it is the one Arabic
+     typography fix they carried. */
+  html[lang='ar'] * {
+    letter-spacing: 0 !important;
+  }
+{%- endstyle -%}

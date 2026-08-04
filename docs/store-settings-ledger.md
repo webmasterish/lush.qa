@@ -41,6 +41,14 @@ Status: `done` · `todo` · `blocked` · `n/a`
 | Domain | Settings > Domains | lush.qa cutover via Cloudflare, coordinated with Nirmal | no | blocked until launch | IT + DotAim |
 | Users | Settings > Users | Confirm DotAim staff access post-transfer, and remove it at handover | no | todo | Bassam |
 
+## Theme settings that are overridden in code
+
+Settings whose theme-editor control does nothing, because code forces the value. Recorded here so nobody loses an afternoon to a setting that silently has no effect.
+
+| Setting | Overridden by | Why |
+|---|---|---|
+| Typography > Heading font | `snippets/dotaim-custom-styles.liquid` sets `--font-heading-family` to `LushHandwritten` | Shopify's font picker only offers its own library, so the Lush brand face has to be forced in CSS. Matches KSA. |
+
 ## Notes
 
 - **WhatsApp integration** ($200 line, deferrable) and **email automation** ($300 line) both land here as app + settings work; neither is scheduled yet.

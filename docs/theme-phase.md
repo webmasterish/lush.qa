@@ -103,7 +103,10 @@ shopify/themes/
 5. **Surface C changes get a ledger line the same day** — page, setting, value, date. If it is not in `store-settings-ledger.md`, it does not exist at handover.
 6. **`theme check` clean before every commit of theme code.**
 7. **Dee reviews the store itself**, which is password-protected until launch. No preview links to juggle — the theme she opens is the theme we are building.
-8. **Confirm before every store-touching command.** In force from 2026-08-03 at Bassam's request, until the setup has proven itself: no command that reads from or writes to either store runs without his explicit go-ahead, stated in advance as *what it does, which store, read or write*. Local commands (`check`, diffs, file edits) do not need it.
+8. **Translate on sight.** Whenever a string is encountered that has no Arabic, translate it there and then rather than filing it, and report what was translated. Standing instruction from Bassam, 2026-08-04. The 86 strings already added this way are in `locales/ar.json` and want a native review before launch.
+9. **KSA findings go in the backlog, not into KSA.** Issues spotted on `lush.sa.com` while using it as reference are recorded in `ksa-improvements-backlog.md` for a separate future engagement. Only genuinely critical problems get raised immediately.
+10. **Customizations never fork a stock theme file.** They live in `snippets/dotaim-custom-styles.liquid`, rendered from a single line in `layout/theme.liquid`, so a Be Yours update can only ever conflict on that one line. KSA edited stock files directly and pays for it at every update.
+11. **Confirm before every store-touching command.** In force from 2026-08-03 at Bassam's request, until the setup has proven itself: no command that reads from or writes to either store runs without his explicit go-ahead, stated in advance as *what it does, which store, read or write*. Local commands (`check`, diffs, file edits) do not need it.
 
 ## Reversibility
 
