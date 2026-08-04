@@ -1,0 +1,49 @@
+{
+  "_source": "Images read from the live WooCommerce homepage at lush.qa on 2026-08-04. See docs/navigation-plan.md and docs/theme-porting-list.md.",
+  "_note": "filename is what the theme references as shopify://shop_images/<filename>, so changing one here means re-wiring templates/index.json. Shopify fetches source_url itself; the URL must stay publicly reachable until the import runs.",
+  "_review": "The three banner images are a confident match to their sections. The hero slides are candidates lifted from the WooCommerce slideshow, which rotates seasonally - Dee should confirm which are current before they go live.",
+  "files": [
+    {
+      "filename": "lush-qa-banner-gifts.png",
+      "source_url": "https://lush.qa/wp-content/uploads/2025/01/gift.png",
+      "alt": "Lush gift boxes",
+      "used_by": "index.json / gifts_banner (LUSH GIFTS)"
+    },
+    {
+      "filename": "lush-qa-banner-fragrances.png",
+      "source_url": "https://lush.qa/wp-content/uploads/2025/01/fragrance.png",
+      "alt": "Lush fragrances",
+      "used_by": "index.json / fragrance_banner (Unisex fragrances for everyone)"
+    },
+    {
+      "filename": "lush-qa-banner-bath-shower.png",
+      "source_url": "https://lush.qa/wp-content/uploads/2025/01/shower.png",
+      "alt": "Lush bath and shower products",
+      "used_by": "index.json / bath_banner (We have bath products for every mood)"
+    },
+    {
+      "filename": "lush-qa-hero-karma.jpg",
+      "source_url": "https://lush.qa/wp-content/uploads/2026/03/karma_group_lush_2026_01-1-1.jpg",
+      "alt": "Lush Karma range",
+      "used_by": "index.json / hero slideshow (candidate)"
+    },
+    {
+      "filename": "lush-qa-hero-lip-balm.jpg",
+      "source_url": "https://lush.qa/wp-content/uploads/2026/07/lip_balm_group_landscape_2026.jpg",
+      "alt": "Lush lip balms",
+      "used_by": "index.json / hero slideshow (candidate)"
+    },
+    {
+      "filename": "lush-qa-hero-supermilk.jpg",
+      "source_url": "https://lush.qa/wp-content/uploads/2026/06/supermilk_haircare_gift_hero_landscape_2026-2-scaled.jpg",
+      "alt": "Lush Supermilk haircare gift",
+      "used_by": "index.json / hero slideshow (candidate)"
+    },
+    {
+      "filename": "lush-qa-hero-spa-gift.jpg",
+      "source_url": "https://lush.qa/wp-content/uploads/2026/06/spa_gift_lush_2025_landscape_no_voucher_01-1-scaled.jpg",
+      "alt": "Lush spa gift",
+      "used_by": "index.json / hero slideshow (candidate)"
+    }
+  ]
+}

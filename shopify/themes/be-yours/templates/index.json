@@ -1,28 +1,82 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
+      "type": "slideshow",
       "settings": {
-        "image_height": "large",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
+        "slideshow_type": "legacy",
+        "text_alignment": "left",
+        "image_ratio": "100vh",
+        "autorotate": true,
+        "autorotate_speed": 5,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "600px",
         "colors_text": "#ffffff",
-        "image_overlay_opacity": 20,
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true
+        "colors_overlay": "#1a1b18",
+        "colors_overlay_opacity": 16,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff"
       },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_karma": {
+          "type": "image",
           "settings": {
-            "heading": "Fresh handmade cosmetics",
-            "heading_size": "h1"
+            "image": "shopify://shop_images/lush-qa-hero-karma.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "heading": "Karma",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers"
+          }
+        },
+        "slide_lipbalm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-lip-balm.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "heading": "Lip Balms",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers"
+          }
+        },
+        "slide_supermilk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-supermilk.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "heading": "Supermilk Haircare",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers"
+          }
+        },
+        "slide_spagift": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-spa-gift.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "heading": "Spa Gifts",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers"
           }
         }
       },
       "block_order": [
-        "heading"
+        "slide_karma",
+        "slide_lipbalm",
+        "slide_supermilk",
+        "slide_spagift"
       ],
       "disabled": true
     },
@@ -128,7 +182,8 @@
         "mobile_layout": "image_first",
         "mobile_text_alignment": "left",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "image": "shopify://shop_images/lush-qa-banner-gifts.png"
       },
       "blocks": {
         "h": {
@@ -193,7 +248,8 @@
         "mobile_layout": "image_first",
         "mobile_text_alignment": "left",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "image": "shopify://shop_images/lush-qa-banner-fragrances.png"
       },
       "blocks": {
         "h": {
@@ -258,7 +314,8 @@
         "mobile_layout": "image_first",
         "mobile_text_alignment": "left",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "image": "shopify://shop_images/lush-qa-banner-bath-shower.png"
       },
       "blocks": {
         "h": {
