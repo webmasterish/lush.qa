@@ -56,94 +56,68 @@
     "header": {
       "type": "header",
       "blocks": {
-        "23ac3cc1-1fc4-42a6-8e72-c6fad0b13420": {
+        "mega_bath_and_shower": {
           "type": "mega_menu",
           "settings": {
-            "menu_title": "Skincare",
+            "menu_title": "Bath and Shower",
             "narrow": false,
-            "show_menu_image": false,
-            "promo_image_1": "",
-            "promo_image_ratio_1": "adapt",
-            "promo_image_position_1": "center center",
-            "promo_heading_1": "All Skincare",
-            "promo_text_1": "Curated for radiant, balanced skin",
-            "promo_overlay_content_1": false,
-            "promo_link_1": "",
-            "promo_image_2": "",
-            "promo_image_ratio_2": "adapt",
-            "promo_image_position_2": "center center",
-            "promo_heading_2": "Trending weekly",
-            "promo_text_2": "Trending picks from our edit",
-            "promo_overlay_content_2": true,
-            "promo_link_2": ""
+            "show_menu_image": true,
+            "defer_loading": true
           }
         },
-        "seasonal_deal_iyWjpq": {
-          "type": "seasonal_deal",
+        "mega_face": {
+          "type": "mega_menu",
           "settings": {
-            "image": "",
-            "image_ratio": "adapt",
-            "layout": "layout-bottom",
-            "text_box_position": "middle-center",
-            "text_alignment": "center",
-            "heading": "The perfect present",
-            "subheading": "",
-            "description": "<p>Enhance your beauty routine with our luxurious cream gift box. Includes a cuddly teddy bear for added charm. Limited availability.</p>",
-            "button_label": "Shop now",
-            "button_link": "",
-            "heading_color": "#1a1b18",
-            "subheading_color": "#1a1b18",
-            "description_color": "#1a1b18",
-            "background_color": "#efe6dc",
-            "colors_overlay_opacity": 92
+            "menu_title": "Face",
+            "narrow": false,
+            "show_menu_image": true,
+            "defer_loading": true
           }
         },
-        "seasonal_deal_fTVMTi": {
-          "type": "seasonal_deal",
+        "mega_body": {
+          "type": "mega_menu",
           "settings": {
-            "image": "",
-            "image_ratio": "landscape",
-            "layout": "layout-left",
-            "text_box_position": "middle-center",
-            "text_alignment": "center",
-            "heading": "Just landed",
-            "subheading": "",
-            "description": "<p>Introducing our latest beauty cream for radiant, glowing skin. </p>",
-            "button_label": "Explore",
-            "button_link": "",
-            "heading_color": "#1a1b18",
-            "subheading_color": "#1a1b18",
-            "description_color": "#1a1b18",
-            "background_color": "#a6b5a0",
-            "colors_overlay_opacity": 40
+            "menu_title": "Body",
+            "narrow": false,
+            "show_menu_image": true,
+            "defer_loading": true
           }
         },
-        "seasonal_deal_ffwHEh": {
-          "type": "seasonal_deal",
+        "mega_hair": {
+          "type": "mega_menu",
           "settings": {
-            "image": "",
-            "image_ratio": "square",
-            "layout": "overlay-opacity",
-            "text_box_position": "top-right",
-            "text_alignment": "right",
-            "heading": "Organic ingredients?",
-            "subheading": "",
-            "description": "<p>Curious about the effectiveness of organic ingredients? Learn how our products harness nature’s potential for real results.</p>",
-            "button_label": "Learn more",
-            "button_link": "",
-            "heading_color": "#1a1b18",
-            "subheading_color": "#1a1b18",
-            "description_color": "#1a1b18",
-            "background_color": "#fbf7f1",
-            "colors_overlay_opacity": 20
+            "menu_title": "Hair",
+            "narrow": false,
+            "show_menu_image": true,
+            "defer_loading": true
+          }
+        },
+        "mega_fragrances": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_title": "Fragrances",
+            "narrow": false,
+            "show_menu_image": true,
+            "defer_loading": true
+          }
+        },
+        "mega_gifts": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_title": "Gifts",
+            "narrow": false,
+            "show_menu_image": true,
+            "defer_loading": true
           }
         }
       },
       "block_order": [
-        "23ac3cc1-1fc4-42a6-8e72-c6fad0b13420",
-        "seasonal_deal_iyWjpq",
-        "seasonal_deal_fTVMTi",
-        "seasonal_deal_ffwHEh"
+        "mega_bath_and_shower",
+        "mega_face",
+        "mega_body",
+        "mega_hair",
+        "mega_fragrances",
+        "mega_gifts"
       ],
       "settings": {
         "logo": "{{ shop.brand.logo }}",

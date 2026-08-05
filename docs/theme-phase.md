@@ -178,7 +178,7 @@ Then, regardless of route:
 - [ ] Logo, favicon, brand assets uploaded to Qatar Files
 - [ ] RTL + `locales/ar.json` + `ar.schema.json`
 - [ ] Header, footer, announcement bar section groups
-- [ ] Navigation menus — surface C, mega menu structure mirroring KSA
+- [x] Navigation menus — applied 2026-08-04 from `shopify/themes/nav/main-menu.json`; mega menus enabled for the six large families
 
 ### T3 — Templates & sections parity
 **Started 2026-08-04.** Search, 404 and cart already matched KSA and needed no work.

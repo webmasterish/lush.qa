@@ -10,6 +10,8 @@ It also reflects how Dee's "mirror the Saudi store" should be read — **same st
 
 **62 of the 64 category links map to a migrated Shopify collection.** The two that do not, `fun-en` and `shower-bombs`, have no collection because the migration created collections only for categories that had products. Confirm they are empty in WooCommerce before deciding whether to drop them; they are excluded below.
 
+**Applied 2026-08-04.** The menu is live: 17 top-level items, 61 collection links rendering in the header, Shopify's Home/Catalog/Contact placeholders gone. Mega menus are enabled for the six large families (Bath and Shower, Face, Body, Hair, Fragrances, Gifts), which render their children as columns; the rest stay simple dropdowns.
+
 ## Proposed main menu
 
 Handles are Shopify collection handles, verified present. Structure matches WooCommerce exactly.
