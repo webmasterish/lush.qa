@@ -19,7 +19,7 @@ surface A, versioned in git, and checked by `theme check`. This covers store
 content: menus, policies, pages, products, collections, and anything typed into
 the theme editor.
 """
-import json, os, sys, urllib.request, pathlib
+import json, os, re, sys, urllib.request, pathlib
 
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[2]
@@ -72,6 +72,10 @@ QUERY = """query($type: TranslatableResourceType!, $locale: String!, $after: Str
 # Keys whose "value" is not prose - translating them is meaningless.
 SKIP_KEYS = {'handle', 'json_value', 'meta_description', 'meta_title'}
 
+# Values that are not prose: resource references, asset paths, dates, numbers.
+# Counting these as translation gaps makes the report dishonest.
+NOT_PROSE = re.compile(r'^(shopify://|https?://|#[0-9a-fA-F]{3,8}$|[\d\-/.,:\s]+$)')
+
 
 def audit(rtype, detail=False):
     missing, stale, translated, cursor = [], [], 0, None
@@ -83,7 +87,10 @@ def audit(rtype, detail=False):
         for node in res['nodes']:
             done = {t['key']: t for t in node['translations']}
             for c in node['translatableContent']:
-                if c['key'] in SKIP_KEYS or not (c['value'] or '').strip():
+                val = (c['value'] or '').strip()
+                if c['key'] in SKIP_KEYS or not val or NOT_PROSE.match(val):
+                    continue
+                if NOT_PROSE.match((c['value'] or '').strip()):
                     continue
                 t = done.get(c['key'])
                 if not t:

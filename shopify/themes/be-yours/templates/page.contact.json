@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "image-banner": {
@@ -71,32 +62,32 @@
           "type": "contact",
           "settings": {
             "heading": "Information",
-            "text": "info@yourstore.com",
-            "link": "mailto:info@yourstore.com"
+            "text": "wecarelush@almana.com",
+            "link": "mailto:wecarelush@almana.com"
           }
         },
         "contact-1": {
           "type": "contact",
           "settings": {
             "heading": "Customer service",
-            "text": "shop@yourstore.com",
-            "link": "mailto:shop@yourstore.com"
+            "text": "wecarelush@almana.com",
+            "link": "mailto:wecarelush@almana.com"
           }
         },
         "contact-2": {
           "type": "contact",
           "settings": {
             "heading": "Sales",
-            "text": "sales@yourstore.com",
-            "link": "mailto:sales@yourstore.com"
+            "text": "wecarelush@almana.com",
+            "link": "mailto:wecarelush@almana.com"
           }
         },
         "contact-3": {
           "type": "contact",
           "settings": {
             "heading": "Press",
-            "text": "press@yourstore.com",
-            "link": "mailto:press@yourstore.com"
+            "text": "wecarelush@almana.com",
+            "link": "mailto:wecarelush@almana.com"
           }
         },
         "media": {
@@ -145,7 +136,7 @@
         "map-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Toronto, Canada</p>",
+            "text": "<p>Lush Landmark Mall<br>Doha, Qatar<br>+974 44874265</p>",
             "text_size": "typeset",
             "secondary_color": false
           }

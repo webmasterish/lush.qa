@@ -130,17 +130,6 @@
             "keep_open": false
           }
         },
-        "57973ae1-721a-4722-9e9a-ed71059e2970": {
-          "type": "collapsible_tab",
-          "settings": {
-            "icon": "plane",
-            "heading": "Shipping information",
-            "content": "<p>- No EU import duties.<br/>- Ships within 1-2 business days.<br/>- Ships in our fully recyclable and biodegradable signature boxes.</p>",
-            "page": "",
-            "custom_liquid": "",
-            "keep_open": true
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -183,7 +172,6 @@
         "0f1655b9-1ae1-4a6b-a4c8-9cdfc6ba436b",
         "collapsible_tab-0",
         "collapsible_tab-1",
-        "57973ae1-721a-4722-9e9a-ed71059e2970",
         "buy_buttons",
         "inventory_status",
         "share",
@@ -213,115 +201,6 @@
         "show_divider": false,
         "padding_top": 36,
         "padding_bottom": 72
-      }
-    },
-    "faddcad3-5a02-4a7c-819e-d0e9266565dc": {
-      "type": "scrolling-promotion",
-      "blocks": {
-        "86038a85-b99c-4a02-905f-b6c0203177ea": {
-          "type": "announcement",
-          "settings": {
-            "icon": "none",
-            "icon_size": "medium",
-            "custom_icon": "",
-            "text": "FREE SHIPPING on all orders over $100",
-            "text_size": 16,
-            "link": ""
-          }
-        },
-        "d54f5183-156e-42e6-ac8c-fc7196c16e1a": {
-          "type": "announcement",
-          "settings": {
-            "icon": "none",
-            "icon_size": "medium",
-            "custom_icon": "",
-            "text": "EASY RETURNS 30-day postage paid returns",
-            "text_size": 16,
-            "link": ""
-          }
-        },
-        "155152a4-0688-4c66-b6b2-53bd42133837": {
-          "type": "announcement",
-          "settings": {
-            "icon": "none",
-            "icon_size": "medium",
-            "custom_icon": "",
-            "text": "10% OFF your first order | Use code: FIRST10",
-            "text_size": 16,
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "86038a85-b99c-4a02-905f-b6c0203177ea",
-        "d54f5183-156e-42e6-ac8c-fc7196c16e1a",
-        "155152a4-0688-4c66-b6b2-53bd42133837"
-      ],
-      "settings": {
-        "direction": "left",
-        "speed": 1.6,
-        "show_divider": false,
-        "use_custom_colors": true,
-        "colors_icon": "#d9b97a",
-        "colors_text": "#1a1b18",
-        "colors_background": "#efe6dc",
-        "gradient_background": "",
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "d9e21821-1696-4a1a-b0c2-08252d253ad5": {
-      "type": "collapsible-content",
-      "blocks": {
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-0": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Are your products organic / natural?",
-            "row_content": "<p>Our products combine the power of naturally occurring and advanced science ingredients that are simple to use, highly effective, non-toxic, non-irritating, and absolutely cruelty-free. We do not use aggressive, irritating ingredients. Beyond this, we do not like labels such as ‘organic,’ ‘natural’ or ‘clean,’ which have no consistent definition and tell you nothing about a product’s safety or efficacy. We are committed to bringing you the very best ingredient science and being certified “organic” does not always yield the best ingredient.</p>",
-            "page": ""
-          }
-        },
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-1": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Do your products contain fragrance?",
-            "row_content": "<p>Generally not, but with limited exceptions. “Fragrance,” when used in our products like the ANTI-AGING BODY CREAM, is selected for its pleasant scent but also for its proven tolerability. Most fragrances contain allergic substances, or “allergens”: if present, it is compulsory to state this on the label, even if the percentage contained is minimal. Where possible, we tend to use fragrances which do not contain allergens and which should therefore give rise to fewer problems. When fragrance is present in a our product, is indicated in the list of ingredients as PARFUM or FRAGRANCE.</p>",
-            "page": ""
-          }
-        },
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-2": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Is there talc in any of your products?",
-            "row_content": "<p>The minerals that are used to produce talc can contain asbestos, which is why there are legitimate concerns about its potential effect on our health. The talc used in our ENZYME CLEANSER, BABY BUM CREAM and tinted CLARIFYING SPOT TREATMENTS is NOT made of minerals that contain asbestos and thus is not carcinogenic and completely safe. The talc we use is periodically and consistently reviewed by independent laboratories.</p>",
-            "page": ""
-          }
-        },
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-3": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "What is the shelf life of my product?",
-            "row_content": "<p>All beauty products need to be used by a certain period. This is known as the 'period after opening' and can be easily identified by the PAO symbol. The symbol can be recognised as the shape of an opened jar, and will have a number inside; 9M will indicate 9 months, 12M is 12 months, and 36M is 36 months. Once opened the product should be used in this period, as after this time the quality of the product will deteriorate.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-0",
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-1",
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-2",
-        "template--16533939224817__d9e21821-1696-4a1a-b0c2-08252d253ad5-1666501456e0f3b882-3"
-      ],
-      "settings": {
-        "open_first_collapsible_row": false,
-        "narrow": true,
-        "show_divider": false,
-        "heading": "FAQs",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "heading_tag": "h2",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "product-recommendations": {
@@ -379,8 +258,6 @@
     "empty-space",
     "main",
     "16537254363843e2bc",
-    "faddcad3-5a02-4a7c-819e-d0e9266565dc",
-    "d9e21821-1696-4a1a-b0c2-08252d253ad5",
     "product-recommendations",
     "recently-viewed-products"
   ]
