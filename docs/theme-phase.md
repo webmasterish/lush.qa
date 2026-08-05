@@ -202,7 +202,7 @@ Then, regardless of route:
 - [ ] Fonts, including the Arabic face (skip the `SAR` font)
 - [ ] Logo, favicon, brand assets uploaded to Qatar Files
 - [ ] RTL + `locales/ar.json` + `ar.schema.json`
-- [ ] Header, footer, announcement bar section groups
+- [x] Header, footer, announcement bar section groups — footer columns done 2026-08-04 (Customer Service, We Are Lush); announcement bar deliberately off
 - [x] Navigation menus — applied 2026-08-04 from `shopify/themes/nav/main-menu.json`; mega menus enabled for the six large families
 
 ### T3 — Templates & sections parity

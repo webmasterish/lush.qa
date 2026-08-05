@@ -497,8 +497,7 @@
         "val_veg",
         "val_ethical",
         "val_handmade"
-      ],
-      "disabled": true
+      ]
     }
   },
   "order": [
