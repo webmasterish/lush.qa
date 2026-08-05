@@ -520,6 +520,40 @@
           "items": []
         }
       ]
+    },
+    {
+      "handle": "about-lush-menu",
+      "title": "About Lush",
+      "items": [
+        {
+          "title": "Who We Are",
+          "type": "HTTP",
+          "url": "https://weare.lush.com/lush-life/our-company/who-we-are/",
+          "resourceId": null,
+          "items": []
+        },
+        {
+          "title": "Our Values",
+          "type": "HTTP",
+          "url": "https://weare.lush.com/lush-life/our-values/",
+          "resourceId": null,
+          "items": []
+        },
+        {
+          "title": "Our Impact",
+          "type": "HTTP",
+          "url": "https://weare.lush.com/our-impact/",
+          "resourceId": null,
+          "items": []
+        },
+        {
+          "title": "Press Area",
+          "type": "HTTP",
+          "url": "https://weare.lush.com/press-area/",
+          "resourceId": null,
+          "items": []
+        }
+      ]
     }
   ]
 }
