@@ -24,6 +24,9 @@ HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 THEME_DIR="$HERE/be-yours"
 REF_DIR="$HERE/__reference"
 SNAP_DIR="$REF_DIR/snapshots"
+# Last known-synced copy of the theme-editor content, used to tell "we changed
+# this locally" apart from "someone changed it in the theme editor".
+BASELINE="$REF_DIR/.content-baseline"
 ENV_FILE="$HERE/.env"
 TOML="$THEME_DIR/shopify.theme.toml"
 QA_STORE="lush-qatar.myshopify.com"
@@ -78,6 +81,57 @@ assert_ksa_read_only() {
   esac
 }
 
+# Record the current content files as the synced baseline.
+snapshot_baseline() {
+  rm -rf "$BASELINE"; mkdir -p "$BASELINE"
+  ( cd "$1" && find config templates sections -name '*.json' 2>/dev/null \
+      -exec cp --parents {} "$BASELINE/" \; ) 2>/dev/null || true
+}
+
+# Refuse to overwrite theme-editor work. Pulls the store's current content and
+# compares it with the baseline: any difference means the editor changed since
+# our last sync, and pushing would silently discard it.
+assert_no_editor_drift() {
+  local env="$1" tmp drift=0
+  [[ -d "$BASELINE" ]] || { note "no content baseline yet — run 'pull-content' first to establish one"; return 0; }
+  local id; id="$(theme_id_for "$env")"
+  [[ -n "$id" ]] || die "no theme id for '$env'; cannot check for theme-editor changes"
+  tmp="$(mktemp -d)"
+  mapfile -t only < <(content_flags --only)
+  # Explicit --store/--theme, not --environment: shopify.theme.toml is resolved
+  # relative to --path, and --path here is a temp dir that has no toml.
+  sh_theme "$env" pull --store "$QA_STORE" --theme "$id" --path "$tmp" "${only[@]}" >/dev/null 2>&1 \
+    || die "could not read the store's current content; refusing to push blind"
+  # Compare parsed JSON, not bytes: Shopify normalizes what it serves (header
+  # comment, key order), so a byte compare reports every file as changed.
+  local changed
+  changed="$(python3 - "$BASELINE" "$tmp" <<'PYEOF'
+import json, re, sys, pathlib
+base, remote = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+def load(p):
+    try: return json.loads(re.sub(r'/\*.*?\*/', '', p.read_text(encoding='utf-8'), flags=re.S))
+    except Exception: return None
+for f in sorted(base.rglob('*.json')):
+    rel = f.relative_to(base)
+    other = remote / rel
+    if not other.exists():
+        continue
+    a, b = load(f), load(other)
+    if a is None or b is None or a != b:
+        print(rel)
+PYEOF
+)"
+  rm -rf "$tmp"
+  if [[ -n "$changed" ]]; then
+    drift=1
+    printf '\033[31mtheme-editor changes on the store:\033[0m\n' >&2
+    printf '   %s\n' $changed >&2
+  fi
+  [[ $drift -eq 0 ]] || die "someone edited these in the theme editor since the last sync.
+   Run './theme.sh pull-content' to bring them into git and commit, then push again.
+   To overwrite the editor's version anyway, add --force."
+}
+
 # Expand the CONTENT list into repeated --only / --ignore flags.
 content_flags() {
   local flag="$1" g
@@ -129,7 +183,9 @@ read-only
 
 writes to the Qatar store
   ./theme.sh push-code    [build]          push theme code (never editor content)
-  ./theme.sh push-content build --yes      overwrite editor settings (KSA port only)
+  ./theme.sh push-content build --yes      write editor settings from the repo
+                                           (refuses if the editor changed since
+                                            the last pull; --force overrides)
   ./theme.sh backup       [build]          server-side duplicate as a restore point
   ./theme.sh dev          [build]          local dev server, editor sync on
 
@@ -167,6 +223,7 @@ case "$cmd" in
     note "pulling theme-editor content from '$env' — commit the result"
     mapfile -t only < <(content_flags --only)
     run_theme "$env" pull "${only[@]}"
+    snapshot_baseline "$THEME_DIR"
     ;;
 
   push-content)
@@ -175,10 +232,12 @@ case "$cmd" in
     [[ "${3:-}" == "--yes" ]] ||
       die "push-content overwrites theme-editor settings on '$env'. Re-run with --yes if that is intended."
     [[ "$env" == ksa* ]] && die "not allowed against '$env'."
+    [[ " $* " == *" --force "* ]] || assert_no_editor_drift "$env"
     [[ "${NO_SNAPSHOT:-}" == "1" ]] || snapshot_theme "$env"
     note "pushing theme-editor content to '$env'"
     mapfile -t only < <(content_flags --only)
     run_theme "$env" push --nodelete --allow-live "${only[@]}"
+    snapshot_baseline "$THEME_DIR"
     ;;
 
   publish)

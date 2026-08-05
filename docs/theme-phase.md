@@ -42,7 +42,22 @@ Every change in this phase lands on exactly one of these. Knowing which one deci
 | **B** | **Theme content** | `config/settings_data.json`, `templates/*.json`, `templates/customers/*.json`, `sections/*.json` (section groups) | **The store** — the theme editor writes these | `theme pull` content into the repo as a versioned snapshot |
 | **C** | **Store settings** | Markets, languages, payments, shipping, taxes, checkout, legal policies, navigation menus, metafield definitions, files, notifications, domains, apps, GA | **The store** — no file representation at all | Recorded by hand in `store-settings-ledger.md` |
 
-The failure mode this guards against: a `theme push` of code silently overwriting a section the client rearranged in the editor, or an editor session overwriting code we wrote locally. Surface B is never pushed from the repo except in the deliberate porting steps of T2/T3.
+The failure mode this guards against: a `theme push` of code silently overwriting a section the client rearranged in the editor, or an editor session overwriting code we wrote locally.
+
+### Who owns theme-editor content, and when
+
+This is the question that decides whether editor work survives, so it is worth stating plainly.
+
+**Code pushes are already safe.** `push-code` excludes `settings_data.json` and all template/section JSON, so anything done in the theme editor is untouched by them. Push code as often as you like.
+
+**`push-content` is the risk**, because it writes editor territory from the repo. It is used deliberately during the build to port settings in bulk. From 2026-08-04 it refuses to run when the editor has changed since the last sync:
+
+- every `pull-content` and `push-content` records the synced state in `__reference/.content-baseline/`
+- `push-content` re-reads the store first and compares against that baseline, **parsed as JSON rather than byte-for-byte** — Shopify normalizes what it serves, so a byte compare flags everything
+- if the store moved, it names the files, refuses, and tells you to `pull-content` and commit first
+- `--force` overrides, for when the repo really should win
+
+**Ownership changes at training.** During the build the repo drives content and the editor is used for spot checks. Once the client is trained and using the editor for real, the store becomes authoritative: from then on the workflow is `pull-content` → commit, and `push-content` should be treated as a break-glass command. Nothing about the tooling changes — only which direction is normal.
 
 **Watch out for `locales/*.json`.** They are surface A (we own them in git), but the theme editor's *"Edit default theme content"* writes to them too. Rule: we edit locales in the repo; nobody uses that editor screen. If it happens anyway, `pull-code` recovers it.
 
