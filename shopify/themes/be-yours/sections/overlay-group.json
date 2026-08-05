@@ -18,7 +18,9 @@
           "type": "subheading",
           "settings": {
             "subheading": "First timer?",
-            "subheading_size": "h5"
+            "subheading_size": "h5",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "popup-1": {
@@ -26,7 +28,9 @@
           "settings": {
             "text": "<p>Sign up and get 10% off your first order</p>",
             "text_size": "typeset3",
-            "secondary_color": false
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "popup-2": {
@@ -34,19 +38,27 @@
           "settings": {
             "text": "<p>Subscribe to our newsletter and be the first to hear about our new arrivals, special promotions and online exclusives.</p>",
             "button_style_secondary": true,
-            "button_full_width": false
+            "button_full_width": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "popup-3": {
           "type": "social_media",
-          "settings": {}
+          "settings": {
+            "mobile_disabled": false
+          }
         },
         "popup-4": {
           "type": "floating",
           "settings": {
+            "subheading": "Newsletter",
+            "show_social_media": "all",
             "text_box_position": "left",
             "colors_text": "#1a1b18",
-            "mobile_disabled": true
+            "mobile_disabled": true,
+            "mobile_hide_social_media": false,
+            "mobile_social_heading": "Follow us"
           }
         }
       },
@@ -57,10 +69,12 @@
         "popup-3",
         "popup-4"
       ],
+      "disabled": true,
       "settings": {
         "mode": "enabled",
         "only_homepage": true,
         "only_visitor": true,
+        "return_url": "",
         "delay": 5,
         "expiry": 30,
         "width": 600,
@@ -74,7 +88,8 @@
         "colors_border": "#d2d5d9",
         "colors_background": "#fbf7f1",
         "gradient_background": "",
-        "colors_shadow": "#1a1b18"
+        "colors_shadow": "#1a1b18",
+        "colors_highlight": "#ffb503"
       }
     },
     "cookie-banner": {
@@ -106,9 +121,12 @@
         "delay": 5,
         "text_alignment": "left",
         "text_box_position": "bottom",
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
         "colors_text": "#1a1b18",
         "colors_border": "#d2d5d9",
         "colors_background": "#fbf7f1",
+        "gradient_background": "",
         "colors_shadow": "#1a1b18"
       }
     },
@@ -152,7 +170,6 @@
         "width": 480,
         "padding": 40,
         "text_alignment": "center",
-        "image": "",
         "image_position": "right",
         "colors_button_label": "#1a1b18",
         "colors_button_background": "#d9b97a",
@@ -163,7 +180,6 @@
         "colors_shadow": "#1a1b18",
         "colors_overlay": "#1a1b18",
         "colors_overlay_opacity": 80,
-        "background_image": "",
         "blur_image": true
       }
     },
@@ -210,7 +226,8 @@
           "type": "account",
           "settings": {
             "custom_icon": "",
-            "title": "Account"
+            "title": "Account",
+            "customer_account_menu": ""
           }
         }
       },
@@ -226,6 +243,7 @@
         "use_custom_colors": false,
         "colors_text": "#1a1b18",
         "colors_background": "#fbf7f1",
+        "gradient_background": "",
         "padding_top": 12,
         "padding_bottom": 12
       }

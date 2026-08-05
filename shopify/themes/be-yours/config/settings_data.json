@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "colors_solid_button_labels": "#212326",
-    "colors_accent": "#faeaa1",
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent": "#1A1B18",
     "colors_background": "#ffffff",
     "colors_text": "#212326",
     "colors_heading": "#1a1b18",
@@ -24,17 +24,17 @@
     "colors_overlay": "#212326",
     "colors_keyboard_focus": "#87adf5",
     "colors_shadow": "#a8e8e2",
-    "type_header_font": "cabin_n6",
+    "type_header_font": "sans_serif_n4",
     "heading_scale": 100,
     "heading_capitalize": false,
     "heading_center": false,
-    "type_body_font": "jost_n4",
+    "type_body_font": "sans_serif_n4",
     "body_scale": 100,
     "type_navigation_font": "heading",
-    "type_navigation_size": 12,
+    "type_navigation_size": 14,
     "type_button_font": "body",
     "type_button_size": 12,
-    "page_width": 1600,
+    "page_width": 1200,
     "spacing_sections": 0,
     "page_transition_enabled": true,
     "image_zoom_effect_enabled": true,
@@ -63,15 +63,23 @@
     "empty_cart_button_secondary": true,
     "search_recommendation": "search-menu",
     "predictive_search_show_vendor": true,
-    "social_facebook_link": "https://facebook.com/shopify",
-    "social_twitter_link": "https://twitter.com/shopify",
-    "social_pinterest_link": "https://pinterest.com/shopify",
-    "social_instagram_link": "https://instagram.com/shopify",
+    "currency_code_enabled": true,
+    "share_facebook": false,
+    "share_twitter": false,
+    "share_pinterest": false,
+    "share_whatsapp": false,
+    "share_telegram": false,
+    "share_email": false,
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
     "social_linkedin_link": "",
-    "favicon": "",
+    "favicon": "shopify://shop_images/lush_logo_square.png",
     "gift_card_logo": "",
     "gift_card_logo_height": 70,
     "sale_badge_basis": "value",
+    "glass_design_enabled": false,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -86,8 +94,13 @@
         "settings": {
           "show_line_separator": false
         }
+      },
+      "similar-products": {
+        "type": "similar-products",
+        "settings": {}
       }
-    }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Be Yours": {

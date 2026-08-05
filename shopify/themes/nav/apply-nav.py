@@ -10,6 +10,7 @@ and survives any collection being recreated.
 
     ./apply-nav.py                 # dry run: show what would be sent
     ./apply-nav.py --apply         # write it to the store
+    ./apply-nav.py --export        # record every menu on the store into menus.json
 
 Credentials come from the migration tool's project env (the Admin API token
 needs write_online_store_navigation).
@@ -47,8 +48,32 @@ def gql(query, variables=None):
     return out['data']
 
 
+def export_menus():
+    """Record every menu on the store, so surface C navigation is versioned.
+
+    Menus have no file representation, no history and no undo. This captures
+    what is actually live -- including menus built by hand in the admin -- so a
+    deleted or mangled menu can be rebuilt from the repo.
+    """
+    data = gql("""{ menus(first: 50) { nodes { handle title
+        items { title type url resourceId
+          items { title type url resourceId
+            items { title type url resourceId } } } } } }""")
+    out = {'_source': 'Exported from the live store by apply-nav.py --export.',
+           '_note': 'A record of what is live, including menus built in the admin. '
+                    'main-menu.json remains the authored definition for the main menu.',
+           'menus': data['menus']['nodes']}
+    path = HERE / 'menus.json'
+    path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\n')
+    print(f"wrote {path.relative_to(REPO)}")
+    for m in out['menus']:
+        print(f"   {m['handle']:28} {len(m['items'])} top-level items")
+
+
 def main():
     load_env()
+    if '--export' in sys.argv:
+        export_menus(); return
     spec = json.loads(DEF.read_text())
 
     collections = {c['handle']: c['id'] for c in

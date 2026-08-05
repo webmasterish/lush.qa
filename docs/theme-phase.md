@@ -52,10 +52,12 @@ This is the question that decides whether editor work survives, so it is worth s
 
 **`push-content` is the risk**, because it writes editor territory from the repo. It is used deliberately during the build to port settings in bulk. From 2026-08-04 it refuses to run when the editor has changed since the last sync:
 
-- every `pull-content` and `push-content` records the synced state in `__reference/.content-baseline/`
+- every `pull-content` and `push-content` records the synced state in `__reference/content-baseline/`
 - `push-content` re-reads the store first and compares against that baseline, **parsed as JSON rather than byte-for-byte** — Shopify normalizes what it serves, so a byte compare flags everything
 - if the store moved, it names the files, refuses, and tells you to `pull-content` and commit first
 - `--force` overrides, for when the repo really should win
+
+**Menus are not affected by any of this.** They live in Content > Menus, not in the theme, so no `push-code` or `push-content` can touch them — a menu built in the admin is safe from every theme operation. The only thing that writes a menu is `apply-nav.py --apply`, and only the one whose handle is in `main-menu.json`. Because menus have no history either, `apply-nav.py --export` records every menu on the store into `nav/menus.json`, including ones built by hand, so a deleted menu can be rebuilt.
 
 **Ownership changes at training.** During the build the repo drives content and the editor is used for spot checks. Once the client is trained and using the editor for real, the store becomes authoritative: from then on the workflow is `pull-content` → commit, and `push-content` should be treated as a break-glass command. Nothing about the tooling changes — only which direction is normal.
 

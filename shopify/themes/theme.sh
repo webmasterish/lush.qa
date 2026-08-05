@@ -25,8 +25,10 @@ THEME_DIR="$HERE/be-yours"
 REF_DIR="$HERE/__reference"
 SNAP_DIR="$REF_DIR/snapshots"
 # Last known-synced copy of the theme-editor content, used to tell "we changed
-# this locally" apart from "someone changed it in the theme editor".
-BASELINE="$REF_DIR/.content-baseline"
+# this locally" apart from "someone changed it in the theme editor". Kept
+# visible, not dotted: it is load-bearing for push-content and should be easy
+# to notice and inspect.
+BASELINE="$REF_DIR/content-baseline"
 ENV_FILE="$HERE/.env"
 TOML="$THEME_DIR/shopify.theme.toml"
 QA_STORE="lush-qatar.myshopify.com"

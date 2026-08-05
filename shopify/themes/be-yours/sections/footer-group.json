@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer-group.name",
   "type": "footer",
@@ -8,22 +17,28 @@
         "footer-0": {
           "type": "link_list",
           "settings": {
-            "heading": "Shop",
-            "menu": "footer"
+            "heading": "Customer Service",
+            "menu": "customer-service",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "footer-1": {
           "type": "link_list",
           "settings": {
             "heading": "Explore",
-            "menu": "footer"
+            "menu": "footer",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "footer-2": {
           "type": "link_list",
           "settings": {
             "heading": "More",
-            "menu": "footer"
+            "menu": "footer",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         }
       },
@@ -33,25 +48,28 @@
         "footer-2"
       ],
       "settings": {
+        "show_divider": false,
         "newsletter_enable": true,
         "newsletter_heading": "Want more LUSH?",
-        "newsletter_text": "<p>Apply for our free membership to receive exclusive deals, news, and events.</p>",
+        "newsletter_text": "<p>Be the first to hear about limited edition products, exclusive collaborations, and all things LUSH - including our secret master plan to create a cosmetics revolution!</p>",
+        "return_url": "",
+        "enable_follow_on_shop": false,
         "show_social": false,
         "social_heading": "",
         "enable_country_selector": true,
         "enable_language_selector": true,
         "payment_enable": false,
+        "show_policy": true,
         "copyright_text": "All rights reserved.",
         "colors_text": "#f3f3f3",
         "colors_heading": "#ffffff",
         "colors_link": "#f3f3f3",
         "colors_border": "#d2d5d9",
         "colors_background": "#000000",
+        "gradient_background": "",
         "colors_highlight": "#ffb503",
         "enable_highlight": false,
-        "highlight_style": "marker",
-        "show_policy": true,
-        "show_divider": false
+        "highlight_style": "marker"
       }
     }
   },

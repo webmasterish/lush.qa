@@ -1,0 +1,525 @@
+{
+  "_source": "Exported from the live store by apply-nav.py --export.",
+  "_note": "A record of what is live, including menus built in the admin. main-menu.json remains the authored definition for the main menu.",
+  "menus": [
+    {
+      "handle": "main-menu",
+      "title": "Main menu",
+      "items": [
+        {
+          "title": "Bath and Shower",
+          "type": "COLLECTION",
+          "url": "/collections/bath-and-shower",
+          "resourceId": "gid://shopify/Collection/318624956555",
+          "items": [
+            {
+              "title": "Bath Bombs",
+              "type": "COLLECTION",
+              "url": "/collections/bathbomb",
+              "resourceId": "gid://shopify/Collection/318624235659",
+              "items": []
+            },
+            {
+              "title": "Body Scrubs",
+              "type": "COLLECTION",
+              "url": "/collections/body-scrubs",
+              "resourceId": "gid://shopify/Collection/318624366731",
+              "items": []
+            },
+            {
+              "title": "Bubble Bars",
+              "type": "COLLECTION",
+              "url": "/collections/bubble-bar",
+              "resourceId": "gid://shopify/Collection/318624333963",
+              "items": []
+            },
+            {
+              "title": "Luxury Bath Oils",
+              "type": "COLLECTION",
+              "url": "/collections/luxury-bath-oils",
+              "resourceId": "gid://shopify/Collection/318624432267",
+              "items": []
+            },
+            {
+              "title": "Shower gels & Jellies",
+              "type": "COLLECTION",
+              "url": "/collections/shower-gels",
+              "resourceId": "gid://shopify/Collection/318624268427",
+              "items": []
+            },
+            {
+              "title": "Shower Moisturisers",
+              "type": "COLLECTION",
+              "url": "/collections/shower-moisturisers",
+              "resourceId": "gid://shopify/Collection/318624399499",
+              "items": []
+            },
+            {
+              "title": "Soap",
+              "type": "COLLECTION",
+              "url": "/collections/soap",
+              "resourceId": "gid://shopify/Collection/318624301195",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Face",
+          "type": "COLLECTION",
+          "url": "/collections/face",
+          "resourceId": "gid://shopify/Collection/318625284235",
+          "items": [
+            {
+              "title": "Cleansers & Scrubs",
+              "type": "COLLECTION",
+              "url": "/collections/cleansers-scrubs",
+              "resourceId": "gid://shopify/Collection/318624891019",
+              "items": []
+            },
+            {
+              "title": "Face Masks",
+              "type": "COLLECTION",
+              "url": "/collections/face-masks",
+              "resourceId": "gid://shopify/Collection/318625317003",
+              "items": []
+            },
+            {
+              "title": "Lip Scrubs & Balms",
+              "type": "COLLECTION",
+              "url": "/collections/lip-scrubs-balms-face",
+              "resourceId": "gid://shopify/Collection/318625906827",
+              "items": []
+            },
+            {
+              "title": "Make Up",
+              "type": "COLLECTION",
+              "url": "/collections/make-up-face",
+              "resourceId": "gid://shopify/Collection/318625546379",
+              "items": []
+            },
+            {
+              "title": "Moisturisers",
+              "type": "COLLECTION",
+              "url": "/collections/moisturisers",
+              "resourceId": "gid://shopify/Collection/318625415307",
+              "items": []
+            },
+            {
+              "title": "Oral Care",
+              "type": "COLLECTION",
+              "url": "/collections/oral-care",
+              "resourceId": "gid://shopify/Collection/318625939595",
+              "items": []
+            },
+            {
+              "title": "Shaving",
+              "type": "COLLECTION",
+              "url": "/collections/shaving",
+              "resourceId": "gid://shopify/Collection/318625742987",
+              "items": []
+            },
+            {
+              "title": "Toners",
+              "type": "COLLECTION",
+              "url": "/collections/toners",
+              "resourceId": "gid://shopify/Collection/318625579147",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Body",
+          "type": "COLLECTION",
+          "url": "/collections/body",
+          "resourceId": "gid://shopify/Collection/318625480843",
+          "items": [
+            {
+              "title": "Body Lotions & Body Butter",
+              "type": "COLLECTION",
+              "url": "/collections/body-lotions",
+              "resourceId": "gid://shopify/Collection/318624465035",
+              "items": []
+            },
+            {
+              "title": "Deodorants & Dusting Powders",
+              "type": "COLLECTION",
+              "url": "/collections/deodorants-powders",
+              "resourceId": "gid://shopify/Collection/318624497803",
+              "items": []
+            },
+            {
+              "title": "Foot Care",
+              "type": "COLLECTION",
+              "url": "/collections/foot-care",
+              "resourceId": "gid://shopify/Collection/318624563339",
+              "items": []
+            },
+            {
+              "title": "Hand Care",
+              "type": "COLLECTION",
+              "url": "/collections/hand-care-body",
+              "resourceId": "gid://shopify/Collection/318625513611",
+              "items": []
+            },
+            {
+              "title": "Massage Bars",
+              "type": "COLLECTION",
+              "url": "/collections/massage-bars",
+              "resourceId": "gid://shopify/Collection/318624530571",
+              "items": []
+            },
+            {
+              "title": "Sun Care",
+              "type": "COLLECTION",
+              "url": "/collections/sun-care",
+              "resourceId": "gid://shopify/Collection/318626201739",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Hair",
+          "type": "COLLECTION",
+          "url": "/collections/hair",
+          "resourceId": "gid://shopify/Collection/318625120395",
+          "items": [
+            {
+              "title": "Afro Hair Care",
+              "type": "COLLECTION",
+              "url": "/collections/afro-hair-care",
+              "resourceId": "gid://shopify/Collection/318625611915",
+              "items": []
+            },
+            {
+              "title": "Conditioners",
+              "type": "COLLECTION",
+              "url": "/collections/conditioners",
+              "resourceId": "gid://shopify/Collection/318624989323",
+              "items": []
+            },
+            {
+              "title": "Hair Treatments",
+              "type": "COLLECTION",
+              "url": "/collections/hair-treatments",
+              "resourceId": "gid://shopify/Collection/318625349771",
+              "items": []
+            },
+            {
+              "title": "Henna",
+              "type": "COLLECTION",
+              "url": "/collections/henna",
+              "resourceId": "gid://shopify/Collection/318625677451",
+              "items": []
+            },
+            {
+              "title": "Shampoo",
+              "type": "COLLECTION",
+              "url": "/collections/shampoo",
+              "resourceId": "gid://shopify/Collection/318624825483",
+              "items": []
+            },
+            {
+              "title": "Hair Styling",
+              "type": "COLLECTION",
+              "url": "/collections/styling",
+              "resourceId": "gid://shopify/Collection/318625153163",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Fragrances",
+          "type": "COLLECTION",
+          "url": "/collections/fragrances",
+          "resourceId": "gid://shopify/Collection/318625644683",
+          "items": [
+            {
+              "title": "Body Sprays",
+              "type": "COLLECTION",
+              "url": "/collections/body-sprays",
+              "resourceId": "gid://shopify/Collection/318624596107",
+              "items": []
+            },
+            {
+              "title": "Candles",
+              "type": "COLLECTION",
+              "url": "/collections/candles",
+              "resourceId": "gid://shopify/Collection/318625087627",
+              "items": []
+            },
+            {
+              "title": "Glitter Mist",
+              "type": "COLLECTION",
+              "url": "/collections/glitter-mist",
+              "resourceId": "gid://shopify/Collection/318626136203",
+              "items": []
+            },
+            {
+              "title": "Home Fragrance",
+              "type": "COLLECTION",
+              "url": "/collections/home-fragrance",
+              "resourceId": "gid://shopify/Collection/318625448075",
+              "items": []
+            },
+            {
+              "title": "Perfumes",
+              "type": "COLLECTION",
+              "url": "/collections/perfumes",
+              "resourceId": "gid://shopify/Collection/318625218699",
+              "items": []
+            },
+            {
+              "title": "Solid Perfume",
+              "type": "COLLECTION",
+              "url": "/collections/solid-perfume",
+              "resourceId": "gid://shopify/Collection/318626168971",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Gifts",
+          "type": "COLLECTION",
+          "url": "/collections/gifts",
+          "resourceId": "gid://shopify/Collection/318625841291",
+          "items": [
+            {
+              "title": "Gifts between 200 - 500 QAR",
+              "type": "COLLECTION",
+              "url": "/collections/gifts-between-200-500-qar",
+              "resourceId": "gid://shopify/Collection/318624858251",
+              "items": []
+            },
+            {
+              "title": "Gifts over 500 QAR",
+              "type": "COLLECTION",
+              "url": "/collections/gifts-over-500-qar",
+              "resourceId": "gid://shopify/Collection/318625022091",
+              "items": []
+            },
+            {
+              "title": "Gifts under 200 QAR",
+              "type": "COLLECTION",
+              "url": "/collections/gifts-under-200-qar",
+              "resourceId": "gid://shopify/Collection/318625251467",
+              "items": []
+            },
+            {
+              "title": "Knot Wraps",
+              "type": "COLLECTION",
+              "url": "/collections/knot-wraps",
+              "resourceId": "gid://shopify/Collection/318625382539",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Fresh",
+          "type": "COLLECTION",
+          "url": "/collections/fresh",
+          "resourceId": "gid://shopify/Collection/318624628875",
+          "items": [
+            {
+              "title": "Fresh Cleansers",
+              "type": "COLLECTION",
+              "url": "/collections/fresh-cleansers-2",
+              "resourceId": "gid://shopify/Collection/318624759947",
+              "items": []
+            },
+            {
+              "title": "Fresh Masks",
+              "type": "COLLECTION",
+              "url": "/collections/fresh-masks-2",
+              "resourceId": "gid://shopify/Collection/318624727179",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Collaborations",
+          "type": "COLLECTION",
+          "url": "/collections/collaborations",
+          "resourceId": "gid://shopify/Collection/318626070667",
+          "items": [
+            {
+              "title": "Scooby-Doo! X LUSH",
+              "type": "COLLECTION",
+              "url": "/collections/scooby-doo-x-lush",
+              "resourceId": "gid://shopify/Collection/318626103435",
+              "items": []
+            },
+            {
+              "title": "The Super Mario Galaxy Movie × Lush",
+              "type": "COLLECTION",
+              "url": "/collections/the-super-mario-galaxy-movie-x-lush",
+              "resourceId": "gid://shopify/Collection/318626332811",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "New Products",
+          "type": "COLLECTION",
+          "url": "/collections/new-products",
+          "resourceId": "gid://shopify/Collection/318624694411",
+          "items": [
+            {
+              "title": "Lunar New Year",
+              "type": "COLLECTION",
+              "url": "/collections/lunar-new-year",
+              "resourceId": "gid://shopify/Collection/318626037899",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Sleep Better",
+          "type": "COLLECTION",
+          "url": "/collections/sleep-better",
+          "resourceId": "gid://shopify/Collection/318624661643",
+          "items": [
+            {
+              "title": "Lavender Range/Sleepy",
+              "type": "COLLECTION",
+              "url": "/collections/lavender-range-sleepy-2",
+              "resourceId": "gid://shopify/Collection/318624792715",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Muscle Recovery",
+          "type": "COLLECTION",
+          "url": "/collections/muscle-recovery",
+          "resourceId": "gid://shopify/Collection/318625972363",
+          "items": [
+            {
+              "title": "Magnesium Range",
+              "type": "COLLECTION",
+              "url": "/collections/magnesium-range",
+              "resourceId": "gid://shopify/Collection/318624923787",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Lifestyle",
+          "type": "COLLECTION",
+          "url": "/collections/lifestyle",
+          "resourceId": "gid://shopify/Collection/318626267275",
+          "items": [
+            {
+              "title": "Apparel",
+              "type": "COLLECTION",
+              "url": "/collections/apparel",
+              "resourceId": "gid://shopify/Collection/318626300043",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title": "Best Sellers",
+          "type": "COLLECTION",
+          "url": "/collections/best-sellers",
+          "resourceId": "gid://shopify/Collection/318625710219",
+          "items": []
+        },
+        {
+          "title": "5 Star Reviews",
+          "type": "COLLECTION",
+          "url": "/collections/5-star-reviews",
+          "resourceId": "gid://shopify/Collection/318625874059",
+          "items": []
+        },
+        {
+          "title": "Trending Now",
+          "type": "COLLECTION",
+          "url": "/collections/trending-now",
+          "resourceId": "gid://shopify/Collection/318626234507",
+          "items": []
+        },
+        {
+          "title": "Lush Party",
+          "type": "COLLECTION",
+          "url": "/collections/lush-party",
+          "resourceId": "gid://shopify/Collection/318626005131",
+          "items": []
+        },
+        {
+          "title": "Sun Care",
+          "type": "COLLECTION",
+          "url": "/collections/sun-care",
+          "resourceId": "gid://shopify/Collection/318626201739",
+          "items": []
+        }
+      ]
+    },
+    {
+      "handle": "footer",
+      "title": "Footer menu",
+      "items": [
+        {
+          "title": "Search",
+          "type": "SEARCH",
+          "url": "/search",
+          "resourceId": null,
+          "items": []
+        }
+      ]
+    },
+    {
+      "handle": "customer-account-main-menu",
+      "title": "Customer account main menu",
+      "items": [
+        {
+          "title": "Orders",
+          "type": "CUSTOMER_ACCOUNT_PAGE",
+          "url": "https://shopify.com/75223269515/account/orders",
+          "resourceId": "gid://shopify/CustomerAccountPage/89526272139",
+          "items": []
+        },
+        {
+          "title": "Profile",
+          "type": "CUSTOMER_ACCOUNT_PAGE",
+          "url": "https://shopify.com/75223269515/account/profile",
+          "resourceId": "gid://shopify/CustomerAccountPage/89526304907",
+          "items": []
+        }
+      ]
+    },
+    {
+      "handle": "customer-service",
+      "title": "Customer Service",
+      "items": [
+        {
+          "title": "Contact",
+          "type": "PAGE",
+          "url": "/pages/contact",
+          "resourceId": "gid://shopify/Page/167984070795",
+          "items": []
+        },
+        {
+          "title": "Privacy Policy",
+          "type": "SHOP_POLICY",
+          "url": "/policies/privacy-policy",
+          "resourceId": "gid://shopify/ShopPolicy/41255010443",
+          "items": []
+        },
+        {
+          "title": "Refund Policy",
+          "type": "SHOP_POLICY",
+          "url": "/policies/refund-policy",
+          "resourceId": "gid://shopify/ShopPolicy/42051207307",
+          "items": []
+        },
+        {
+          "title": "Terms of Service",
+          "type": "SHOP_POLICY",
+          "url": "/policies/terms-of-service",
+          "resourceId": "gid://shopify/ShopPolicy/42051666059",
+          "items": []
+        }
+      ]
+    }
+  ]
+}
