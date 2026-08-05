@@ -1,0 +1,27 @@
+{
+  "_source": "Blog posts from lush.qa (WooCommerce/WPML), read 2026-08-04. The WordPress REST API exposes no WPML pairing field -- ?lang=ar on an English post id returns the English post -- so the English/Arabic pairs are stated explicitly here and are human-checkable rather than matched by guesswork.",
+  "_target_blog": "news",
+  "articles": [
+    {
+      "en_id": 5424,
+      "ar_id": 9343,
+      "handle": "a-scent-as-old-as-time-a-history-of-essential-oils",
+      "en_title": "A scent as old as time: A history of essential oils",
+      "ar_title": "رائحة قديمة قدم الزمن: تاريخ الزيوت العطرية"
+    },
+    {
+      "en_id": 5421,
+      "ar_id": 9350,
+      "handle": "go-with-the-flo",
+      "en_title": "Go with the ‘flo",
+      "ar_title": "اذهب مع ‘فلو’"
+    },
+    {
+      "en_id": 5418,
+      "ar_id": 9351,
+      "handle": "how-its-made-oudhess-bath-bomb",
+      "en_title": "How It’s Made: Oudhess bath bomb",
+      "ar_title": "طريقة التصنيع: قنبلة حمام العود"
+    }
+  ]
+}

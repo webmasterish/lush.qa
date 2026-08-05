@@ -30,11 +30,24 @@
        prices and UI text -- see the note in docs/theme-porting-list.md. */
     --font-lush-handwritten: 'LushHandwritten_Bd', var(--font-body-family);
 
-    /* Overrides the theme's Heading font setting. Shopify's font picker only
-       offers its own library, so a custom brand face has to be forced here.
-       NOTE: this means changing "Heading font" in the theme editor has no
-       effect. Recorded in docs/store-settings-ledger.md. */
-    --font-heading-family: var(--font-lush-handwritten);
+  }
+
+  /* Where the brand face is applied.
+
+     Matches lushlebanon.com rather than KSA: Lebanon leaves the heading font
+     as the theme setting and applies the handwritten face only to display
+     type -- product headings, card text and slideshow headings -- which is
+     how Lush UK/HQ treat it. KSA instead forces it on every heading, prices
+     and UI text included.
+
+     The .font-lush-handwritten utility is there so any other element can opt
+     in from the theme editor's per-section custom CSS, which is what Lebanon
+     does for selected image-with-text headings. */
+  .font-lush-handwritten,
+  .product__heading,
+  .card-information__text,
+  .slideshow__heading {
+    font-family: var(--font-lush-handwritten);
   }
 
   /* Arabic is cursive: its letters join. The theme applies letter-spacing in

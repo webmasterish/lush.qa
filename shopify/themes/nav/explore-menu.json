@@ -1,0 +1,10 @@
+{
+  "_source": "Third footer column. KSA names it Explore; Qatar's carries the Branches page and the news blog.",
+  "handle": "explore-menu",
+  "title": "Explore",
+  "create_if_missing": true,
+  "items": [
+    { "title": "Branches", "type": "PAGE", "handle": "branches" },
+    { "title": "Blogs", "type": "BLOG", "handle": "news" }
+  ]
+}
