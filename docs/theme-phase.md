@@ -32,6 +32,32 @@ Two consequences:
 Method note that softens the missing 8.4 vanilla: Shopify's theme-update flow **replaces theme code with the new version's stock code** while migrating settings across. KSA's live 8.4.0 was produced by that flow, so its code is largely stock 8.4 and its customization is concentrated in settings and templates — consistent with the storefront evidence (stock asset filenames, no `custom.css`, no app extensions). Any *file that exists on KSA-live but not in a vanilla copy* is an unambiguous customization regardless of version, which gives a reliable inventory without a matching-version baseline.
 - KSA carries a custom `SAR` riyal-symbol font. That is KSA-only and must not be carried into Qatar.
 
+## Resume here (state at 2026-08-04)
+
+**T2 and T3 are done.** The storefront is complete in both locales behind the password: hero slideshow, Popular Categories, four product carousels, three campaign banners, blog posts, Lush Values, and a four-column footer. Header, mega menus, navigation, fonts, RTL and Arabic are all live.
+
+Live state to know before touching anything:
+
+- Theme: `Be Yours - Lush Qatar (by DotAim)` #152710447243, **published**. There is no separate build theme pre-launch.
+- The brand font applies Lebanon-style (display type only), from `snippets/dotaim-custom-styles.liquid`, which **must render after base.css** — it lost the cascade otherwise.
+- The only forked stock file is `sections/footer.liquid` (copyright wording). Re-apply after a theme update.
+- Twelve unused Be Yours demo templates were deleted; every product and page uses the default template.
+- Everything DotAim authored is translated to Arabic. Client-side gaps are in `translation-gaps-for-client.md`.
+
+**Next: T4 features.** In rough order of value:
+
+1. **Ingredients feature** — port `lush-ingredients-cards.liquid` + `lush-ingredients-list.liquid` from KSA. Open decision first: where the content comes from (Qatar's WooCommerce descriptions, or KSA's `custom.*` metafields matched by SKU). Same decision as the product-translation backfill.
+2. Product badges — vegan / bestseller / new / limited edition, metafield-driven.
+3. Cart drawer upsells, back-in-stock, smart search and filtering.
+4. Then T5: CMS pages, URL redirects, and the store settings still open in `store-settings-ledger.md`.
+
+Open questions for Bassam or Dee, none blocking:
+
+- Transparent header is off, so the white logo uploaded for it is unused.
+- Branches page lists one showroom; KSA lists several.
+- Seventeen top-level menu items is a lot for a horizontal header.
+- Hero slideshow uses four slides picked from a seasonal rotation — Dee should confirm.
+
 ## The three surfaces
 
 Every change in this phase lands on exactly one of these. Knowing which one decides how it gets versioned.
