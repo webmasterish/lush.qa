@@ -397,6 +397,108 @@
         "p",
         "f"
       ]
+    },
+    "lush_values": {
+      "type": "guarantees",
+      "settings": {
+        "layout": "default",
+        "column_alignment": "center",
+        "horizontal_content": false,
+        "full_width": true,
+        "show_divider": true,
+        "columns_desktop": 6,
+        "heading": "Lush Values",
+        "heading_size": "h1",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "use_custom_colors": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": {
+        "val_naked": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-naked-products.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/naked/\" target=\"_blank\" title=\"Naked Products\">Naked Products</a></p>"
+          }
+        },
+        "val_animal": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-fighting-animal-testing.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/fighting-animal-testing/\" target=\"_blank\" title=\"Fighting Animal Testing\">Fighting Animal Testing</a></p>"
+          }
+        },
+        "val_fresh": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-fresh-cosmetics.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-company/what-we-believe/\" target=\"_blank\" title=\"Fresh Cosmetics\">Fresh Cosmetics</a></p>"
+          }
+        },
+        "val_veg": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-vegetarian.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/vegetarian/\" target=\"_blank\" title=\"100% Vegetarian\">100% Vegetarian</a></p>"
+          }
+        },
+        "val_ethical": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-ethical-buying.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/ethical-buying/\" target=\"_blank\" title=\"Ethical Buying\">Ethical Buying</a></p>"
+          }
+        },
+        "val_handmade": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-handmade.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/handmade-policy/\" target=\"_blank\" title=\"Handmade With Love\">Handmade With Love</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "val_naked",
+        "val_animal",
+        "val_fresh",
+        "val_veg",
+        "val_ethical",
+        "val_handmade"
+      ],
+      "disabled": true
     }
   },
   "order": [
@@ -409,6 +511,7 @@
     "best_sellers",
     "bath_banner",
     "featured",
-    "newsletter"
+    "newsletter",
+    "lush_values"
   ]
 }

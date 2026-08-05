@@ -119,7 +119,20 @@ Qatar currently applies `LushHandwritten_Bd` to **all headings**, because that i
 
 **Lush UK/HQ and Lush Lebanon use it for headlines only** — not for prices, buttons or UI text — which is the more accurate reading of the brand. Bassam's view (2026-08-04) is that Saudi will likely be brought in line with UK eventually.
 
-Nothing to do now. The groundwork is in place: the face is exposed as its own `--font-lush-handwritten` variable in `snippets/dotaim-custom-styles.liquid`, separate from `--font-heading-family`, so narrowing its scope later is a matter of pointing specific elements at the variable rather than unpicking a global override.
+Nothing to do now, but the target is no longer guesswork. **Lush Lebanon already implements exactly this**, and inspecting it (2026-08-04) shows the pattern to copy — including the same variable name Bassam asked for here, which is where it comes from:
+
+```css
+/* lushlebanon.com — Be Yours 8.5.0 */
+:root { --font-heading-family: Inter, sans-serif; }   /* headings are NOT the brand face */
+.font-lush-handwritten,
+.product__heading,
+.card-information__text,
+.slideshow__heading      { font-family: var(--font-lush-handwritten); }
+```
+
+plus per-section rules on chosen `image-with-text` headings, added through the theme editor's per-section custom CSS.
+
+So the change, when it comes, is: stop pointing `--font-heading-family` at the brand face, and instead apply `var(--font-lush-handwritten)` to that short list of selectors, with a `.font-lush-handwritten` utility class for anything else. Qatar's `--font-lush-handwritten` variable is already named and structured to match, so this is a small edit to `snippets/dotaim-custom-styles.liquid` rather than a rework.
 
 ## 8. Explicitly skip
 

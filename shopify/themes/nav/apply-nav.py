@@ -8,9 +8,14 @@ main-menu.json is the source of truth, and re-running restores it.
 Collections are referenced by handle, not ID, so the definition stays readable
 and survives any collection being recreated.
 
-    ./apply-nav.py                 # dry run: show what would be sent
-    ./apply-nav.py --apply         # write it to the store
-    ./apply-nav.py --export        # record every menu on the store into menus.json
+    ./apply-nav.py                        # dry run for every definition
+    ./apply-nav.py --apply                # write them to the store
+    ./apply-nav.py --file about-lush-menu.json --apply   # just one
+    ./apply-nav.py --export               # record every live menu into menus.json
+
+Definitions are the *.json files beside this script (menus.json excepted -- that
+is the export, not an authored definition). Items reference resources by handle
+and are resolved to IDs at run time; HTTP items carry a url instead.
 
 Credentials come from the migration tool's project env (the Admin API token
 needs write_online_store_navigation).
@@ -20,7 +25,7 @@ import json, os, sys, urllib.request, pathlib
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 ENV = REPO / 'shopify/migration_from_woocommerce/migration-tool/config/projects/lush-qatar.env'
-DEF = HERE / 'main-menu.json'
+EXPORT_FILE = 'menus.json'
 
 
 def load_env():
@@ -70,62 +75,88 @@ def export_menus():
         print(f"   {m['handle']:28} {len(m['items'])} top-level items")
 
 
+def resolvers():
+    """handle -> id lookups for every resource type a menu item can point at."""
+    r = {'COLLECTION': {c['handle']: c['id'] for c in
+                        gql('{ collections(first:250){ nodes { id handle } } }')['collections']['nodes']},
+         'PAGE': {p['handle']: p['id'] for p in
+                  gql('{ pages(first:250){ nodes { id handle } } }')['pages']['nodes']},
+         'BLOG': {b['handle']: b['id'] for b in
+                  gql('{ blogs(first:100){ nodes { id handle } } }')['blogs']['nodes']}}
+    r['SHOP_POLICY'] = {p['type']: p['id'] for p in
+                        gql('{ shop { shopPolicies { id type } } }')['shop']['shopPolicies']}
+    return r
+
+
+def build_items(nodes, res, missing, depth=0):
+    out = []
+    for n in nodes:
+        t = n.get('type', 'COLLECTION')
+        item = {'title': n['title'], 'type': t}
+        if t == 'HTTP':
+            item['url'] = n['url']
+        elif t in res:
+            key = n.get('handle') or n.get(t.lower()) or n.get('collection') or n.get('policy')
+            if key not in res[t]:
+                missing.append(f"{t}:{key}"); continue
+            item['resourceId'] = res[t][key]
+        kids = build_items(n.get('items', []), res, missing, depth + 1)
+        if kids:
+            item['items'] = kids
+        out.append(item)
+    return out
+
+
+def apply_definition(path, res, menus, do_apply):
+    spec = json.loads(path.read_text())
+    missing = []
+    items = build_items(spec['items'], res, missing)
+    total = sum(1 + len(i.get('items', [])) for i in items)
+    print(f"\n{spec['handle']}: {len(items)} top-level, {total} links   ({path.name})")
+    if missing:
+        print('   unresolved, skipped:', ', '.join(sorted(set(missing))))
+    for i in items:
+        print(f"    {i['title']:34} {len(i.get('items', []))} children")
+    if not do_apply:
+        return
+
+    if spec['handle'] in menus:
+        data = gql("""mutation($id: ID!, $title: String!, $handle: String!, $items: [MenuItemUpdateInput!]!) {
+            menuUpdate(id: $id, title: $title, handle: $handle, items: $items) {
+              menu { handle items { title } } userErrors { field message } } }""",
+            {'id': menus[spec['handle']], 'title': spec['title'],
+             'handle': spec['handle'], 'items': items})['menuUpdate']
+    elif spec.get('create_if_missing'):
+        data = gql("""mutation($title: String!, $handle: String!, $items: [MenuItemCreateInput!]!) {
+            menuCreate(title: $title, handle: $handle, items: $items) {
+              menu { handle items { title } } userErrors { field message } } }""",
+            {'title': spec['title'], 'handle': spec['handle'], 'items': items})['menuCreate']
+    else:
+        sys.exit(f"menu '{spec['handle']}' does not exist and create_if_missing is not set")
+
+    if data['userErrors']:
+        sys.exit('userErrors: ' + json.dumps(data['userErrors'])[:400])
+    print(f"   applied -> {len(data['menu']['items'])} top-level items live")
+
+
 def main():
     load_env()
     if '--export' in sys.argv:
         export_menus(); return
-    spec = json.loads(DEF.read_text())
 
-    collections = {c['handle']: c['id'] for c in
-                   gql('{ collections(first:250){ nodes { id handle } } }')['collections']['nodes']}
+    if '--file' in sys.argv:
+        files = [HERE / sys.argv[sys.argv.index('--file') + 1]]
+    else:
+        files = sorted(f for f in HERE.glob('*.json') if f.name != EXPORT_FILE)
+
+    res = resolvers()
     menus = {m['handle']: m['id'] for m in
              gql('{ menus(first:50){ nodes { id handle } } }')['menus']['nodes']}
-
-    missing, items = [], []
-    for top in spec['items']:
-        if top['collection'] not in collections:
-            missing.append(top['collection']); continue
-        node = {'title': top['title'], 'type': 'COLLECTION',
-                'resourceId': collections[top['collection']]}
-        kids = []
-        for ch in top.get('items', []):
-            if ch['collection'] in collections:
-                kids.append({'title': ch['title'], 'type': 'COLLECTION',
-                             'resourceId': collections[ch['collection']]})
-            else:
-                missing.append(ch['collection'])
-        if kids:
-            node['items'] = kids
-        items.append(node)
-
-    total = sum(1 + len(i.get('items', [])) for i in items)
-    print(f"{spec['handle']}: {len(items)} top-level, {total} links")
-    if missing:
-        print('  no such collection, skipped:', ', '.join(sorted(set(missing))))
-
-    if '--apply' not in sys.argv:
-        for i in items:
-            print(f"    {i['title']:32} {len(i.get('items', []))} children")
+    do_apply = '--apply' in sys.argv
+    for f in files:
+        apply_definition(f, res, menus, do_apply)
+    if not do_apply:
         print('\ndry run. re-run with --apply to write to the store.')
-        return
-
-    if spec['handle'] not in menus:
-        sys.exit(f"menu '{spec['handle']}' not found on the store")
-
-    data = gql("""mutation($id: ID!, $title: String!, $handle: String!, $items: [MenuItemUpdateInput!]!) {
-        menuUpdate(id: $id, title: $title, handle: $handle, items: $items) {
-          menu { handle items { title items { title } } }
-          userErrors { field message }
-        } }""",
-        {'id': menus[spec['handle']], 'title': spec['title'],
-         'handle': spec['handle'], 'items': items})
-    errs = data['menuUpdate']['userErrors']
-    if errs:
-        sys.exit('userErrors: ' + json.dumps(errs)[:400])
-    menu = data['menuUpdate']['menu']
-    print(f"\napplied. '{menu['handle']}' now has {len(menu['items'])} top-level items:")
-    for it in menu['items']:
-        print(f"    {it['title']:32} {len(it['items'])} children")
 
 
 if __name__ == '__main__':

@@ -244,7 +244,14 @@
     <div class="footer__content-bottom-wrapper page-width">
       <div class="footer__column footer__column--info">
         <div class="footer__copyright">
-          <small class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}. {{ section.settings.copyright_text }}</small>
+          {%- comment -%}
+            DotAim: the stock line renders "(c) 2026, Lush Qatar." from shop.name,
+            and no theme setting can change that wording. The client wants exactly
+            "Copyright (c) 2026 LUSH." Same edit KSA had to make.
+            This is the ONE stock file we fork -- re-apply after a theme update.
+            See docs/theme-phase.md.
+          {%- endcomment -%}
+          <small class="copyright__content">Copyright &copy; {{ 'now' | date: "%Y" }} LUSH.{% if section.settings.copyright_text != blank %} {{ section.settings.copyright_text }}{% endif %}</small>
           <ul class="policies list-unstyled">
             <li><small class="copyright__content">{{ powered_by_link }}</small></li>
             {%- if section.settings.show_policy -%}

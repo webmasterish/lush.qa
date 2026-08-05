@@ -61,6 +61,14 @@ This is the question that decides whether editor work survives, so it is worth s
 
 **Ownership changes at training.** During the build the repo drives content and the editor is used for spot checks. Once the client is trained and using the editor for real, the store becomes authoritative: from then on the workflow is `pull-content` → commit, and `push-content` should be treated as a break-glass command. Nothing about the tooling changes — only which direction is normal.
 
+### The one forked stock file
+
+`sections/footer.liquid` — the copyright line. The theme hardcodes `© {year}, {shop.name}. {copyright_text}` and no setting changes that wording; the client wants exactly `Copyright © 2026 LUSH.` KSA had to make the same edit. The stock line is commented out with a note pointing here, so **re-apply it after any Be Yours update**. Everything else stays in `snippets/dotaim-custom-styles.liquid`.
+
+### Finding what needs translating
+
+Gaps do not announce themselves — a heading typed into the theme editor, a menu item or a new page simply renders in English on the Arabic storefront. `shopify/themes/i18n/audit-translations.py` asks Shopify directly instead of relying on memory: it walks every translatable resource type, reports what has no Arabic and what Shopify has flagged `outdated`, and takes `--detail` to list the actual strings. Run it after any round of content work.
+
 **Watch out for `locales/*.json`.** They are surface A (we own them in git), but the theme editor's *"Edit default theme content"* writes to them too. Rule: we edit locales in the repo; nobody uses that editor screen. If it happens anyway, `pull-code` recovers it.
 
 ## Themes on the store

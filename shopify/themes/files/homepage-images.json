@@ -44,6 +44,43 @@
       "source_url": "https://lush.qa/wp-content/uploads/2026/06/spa_gift_lush_2025_landscape_no_voucher_01-1-scaled.jpg",
       "alt": "Lush spa gift",
       "used_by": "index.json / hero slideshow (candidate)"
+    },
+    {
+      "filename": "lush-value-naked-products.svg",
+      "source_url": "https://cdn.shopify.com/s/files/1/0960/2092/2682/files/lush_brand_value_naked_products.svg",
+      "alt": "Naked Products",
+      "used_by": "index.json / lush_values (brand value icon)"
+    },
+    {
+      "filename": "lush-value-fighting-animal-testing.svg",
+      "source_url": "https://cdn.shopify.com/s/files/1/0960/2092/2682/files/lush_brand_value_fighting_animal_testing_a28e8b02-004e-48e0-b472-b7ead1858cc2.svg",
+      "alt": "Fighting Animal Testing",
+      "used_by": "index.json / lush_values (brand value icon)"
+    },
+    {
+      "filename": "lush-value-fresh-cosmetics.svg",
+      "source_url": "https://cdn.shopify.com/s/files/1/0960/2092/2682/files/lush_brand_value_fresh_cosmetics.svg",
+      "alt": "Fresh Cosmetics",
+      "used_by": "index.json / lush_values (brand value icon)"
+    },
+    {
+      "filename": "lush-value-vegetarian.svg",
+      "source_url": "https://cdn.shopify.com/s/files/1/0960/2092/2682/files/lush_brand_value_vegetarian.svg",
+      "alt": "100% Vegetarian",
+      "used_by": "index.json / lush_values (brand value icon)"
+    },
+    {
+      "filename": "lush-value-ethical-buying.svg",
+      "source_url": "https://cdn.shopify.com/s/files/1/0960/2092/2682/files/lush_brand_value_ethical_buying.svg",
+      "alt": "Ethical Buying",
+      "used_by": "index.json / lush_values (brand value icon)"
+    },
+    {
+      "filename": "lush-value-handmade.svg",
+      "source_url": "https://cdn.shopify.com/s/files/1/0960/2092/2682/files/lush_brand_value_handmade.svg",
+      "alt": "Handmade With Love",
+      "used_by": "index.json / lush_values (brand value icon)"
     }
-  ]
+  ],
+  "_note2": "The lush-value-*.svg icons are Lush brand assets, taken from the KSA store where DotAim first placed them. Same brand, both franchises."
 }
