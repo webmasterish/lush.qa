@@ -82,7 +82,14 @@ def fetch(post_id):
             img = {'url': m.get('source_url'), 'alt': m.get('alt_text') or ''}
         except Exception:
             pass
+    author = 'LUSH'
+    if p.get('author'):
+        try:
+            author = wp(f"users/{p['author']}?_fields=name").get('name') or author
+        except Exception:
+            pass          # author endpoint may require auth; the default is right anyway
     return {
+        'author': author,
         'title': htmllib.unescape(p['title']['rendered']),
         'body': clean_html(p['content']['rendered']),
         'summary': htmllib.unescape(re.sub('<[^>]+>', '', p['excerpt']['rendered'])).strip(),
@@ -152,14 +159,15 @@ def main():
         print(f"\n{art['handle']}")
         print(f"   EN {en['title'][:58]}   body {len(en['body'])} chars")
         print(f"   AR {ar['title'][:58]}   body {len(ar['body'])} chars")
-        print(f"   image {(en['image'] or {}).get('url', 'none').split('/')[-1]}")
+        print(f"   image {(en['image'] or {}).get('url', 'none').split('/')[-1]}   author {en['author']}")
         if not apply:
             continue
 
+        # author is required and must not be null
         payload = {'blogId': blogs[blog_handle], 'title': en['title'],
                    'handle': art['handle'], 'body': en['body'],
                    'summary': en['summary'], 'publishDate': en['date'],
-                   'isPublished': True}
+                   'isPublished': True, 'author': {'name': en['author']}}
         if en['image'] and en['image']['url']:
             payload['image'] = {'url': en['image']['url'], 'altText': en['image']['alt']}
         res = gql("""mutation($article: ArticleCreateInput!) {
