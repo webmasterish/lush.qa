@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header-group.name",
   "type": "header",
@@ -27,7 +36,9 @@
             "text": "Complimentary shipping on orders over $100",
             "text_on_mobile": "Free shipping over $100",
             "text_size": 13,
-            "link": ""
+            "link": "",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         }
       },
@@ -35,6 +46,7 @@
         "countdown_wqwPAr",
         "9518463a-71f9-42b5-b5ef-174a4f08e081"
       ],
+      "disabled": true,
       "settings": {
         "only_homepage": false,
         "layout": "default",
@@ -50,8 +62,7 @@
         "colors_highlight": "#ffb503",
         "padding_top": 2,
         "padding_bottom": 2
-      },
-      "disabled": true
+      }
     },
     "header": {
       "type": "header",
@@ -62,7 +73,19 @@
             "menu_title": "Bath and Shower",
             "narrow": false,
             "show_menu_image": true,
-            "defer_loading": true
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
           }
         },
         "mega_face": {
@@ -71,7 +94,19 @@
             "menu_title": "Face",
             "narrow": false,
             "show_menu_image": true,
-            "defer_loading": true
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
           }
         },
         "mega_body": {
@@ -80,7 +115,19 @@
             "menu_title": "Body",
             "narrow": false,
             "show_menu_image": true,
-            "defer_loading": true
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
           }
         },
         "mega_hair": {
@@ -89,7 +136,19 @@
             "menu_title": "Hair",
             "narrow": false,
             "show_menu_image": true,
-            "defer_loading": true
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
           }
         },
         "mega_fragrances": {
@@ -98,7 +157,19 @@
             "menu_title": "Fragrances",
             "narrow": false,
             "show_menu_image": true,
-            "defer_loading": true
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
           }
         },
         "mega_gifts": {
@@ -107,7 +178,19 @@
             "menu_title": "Gifts",
             "narrow": false,
             "show_menu_image": true,
-            "defer_loading": true
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
           }
         }
       },
@@ -124,8 +207,10 @@
         "logo_height": 48,
         "mobile_logo_height": 40,
         "logo_position": "top-center",
+        "search_style": "icon",
         "menu": "main-menu",
         "menu_mobile": "main-menu",
+        "customer_account_menu": "",
         "enable_dropdown_menu": true,
         "show_line_separator": true,
         "uppercase_menu_items": true,
@@ -135,7 +220,7 @@
         "enable_language_selector": true,
         "enable_sticky_header": true,
         "show_sticky_header_scroll_up": true,
-        "transparent_logo": "",
+        "transparent_logo": "shopify://shop_images/lush_logo_for_web_white_en_trimmed.png",
         "enable_transparent_header": true,
         "enable_transparent_header_collection": true,
         "enable_transparent_header_custom": "",
@@ -144,8 +229,11 @@
         "enable_highlight": false,
         "highlight_labels": "Skincare",
         "highlight_style": "marker",
+        "drawer_promo_heading": "",
+        "drawer_promo_link": "",
         "enable_sidebar": false,
         "sidebar_heading": "Must-see this week",
+        "sidebar_icon": "price_tag",
         "mobile_logo_position": "center",
         "colors_text": "#282828",
         "colors_border": "#d2d5d9",

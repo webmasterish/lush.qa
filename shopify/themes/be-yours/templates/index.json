@@ -1,7 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "slideshow",
+      "blocks": {
+        "slide_karma": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-karma.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Karma",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "Give customers details about the slide image or content on the template.",
+            "text_size": "typeset",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "slide_lipbalm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-lip-balm.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Lip Balms",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "Give customers details about the slide image or content on the template.",
+            "text_size": "typeset",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "slide_supermilk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-supermilk.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Supermilk Haircare",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "Give customers details about the slide image or content on the template.",
+            "text_size": "typeset",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "slide_spagift": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lush-qa-hero-spa-gift.jpg",
+            "image_position": "center center",
+            "text_box_position": "middle-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Spa Gifts",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "Give customers details about the slide image or content on the template.",
+            "text_size": "typeset",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/best-sellers",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "slide_karma",
+        "slide_lipbalm",
+        "slide_supermilk",
+        "slide_spagift"
+      ],
       "settings": {
         "slideshow_type": "legacy",
         "text_alignment": "left",
@@ -12,88 +129,22 @@
         "image_behavior": "none",
         "mobile_text_alignment": "center",
         "mobile_image_ratio": "600px",
+        "show_text_below": false,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
         "colors_text": "#ffffff",
+        "colors_background": "#ffffff",
         "colors_overlay": "#1a1b18",
         "colors_overlay_opacity": 16,
-        "colors_button_label": "#1a1b18",
-        "colors_button_background": "#ffffff"
-      },
-      "blocks": {
-        "slide_karma": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/lush-qa-hero-karma.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "heading": "Karma",
-            "heading_size": "h1",
-            "heading_tag": "h2",
-            "button_label": "Shop now",
-            "button_link": "shopify://collections/best-sellers"
-          }
-        },
-        "slide_lipbalm": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/lush-qa-hero-lip-balm.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "heading": "Lip Balms",
-            "heading_size": "h1",
-            "heading_tag": "h2",
-            "button_label": "Shop now",
-            "button_link": "shopify://collections/best-sellers"
-          }
-        },
-        "slide_supermilk": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/lush-qa-hero-supermilk.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "heading": "Supermilk Haircare",
-            "heading_size": "h1",
-            "heading_tag": "h2",
-            "button_label": "Shop now",
-            "button_link": "shopify://collections/best-sellers"
-          }
-        },
-        "slide_spagift": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/lush-qa-hero-spa-gift.jpg",
-            "image_position": "center center",
-            "text_box_position": "middle-left",
-            "heading": "Spa Gifts",
-            "heading_size": "h1",
-            "heading_tag": "h2",
-            "button_label": "Shop now",
-            "button_link": "shopify://collections/best-sellers"
-          }
-        }
-      },
-      "block_order": [
-        "slide_karma",
-        "slide_lipbalm",
-        "slide_supermilk",
-        "slide_spagift"
-      ]
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "colors_highlight": "#ffb503",
+        "padding_top": 0,
+        "padding_bottom": 56
+      }
     },
     "categories": {
       "type": "collection-list",
-      "settings": {
-        "heading": "Popular Categories",
-        "heading_size": "h2",
-        "heading_alignment": "center",
-        "heading_tag": "h2",
-        "columns_desktop": 6,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "show_view_all": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      },
       "blocks": {
         "cat_bath-and-shower": {
           "type": "featured_collection",
@@ -145,15 +196,34 @@
         "cat_hair",
         "cat_fragrances",
         "cat_gifts"
-      ]
+      ],
+      "settings": {
+        "show_view_all": false,
+        "show_divider": false,
+        "columns_desktop": 6,
+        "heading": "Popular Categories",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "apply_overlay": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     },
     "trending": {
       "type": "featured-collection",
       "settings": {
         "collection": "trending-now",
-        "heading": "Trending now!",
+        "product_list": [],
         "products_to_show": 4,
+        "horizontal_scroll": false,
         "show_view_all": true,
+        "show_divider": false,
+        "enable_drag": false,
+        "heading": "Trending now!",
         "heading_size": "h2",
         "heading_alignment": "left",
         "heading_tag": "p",
@@ -161,48 +231,56 @@
         "swipe_on_mobile": true,
         "image_ratio": "square",
         "image_position": "center center",
+        "enable_image_fill": true,
         "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
         "show_rating": false,
         "show_quick_buy": true,
         "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "show_product_highlights": false,
+        "colors_highlight": "#ffb503",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
       }
     },
     "gifts_banner": {
       "type": "image-with-text",
-      "settings": {
-        "image_position": "center center",
-        "layout": "image_first",
-        "text_box_position": "middle",
-        "text_alignment": "left",
-        "image_ratio": "500px",
-        "image_behavior": "none",
-        "mobile_layout": "image_first",
-        "mobile_text_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "image": "shopify://shop_images/lush-qa-banner-gifts.png"
-      },
       "blocks": {
         "h": {
           "type": "heading",
           "settings": {
             "heading": "LUSH GIFTS",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Our large collection of gifts inspires every reason to celebrate.</p>"
+            "text": "<p>Our large collection of gifts inspires every reason to celebrate.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "b": {
           "type": "button",
           "settings": {
+            "button_size": "medium",
             "button_label": "Shop Gifts",
-            "button_link": "shopify://collections/gifts"
+            "button_link": "shopify://collections/gifts",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
           }
         }
       },
@@ -210,15 +288,45 @@
         "h",
         "t",
         "b"
-      ]
+      ],
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-gifts.png",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     },
     "new_products": {
       "type": "featured-collection",
       "settings": {
         "collection": "new-products",
-        "heading": "New Products",
+        "product_list": [],
         "products_to_show": 4,
+        "horizontal_scroll": false,
         "show_view_all": true,
+        "show_divider": false,
+        "enable_drag": false,
+        "heading": "New Products",
         "heading_size": "h2",
         "heading_alignment": "left",
         "heading_tag": "p",
@@ -226,48 +334,56 @@
         "swipe_on_mobile": true,
         "image_ratio": "square",
         "image_position": "center center",
+        "enable_image_fill": true,
         "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
         "show_rating": false,
         "show_quick_buy": true,
         "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "show_product_highlights": false,
+        "colors_highlight": "#ffb503",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
       }
     },
     "fragrance_banner": {
       "type": "image-with-text",
-      "settings": {
-        "image_position": "center center",
-        "layout": "image_first",
-        "text_box_position": "middle",
-        "text_alignment": "left",
-        "image_ratio": "500px",
-        "image_behavior": "none",
-        "mobile_layout": "image_first",
-        "mobile_text_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "image": "shopify://shop_images/lush-qa-banner-fragrances.png"
-      },
       "blocks": {
         "h": {
           "type": "heading",
           "settings": {
             "heading": "Unisex fragrances for everyone",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "t": {
           "type": "text",
           "settings": {
-            "text": "<p>Made in house, with the finest essential oils.</p>"
+            "text": "<p>Made in house, with the finest essential oils.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
         "b": {
           "type": "button",
           "settings": {
+            "button_size": "medium",
             "button_label": "Shop Fragrances",
-            "button_link": "shopify://collections/fragrances"
+            "button_link": "shopify://collections/fragrances",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
           }
         }
       },
@@ -275,80 +391,45 @@
         "h",
         "t",
         "b"
-      ]
-    },
-    "best_sellers": {
-      "type": "featured-collection",
+      ],
       "settings": {
-        "collection": "best-sellers",
-        "heading": "Most selling products",
-        "products_to_show": 4,
-        "show_view_all": true,
-        "heading_size": "h2",
-        "heading_alignment": "left",
-        "heading_tag": "p",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "image_position": "center center",
-        "show_secondary_image": true,
-        "show_rating": false,
-        "show_quick_buy": true,
-        "enable_quick_view": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "bath_banner": {
-      "type": "image-with-text",
-      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-fragrances.png",
         "image_position": "center center",
         "layout": "image_first",
         "text_box_position": "middle",
         "text_alignment": "left",
         "image_ratio": "500px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
         "image_behavior": "none",
         "mobile_layout": "image_first",
         "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
         "padding_top": 36,
-        "padding_bottom": 36,
-        "image": "shopify://shop_images/lush-qa-banner-bath-shower.png"
-      },
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "heading": "We have bath products for every mood",
-            "heading_size": "h2"
-          }
-        },
-        "t": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Banish boring bath times with our relaxing, luxurious range.</p>"
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "button_label": "Shop Bath & Shower",
-            "button_link": "shopify://collections/bath-and-shower"
-          }
-        }
-      },
-      "block_order": [
-        "h",
-        "t",
-        "b"
-      ]
+        "padding_bottom": 36
+      }
     },
-    "featured": {
+    "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "collection": "5-star-reviews",
-        "heading": "Featured Products",
+        "collection": "best-sellers",
+        "product_list": [],
         "products_to_show": 4,
+        "horizontal_scroll": false,
         "show_view_all": true,
+        "show_divider": false,
+        "enable_drag": false,
+        "heading": "Most selling products",
         "heading_size": "h2",
         "heading_alignment": "left",
         "heading_tag": "p",
@@ -356,50 +437,223 @@
         "swipe_on_mobile": true,
         "image_ratio": "square",
         "image_position": "center center",
+        "enable_image_fill": true,
         "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
         "show_rating": false,
         "show_quick_buy": true,
         "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "show_product_highlights": false,
+        "colors_highlight": "#ffb503",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
       }
     },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "text_alignment": "center",
-        "mobile_text_alignment": "center",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 48
-      },
+    "bath_banner": {
+      "type": "image-with-text",
       "blocks": {
         "h": {
           "type": "heading",
           "settings": {
-            "heading": "Want more LUSH?",
-            "heading_tag": "h2"
+            "heading": "We have bath products for every mood",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
-        "p": {
-          "type": "paragraph",
+        "t": {
+          "type": "text",
           "settings": {
-            "paragraph": "<p>Be the first to hear about new products, offers and everything Lush.</p>"
+            "text": "<p>Banish boring bath times with our relaxing, luxurious range.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
           }
         },
-        "f": {
-          "type": "email_form",
-          "settings": {}
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Shop Bath & Shower",
+            "button_link": "shopify://collections/bath-and-shower",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
         }
       },
       "block_order": [
         "h",
-        "p",
-        "f"
-      ]
+        "t",
+        "b"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-bath-shower.png",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "5-star-reviews",
+        "product_list": [],
+        "products_to_show": 4,
+        "horizontal_scroll": false,
+        "show_view_all": true,
+        "show_divider": false,
+        "enable_drag": false,
+        "heading": "Featured Products",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "p",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "show_product_highlights": false,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
     },
     "lush_values": {
       "type": "guarantees",
+      "blocks": {
+        "val_naked": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-naked-products.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/naked/\" target=\"_blank\" title=\"Naked Products\">Naked Products</a></p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "val_animal": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-fighting-animal-testing.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/fighting-animal-testing/\" target=\"_blank\" title=\"Fighting Animal Testing\">Fighting Animal Testing</a></p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "val_fresh": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-fresh-cosmetics.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-company/what-we-believe/\" target=\"_blank\" title=\"Fresh Cosmetics\">Fresh Cosmetics</a></p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "val_veg": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-vegetarian.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/vegetarian/\" target=\"_blank\" title=\"100% Vegetarian\">100% Vegetarian</a></p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "val_ethical": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-ethical-buying.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/ethical-buying/\" target=\"_blank\" title=\"Ethical Buying\">Ethical Buying</a></p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "val_handmade": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "image": "shopify://shop_images/lush-value-handmade.svg",
+            "custom_icon": "",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/handmade-policy/\" target=\"_blank\" title=\"Handmade With Love\">Handmade With Love</a></p>",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "val_naked",
+        "val_animal",
+        "val_fresh",
+        "val_veg",
+        "val_ethical",
+        "val_handmade"
+      ],
+      "name": "Lush Values",
       "settings": {
         "layout": "default",
         "column_alignment": "center",
@@ -413,91 +667,16 @@
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "use_custom_colors": false,
+        "colors_icon": "#ffffff",
+        "colors_text": "#1a1b18",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
         "padding_top": 36,
-        "padding_bottom": 36
-      },
-      "blocks": {
-        "val_naked": {
-          "type": "guarantee",
-          "settings": {
-            "icon": "none",
-            "icon_size": "large",
-            "image": "shopify://shop_images/lush-value-naked-products.svg",
-            "custom_icon": "",
-            "title": "",
-            "title_size": "h3",
-            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/naked/\" target=\"_blank\" title=\"Naked Products\">Naked Products</a></p>"
-          }
-        },
-        "val_animal": {
-          "type": "guarantee",
-          "settings": {
-            "icon": "none",
-            "icon_size": "large",
-            "image": "shopify://shop_images/lush-value-fighting-animal-testing.svg",
-            "custom_icon": "",
-            "title": "",
-            "title_size": "h3",
-            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/fighting-animal-testing/\" target=\"_blank\" title=\"Fighting Animal Testing\">Fighting Animal Testing</a></p>"
-          }
-        },
-        "val_fresh": {
-          "type": "guarantee",
-          "settings": {
-            "icon": "none",
-            "icon_size": "large",
-            "image": "shopify://shop_images/lush-value-fresh-cosmetics.svg",
-            "custom_icon": "",
-            "title": "",
-            "title_size": "h3",
-            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-company/what-we-believe/\" target=\"_blank\" title=\"Fresh Cosmetics\">Fresh Cosmetics</a></p>"
-          }
-        },
-        "val_veg": {
-          "type": "guarantee",
-          "settings": {
-            "icon": "none",
-            "icon_size": "large",
-            "image": "shopify://shop_images/lush-value-vegetarian.svg",
-            "custom_icon": "",
-            "title": "",
-            "title_size": "h3",
-            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/vegetarian/\" target=\"_blank\" title=\"100% Vegetarian\">100% Vegetarian</a></p>"
-          }
-        },
-        "val_ethical": {
-          "type": "guarantee",
-          "settings": {
-            "icon": "none",
-            "icon_size": "large",
-            "image": "shopify://shop_images/lush-value-ethical-buying.svg",
-            "custom_icon": "",
-            "title": "",
-            "title_size": "h3",
-            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/ethical-buying/\" target=\"_blank\" title=\"Ethical Buying\">Ethical Buying</a></p>"
-          }
-        },
-        "val_handmade": {
-          "type": "guarantee",
-          "settings": {
-            "icon": "none",
-            "icon_size": "large",
-            "image": "shopify://shop_images/lush-value-handmade.svg",
-            "custom_icon": "",
-            "title": "",
-            "title_size": "h3",
-            "text": "<p><a href=\"https://weare.lush.com/lush-life/our-ethics/handmade-policy/\" target=\"_blank\" title=\"Handmade With Love\">Handmade With Love</a></p>"
-          }
-        }
-      },
-      "block_order": [
-        "val_naked",
-        "val_animal",
-        "val_fresh",
-        "val_veg",
-        "val_ethical",
-        "val_handmade"
-      ]
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
     }
   },
   "order": [
@@ -510,7 +689,6 @@
     "best_sellers",
     "bath_banner",
     "featured",
-    "newsletter",
     "lush_values"
   ]
 }
