@@ -26,8 +26,8 @@
         "footer-2": {
           "type": "link_list",
           "settings": {
-            "heading": "About",
-            "menu": "footer",
+            "heading": "Explore",
+            "menu": "explore-menu",
             "enable_highlight": false,
             "highlight_style": "marker"
           }

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -674,21 +683,17 @@
       "settings": {
         "blog": "news",
         "post_limit": 3,
-        "columns_desktop": 3,
+        "show_view_all": true,
         "heading": "From the Lush blog",
         "heading_size": "h1",
         "heading_alignment": "center",
         "heading_tag": "h2",
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "show_excerpt": true,
-        "show_view_all": true,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
+        "show_image": true,
+        "image_ratio": "landscape",
         "padding_top": 36,
-        "padding_bottom": 36,
-        "image_ratio": "landscape"
+        "padding_bottom": 36
       }
     }
   },

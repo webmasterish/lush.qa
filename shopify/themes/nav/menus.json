@@ -554,6 +554,26 @@
           "items": []
         }
       ]
+    },
+    {
+      "handle": "explore-menu",
+      "title": "Explore",
+      "items": [
+        {
+          "title": "Branches",
+          "type": "PAGE",
+          "url": "/pages/branches",
+          "resourceId": "gid://shopify/Page/174478164107",
+          "items": []
+        },
+        {
+          "title": "Blogs",
+          "type": "BLOG",
+          "url": "/blogs/news",
+          "resourceId": "gid://shopify/Blog/98035073163",
+          "items": []
+        }
+      ]
     }
   ]
 }
