@@ -97,8 +97,23 @@ def register_translation(resource_id, values):
                   '{ translatableContent { key digest } } }',
                   {'id': resource_id})['translatableResource']['translatableContent']
     digests = {c['key']: c['digest'] for c in content}
-    payload = [{'key': k, 'value': v, 'locale': LOCALE, 'translatableContentDigest': digests[k]}
-               for k, v in values.items() if v and k in digests]
+    # Shopify's key names are not what you would guess: a page body is
+    # body_html, not body. Map the obvious aliases, then report anything still
+    # unmatched -- silently dropping a key looks like success and leaves the
+    # field untranslated.
+    payload, dropped = [], []
+    for k, v in values.items():
+        if not v:
+            continue
+        key = k if k in digests else next((a for a in (f'{k}_html', k.replace('_html', ''))
+                                           if a in digests), None)
+        if key is None:
+            dropped.append(f"{k} (available: {', '.join(digests)})")
+            continue
+        payload.append({'key': key, 'value': v, 'locale': LOCALE,
+                        'translatableContentDigest': digests[key]})
+    if dropped:
+        print('   WARNING: no translatable field for ' + '; '.join(dropped))
     if not payload:
         return 0
     res = gql("""mutation($id: ID!, $t: [TranslationInput!]!) {
