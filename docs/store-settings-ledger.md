@@ -47,7 +47,7 @@ Settings whose theme-editor control does nothing, because code forces the value.
 
 | Setting | Overridden by | Why |
 |---|---|---|
-| Typography > Heading font | `snippets/dotaim-custom-styles.liquid` sets `--font-heading-family` to `LushHandwritten` | Shopify's font picker only offers its own library, so the Lush brand face has to be forced in CSS. Matches KSA. |
+| Typography > Heading font | `snippets/dotaim-custom-styles.liquid` points `--font-heading-family` at `--font-lush-handwritten` (`LushHandwritten_Bd`) | Shopify's font picker only offers its own library, so the Lush brand face has to be forced in CSS. Matches KSA. |
 
 ## Notes
 
