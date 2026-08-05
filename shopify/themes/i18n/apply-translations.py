@@ -25,7 +25,7 @@ REPO = HERE.parents[2]
 ENV = REPO / 'shopify/migration_from_woocommerce/migration-tool/config/projects/lush-qatar.env'
 DICT = HERE / 'ar.json'
 
-TYPES = ['MENU', 'LINK', 'ONLINE_STORE_THEME_SECTION_GROUP',
+TYPES = ['MENU', 'LINK', 'PAGE', 'BLOG', 'ONLINE_STORE_THEME_SECTION_GROUP',
          'ONLINE_STORE_THEME_JSON_TEMPLATE', 'ONLINE_STORE_THEME_SETTINGS_CATEGORY']
 
 

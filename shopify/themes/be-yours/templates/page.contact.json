@@ -10,19 +10,10 @@
             "heading_size": "h0",
             "heading_tag": "h2"
           }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Questions? Comments? Let your customers get in touch with you by filling out the email form below.</p>",
-            "text_size": "typeset3",
-            "secondary_color": false
-          }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "heading"
       ],
       "settings": {
         "image": "",
@@ -174,7 +165,7 @@
         "map-2"
       ],
       "settings": {
-        "map_address": "Toronto, Canada",
+        "map_address": "",
         "map_api_key": "",
         "map_zoom": 14,
         "map_style": "standard",

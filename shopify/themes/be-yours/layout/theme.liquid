@@ -52,12 +52,18 @@
 
     {%- liquid
       render 'css-variables'
-      render 'dotaim-custom-styles'
       echo 'base.css' | asset_url | stylesheet_tag: preload: true
       
       if text_direction == 'rtl'
         echo 'rtl.css' | asset_url | stylesheet_tag
       endif
+
+      # After base.css and rtl.css, deliberately. base.css styles headings via
+      # `.heading, h1, ... .h1 { font-family: var(--font-heading-family) }`, and
+      # a slideshow heading carries `class="slideshow__heading h1"`. Both are
+      # single-class selectors, so specificity ties and source order decides --
+      # rendered earlier, our rules lose.
+      render 'dotaim-custom-styles'
     -%}
 
     <link rel="stylesheet" href="{{ 'apps.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
