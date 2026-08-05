@@ -32,7 +32,7 @@ Status: `done` · `todo` · `blocked` · `n/a`
 | Notifications | Settings > Notifications | Branded order/shipping email templates, sender address, AR versions | yes | todo | DotAim |
 | Navigation | Content > Menus | Main menu (mega-menu structure), footer menus. Feeds the theme's mega menu in T2 | yes | todo | DotAim |
 | Metafield definitions | Settings > Custom data | Definitions the theme reads: badges (vegan / bestseller / new / limited edition), ingredients. Distinct from the `DotAim ·` migration-namespace definitions already created | yes | todo | DotAim |
-| Files | Content > Files | Every image referenced by ported KSA theme settings must be re-uploaded here — `shopify://` file URLs are per-store and will not resolve | yes | todo | DotAim |
+| Files | Content > Files | **7 homepage images imported 2026-08-04** from the WooCommerce site via `shopify/themes/files/import-images.py` (manifest records source and usage). Remaining: Every image referenced by ported KSA theme settings must be re-uploaded here — `shopify://` file URLs are per-store and will not resolve | yes | todo | DotAim |
 | Translations | Translate & Adapt | Theme-editor strings and store content in Arabic. Product/collection AR came through the migration; theme content did not. Theme's own strings live in `locales/*.json` (surface A) | yes | todo | DotAim |
 | Markets | Settings > Markets | Qatar primary; confirm whether other regions ship | reference only | todo | Dee |
 | Customer accounts | Settings > Customer accounts | Classic vs. new accounts — affects the account templates in T3 | yes | todo | DotAim |

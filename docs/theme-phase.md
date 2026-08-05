@@ -185,7 +185,7 @@ Then, regardless of route:
 - [x] Collection — `image_ratio` square and `show_vendor` off to match KSA; removed the 9.2 demo `multicolumn`
 - [x] Product — removed Be Yours demo content that was live on the store: fabricated customer testimonials, a Dr. Barbara Sturm quote, and the `#ImwithBeYours` / `#summerMe` social sections. `content-scrollspy` disabled (9.2-only, not in KSA)
 - [x] Home — rebuilt from the WooCommerce homepage's own structure. Six sections live (Popular Categories, three product carousels, Featured Products, newsletter); four await artwork
-- [ ] Hero and the three campaign banners — configured and disabled pending images from the WooCommerce site
+- [x] Hero and the three campaign banners — imagery imported from the WooCommerce site 2026-08-04; all ten homepage sections live and verified in both locales
 - [ ] Home, collection, product, cart, search, 404
 - [ ] Page, blog, article — depends on the CMS pages + blog migration below
 - [ ] Customer account templates
