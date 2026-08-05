@@ -203,18 +203,18 @@ Then, regardless of route:
 
 ## Milestones
 
-### T0 — Access & inventory
+### T0 — Access & inventory — **complete**
 - [x] Theme Access app installed on Qatar; password generated → `shopify/themes/.env` — 2026-08-03
 - [x] Theme Access app installed on KSA; password generated (pull-only use) — 2026-08-03
 - [x] Qatar is Be Yours **9.2**, KSA is **8.4**
 - [x] `list` + `probe` on both stores — versions and customization state established (table above) — 2026-08-03
 - [x] KSA store domain corrected to `ckdthc-qn.myshopify.com`; `lushsa.myshopify.com` was never real
 - [x] Theme IDs recorded in `shopify.theme.toml`
-- [ ] Pull `ksa-8.4.0-live`, `qatar-9.1.0-vanilla`, `qatar-9.2.0-live` into `__reference/`
-- [ ] Check for an archived KSA theme copy from the original project (only route to an exact 8.4 baseline)
+- [x] Pull `ksa-8.4.0-live`, `qatar-9.1.0-vanilla`, `qatar-9.2.0-live` into `__reference/` — 2026-08-03, plus `ksa-8.5.0-unpublished` for the update assessment
+- [x] Check for an archived KSA theme copy — **none exists** (Bassam, 2026-08-04). The exact 8.4 baseline is unavailable, so the customization diff ran against `qatar-9.1.0-vanilla` and was triaged by hand
 - [x] Create the `Be Yours - Lush Qatar (by DotAim)` theme (#152710447243) by duplicating the live 9.2.0 — 2026-08-03, first write to the Qatar store
 
-### T1 — Customization inventory
+### T1 — Customization inventory — **complete**, one item open
 **Done 2026-08-03 — output is `theme-porting-list.md`, which the build runs against.**
 - [x] Schema comparison, 8.4 vs 9.2 → 98 of 101 settings shared; 81 of KSA's 86 set values transcribe directly
 - [x] Section inventory → 56 of the 58 types KSA uses exist in 9.2; both gaps are DotAim's own code
@@ -223,39 +223,39 @@ Then, regardless of route:
 - [x] Metafields the theme reads → `custom.ingredients`, `custom.ingredient_benefits`, `custom.ingredients_cards`, `custom.ingredient_type`
 - [ ] Inventory KSA's installed apps → cost and client approval if any are paid (storefront shows none, but the admin list is unchecked)
 
-### T2 — Foundation parity
-- [ ] Theme settings: colors, typography, buttons, spacing, layout
-- [ ] Fonts, including the Arabic face (skip the `SAR` font)
-- [ ] Logo, favicon, brand assets uploaded to Qatar Files
-- [ ] RTL + `locales/ar.json` + `ar.schema.json`
+### T2 — Foundation parity — **complete 2026-08-04**
+- [x] Theme settings: colors, typography, buttons, spacing, layout — header/footer/announcement colours ported from KSA; Bassam set accent, button labels, page width 1200 and navigation size in the editor 2026-08-04
+- [x] Fonts — `LushHandwritten_Bd` in theme assets, applied Lebanon-style to display type only. **No separate Arabic face was needed**: KSA has none either, and Arabic renders in the body font. `SAR` deliberately skipped
+- [x] Logo, favicon, brand assets — in Settings > Brand (Bassam). The header uses `{{ shop.brand.logo }}`, so seasonal swaps need no code change. Transparent white logo uploaded but the transparent header is still switched off
+- [x] RTL + `locales/ar.json` — RTL via `localization.text_direction_trigger`, no theme fork; 499/499 locale keys. **`ar.schema.json` deliberately skipped** — it translates theme-editor labels for Arabic-speaking admins, not the storefront, and KSA has none
 - [x] Header, footer, announcement bar section groups — footer columns done 2026-08-04 (Customer Service, We Are Lush); announcement bar deliberately off
 - [x] Navigation menus — applied 2026-08-04 from `shopify/themes/nav/main-menu.json`; mega menus enabled for the six large families
 
-### T3 — Templates & sections parity
+### T3 — Templates & sections parity — **complete 2026-08-04**, except the visual pass and customer-account templates
 **Started 2026-08-04.** Search, 404 and cart already matched KSA and needed no work.
 - [x] Collection — `image_ratio` square and `show_vendor` off to match KSA; removed the 9.2 demo `multicolumn`
 - [x] Product — removed Be Yours demo content that was live on the store: fabricated customer testimonials, a Dr. Barbara Sturm quote, and the `#ImwithBeYours` / `#summerMe` social sections. `content-scrollspy` disabled (9.2-only, not in KSA)
 - [x] Home — rebuilt from the WooCommerce homepage's own structure. Six sections live (Popular Categories, three product carousels, Featured Products, newsletter); four await artwork
 - [x] Hero and the three campaign banners — imagery imported from the WooCommerce site 2026-08-04; all ten homepage sections live and verified in both locales
-- [ ] Home, collection, product, cart, search, 404
-- [ ] Page, blog, article — depends on the CMS pages + blog migration below
-- [ ] Customer account templates
-- [ ] Section-by-section visual pass against KSA, desktop + mobile, EN + AR
+- [x] Home, collection, product, cart, search, 404 — all verified live in both locales. Search, 404 and cart already matched KSA and needed no work
+- [x] Page, blog, article — templates done and verified; 3 articles imported EN+AR and the Branches page created. The **16 WooCommerce CMS pages are still to migrate** (T5)
+- [ ] Customer account templates — **not started**; depends on the Settings > Customer accounts choice in `store-settings-ledger.md`
+- [ ] Section-by-section **visual** pass against KSA, desktop + mobile, EN + AR — **not done**. Everything so far was verified by inspecting rendered HTML, which proves content and structure but not how it looks. Belongs with T6
 
 ### T4 — Features
 Per context doc §8: mega menu, smart search with suggestions, advanced filtering, product badges (vegan / bestseller / new / limited edition), back-in-stock, zoom galleries, related products, cart drawer with upsells, countdown timers, hero banners.
 - [ ] **Ingredients feature** — promised to Dee in the 14 July session and referenced in the client report. **It already exists on KSA** as `sections/lush-ingredients-cards.liquid` + `snippets/lush-ingredients-list.liquid` + `templates/article.ingredient-blog-post.json`, so this is a port of working code, not a build from scratch. Needs the backing metafield definitions on Qatar.
-- [ ] `locales/ar.json` — Be Yours ships no Arabic locale; KSA's was authored by DotAim and is a direct port
+- [x] `locales/ar.json` — done in T2, not T4: ported and repaired, 499/499 keys, `theme check` clean
 
 ### T5 — Content & store settings
 - [ ] CMS pages migration (open from Phase 3)
-- [ ] Blog migration (open from Phase 3)
+- [x] Blog migration — 3 posts imported with images and Arabic translations 2026-08-04 (`shopify/themes/blog/`)
 - [ ] URL redirects / 301 map (open from Phase 3)
-- [ ] Legal policy pages — Settings > Policies
+- [ ] Legal policy pages — **partly done**: privacy, refund and terms are written and translated (Bassam). Shipping, contact information and the rest are still empty
 - [ ] Everything else per `store-settings-ledger.md`: payments (local Qatar gateway — Shopify Payments is unavailable in Qatar), shipping, taxes, checkout branding, notifications, Google Analytics
 
 ### T6 — QA & sign-off
-- [ ] `theme check` clean; Lighthouse pass
+- [ ] Lighthouse pass — not run. (`theme check` is already clean: 200 files, no offenses, and is run before every commit)
 - [ ] Full AR/RTL sweep, mobile + desktop, both locales
 - [ ] Side-by-side parity review against KSA
 - [ ] Dee's review on the password-protected storefront, then launch (DNS cutover, per the runbook's Phase 6)
