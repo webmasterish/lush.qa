@@ -145,13 +145,15 @@ Enabled sections in order (13 more sit disabled in the template and can be ignor
 
 Every one of these section types exists in Qatar 9.2. Content, images and collection targets are Qatar's own — and every referenced image must be uploaded to Qatar's Files, since `shopify://` URLs are per-store.
 
-## Open design question — where the brand face applies
+## Where the brand face applies — settled, Lebanon-style
 
-Qatar currently applies `LushHandwritten_Bd` to **all headings**, because that is what KSA does and Dee asked for a mirror of the Saudi store.
+**Resolved 2026-08-06.** This section previously recorded an open question, on the basis that Qatar applied `LushHandwritten_Bd` to all headings the way KSA does. That is no longer true and the note was stale: Qatar is already Lebanon-style. Verified in the code — `type_header_font` is `sans_serif_n4`, so `--font-heading-family` is a plain sans, and the brand face is applied only to the four display-type selectors in `snippets/dotaim-custom-styles.liquid`.
 
 **Lush UK/HQ and Lush Lebanon use it for headlines only** — not for prices, buttons or UI text — which is the more accurate reading of the brand. Bassam's view (2026-08-04) is that Saudi will likely be brought in line with UK eventually.
 
-Nothing to do now, but the target is no longer guesswork. **Lush Lebanon already implements exactly this**, and inspecting it (2026-08-04) shows the pattern to copy — including the same variable name Bassam asked for here, which is where it comes from:
+The rest of Lebanon's general-settings CSS was ported into `dotaim-custom-styles.liquid` on 2026-08-06: slideshow subheading scale, collection-hero description contrast, single-column predictive search, and the badge tab. **The badge rule was rewritten with logical properties** — Lebanon writes `border-radius: 0 7px 7px 0` and `translateX(-10px)`, which mirror wrongly on an Arabic storefront. Lebanon has no Arabic locale, so it never showed there; Qatar does. Same class of bug as the `.article-card__link::before` margin fixed in the same commit.
+
+The Lebanon pattern, for reference:
 
 ```css
 /* lushlebanon.com — Be Yours 8.5.0 */
@@ -162,9 +164,9 @@ Nothing to do now, but the target is no longer guesswork. **Lush Lebanon already
 .slideshow__heading      { font-family: var(--font-lush-handwritten); }
 ```
 
-plus per-section rules on chosen `image-with-text` headings, added through the theme editor's per-section custom CSS.
+plus per-section rules on chosen `image-with-text` headings, added through the theme editor's per-section custom CSS. Qatar carries the same four selectors and the same `.font-lush-handwritten` utility class, so anything else can opt in from a section's custom CSS without a code change.
 
-So the change, when it comes, is: stop pointing `--font-heading-family` at the brand face, and instead apply `var(--font-lush-handwritten)` to that short list of selectors, with a `.font-lush-handwritten` utility class for anything else. Qatar's `--font-lush-handwritten` variable is already named and structured to match, so this is a small edit to `snippets/dotaim-custom-styles.liquid` rather than a rework.
+**Where this CSS lives, and why not the theme editor.** Lebanon keeps it in theme general settings. Qatar keeps it in `snippets/dotaim-custom-styles.liquid` instead: that is surface A, so it is versioned in git, visible in diffs and covered by `theme check`. The theme editor's custom-CSS box is surface B — it reaches the repo only through `pull-content`, it is invisible to code review, and it is easy to lose. Decided 2026-08-06.
 
 ## 8. Explicitly skip
 

@@ -57,4 +57,56 @@
   html[lang='ar'] * {
     letter-spacing: 0 !important;
   }
+
+  /* --- RTL corrections to stock Be Yours -------------------------------- */
+
+  /* The article card's "read more" rule sits before the label using
+     margin-right, which puts it on the wrong side in Arabic. The logical
+     property does the right thing in both directions. Stock rule is in
+     assets/component-article-card.css, left unforked. */
+  .article-card__link::before {
+    margin-right: 0;
+    margin-inline-end: 1rem;
+  }
+
+  /* --- Ported from lushlebanon.com -------------------------------------- */
+
+  /* Slideshow subheading: Lebanon sizes it off the heading scale rather than
+     leaving it at body size, so hero copy stays proportional as the scale
+     changes. */
+  .slideshow__subheading {
+    font-size: calc(var(--font-heading-scale) * 1.2rem);
+    font-weight: 400;
+  }
+
+  /* A collection description directly under the hero title inherits a muted
+     colour and drops below comfortable contrast. Lebanon restores it. */
+  .collection-hero__title + .collection-hero__description {
+    color: rgb(var(--color-foreground));
+  }
+
+  /* Predictive search results in a single column. */
+  .predictive-search__item--link {
+    grid-template-columns: 1fr;
+  }
+
+  /* Badge as a tab that jogs out past the card edge.
+
+     Lebanon writes this with physical properties -- `border-radius: 0 7px 7px
+     0` and `translateX(-10px)` -- which mirror wrongly on the Arabic
+     storefront, putting the rounded end and the overhang on the wrong side.
+     The radii below are logical so they flip automatically; `transform` has
+     no logical form, so RTL gets an explicit override. */
+  .card__badge .badge {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    border-start-end-radius: 7px;
+    border-end-end-radius: 7px;
+    transform: translateX(-10px);
+    font-weight: bold;
+  }
+
+  html[dir='rtl'] .card__badge .badge {
+    transform: translateX(10px);
+  }
 {%- endstyle -%}

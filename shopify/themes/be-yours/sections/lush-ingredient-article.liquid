@@ -9,7 +9,7 @@
     custom.ingredient_subtitle  — Latin name
     custom.ingredient_benefits  — list of single line text
 
-  Used by `templates/article.ingredient.json`.
+  Used by `templates/article.ingredient-blog-post.json`.
 
   Written 2026-08-05 to replace KSA's `article.ingredient-blog-post.json`,
   which cannot work. That template drives a stock `image-with-text` section
@@ -22,7 +22,7 @@
   Doing it as real Liquid also fixes the Arabic: the type label is a locale
   key here, whereas KSA concatenated the English word "Ingredient" onto the
   metafield value. Note the metafield itself stays English — the list snippet
-  compares it against "Natural" to pick a colour, so it is a controlled
+  compares it against "Natural" to pick a color, so it is a controlled
   vocabulary, not display text, and must not be translated.
 {% endcomment %}
 
@@ -218,13 +218,13 @@
     {
       "type": "color",
       "id": "natural_color",
-      "label": "Natural colour",
+      "label": "Natural color",
       "default": "#138645"
     },
     {
       "type": "color",
       "id": "synthetic_color",
-      "label": "Synthetic colour",
+      "label": "Synthetic color",
       "default": "#1a1b18"
     },
     {
@@ -244,13 +244,13 @@
     {
       "type": "color",
       "id": "benefits_background_color",
-      "label": "Benefits background colour",
+      "label": "Benefits background color",
       "default": "#138645"
     },
     {
       "type": "color",
       "id": "benefits_text_color",
-      "label": "Benefits text colour",
+      "label": "Benefits text color",
       "default": "#ffffff"
     },
     {

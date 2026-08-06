@@ -36,7 +36,7 @@ Pipeline, once the pages are cached:
     ingredient_image           article featured image
 
 `ingredient_type` stays English on purpose. `snippets/lush-ingredients-list.liquid`
-compares it against "Natural" to pick a colour, so it is a controlled
+compares it against "Natural" to pick a color, so it is a controlled
 vocabulary, not display text. The Arabic words come from locale keys.
 """
 import argparse
