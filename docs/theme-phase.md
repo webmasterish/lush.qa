@@ -32,7 +32,35 @@ Two consequences:
 Method note that softens the missing 8.4 vanilla: Shopify's theme-update flow **replaces theme code with the new version's stock code** while migrating settings across. KSA's live 8.4.0 was produced by that flow, so its code is largely stock 8.4 and its customization is concentrated in settings and templates — consistent with the storefront evidence (stock asset filenames, no `custom.css`, no app extensions). Any *file that exists on KSA-live but not in a vanilla copy* is an unambiguous customization regardless of version, which gives a reliable inventory without a matching-version baseline.
 - KSA carries a custom `SAR` riyal-symbol font. That is KSA-only and must not be carried into Qatar.
 
-## Resume here (state at 2026-08-04)
+## Resume here (state at 2026-08-06)
+
+**T4 is under way. Two features are code-complete and verified live in both locales: ingredients and product tile labels.**
+
+Live state to know before touching anything:
+
+- Theme: `Be Yours - Lush Qatar (by DotAim)` #152710447243, **published**. Restore points from this session: `restore point 2026-08-06 — build` (#152793874571).
+- **Typography changed 2026-08-06** (Bassam, in the editor): headings `inter_n8` (Inter ExtraBold), body `inter_n4`, navigation on the body font at 12. That puts Qatar on Lebanon's typography, which is closer to lush.com than KSA's. To be reviewed with Dee.
+- **Ingredients** — `snippets/lush-ingredients-list.liquid` (full INCI list, in a `collapsible_tab` via Custom liquid) and `sections/lush-ingredients-cards.liquid` (hero cards) on the product template; `sections/lush-ingredient-article.liquid` + `templates/article.ingredient-blog-post.json` for the article page. Store has an `ingredients` blog with **3 articles** (EN + AR, metafields, images). `cinnamoroll` is wired with 2 of its 25 ingredients.
+- **Product labels** — no new theme code. Be Yours already reads `theme.label` / `theme.label_color`; only the definitions were missing. **3 products** carry labels (`super-fairy-2`, `super-milk-single-wick-candle`, `banoffee-pie-2`). **The catalogue is otherwise unlabelled — no backfill has been run.**
+- Metafields on the store: `theme.label`, `theme.label_color` (labels); `custom.ingredients`, `custom.ingredients_cards` on the product and `custom.ingredient_type`, `custom.ingredient_subtitle`, `custom.ingredient_benefits` on the article. Also defined but **not yet read by any code**: `custom.subtitle`, `custom.category_label`, `custom.how_to_use`, `custom.how_to_store` (the last two are wired into collapsible rows).
+
+### Traps found this session — do not relearn these
+
+1. **`theme check` clean does not mean Shopify accepts the file.** `"default": ""` on a `text` setting passes locally and is rejected server-side; `push-code` still exits reporting success with the error in a separate block. **Grep pushes for `error`, not just `success`.**
+2. **Liquid in section settings is not evaluated** unless the setting is declared `"type": "liquid"`. `text`, `inline_richtext`, `richtext` and `image_picker` all render it literally. This is what makes KSA's ingredient article template non-functional (backlog #13) and what would have broken the How to use / How To Store rows.
+3. **Metafield definitions created via the API default to `storefront: NONE`** — the theme then cannot read them and the markup renders empty with no error anywhere. Admin-created ones default to `PUBLIC_READ`. Set `access` explicitly.
+4. **Metafield translations are their own resource**, addressed by the metafield's GID with a single key `value`, not by the owning product. For list types the value is the whole JSON array.
+5. **WooCommerce slug ≠ Shopify handle.** 140 of 538 products share a name, so Shopify invented handles (`banoffee-pie-2`) and the tidy one is often a draft. Match on `dotaim_migration.source_id`.
+
+### Next, in order
+
+1. **Product label backfill** — built and dry-run clean (186/186 matched, 54 live). Needs Bassam's go-ahead: `shopify/themes/labels/product-labels.py backfill`. Vegan has no source data and needs Dee.
+2. **Remaining T4**: cart drawer upsells, back-in-stock, smart search and filtering. Also unrendered: `custom.subtitle`, `custom.category_label`.
+3. **T5 content** — the biggest unstarted chunk: 16 CMS pages, the 301 redirect map, the empty legal pages.
+4. **Ingredients data** — blocked on Dee taking the lush.com harvest to Lush HQ. Longest lead time on the board.
+5. **Qatar payments** — local gateway, weeks of lead time, hard launch blocker.
+
+## Earlier state (2026-08-04)
 
 **T2 and T3 are done.** The storefront is complete in both locales behind the password: hero slideshow, Popular Categories, four product carousels, three campaign banners, blog posts, Lush Values, and a four-column footer. Header, mega menus, navigation, fonts, RTL and Arabic are all live.
 
@@ -246,6 +274,7 @@ Then, regardless of route:
 Per context doc §8: mega menu, smart search with suggestions, advanced filtering, product badges (vegan / bestseller / new / limited edition), back-in-stock, zoom galleries, related products, cart drawer with upsells, countdown timers, hero banners.
 - [x] **Ingredients feature — theme code done 2026-08-05**, `theme check` clean. `sections/lush-ingredients-cards.liquid` and `snippets/lush-ingredients-list.liquid` ported from KSA with three defects fixed (empty `alt`, untranslated legend, JS-hidden empty state — backlog #10–12). KSA's `article.ingredient-blog-post.json` was **not** ported: it puts Liquid into stock `image-with-text` settings that never evaluate it, so it renders literal `{{ article.title }}` (backlog #13). Replaced by `sections/lush-ingredient-article.liquid` + `templates/article.ingredient.json`. Five locale keys added in all 14 locale files, Arabic taken from Lush HQ's own wording.
 - [ ] **Ingredients data** — blocked on Dee, deliberately. Needs: the five metafield definitions (surface C), an **ingredient blog**, ~453 articles in EN + AR, and the images re-uploaded to Qatar's Files. Harvester built and proven end to end on 3 real ingredients: `shopify/themes/ingredients/` (`harvest-ingredients.py` + `fetch.md`). Nothing fetched at scale until HQ agrees.
+- [x] **Product tile labels — done 2026-08-06.** No new theme code: Be Yours already reads `theme.label` / `theme.label_color` in `card-product.liquid` and `mega-showcase-card.liquid`, one badge per value, text colour by contrast. Only the definitions were missing. `shopify/themes/labels/product-labels.py` creates them, sets values and registers the Arabic. 3 products wired; **backfill built but not run** (186/186 matched, 54 live: New 40, Bestseller 13, Limited Edition 0 — all seasonal drafts). Vegan has no source data in WooCommerce
 - [x] `locales/ar.json` — done in T2, not T4: ported and repaired, 499/499 keys, `theme check` clean
 
 ### T5 — Content & store settings
