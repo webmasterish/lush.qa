@@ -83,6 +83,12 @@
       "share": "Chia sẻ bài viết này",
       "success": "Bình luận đã được đăng thành công! Cảm ơn!",
       "success_moderated": "Bình luận đã được đăng thành công. Chúng tôi sẽ sớm xuất bản, bởi blog được kiểm duyệt nghiêm ngặt."
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "Định giá theo số lượng"
       },
       "xr_button": "Xem trong không gian của bạn",
-      "xr_button_label": "Xem trong không gian của bạn, tải mục trong cửa sổ thực tế tăng cường"
+      "xr_button_label": "Xem trong không gian của bạn, tải mục trong cửa sổ thực tế tăng cường",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {

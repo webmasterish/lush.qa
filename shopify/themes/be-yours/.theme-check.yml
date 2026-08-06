@@ -1,0 +1,13 @@
+# Theme Check configuration — Lush Qatar (DotAim)
+#
+# Baseline is the default rule set. Only deliberate, documented exceptions below.
+
+extends: :default
+
+OrphanedSnippet:
+  ignore:
+    # Rendered from a `collapsible_tab` block's `custom_liquid` setting on the
+    # product template, i.e. from settings JSON (surface B), not from Liquid.
+    # Theme Check only scans Liquid, so it cannot see the reference and reports
+    # the snippet as orphaned. It is live — see docs/theme-porting-list.md §5.
+    - snippets/lush-ingredients-list.liquid

@@ -83,6 +83,12 @@
       "share": "Sdílejte tento článek",
       "success": "Váš komentář byl úspěšně odeslán! Děkuji!",
       "success_moderated": "Váš komentář byl úspěšně odeslán. Za chvíli jej zveřejníme, protože náš blog je moderován."
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "Ceny s objemovou slevou"
       },
       "xr_button": "Zobrazit ve svém prostoru",
-      "xr_button_label": "Zobrazit ve vašem prostoru, načte položku v okně rozšířené reality"
+      "xr_button_label": "Zobrazit ve vašem prostoru, načte položku v okně rozšířené reality",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {

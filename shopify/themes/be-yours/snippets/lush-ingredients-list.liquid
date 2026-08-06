@@ -1,0 +1,143 @@
+{% comment %}
+  Snippet: lush-ingredients-list
+
+  The full INCI ingredient list for a product, rendered as linked ingredient
+  names coloured by type, with a legend.
+
+  Usage: from a `collapsible_tab` block's Custom liquid setting on the product
+  template — {% render 'lush-ingredients-list' %}
+
+  Requires:
+    product.metafields.custom.ingredients  — list of blog article references
+    <article>.metafields.custom.ingredient_type — "Natural" or "Synthetic"
+
+  Self-contained by design (markup + styles + strings): drop this file and its
+  two locale keys into any Be Yours theme and the feature works.
+
+  Ported from Lush KSA 2026-08-05. Changed from the KSA original:
+    - the legend was hardcoded English and rendered untranslated on /ar;
+      it now uses locale keys
+    - the empty state hid the accordion row with post-render JavaScript,
+      which flashed an empty row and failed with JS off. It is now CSS-first
+      via :has(), with the JS kept only as a fallback for browsers without it
+    - ingredient_type is read via .value rather than relying on the metafield
+      object stringifying
+{% endcomment %}
+
+{%- assign ingredients = product.metafields.custom.ingredients.value -%}
+
+{%- if ingredients != blank -%}
+  <div class="lush-ingredients-list">
+    <div class="lush-ingredients-list__items">
+      {%- for ingredient in ingredients -%}
+        {%- assign type = ingredient.metafields.custom.ingredient_type.value | default: 'Synthetic' -%}
+        {%- if type == 'Natural' -%}
+          {%- assign type_modifier = 'natural' -%}
+        {%- else -%}
+          {%- assign type_modifier = 'synthetic' -%}
+        {%- endif -%}
+        <a
+          href="{{ ingredient.url }}"
+          class="lush-ingredients-list__link lush-ingredients-list__link--{{ type_modifier }}"
+        >
+          {{- ingredient.title -}}
+        </a>
+        {%- unless forloop.last -%}
+          <span class="lush-ingredients-list__separator">,&nbsp;</span>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="lush-ingredients-list__legend">
+      <span class="lush-ingredients-list__legend-item">
+        <span class="lush-ingredients-list__dot lush-ingredients-list__dot--natural"></span>
+        {{ 'products.product.ingredients.legend_natural' | t }}
+      </span>
+      <span class="lush-ingredients-list__legend-item">
+        <span class="lush-ingredients-list__dot lush-ingredients-list__dot--synthetic"></span>
+        {{ 'products.product.ingredients.legend_synthetic' | t }}
+      </span>
+    </div>
+  </div>
+{%- else -%}
+  {%- comment -%}
+    Nothing to show. A snippet cannot suppress the accordion row that renders
+    it, so mark the row and let the stylesheet below collapse it before paint.
+  {%- endcomment -%}
+  <span class="lush-ingredients--empty" hidden></span>
+{%- endif -%}
+
+<style>
+  /* Collapse the whole accordion row when this product has no ingredients. */
+  .product__accordion:has(.lush-ingredients--empty),
+  .accordion__section:has(.lush-ingredients--empty) {
+    display: none;
+  }
+
+  .product__accordion .lush-ingredients-list__items {
+    line-height: 1.8;
+    font-size: 14px;
+  }
+
+  .product__accordion .lush-ingredients-list__link {
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .product__accordion .lush-ingredients-list__link:hover {
+    opacity: 0.7;
+  }
+
+  .product__accordion .lush-ingredients-list__link--natural {
+    color: #138645;
+  }
+
+  .product__accordion .lush-ingredients-list__link--synthetic {
+    color: #1a1b18;
+  }
+
+  .product__accordion .lush-ingredients-list__separator {
+    color: #1a1b18;
+  }
+
+  .product__accordion .lush-ingredients-list__legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .product__accordion .lush-ingredients-list__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .product__accordion .lush-ingredients-list__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .product__accordion .lush-ingredients-list__dot--natural {
+    background-color: #138645;
+  }
+
+  .product__accordion .lush-ingredients-list__dot--synthetic {
+    background-color: #1a1b18;
+  }
+</style>
+
+<script>
+  /* Fallback for browsers without :has(). Everything current supports it. */
+  (function () {
+    if (window.CSS && CSS.supports && CSS.supports('selector(:has(*))')) return;
+    document.querySelectorAll('.lush-ingredients--empty').forEach(function (marker) {
+      var row = marker.closest('.product__accordion') || marker.closest('.accordion__section');
+      if (row) row.style.display = 'none';
+    });
+  })();
+</script>

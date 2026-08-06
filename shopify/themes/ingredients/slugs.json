@@ -1,0 +1,6295 @@
+{
+  "source": "WooCommerce product descriptions (staging DB)",
+  "ingredient_count": 453,
+  "product_count": 127,
+  "ingredients": [
+    {
+      "slug": "activated-charcoal",
+      "label_en": "Activated Charcoal",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "agar-agar",
+      "label_en": "Gelidium Cartilagineum Extract (Agar Agar)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "agar-agar-gel",
+      "label_en": "Gelidium Cartilagineum Extract (Agar Agar Gel)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "alcohol-denat",
+      "label_en": "Alcohol Denat.",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 14
+    },
+    {
+      "slug": "almond-essential-oil",
+      "label_en": "Prunus Amygdalus Amara Kernel Oil (Almond Essential Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 12
+    },
+    {
+      "slug": "almond-milk",
+      "label_en": "Almond Milk",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "almond-oil",
+      "label_en": "Prunus Amygdalus Dulcis Oil (Almond Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 8
+    },
+    {
+      "slug": "aloe-extract",
+      "label_en": "Aloe Extract",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "alpha-isomethyl-ionone",
+      "label_en": "Alpha-Isomethyl Ionone",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 20
+    },
+    {
+      "slug": "amyl-cinnamal-natural",
+      "label_en": "*Amyl Cinnamal",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "amyl-cinnamal-synthetic",
+      "label_en": "Amyl Cinnamal",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 10
+    },
+    {
+      "slug": "anise-alcohol-natural",
+      "label_en": "*Anise Alcohol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 10
+    },
+    {
+      "slug": "apricot-kernel-oil",
+      "label_en": "Prunus Armeniaca Kernel Oil (Apricot Kernel Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "argan-oil",
+      "label_en": "Argania Spinosa Kernel Oil (Organic Argan Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "australian-sandalwood-oil",
+      "label_en": "Australian Sandalwood Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "babassu-flour",
+      "label_en": "Babassu Flour",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "balsam-fir-resin",
+      "label_en": "Balsam Fir Resin",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "bay-oil",
+      "label_en": "Bay Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "beeswax",
+      "label_en": "Cera Alba (Beeswax)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "behentrimonium-chloride",
+      "label_en": "Behentrimonium Chloride",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "bentone-gel",
+      "label_en": "Hectorite (Bentone Gel)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "benzoic-acid",
+      "label_en": "Benzoic Acid",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "benzoin-resinoid",
+      "label_en": "Styrax Tonkinensis Resin Extract (Benzoin Resinoid Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 27
+    },
+    {
+      "slug": "benzyl-alcohol-natural",
+      "label_en": "*Benzyl Alcohol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 10
+    },
+    {
+      "slug": "benzyl-alcohol-synthetic",
+      "label_en": "Benzyl Alcohol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 10
+    },
+    {
+      "slug": "benzyl-benzoate-natural",
+      "label_en": "*Benzyl Benzoate",
+      "type_from_woocommerce": "Natural",
+      "product_count": 30
+    },
+    {
+      "slug": "benzyl-benzoate-synthetic",
+      "label_en": "Benzyl Benzoate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 5
+    },
+    {
+      "slug": "benzyl-cinnamate-natural",
+      "label_en": "*Benzyl Cinnamate",
+      "type_from_woocommerce": "Natural",
+      "product_count": 13
+    },
+    {
+      "slug": "benzyl-salicylate-natural",
+      "label_en": "*Benzyl Salicylate",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "benzyl-salicylate-synthetic",
+      "label_en": "Benzyl Salicylate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "bergamot-oil",
+      "label_en": "Citrus Aurantium Bergamia Fruit Oil (Bergamot Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 24
+    },
+    {
+      "slug": "berry-wax",
+      "label_en": "Rhus Verniciflua Peel Wax (Berry Wax)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "black-pepper-oil",
+      "label_en": "Black Pepper Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "blackcurrant-absolute",
+      "label_en": "Blackcurrant Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "brazilian-orange-oil",
+      "label_en": "Brazilian Orange Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 14
+    },
+    {
+      "slug": "brazilian-tonka-absolute",
+      "label_en": "Brazilian Tonka Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "buchu-oil",
+      "label_en": "Buchu Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "c13-15-alkane",
+      "label_en": "C13-15 Alkane",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "caffeine-powder",
+      "label_en": "Caffeine Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "calamine-powder",
+      "label_en": "Calamine (Calamine Powder)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "calcium-carbonate",
+      "label_en": "Calcium Carbonate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "calcium-lactate",
+      "label_en": "Calcium Lactate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "calcium-sodium-borosilicate",
+      "label_en": "Calcium Sodium Borosilicate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 8
+    },
+    {
+      "slug": "canadian-maple-syrup",
+      "label_en": "Canadian Maple Syrup",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cananga-oil",
+      "label_en": "Cananga Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "candelilla-wax",
+      "label_en": "Euphorbia Cerifera Cera (Organic Candelilla Wax)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "candy-heart",
+      "label_en": "Candy Heart",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "caprylic-capric-triglyceride",
+      "label_en": "Caprylic/Capric Triglyceride",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cardamom-oil",
+      "label_en": "Elettaria Cardamomum Seed Oil (Cardamom Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "cardamom-seeds",
+      "label_en": "Elettaria Cardamomum Seed (Cardamom Seeds)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "carob-resinoid",
+      "label_en": "Ceratonia Siliqua Gum (Carob Resinoid)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 8
+    },
+    {
+      "slug": "carrageenan-extract",
+      "label_en": "Chondrus Crispus Extract (Carrageenan Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 10
+    },
+    {
+      "slug": "cashew-cream",
+      "label_en": "Cashew Cream",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cassie-absolute",
+      "label_en": "Cassie Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cassis-absolute",
+      "label_en": "Cassis Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "caster-sugar",
+      "label_en": "Sucrose (Caster Sugar)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "castor-oil-ricinus-communis",
+      "label_en": "Ricinus Communis Seed Oil (Castor Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cedarwood-oil-juniperus-virginiana",
+      "label_en": "Juniperus Virginiana Wood Oil (Cedarwood Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "cetearyl-alcohol",
+      "label_en": "Cetearyl,  Alcohol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 10
+    },
+    {
+      "slug": "cetearyl-alcohol-sodium-lauryl-sulfate",
+      "label_en": "Cetearyl Alcohol and Sodium Lauryl Sulfate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "cetearyl-olivate-sorbitan-olivate",
+      "label_en": "Cetearyl Olivate & Sorbitan Olivate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "cetrimonium-chloride",
+      "label_en": "Cetrimonium Chloride",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 7
+    },
+    {
+      "slug": "chamomile-blue-oil",
+      "label_en": "Matricaria Recutita Flower Oil (Chamomile Blue Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "chamomile-oil",
+      "label_en": "Anthemis Nobilis Flower Oil (Chamomile Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "chamomile-powder",
+      "label_en": "Chamomile Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cherry-kernel-oil",
+      "label_en": "Prunus Avium Seed Oil (Cherry Kernel Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "chlorophyllin-water",
+      "label_en": "Chlorophyllin Water (CI75810, Aqua)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "ci14700",
+      "label_en": "CI14700",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "ci159851",
+      "label_en": "CI15985:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "ci17200",
+      "label_en": "CI17200",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "ci19140",
+      "label_en": "CI19140",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "ci191401",
+      "label_en": "CI19140:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "ci42090",
+      "label_en": "CI42090",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 10
+    },
+    {
+      "slug": "ci420902",
+      "label_en": "CI42090:2",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "ci45350",
+      "label_en": "CI45350",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "ci45410",
+      "label_en": "CI45410",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 5
+    },
+    {
+      "slug": "ci454101",
+      "label_en": "CI45410:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "ci454102",
+      "label_en": "CI45410:2",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "ci47005",
+      "label_en": "CI47005",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "ci470051",
+      "label_en": "CI47005:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "ci59040",
+      "label_en": "CI59040",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "ci61570",
+      "label_en": "CI61570",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "ci73360",
+      "label_en": "CI73360",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "ci77491",
+      "label_en": "CI77491",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "ci77499",
+      "label_en": "CI77499",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "ci77947",
+      "label_en": "CI77947",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "cinnamal-natural",
+      "label_en": "*Cinnamal",
+      "type_from_woocommerce": "Natural",
+      "product_count": 18
+    },
+    {
+      "slug": "cinnamal-synthetic",
+      "label_en": "Cinnamal",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "cinnamon-bark-oil",
+      "label_en": "Cinnamon Bark Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "cinnamon-leaf-oil",
+      "label_en": "Cinnamon Leaf Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "cinnamon-stick-and-clove-infusion",
+      "label_en": "Cinnamon Stick and Clove Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cinnamyl-alcohol-natural",
+      "label_en": "*Cinnamyl Alcohol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "cinnamyl-alcohol-synthetic",
+      "label_en": "Cinnamyl Alcohol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "citral-natural",
+      "label_en": "*Citral",
+      "type_from_woocommerce": "Natural",
+      "product_count": 46
+    },
+    {
+      "slug": "citral-synthetic",
+      "label_en": "Citral",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "citric-acid",
+      "label_en": "Citric Acid",
+      "type_from_woocommerce": "Natural",
+      "product_count": 47
+    },
+    {
+      "slug": "citronella-oil",
+      "label_en": "Citronella Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "citronellol-natural",
+      "label_en": "*Citronellol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 16
+    },
+    {
+      "slug": "citronellol-natural-extract",
+      "label_en": "Citronellol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "citronellol-synthetic",
+      "label_en": "Citronellol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "clary-sage-oil",
+      "label_en": "Salvia Sclarea Oil (Clary Sage Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "clove-bud-oil",
+      "label_en": "Eugenia Caryophyllus Oil (Clove Bud Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "coarse-sea-salt",
+      "label_en": "Coarse Sea Salt",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "cocamidopropyl-betaine",
+      "label_en": "Cocamidopropyl Betaine",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 18
+    },
+    {
+      "slug": "cocoa-absolute",
+      "label_en": "Theobroma Cacao Extract (Cocoa Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "coconut-blossom-nectar",
+      "label_en": "Coconut Blossom Nectar",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "coconut-milk",
+      "label_en": "Coconut Milk",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "coconut-milk-powder",
+      "label_en": "Cocos Nucifera Fruit Powder (Coconut Milk Powder)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "coconut-yoghurt",
+      "label_en": "Coconut Yogurt",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cocos-nucifera-oil-coconut-oil-organic-extra-virgin-coconut-oil",
+      "label_en": "Cocos Nucifera Oil (Coconut Oil/Organic Extra Virgin Coconut Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "coffee-absolute",
+      "label_en": "Coffee Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "coffee-infusion",
+      "label_en": "Coffee Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cold-pressed-organic-borage-oil",
+      "label_en": "Borago Officinalis Seed Oil (Cold Pressed Organic Borage Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cold-pressed-strawberry-seed-oil",
+      "label_en": "Fragaria Ananassa Seed Oil (Cold Pressed Strawberry Seed Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "colour-14700",
+      "label_en": "Colour 14700",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 10
+    },
+    {
+      "slug": "colour-15510",
+      "label_en": "Colour 15510",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "colour-158501",
+      "label_en": "Colour 15850:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "colour-159851",
+      "label_en": "Colour 15985:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "colour-17200",
+      "label_en": "Colour 17200",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 15
+    },
+    {
+      "slug": "colour-19140",
+      "label_en": "Colour 19140",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 8
+    },
+    {
+      "slug": "colour-191401",
+      "label_en": "Colour 19140:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 11
+    },
+    {
+      "slug": "colour-42053",
+      "label_en": "Colour 42053",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "colour-42090",
+      "label_en": "Colour 42090",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 19
+    },
+    {
+      "slug": "colour-420902",
+      "label_en": "Colour 42090:2",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 14
+    },
+    {
+      "slug": "colour-45380",
+      "label_en": "Colour 45380",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "colour-453803",
+      "label_en": "Colour 45380:3",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "colour-45410",
+      "label_en": "Colour 45410",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 12
+    },
+    {
+      "slug": "colour-454101",
+      "label_en": "Colour 45410:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 9
+    },
+    {
+      "slug": "colour-454102",
+      "label_en": "Colour 45410:2",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 15
+    },
+    {
+      "slug": "colour-47005",
+      "label_en": "Colour 47005",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "colour-470051",
+      "label_en": "Colour 47005:1",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 9
+    },
+    {
+      "slug": "colour-59040",
+      "label_en": "Colour 59040",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "colour-73360",
+      "label_en": "Colour 73360",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "colour-77491",
+      "label_en": "Colour 77491",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 22
+    },
+    {
+      "slug": "colour-77492",
+      "label_en": "Colour 77492",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "colour-77499",
+      "label_en": "Colour 77499",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 3
+    },
+    {
+      "slug": "colour-77510",
+      "label_en": "Colour 77510",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "colour-77947",
+      "label_en": "Colour 77947",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "coriander-seed-oil",
+      "label_en": "Coriander Seed Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "corn-oil",
+      "label_en": "Corn Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "corn-protein",
+      "label_en": "Zein (Corn Protein)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 12
+    },
+    {
+      "slug": "cornstarch",
+      "label_en": "Zea Mays Starch (Cornstarch)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 30
+    },
+    {
+      "slug": "coumarin-natural",
+      "label_en": "*Coumarin",
+      "type_from_woocommerce": "Natural",
+      "product_count": 14
+    },
+    {
+      "slug": "coumarin-synthetic",
+      "label_en": "Coumarin",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 25
+    },
+    {
+      "slug": "cowslips",
+      "label_en": "Primula Veris (Cowslips)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cream-tartar",
+      "label_en": "Potassium Bitartrate (Cream of Tartar)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 8
+    },
+    {
+      "slug": "creamed-coconut",
+      "label_en": "Creamed Coconut",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "cupuacu-butter",
+      "label_en": "Cupuaçu Butter",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "cypress-oil",
+      "label_en": "Cypress Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "daisy-flowers",
+      "label_en": "Daisy Flowers",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "dark-sumatran-patchouli-oil",
+      "label_en": "Dark Sumatran Patchouli Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "davana-oil",
+      "label_en": "Artemisia Pallens Herb Oil (Davana Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 8
+    },
+    {
+      "slug": "dipropylene-glycol",
+      "label_en": "Dipropylene Glycol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 17
+    },
+    {
+      "slug": "dragon-fruit-infusion",
+      "label_en": "Dragon Fruit Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "dried-lemon-verbena",
+      "label_en": "Dried Lemon Verbena",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "dried-red-rose-petals",
+      "label_en": "Rosa Centifolia Flower (Dried Red Rose Petals)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "edta",
+      "label_en": "EDTA",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 11
+    },
+    {
+      "slug": "elderflowers",
+      "label_en": "Elderflowers",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "elemi-oil",
+      "label_en": "Canarium Commune Gum Oil (Elemi Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "ethyl-macadamiate",
+      "label_en": "Ethyl Macadamiate",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "eucalyptus-oil",
+      "label_en": "Eucalyptus Globulus Oil (Eucalyptus Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "eugenol-natural",
+      "label_en": "*Eugenol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 22
+    },
+    {
+      "slug": "eugenol-synthetic",
+      "label_en": "Eugenol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "evening-primrose-seeds",
+      "label_en": "Evening Primrose Seeds",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "everlasting-flower-absolute",
+      "label_en": "Everlasting Flower Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "extra-virgin-coconut-oil",
+      "label_en": "Cocos Nucifera Oil (Extra Virgin Coconut Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "extra-virgin-olive-oil",
+      "label_en": "Extra Virgin Olive Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fair-trade-cocoa-powder",
+      "label_en": "Theobroma Cacao Seed Powder (Fair Trade Cocoa Powder)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fair-trade-organic-aloe-vera-gel",
+      "label_en": "Fair Trade Organic Aloe Vera Gel",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "fair-trade-organic-aloe-vera-powder",
+      "label_en": "Aloe Barbadensis Leaf Juice Powder (Fair Trade Organic Aloe Vera Powder)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fair-trade-organic-brazilian-honey",
+      "label_en": "Mel (Fair Trade Organic Honey)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fair-trade-organic-cinnamon-powder",
+      "label_en": "Fair Trade Organic Cinnamon Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fair-trade-organic-cocoa-butter",
+      "label_en": "Theobroma Cacao Seed Butter (Fair Trade Organic Cocoa Butter)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 18
+    },
+    {
+      "slug": "fair-trade-organic-sesame-oil",
+      "label_en": "Sesamum Indicum Seed Oil (Fair Trade Organic Sesame Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fairly-traded-honey",
+      "label_en": "Fairly Traded Honey",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "farnesol-natural",
+      "label_en": "*Farnesol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 18
+    },
+    {
+      "slug": "fine-sea-salt",
+      "label_en": "Maris Sal (Fine Sea Salt)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 14
+    },
+    {
+      "slug": "fir-needle-absolute",
+      "label_en": "Fir Needle Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "flavour-natural",
+      "label_en": "Flavour",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "flavour-synthetic",
+      "label_en": "Flavour",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 10
+    },
+    {
+      "slug": "frankincense-resinoid",
+      "label_en": "Frankincense Resinoid",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-aloe-gel-barbadensis",
+      "label_en": "Aloe Barbadensis Leaf Juice (Fresh Aloe Gel)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-apple-infusion",
+      "label_en": "Pyrus Malus Fruit Extract (Fresh Apple Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-apple-juice",
+      "label_en": "Fresh Apple Juice",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-apple-pulp",
+      "label_en": "Fresh Apple Pulp",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-avocado",
+      "label_en": "Fresh Avocado",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-banana",
+      "label_en": "Musa Paradisiaca Fruit (Fresh Banana)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-carnation-petal-infusion",
+      "label_en": "Fresh Carnation Petal Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-coconut",
+      "label_en": "Cocos Nucifera Fruit (Fresh Coconut)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-cucumber",
+      "label_en": "Cucumis Sativus Fruit (Fresh Cucumber)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-dragon-fruit",
+      "label_en": "Fresh Dragon Fruit",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-geranium-leaf-infusion",
+      "label_en": "Fresh Geranium Leaf Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-grape-juice",
+      "label_en": "Fresh Grape Juice",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-iris-extract",
+      "label_en": "Fresh Iris Extract",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-lemon",
+      "label_en": "Fresh Lemon",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-lemon-juice",
+      "label_en": "Citrus Limon Juice (Fresh Lemon Juice)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-lemon-peel-infusion",
+      "label_en": "Fresh Lemon Peel Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-lemongrass-extracted-in-glycerine",
+      "label_en": "Fresh Lemongrass Extracted In Glycerine",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-mint",
+      "label_en": "Mentha Piperita Leaf (Fresh Mint)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-orange-juice",
+      "label_en": "Citrus Aurantium Dulcis Juice (Fresh Orange Juice)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-orange-peel-infusion",
+      "label_en": "Fresh Orange Peel Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-organic-fair-trade-bananas",
+      "label_en": "Fresh Organic Fair Trade Bananas (Musa Paradisica)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-organic-lemon-juice",
+      "label_en": "Citrus Limon Juice (Fresh Organic Lemon Juice)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-peach",
+      "label_en": "Fresh Peach",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-peach-juice",
+      "label_en": "Prunus Persica Juice (Fresh Peach Juice)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "fresh-pear-juice",
+      "label_en": "Fresh Pear Juice",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-pineapple-juice",
+      "label_en": "Fresh Pineapple Juice",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-strawberries",
+      "label_en": "Fresh Strawberries",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-strawberry-infusion",
+      "label_en": "Fresh Strawberry Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "fresh-wheatgrass-decoction",
+      "label_en": "Fresh Wheatgrass Decoction",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "galbanum-oil",
+      "label_en": "Galbanum Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "gardenia-extract",
+      "label_en": "Gardenia Jasminoides Fruit Extract (Gardenia Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 17
+    },
+    {
+      "slug": "geraniol-natural",
+      "label_en": "*Geraniol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 38
+    },
+    {
+      "slug": "geraniol-synthetic",
+      "label_en": "Geraniol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 13
+    },
+    {
+      "slug": "geranium-oil",
+      "label_en": "Pelargonium Graveolens Flower Oil (Geranium Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "german-chamomile-flowers",
+      "label_en": "German Chamomile Flowers",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "geteme-tree-flower-honey",
+      "label_en": "Geteme Tree Flower Honey",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "glycerine",
+      "label_en": "Glycerine",
+      "type_from_woocommerce": "Natural",
+      "product_count": 57
+    },
+    {
+      "slug": "glyceryl-stearate",
+      "label_en": "Glyceryl Stearate",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "glyceryl-stearate-peg-100-stearate",
+      "label_en": "Glyceryl Stearate & PEG-100 Stearate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "golden-linseed-decoction",
+      "label_en": "Golden Linseed Decoction",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "granulated-sugar",
+      "label_en": "Sucrose (Granulated Sugar)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "grapefruit-oil",
+      "label_en": "Citrus Paradisi Peel Oil (Grapefruit Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "ground-almonds",
+      "label_en": "Prunus Amygdalus Dulcis Seed (Ground Almonds)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "ground-cherry-stones",
+      "label_en": "Ground Cherry Stones",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "ground-coffee",
+      "label_en": "Ground Coffee",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "ground-organic-aduki-beans",
+      "label_en": "Ground Organic Aduki Beans",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "guaiacwood-oil",
+      "label_en": "Guaiacwood Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "guar-gum-natural",
+      "label_en": "Guar Gum",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "hexyl-cinnamal-synthetic",
+      "label_en": "Hexyl Cinnamal",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "honey",
+      "label_en": "Honey",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "horsetail-herb-infusion",
+      "label_en": "Horsetail Herb Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "hydrolyzed-wheat-protein",
+      "label_en": "Hydrolyzed Wheat Protein",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "hydroxy-propyl-methyl-cellulose",
+      "label_en": "Hydroxy Propyl Methyl Cellulose",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "hydroxycitronellal-natural",
+      "label_en": "*Hydroxycitronellal",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "hydroxycitronellal-synthetic",
+      "label_en": "Hydroxycitronellal",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 16
+    },
+    {
+      "slug": "illipe-butter",
+      "label_en": "Shorea Stenoptera Seed Butter (Illipe Butter)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "iron-oxides",
+      "label_en": "Iron Oxides",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "isoeugenol-natural",
+      "label_en": "*Isoeugenol",
+      "type_from_woocommerce": "Natural",
+      "product_count": 9
+    },
+    {
+      "slug": "isoeugenol-synthetic",
+      "label_en": "Isoeugenol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "jasmine-absolute",
+      "label_en": "Jasminum Grandiflorum Flower Extract (Jasmine Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 11
+    },
+    {
+      "slug": "kaolin",
+      "label_en": "Kaolin",
+      "type_from_woocommerce": "Natural",
+      "product_count": 6
+    },
+    {
+      "slug": "kenyan-geranium-oil",
+      "label_en": "Kenyan Geranium Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "kokum-butter",
+      "label_en": "Garcinia Indica Seed Butter (Kokum Butter)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "kombu-seaweed",
+      "label_en": "Kombu Seaweed",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "labdanum-resinoid",
+      "label_en": "Cistus Ladaniferus Resin (Labdanum Resinoid)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "lactic-acid",
+      "label_en": "Lactic Acid",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "laureth-4",
+      "label_en": "Laureth 4",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 5
+    },
+    {
+      "slug": "lauryl-betaine",
+      "label_en": "Lauryl Betaine",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 16
+    },
+    {
+      "slug": "lavandin-absolute",
+      "label_en": "Lavandula Hybrida Extract (Lavandin Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lavandin-oil",
+      "label_en": "Lavandula Hybrida Oil (Lavandin Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lavender-absolute",
+      "label_en": "Lavandula Angustifolia Extract (Lavender Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "lavender-flower-infusion-lavandula-angustifolia",
+      "label_en": "Lavender Flower Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lavender-flowers",
+      "label_en": "Lavender Flowers",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lavender-honey-water",
+      "label_en": "Lavender Honey Water",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lavender-oil",
+      "label_en": "Lavandula Angustifolia Oil (Lavender Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 13
+    },
+    {
+      "slug": "lavender-powder",
+      "label_en": "Lavender Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lemon-balm-infusion",
+      "label_en": "Lemon Balm Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lemon-myrtle-oil",
+      "label_en": "Backhousia Citriodora Leaf Oil (Lemon Myrtle Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 6
+    },
+    {
+      "slug": "lemon-oil",
+      "label_en": "Citrus Limon Peel Oil (Lemon Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "lemon-verbena-and-valerian-root-extracted-in-fair-trade-organic-brazilian-honey",
+      "label_en": "Lemon Verbena and Valerian Root Extracted in Fair Trade Organic Brazilian Honey",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "lemongrass-oil",
+      "label_en": "Cymbopogon Flexuosus Leaf Oil (Lemongrass Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 8
+    },
+    {
+      "slug": "lime-oil",
+      "label_en": "Citrus Aurantifolia Peel Oil (Lime Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "limonene-natural",
+      "label_en": "*Limonene",
+      "type_from_woocommerce": "Natural",
+      "product_count": 95
+    },
+    {
+      "slug": "linalool-natural",
+      "label_en": "*Linalool",
+      "type_from_woocommerce": "Natural",
+      "product_count": 82
+    },
+    {
+      "slug": "linseed",
+      "label_en": "Linseed",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "linseed-decoction",
+      "label_en": "Linseed Decoction",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "linseed-gel",
+      "label_en": "Usitatissimum (Linseed) Seed Extract",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "linseed-infusion",
+      "label_en": "Linum Usitatissimum Seed Extract (Linseed Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "linseed-oil",
+      "label_en": "Linseed Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "liquorice-root-infusion",
+      "label_en": "Liquorice Root Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "litsea-cubeba-oil",
+      "label_en": "Litsea Cubeba Fruit Oil (Litsea Cubeba Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "luminescent-zinc-sulfide",
+      "label_en": "Luminescent Zinc Sulfide",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "lycopodium-powder",
+      "label_en": "Lycopodium Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "magnesium-carbonate",
+      "label_en": "Magnesium Carbonate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "magnesium-trisilicate",
+      "label_en": "Magnesium Trisilicate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "makrut-lime-leaf",
+      "label_en": "Makrut Lime Leaf",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "mallow-leaf-and-blackberry-leaf-infusion",
+      "label_en": "Mallow Leaf and Blackberry Leaf Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "mango-leaf-absolute",
+      "label_en": "Mango Leaf Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "maple-syrup",
+      "label_en": "Maple Syrup",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "marshmallow-root-infusion",
+      "label_en": "Marshmallow Root Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "meadowsweet-infusion",
+      "label_en": "Meadowsweet Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "menthol-crystals",
+      "label_en": "Menthol Crystals",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "methylparaben",
+      "label_en": "Methylparaben",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 7
+    },
+    {
+      "slug": "mimosa-absolute",
+      "label_en": "Mimosa Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "molasses",
+      "label_en": "Molasses",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "moringa-oil",
+      "label_en": "Moringa Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "mullein-leaf-and-linseed-decoction",
+      "label_en": "Mullein Leaf and Linseed Decoction",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "myrrh-resinoid",
+      "label_en": "Commiphora Myrrha Resin (Myrrh Resinoid)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "neroli-oil",
+      "label_en": "Citrus Aurantium Amara Flower Oil (Neroli Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "nettle-rosemary-and-rice-vinegar-extract",
+      "label_en": "Nettle, Rosemary and Rice Vinegar Extract",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "oakmoss-absolute",
+      "label_en": "Oakmoss Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "oakmoss-extract",
+      "label_en": "Evernia Prunastri Extract (Oakmoss Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "oat-milk",
+      "label_en": "Oat Milk",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "oatmeal-decoction",
+      "label_en": "Avena Sativa Kernel Extract (Oatmeal Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "olibanum-resinoid",
+      "label_en": "Olibanum (Olibanum Resinoid)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "orange-flower-absolute",
+      "label_en": "Citrus Aurantium Amara Flower Extract (Orange Flower Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "orange-oil",
+      "label_en": "Citrus Sinensis Peel Oil Expressed (Orange Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "orange-peel-wax",
+      "label_en": "Orange Peel Wax",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-agave-syrup",
+      "label_en": "Organic Agave Syrup",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "organic-alcohol-denat",
+      "label_en": "Alcohol Denat. (Organic)",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 13
+    },
+    {
+      "slug": "organic-avocado-oil",
+      "label_en": "Persea Gratissima Oil (Organic Avocado Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "organic-brazil-nut-oil",
+      "label_en": "Organic Brazil Nut Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-castor-oil",
+      "label_en": "Ricinus Communis Seed Oil (Organic Castor Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "organic-cold-pressed-almond-oil",
+      "label_en": "Organic Cold Pressed Almond Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-cold-pressed-evening-primrose-oil",
+      "label_en": "Organic Cold Pressed Evening Primrose Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-cold-pressed-grapeseed-oil",
+      "label_en": "Vitis Vinifera Seed Oil (Organic Cold Pressed Grapeseed Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "organic-cold-pressed-passion-seed-oil",
+      "label_en": "Organic Cold Pressed Passion Seed Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-cotton",
+      "label_en": "Organic cotton",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-date-syrup",
+      "label_en": "Phoenix Dactylifera Fruit Extract (Organic Date Syrup)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "organic-drf-alcohol",
+      "label_en": "Organic DRF Alcohol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "organic-extra-virgin-olive-oil",
+      "label_en": "Olea Europaea Fruit Oil (Organic Extra Virgin Olive Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 10
+    },
+    {
+      "slug": "organic-jojoba-oil",
+      "label_en": "Simmondsia Chinensis Seed Oil (Organic Jojoba Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 13
+    },
+    {
+      "slug": "organic-lavender-oil",
+      "label_en": "Lavandula Angustifolia Oil (Organic Lavender Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-macadamia-nut-oil",
+      "label_en": "Organic Macadamia Nut Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-maize-flour",
+      "label_en": "Organic Maize Flour",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-orange-blossom-honey",
+      "label_en": "Organic Orange Blossom Honey",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-orange-blossom-honey-water",
+      "label_en": "Organic Orange Blossom Honey Water",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-shea-butter",
+      "label_en": "Organic Shea Butter",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-soya-yoghurt",
+      "label_en": "Organic Soya Yoghurt",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-sweet-orange-oil",
+      "label_en": "Organic Sweet Orange Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "organic-virgin-coconut-oil",
+      "label_en": "Organic Extra Virgin Coconut Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 6
+    },
+    {
+      "slug": "orris-root-powder",
+      "label_en": "Orris Root Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "osmanthus-absolute",
+      "label_en": "Osmanthus Fragrans Flower Extract (Osmanthus Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "oudh-oil",
+      "label_en": "Oudh Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "pakistani-rose-absolute",
+      "label_en": "Pakistani Rose Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "palmarosa-oil",
+      "label_en": "Palmarosa Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "paprika-oleoresin",
+      "label_en": "Capsicum Annuum Fruit Extract (Paprika Oleoresin)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "patchouli-oil",
+      "label_en": "Pogostemon Cablin Oil (Patchouli Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "peach-kernel-oil",
+      "label_en": "Prunus Persica Kernel Oil (Peach Kernel Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "peg-7-glyceryl-cocoate",
+      "label_en": "PEG-7 Glyceryl Cocoate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "peppermint-oil",
+      "label_en": "Mentha Piperita Oil (Peppermint Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 9
+    },
+    {
+      "slug": "peppermint-powder",
+      "label_en": "Mentha Piperita Leaf Extract (Peppermint Powder)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "perfume-natural",
+      "label_en": "Perfume",
+      "type_from_woocommerce": "Natural",
+      "product_count": 14
+    },
+    {
+      "slug": "perfume-synthetic",
+      "label_en": "Parfum/Fragrance",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 93
+    },
+    {
+      "slug": "persian-lime-oil",
+      "label_en": "Persian Lime Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "phenoxyethanol",
+      "label_en": "Phenoxyethanol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "pine-oil",
+      "label_en": "Pinus Sylvestris Oil (Pine Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "polenta",
+      "label_en": "Polenta",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "polyquaternium-81",
+      "label_en": "Polyquaternium-81",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "polysorbate-20",
+      "label_en": "Polysorbate 20",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "polyvinylpyrrolidone-pvp",
+      "label_en": "Polyvinylpyrrolidone (PVP)",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "popcorn",
+      "label_en": "Popcorn",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "popping-candy",
+      "label_en": "Isomalt (Popping Candy)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "powdered-rosemary",
+      "label_en": "Powdered Rosemary",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "powdered-sage",
+      "label_en": "Powdered Sage",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "powdered-tea-tree",
+      "label_en": "Powdered Tea Tree",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "pressed-daisies",
+      "label_en": "Pressed Daisies",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "pressed-mini-daisies",
+      "label_en": "Pressed Mini Daisies",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "pressed-mint-flowers",
+      "label_en": "Pressed Mint Flowers",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "propylene-glycol",
+      "label_en": "Propylene Glycol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 34
+    },
+    {
+      "slug": "propylparaben",
+      "label_en": "Propylparaben",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "rapeseed-oil",
+      "label_en": "Brassica Napus Seed Oil (Rapeseed Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "rapeseed-oil-coconut-oil",
+      "label_en": "Rapeseed Oil; Coconut Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 9
+    },
+    {
+      "slug": "recycled-polyester",
+      "label_en": "Recycled polyester",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "red-28-lake",
+      "label_en": "Red 28 Lake",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "red-33-lake",
+      "label_en": "Red 33 Lake",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "rhassoul-mud",
+      "label_en": "Silt (Rhassoul Mud)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "rice-bran",
+      "label_en": "Rice Bran",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "rice-bran-oil",
+      "label_en": "Oryza Sativa Bran Oil (Rice Bran Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "rice-paper-flower",
+      "label_en": "Rice Paper Flower",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "rice-starch",
+      "label_en": "Rice Starch",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "rice-vinegar",
+      "label_en": "Rice Vinegar",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "roasted-cocoa-extract",
+      "label_en": "Roasted Cocoa Extract",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "rosalina-oil",
+      "label_en": "Melaleuca Ericifolia Leaf Oil (Rosalina Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "rose-absolute",
+      "label_en": "Rosa Damascena Extract (Rose Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 7
+    },
+    {
+      "slug": "rose-oil",
+      "label_en": "Rosa Damascena Flower Oil (Rose Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 6
+    },
+    {
+      "slug": "rose-petals-extracted-in-glycerine",
+      "label_en": "Rose Petals Extracted in Glycerine",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "rose-water",
+      "label_en": "Rosa Damascena Flower Water (Rose Water)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "rosemary-infusion",
+      "label_en": "Rosemary Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "rosemary-oil",
+      "label_en": "Rosmarinus Officinalis Leaf Oil (Rosemary Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "rosewood-oil",
+      "label_en": "Aniba Rosaeodora Wood Oil (Rosewood Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sage-oil",
+      "label_en": "Salvia Officinalis Oil (Sage Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "salicylic-acid",
+      "label_en": "Salicylic Acid",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "sandalwood-oil",
+      "label_en": "Sandalwood Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 5
+    },
+    {
+      "slug": "seaweed-absolute",
+      "label_en": "Seaweed Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sesame-seed-absolute",
+      "label_en": "Sesame Seed Absolute",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "shea-butter",
+      "label_en": "Butyrospermum Parkii Butter (Shea Butter)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 9
+    },
+    {
+      "slug": "sicilian-lemon-oil",
+      "label_en": "Citrus Limon Peel Oil (Sicilian Lemon Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 9
+    },
+    {
+      "slug": "sicilian-mandarin-oil",
+      "label_en": "Sicilian Mandarin Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sicilian-red-mandarin-oil",
+      "label_en": "Sicilian Red Mandarin Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "silica-synthetic",
+      "label_en": "Silica",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 17
+    },
+    {
+      "slug": "silken-tofu",
+      "label_en": "Silken Tofu",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "sodium-bicarbonate",
+      "label_en": "Sodium Bicarbonate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 49
+    },
+    {
+      "slug": "sodium-carboxymethyl-cellulose",
+      "label_en": "Sodium Carboxymethyl Cellulose",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "sodium-carboxymethyl-starch",
+      "label_en": "Sodium Carboxymethyl Starch",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "sodium-chloride",
+      "label_en": "Sodium Chloride",
+      "type_from_woocommerce": "Natural",
+      "product_count": 11
+    },
+    {
+      "slug": "sodium-coco-sulfate",
+      "label_en": "Sodium Coco-Sulfate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 22
+    },
+    {
+      "slug": "sodium-cocoamphoacetate",
+      "label_en": "Sodium Cocoamphoacetate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 11
+    },
+    {
+      "slug": "sodium-cocoyl-isethionate",
+      "label_en": "Sodium Cocoyl Isethionate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 2
+    },
+    {
+      "slug": "sodium-hydroxide",
+      "label_en": "Sodium Hydroxide",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 13
+    },
+    {
+      "slug": "sodium-laureth-sulfate",
+      "label_en": "Sodium Laureth Sulfate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 20
+    },
+    {
+      "slug": "sodium-laurylglucosides-hydroxypropylsulfonate",
+      "label_en": "Sodium Laurylglucosides Hydroxypropylsulfonate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "sodium-methyl-cocoyl-taurate",
+      "label_en": "Sodium Methyl Cocoyl Taurate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "sodium-stearate",
+      "label_en": "Sodium Stearate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "sorbitol",
+      "label_en": "Sorbitol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "soybean-flour",
+      "label_en": "Glycine Soja Flour (Soybean Flour)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "spearmint-oil",
+      "label_en": "Mentha Spicata Herb Oil (Spearmint Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "spike-lavender-oil",
+      "label_en": "Lavandula Latifolia Herb Oil (Spike Lavender Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "stearic-acid",
+      "label_en": "Stearic Acid",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "stevia",
+      "label_en": "Stevia Rebaudiana Extract (Stevia)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "styrax-resinoid",
+      "label_en": "Styrax Resinoid",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sunflower-oil",
+      "label_en": "Helianthus Annuus Seed Oil (Sunflower Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "sunflower-petals-extracted-in-glycerine",
+      "label_en": "Sunflower Petals Extracted In Glycerine",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sunflower-wax",
+      "label_en": "Helianthus Annuus Seed Cera (Sunflower Wax)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sweet-potato-puree",
+      "label_en": "Sweet Potato Puree",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "sweet-wild-orange-oil",
+      "label_en": "Citrus Sinensis Peel Oil Expressed (Sweet Wild Orange Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "synthetic-fluorphlogopite",
+      "label_en": "Synthetic Fluorphlogopite",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 53
+    },
+    {
+      "slug": "synthetic-musk",
+      "label_en": "Synthetic Musk",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 6
+    },
+    {
+      "slug": "tagetes-oil",
+      "label_en": "Tagetes Minuta Flower Oil (Tagetes Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 6
+    },
+    {
+      "slug": "talc",
+      "label_en": "Talc",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "tangerine-oil",
+      "label_en": "Citrus Reticulata Peel Oil (Tangerine Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 6
+    },
+    {
+      "slug": "tapioca-pearl",
+      "label_en": "Tapioca Pearl",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "tapioca-powder",
+      "label_en": "Tapioca Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "tapioca-starch",
+      "label_en": "Tapioca Starch (Tapioca Starch)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "tarragon-oil",
+      "label_en": "Artemisia Dracunculus Oil (Tarragon Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "tea-tree-oil",
+      "label_en": "Melaleuca Alternifolia Leaf Oil (Tea Tree Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "tetrasodium-etidronate",
+      "label_en": "Tetrasodium Etidronate",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 11
+    },
+    {
+      "slug": "thyme-absolute",
+      "label_en": "Thymus Vulgaris Leaf Extract (Thyme Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "thyme-infusion",
+      "label_en": "Thyme Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "thyme-oil",
+      "label_en": "Thymus Zygis Oil (Thyme Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "tin-oxide",
+      "label_en": "Tin Oxide",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 48
+    },
+    {
+      "slug": "tincture-benzoin",
+      "label_en": "Tincture of Benzoin",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "titanium-dioxide",
+      "label_en": "Titanium Dioxide",
+      "type_from_woocommerce": "Natural",
+      "product_count": 66
+    },
+    {
+      "slug": "tobacco-absolute",
+      "label_en": "Nicotiana Tabacum Leaf Extract (Tobacco Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 2
+    },
+    {
+      "slug": "tocopherol",
+      "label_en": "Tocopherol",
+      "type_from_woocommerce": "CONFLICT",
+      "product_count": 3
+    },
+    {
+      "slug": "tonka-absolute",
+      "label_en": "Dipteryx Odorata Seed Extract (Tonka Seed Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 17
+    },
+    {
+      "slug": "triethanolamine",
+      "label_en": "Triethanolamine",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 4
+    },
+    {
+      "slug": "turmeric-powder",
+      "label_en": "Turmeric Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "vanilla-absolute",
+      "label_en": "Vanilla Planifolia Fruit Extract (Vanilla Extract)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 27
+    },
+    {
+      "slug": "vanilla-oat-milk",
+      "label_en": "Vanilla Oat Milk",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "vanilla-pod-extract",
+      "label_en": "Vanilla Pod Extract",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "vanilla-pod-powder",
+      "label_en": "Vanilla Pod Powder",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "vanilla-water",
+      "label_en": "Vanilla Water",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "vanillin",
+      "label_en": "Vanillin",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "vegan-white-chocolate",
+      "label_en": "Vegan White Chocolate",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "vetivert-oil",
+      "label_en": "Vetiveria Zizanoides Root Oil (Vetivert Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 4
+    },
+    {
+      "slug": "wafer-paper",
+      "label_en": "Wafer Paper",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "walnut-oil",
+      "label_en": "Walnut Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "water-aqua",
+      "label_en": "Aqua (Water)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 79
+    },
+    {
+      "slug": "watermelon-seed-oil",
+      "label_en": "Watermelon Seed Oil",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "west-timor-sandalwood-oil",
+      "label_en": "Santalum Album Oil (Sandalwood Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 10
+    },
+    {
+      "slug": "wheatgerm-oil",
+      "label_en": "Triticum Vulgare Germ Oil (Wheatgerm Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "white-tea-infusion",
+      "label_en": "White Tea Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "whole-oats",
+      "label_en": "Whole Oats",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "wintergreen-oil",
+      "label_en": "Gaultheria Procumbens Leaf Oil (Wintergreen Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "witch-hazel-extract",
+      "label_en": "Witch Hazel Extract",
+      "type_from_woocommerce": "Natural",
+      "product_count": 3
+    },
+    {
+      "slug": "xanthan-gum",
+      "label_en": "Xanthan Gum",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    },
+    {
+      "slug": "xylitol",
+      "label_en": "Xylitol",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "yellow-5",
+      "label_en": "Yellow 5",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "yellow-5-lake",
+      "label_en": "Yellow 5 Lake",
+      "type_from_woocommerce": "Synthetic",
+      "product_count": 1
+    },
+    {
+      "slug": "ylang-ylang-oil",
+      "label_en": "Cananga Odorata Flower Oil (Ylang Ylang Oil)",
+      "type_from_woocommerce": "Natural",
+      "product_count": 14
+    },
+    {
+      "slug": "yomogi-leaf-infusion",
+      "label_en": "Yomogi Leaf Infusion",
+      "type_from_woocommerce": "Natural",
+      "product_count": 1
+    }
+  ],
+  "products": {
+    "18295": {
+      "woocommerce_id": 18295,
+      "sku": "65282",
+      "title": "Banoffee Pie",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "water-aqua",
+        "perfume-synthetic",
+        "glycerine",
+        "vanilla-absolute",
+        "labdanum-resinoid",
+        "tonka-absolute",
+        "amyl-cinnamal-natural",
+        "anise-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "coumarin-natural",
+        "eugenol-natural",
+        "limonene-natural"
+      ]
+    },
+    "18284": {
+      "woocommerce_id": 18284,
+      "sku": "65283",
+      "title": "Million Dollar",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "water-aqua",
+        "perfume-synthetic",
+        "glycerine",
+        "tonka-absolute",
+        "lavender-absolute",
+        "rosewood-oil",
+        "benzyl-benzoate-natural",
+        "citral-natural",
+        "coumarin-synthetic",
+        "farnesol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "18248": {
+      "woocommerce_id": 18248,
+      "sku": "64964",
+      "title": "Family Face Time",
+      "status": "draft",
+      "ingredients": [
+        "kaolin",
+        "glycerine",
+        "rose-water",
+        "water-aqua",
+        "calamine-powder",
+        "fresh-cucumber",
+        "ground-almonds",
+        "fresh-aloe-gel-barbadensis",
+        "oatmeal-decoction",
+        "lavender-oil",
+        "chamomile-oil",
+        "tea-tree-oil",
+        "rose-absolute",
+        "tapioca-starch",
+        "agar-agar",
+        "cornstarch",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "linalool-natural",
+        "perfume-synthetic",
+        "ci454102",
+        "ci17200",
+        "ci45410"
+      ]
+    },
+    "17937": {
+      "woocommerce_id": 17937,
+      "sku": "65197",
+      "title": "Hayl",
+      "status": "draft",
+      "ingredients": [
+        "fair-trade-organic-cocoa-butter",
+        "shea-butter",
+        "extra-virgin-coconut-oil",
+        "fair-trade-organic-sesame-oil",
+        "perfume-synthetic",
+        "cardamom-oil",
+        "benzoin-resinoid",
+        "orange-oil",
+        "almond-essential-oil",
+        "sunflower-oil",
+        "paprika-oleoresin",
+        "titanium-dioxide",
+        "tin-oxide",
+        "synthetic-fluorphlogopite",
+        "amyl-cinnamal-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "citral-natural",
+        "eugenol-natural",
+        "geraniol-natural",
+        "isoeugenol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "coumarin-synthetic",
+        "ci77491"
+      ]
+    },
+    "17924": {
+      "woocommerce_id": 17924,
+      "sku": "65151",
+      "title": "Lumas",
+      "status": "draft",
+      "ingredients": [
+        "glycerine",
+        "water-aqua",
+        "propylene-glycol",
+        "sodium-laureth-sulfate",
+        "carrageenan-extract",
+        "sodium-coco-sulfate",
+        "perfume-synthetic",
+        "ylang-ylang-oil",
+        "grapefruit-oil",
+        "citric-acid",
+        "titanium-dioxide",
+        "gardenia-extract",
+        "cornstarch",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "silica-synthetic",
+        "coumarin-synthetic",
+        "hydroxycitronellal-synthetic",
+        "linalool-natural",
+        "citronellol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "ci42090",
+        "ci191401",
+        "ci59040",
+        "ci420902",
+        "ci454102",
+        "ci470051",
+        "ci14700",
+        "ci17200",
+        "ci77491",
+        "ci73360"
+      ]
+    },
+    "17901": {
+      "woocommerce_id": 17901,
+      "sku": "64460",
+      "title": "Sticky Dates",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "perfume-natural",
+        "benzoin-resinoid",
+        "carob-resinoid",
+        "west-timor-sandalwood-oil",
+        "organic-date-syrup",
+        "corn-protein",
+        "titanium-dioxide",
+        "water-aqua",
+        "alcohol-denat",
+        "sodium-coco-sulfate",
+        "synthetic-fluorphlogopite",
+        "ci47005",
+        "ci77491"
+      ]
+    },
+    "17893": {
+      "woocommerce_id": 17893,
+      "sku": "64923",
+      "title": "Peace",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "cornstarch",
+        "perfume-synthetic",
+        "lavender-oil",
+        "tonka-absolute",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "lavandin-absolute",
+        "water-aqua",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "coumarin-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "ci42090",
+        "ci45410"
+      ]
+    },
+    "17771": {
+      "woocommerce_id": 17771,
+      "sku": "115",
+      "title": "Ceridwen's Cauldron",
+      "status": "publish",
+      "ingredients": [
+        "fair-trade-organic-cocoa-butter",
+        "whole-oats",
+        "laureth-4",
+        "walnut-oil",
+        "perfume-synthetic",
+        "tangerine-oil",
+        "limonene-natural",
+        "lavender-oil",
+        "sandalwood-oil",
+        "frankincense-resinoid",
+        "rose-absolute",
+        "elderflowers",
+        "daisy-flowers",
+        "cowslips",
+        "farnesol-natural",
+        "linalool-natural"
+      ]
+    },
+    "17675": {
+      "woocommerce_id": 17675,
+      "sku": "63005",
+      "title": "Mr Wallet",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "water-aqua",
+        "perfume-synthetic",
+        "glycerine",
+        "sandalwood-oil",
+        "vanilla-absolute",
+        "sesame-seed-absolute",
+        "peppermint-oil",
+        "anise-alcohol-natural",
+        "benzyl-alcohol-synthetic",
+        "farnesol-natural",
+        "limonene-natural"
+      ]
+    },
+    "17466": {
+      "woocommerce_id": 17466,
+      "sku": "64721",
+      "title": "I Love You To Peaches",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "water-aqua",
+        "perfume-natural",
+        "glycerine",
+        "sweet-wild-orange-oil",
+        "olibanum-resinoid",
+        "geraniol-synthetic",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "17460": {
+      "woocommerce_id": 17460,
+      "sku": "65156",
+      "title": "Princess Rosalina",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "water-aqua",
+        "perfume-synthetic",
+        "glycerine",
+        "davana-oil",
+        "chamomile-blue-oil",
+        "tagetes-oil",
+        "rose-oil",
+        "rosalina-oil",
+        "limonene-natural",
+        "linalool-natural",
+        "geraniol-synthetic",
+        "coumarin-synthetic",
+        "citronellol-synthetic",
+        "alpha-isomethyl-ionone"
+      ]
+    },
+    "17439": {
+      "woocommerce_id": 17439,
+      "sku": "65164",
+      "title": "Cold",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "fair-trade-organic-cocoa-butter",
+        "cornstarch",
+        "eucalyptus-oil",
+        "spike-lavender-oil",
+        "organic-lavender-oil",
+        "lemongrass-oil",
+        "peppermint-oil",
+        "lemon-oil",
+        "lemon-myrtle-oil",
+        "rosemary-oil",
+        "clove-bud-oil",
+        "chamomile-blue-oil",
+        "wintergreen-oil",
+        "candelilla-wax",
+        "gardenia-extract",
+        "peppermint-powder",
+        "titanium-dioxide",
+        "water-aqua",
+        "synthetic-fluorphlogopite",
+        "sodium-coco-sulfate",
+        "propylene-glycol",
+        "cocamidopropyl-betaine",
+        "tin-oxide",
+        "dipropylene-glycol",
+        "citral-natural",
+        "geraniol-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "ci191401",
+        "ci42090",
+        "ci45350",
+        "ci420902"
+      ]
+    },
+    "17431": {
+      "woocommerce_id": 17431,
+      "sku": "4939",
+      "title": "Wedding Bomb",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "rice-starch",
+        "agar-agar",
+        "alcohol-denat",
+        "popping-candy",
+        "titanium-dioxide",
+        "candy-heart",
+        "water-aqua",
+        "lavender-oil",
+        "brazilian-orange-oil",
+        "rose-absolute",
+        "ylang-ylang-oil",
+        "organic-extra-virgin-olive-oil",
+        "corn-protein",
+        "orris-root-powder",
+        "wafer-paper",
+        "dipropylene-glycol",
+        "propylene-glycol",
+        "synthetic-fluorphlogopite",
+        "calcium-sodium-borosilicate",
+        "tin-oxide",
+        "benzyl-benzoate-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-14700",
+        "colour-454101",
+        "colour-17200",
+        "rice-paper-flower"
+      ]
+    },
+    "17375": {
+      "woocommerce_id": 17375,
+      "sku": "64936",
+      "title": "Dirty",
+      "status": "publish",
+      "ingredients": [
+        "almond-oil",
+        "argan-oil",
+        "castor-oil-ricinus-communis",
+        "organic-jojoba-oil",
+        "organic-cold-pressed-grapeseed-oil",
+        "cold-pressed-organic-borage-oil",
+        "perfume-synthetic",
+        "linalool-natural",
+        "cedarwood-oil-juniperus-virginiana",
+        "lavender-oil",
+        "tarragon-oil",
+        "thyme-oil",
+        "west-timor-sandalwood-oil",
+        "citronellol-natural",
+        "coumarin-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "limonene-natural"
+      ]
+    },
+    "17366": {
+      "woocommerce_id": 17366,
+      "sku": null,
+      "title": "Squeeze The Day",
+      "status": "draft",
+      "ingredients": [
+        "water-aqua",
+        "sodium-laureth-sulfate",
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "lauryl-betaine",
+        "titanium-dioxide",
+        "sicilian-lemon-oil",
+        "limonene-natural",
+        "fine-sea-salt",
+        "lemon-myrtle-oil",
+        "litsea-cubeba-oil",
+        "fresh-lemon-juice",
+        "carrageenan-extract",
+        "citral-natural",
+        "perfume-synthetic",
+        "ci47005",
+        "ci45350",
+        "ci59040"
+      ]
+    },
+    "17349": {
+      "woocommerce_id": 17349,
+      "sku": null,
+      "title": "Baklava",
+      "status": "publish",
+      "ingredients": [
+        "rapeseed-oil",
+        "rose-water",
+        "glycerine",
+        "propylene-glycol",
+        "water-aqua",
+        "cocos-nucifera-oil-coconut-oil-organic-extra-virgin-coconut-oil",
+        "perfume-synthetic",
+        "vetivert-oil",
+        "cedarwood-oil-juniperus-virginiana",
+        "rose-absolute",
+        "almond-essential-oil",
+        "bergamot-oil",
+        "fair-trade-organic-cocoa-butter",
+        "coconut-milk-powder",
+        "sodium-chloride",
+        "titanium-dioxide",
+        "gardenia-extract",
+        "fair-trade-organic-aloe-vera-powder",
+        "citric-acid",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "synthetic-fluorphlogopite",
+        "silica-synthetic",
+        "tin-oxide",
+        "geraniol-synthetic",
+        "coumarin-synthetic",
+        "benzyl-benzoate-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "ci77491",
+        "ci45350",
+        "ci61570",
+        "ci42090",
+        "cardamom-seeds"
+      ]
+    },
+    "17341": {
+      "woocommerce_id": 17341,
+      "sku": "4966",
+      "title": "Siraj",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "alcohol-denat",
+        "water-aqua",
+        "perfume-synthetic",
+        "carob-resinoid",
+        "benzoin-resinoid",
+        "west-timor-sandalwood-oil",
+        "cornstarch",
+        "titanium-dioxide",
+        "corn-protein",
+        "cocamidopropyl-betaine",
+        "sodium-coco-sulfate",
+        "calcium-sodium-borosilicate",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "limonene-natural",
+        "ci454102",
+        "ci420902",
+        "ci77491",
+        "ci45410",
+        "ci42090"
+      ]
+    },
+    "17327": {
+      "woocommerce_id": 17327,
+      "sku": "4965",
+      "title": "Sukoon",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "alcohol-denat",
+        "water-aqua",
+        "carob-resinoid",
+        "benzoin-resinoid",
+        "west-timor-sandalwood-oil",
+        "corn-protein",
+        "titanium-dioxide",
+        "dipropylene-glycol",
+        "synthetic-fluorphlogopite",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "tin-oxide",
+        "limonene-natural",
+        "perfume-synthetic",
+        "ci42090",
+        "ci77499",
+        "ci420902",
+        "ci454102"
+      ]
+    },
+    "17313": {
+      "woocommerce_id": 17313,
+      "sku": "64927",
+      "title": "Dad Dancing",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "alcohol-denat",
+        "perfume-synthetic",
+        "bergamot-oil",
+        "sicilian-lemon-oil",
+        "tangerine-oil",
+        "corn-protein",
+        "titanium-dioxide",
+        "water-aqua",
+        "cornstarch",
+        "calcium-sodium-borosilicate",
+        "synthetic-fluorphlogopite",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "tin-oxide",
+        "limonene-natural",
+        "linalool-natural",
+        "ci77499",
+        "ci420902",
+        "ci42090",
+        "ci17200",
+        "ci454102",
+        "ci45410"
+      ]
+    },
+    "17302": {
+      "woocommerce_id": 17302,
+      "sku": null,
+      "title": "To The Moon And Back",
+      "status": "draft",
+      "ingredients": [
+        "water-aqua",
+        "rapeseed-oil",
+        "propylene-glycol",
+        "glycerine",
+        "cocos-nucifera-oil-coconut-oil-organic-extra-virgin-coconut-oil",
+        "perfume-synthetic",
+        "organic-extra-virgin-olive-oil",
+        "spearmint-oil",
+        "lavender-absolute",
+        "tarragon-oil",
+        "thyme-absolute",
+        "west-timor-sandalwood-oil",
+        "cornstarch",
+        "citric-acid",
+        "titanium-dioxide",
+        "sodium-chloride",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "synthetic-fluorphlogopite",
+        "edta",
+        "tetrasodium-etidronate",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "ci45350",
+        "ci42090",
+        "ci45410",
+        "ci420902",
+        "ci17200"
+      ]
+    },
+    "16644": {
+      "woocommerce_id": 16644,
+      "sku": "4973",
+      "title": "Equity",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "perfume-synthetic",
+        "coarse-sea-salt",
+        "fine-sea-salt",
+        "sicilian-lemon-oil",
+        "mimosa-absolute",
+        "orange-flower-absolute",
+        "jasmine-absolute",
+        "gardenia-extract",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "colour-42090",
+        "colour-14700",
+        "colour-45410"
+      ]
+    },
+    "16474": {
+      "woocommerce_id": 16474,
+      "sku": "2289",
+      "title": "Ro's Argan",
+      "status": "draft",
+      "ingredients": [
+        "water-aqua",
+        "argan-oil",
+        "glycerine",
+        "granulated-sugar",
+        "sodium-hydroxide",
+        "perfume-synthetic",
+        "sodium-stearate",
+        "sicilian-lemon-oil",
+        "geranium-oil",
+        "pakistani-rose-absolute",
+        "rose-oil",
+        "citric-acid",
+        "sodium-bicarbonate",
+        "citral-natural",
+        "limonene-natural",
+        "citronellol-synthetic",
+        "coumarin-synthetic",
+        "geraniol-synthetic",
+        "dried-red-rose-petals"
+      ]
+    },
+    "16423": {
+      "woocommerce_id": 16423,
+      "sku": "4920",
+      "title": "Lemongrass",
+      "status": "publish",
+      "ingredients": [
+        "rapeseed-oil-coconut-oil",
+        "fresh-wheatgrass-decoction",
+        "fresh-lemongrass-extracted-in-glycerine",
+        "propylene-glycol",
+        "water-aqua",
+        "extra-virgin-coconut-oil",
+        "limonene-natural",
+        "perfume-natural",
+        "lemongrass-oil",
+        "bergamot-oil",
+        "citral-natural",
+        "linalool-natural",
+        "wheatgerm-oil",
+        "glycerine",
+        "sodium-chloride",
+        "citric-acid",
+        "gardenia-extract",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "geraniol-natural",
+        "colour-42090"
+      ]
+    },
+    "16257": {
+      "woocommerce_id": 16257,
+      "sku": "222201",
+      "title": "Cherry Baby",
+      "status": "publish",
+      "ingredients": [
+        "recycled-polyester"
+      ]
+    },
+    "16251": {
+      "woocommerce_id": 16251,
+      "sku": "222300",
+      "title": "Eggs For The Exotic Birds Knot Wrap",
+      "status": "publish",
+      "ingredients": [
+        "recycled-polyester"
+      ]
+    },
+    "16102": {
+      "woocommerce_id": 16102,
+      "sku": "64868",
+      "title": "Swirly Sticky Dates",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "cream-tartar",
+        "sodium-laureth-sulfate",
+        "lauryl-betaine",
+        "west-timor-sandalwood-oil",
+        "carob-resinoid",
+        "benzoin-resinoid",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "calcium-sodium-borosilicate",
+        "synthetic-fluorphlogopite",
+        "silica-synthetic",
+        "tin-oxide",
+        "benzyl-alcohol-synthetic",
+        "benzyl-benzoate-synthetic",
+        "perfume-natural",
+        "colour-77491",
+        "colour-191401"
+      ]
+    },
+    "16090": {
+      "woocommerce_id": 16090,
+      "sku": "64866",
+      "title": "Munching Bunny",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "perfume-natural",
+        "lavender-oil",
+        "benzoin-resinoid",
+        "tonka-absolute",
+        "ylang-ylang-oil",
+        "water-aqua",
+        "corn-protein",
+        "titanium-dioxide",
+        "cornstarch",
+        "alcohol-denat",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "coumarin-synthetic",
+        "linalool-natural",
+        "colour-159851",
+        "colour-191401",
+        "colour-454102",
+        "colour-420902",
+        "colour-45410",
+        "colour-77491",
+        "colour-42090"
+      ]
+    },
+    "16084": {
+      "woocommerce_id": 16084,
+      "sku": "63372",
+      "title": "Cookie Dough",
+      "status": "publish",
+      "ingredients": [
+        "organic-castor-oil",
+        "organic-jojoba-oil",
+        "sunflower-wax",
+        "candelilla-wax",
+        "flavour-synthetic",
+        "almond-essential-oil",
+        "carob-resinoid",
+        "vanilla-absolute",
+        "cold-pressed-strawberry-seed-oil",
+        "tocopherol",
+        "stevia",
+        "sunflower-oil",
+        "anise-alcohol-natural",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "linalool-natural"
+      ]
+    },
+    "16078": {
+      "woocommerce_id": 16078,
+      "sku": "64864",
+      "title": "Chirpy Chick",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "coconut-milk-powder",
+        "agar-agar",
+        "cornstarch",
+        "perfume-natural",
+        "geranium-oil",
+        "brazilian-orange-oil",
+        "tonka-absolute",
+        "bergamot-oil",
+        "lavender-oil",
+        "sicilian-mandarin-oil",
+        "titanium-dioxide",
+        "water-aqua",
+        "cocamidopropyl-betaine",
+        "sodium-coco-sulfate",
+        "propylene-glycol",
+        "dipropylene-glycol",
+        "amyl-cinnamal-synthetic",
+        "benzyl-alcohol-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-470051",
+        "colour-14700",
+        "colour-454101"
+      ]
+    },
+    "16064": {
+      "woocommerce_id": 16064,
+      "sku": "64867",
+      "title": "Big Dilemma",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "sicilian-lemon-oil",
+        "lemon-myrtle-oil",
+        "lemongrass-oil",
+        "benzoin-resinoid",
+        "water-aqua",
+        "cornstarch",
+        "corn-protein",
+        "titanium-dioxide",
+        "sodium-coco-sulfate",
+        "alcohol-denat",
+        "synthetic-fluorphlogopite",
+        "cocamidopropyl-betaine",
+        "tin-oxide",
+        "citral-natural",
+        "citronellol-natural-extract",
+        "coumarin-synthetic",
+        "geraniol-synthetic",
+        "limonene-natural",
+        "perfume-natural",
+        "colour-15510",
+        "colour-159851",
+        "colour-191401",
+        "colour-14700",
+        "colour-77499"
+      ]
+    },
+    "16012": {
+      "woocommerce_id": 16012,
+      "sku": null,
+      "title": "The Goose's Golden Egg",
+      "status": "publish",
+      "ingredients": [
+        "rapeseed-oil-coconut-oil",
+        "golden-linseed-decoction",
+        "propylene-glycol",
+        "water-aqua",
+        "canadian-maple-syrup",
+        "perfume-natural",
+        "rice-bran-oil",
+        "titanium-dioxide",
+        "bergamot-oil",
+        "brazilian-orange-oil",
+        "sodium-chloride",
+        "extra-virgin-coconut-oil",
+        "citric-acid",
+        "sodium-hydroxide",
+        "synthetic-fluorphlogopite",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "tin-oxide",
+        "silica-synthetic",
+        "amyl-cinnamal-synthetic",
+        "citronellol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-17200",
+        "colour-77491",
+        "colour-454102",
+        "colour-454101"
+      ]
+    },
+    "16006": {
+      "woocommerce_id": 16006,
+      "sku": "64875",
+      "title": "Sticky Dates Glitter Mist Spray",
+      "status": "publish",
+      "ingredients": [
+        "water-aqua",
+        "perfume-natural",
+        "fine-sea-salt",
+        "carob-resinoid",
+        "benzoin-resinoid",
+        "west-timor-sandalwood-oil",
+        "carrageenan-extract",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "calcium-sodium-borosilicate",
+        "silica-synthetic",
+        "tin-oxide",
+        "benzyl-benzoate-natural",
+        "cinnamal-natural",
+        "farnesol-natural",
+        "colour-77491",
+        "methylparaben"
+      ]
+    },
+    "16000": {
+      "woocommerce_id": 16000,
+      "sku": "64876",
+      "title": "Rub Rub And Custard",
+      "status": "draft",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "organic-cold-pressed-passion-seed-oil",
+        "bergamot-oil",
+        "brazilian-orange-oil",
+        "citric-acid",
+        "synthetic-fluorphlogopite",
+        "limonene-natural",
+        "flavour-synthetic",
+        "colour-454102",
+        "colour-158501",
+        "colour-73360",
+        "colour-191401"
+      ]
+    },
+    "15985": {
+      "woocommerce_id": 15985,
+      "sku": "4735",
+      "title": "Easter Bunny",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "alcohol-denat",
+        "glycerine",
+        "water-aqua",
+        "grapefruit-oil",
+        "sicilian-lemon-oil",
+        "vanilla-absolute",
+        "bergamot-oil",
+        "titanium-dioxide",
+        "carrageenan-extract",
+        "dipropylene-glycol",
+        "calcium-sodium-borosilicate",
+        "propylene-glycol",
+        "sodium-coco-sulfate",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "silica-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-47005",
+        "colour-470051",
+        "colour-420902",
+        "colour-77491",
+        "colour-159851",
+        "colour-191401",
+        "colour-59040"
+      ]
+    },
+    "15977": {
+      "woocommerce_id": 15977,
+      "sku": null,
+      "title": "Banoffee Pie",
+      "status": "draft",
+      "ingredients": [
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "sodium-laureth-sulfate",
+        "water-aqua",
+        "fine-sea-salt",
+        "fresh-banana",
+        "calcium-lactate",
+        "lauryl-betaine",
+        "perfume-natural",
+        "vanilla-absolute",
+        "tonka-absolute",
+        "labdanum-resinoid",
+        "cornstarch",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "coumarin-natural",
+        "colour-19140",
+        "colour-191401"
+      ]
+    },
+    "15853": {
+      "woocommerce_id": 15853,
+      "sku": "64116",
+      "title": "Let The Good Times Roll",
+      "status": "publish",
+      "ingredients": [
+        "cornstarch",
+        "sodium-bicarbonate",
+        "magnesium-carbonate",
+        "synthetic-fluorphlogopite",
+        "perfume-synthetic",
+        "titanium-dioxide",
+        "glycerine",
+        "calcium-sodium-borosilicate",
+        "hydroxy-propyl-methyl-cellulose",
+        "sodium-carboxymethyl-cellulose",
+        "silica-synthetic",
+        "tin-oxide",
+        "colour-77491",
+        "colour-77492"
+      ]
+    },
+    "15780": {
+      "woocommerce_id": 15780,
+      "sku": null,
+      "title": "The Bee's Knees",
+      "status": "publish",
+      "ingredients": [
+        "perfume-synthetic",
+        "water-aqua",
+        "glycerine",
+        "limonene-natural",
+        "linalool-natural",
+        "everlasting-flower-absolute",
+        "tobacco-absolute",
+        "osmanthus-absolute",
+        "orange-flower-absolute",
+        "neroli-oil",
+        "sicilian-red-mandarin-oil",
+        "anise-alcohol-natural",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-salicylate-natural",
+        "cinnamal-natural",
+        "cinnamyl-alcohol-natural",
+        "citral-natural",
+        "citronellol-natural",
+        "coumarin-natural",
+        "eugenol-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "isoeugenol-natural"
+      ]
+    },
+    "15766": {
+      "woocommerce_id": 15766,
+      "sku": "7443",
+      "title": "Furze",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "perfume-synthetic",
+        "water-aqua",
+        "glycerine",
+        "amyl-cinnamal-synthetic",
+        "hydroxycitronellal-synthetic",
+        "neroli-oil",
+        "mimosa-absolute",
+        "citral-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "15747": {
+      "woocommerce_id": 15747,
+      "sku": "61359",
+      "title": "Oudhess",
+      "status": "publish",
+      "ingredients": [
+        "organic-drf-alcohol",
+        "perfume-synthetic",
+        "linalool-natural",
+        "limonene-natural",
+        "jasmine-absolute",
+        "osmanthus-absolute",
+        "rose-oil",
+        "sandalwood-oil",
+        "oudh-oil",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-salicylate-natural",
+        "citral-natural",
+        "citronellol-natural",
+        "eugenol-natural",
+        "farnesol-natural",
+        "geraniol-natural"
+      ]
+    },
+    "15677": {
+      "woocommerce_id": 15677,
+      "sku": "222273",
+      "title": "My Family Houses Knot Wrap",
+      "status": "publish",
+      "ingredients": [
+        "organic-cotton"
+      ]
+    },
+    "15540": {
+      "woocommerce_id": 15540,
+      "sku": "64117",
+      "title": "Super Milk",
+      "status": "publish",
+      "ingredients": [
+        "tapioca-powder",
+        "cornstarch",
+        "magnesium-carbonate",
+        "coconut-milk-powder",
+        "soybean-flour",
+        "litsea-cubeba-oil",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "titanium-dioxide",
+        "anise-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "citral-natural",
+        "coumarin-synthetic",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic"
+      ]
+    },
+    "15526": {
+      "woocommerce_id": 15526,
+      "sku": null,
+      "title": "Sakura",
+      "status": "draft",
+      "ingredients": [
+        "yomogi-leaf-infusion",
+        "sodium-laureth-sulfate",
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "lauryl-betaine",
+        "fresh-lemon-juice",
+        "titanium-dioxide",
+        "sicilian-lemon-oil",
+        "mimosa-absolute",
+        "orange-flower-absolute",
+        "jasmine-absolute",
+        "carrageenan-extract",
+        "citral-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic"
+      ]
+    },
+    "15505": {
+      "woocommerce_id": 15505,
+      "sku": null,
+      "title": "Mother Of Dragons",
+      "status": "draft",
+      "ingredients": [
+        "sodium-cocoamphoacetate",
+        "sodium-laureth-sulfate",
+        "glycerine",
+        "dragon-fruit-infusion",
+        "water-aqua",
+        "fresh-dragon-fruit",
+        "calcium-lactate",
+        "fine-sea-salt",
+        "lauryl-betaine",
+        "perfume-natural",
+        "lactic-acid",
+        "litsea-cubeba-oil",
+        "styrax-resinoid",
+        "mango-leaf-absolute",
+        "balsam-fir-resin",
+        "cornstarch",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "propylene-glycol",
+        "tin-oxide",
+        "benzyl-alcohol-natural",
+        "citral-natural",
+        "citronellol-natural-extract",
+        "limonene-natural",
+        "colour-454102",
+        "colour-454101",
+        "colour-17200",
+        "colour-14700",
+        "colour-73360"
+      ]
+    },
+    "1067": {
+      "woocommerce_id": 1067,
+      "sku": "61168",
+      "title": "Yummy Custard",
+      "status": "draft",
+      "ingredients": [
+        "glycerine",
+        "vanilla-oat-milk",
+        "sodium-cocoyl-isethionate",
+        "cocamidopropyl-betaine",
+        "fair-trade-organic-aloe-vera-gel",
+        "cornstarch",
+        "perfume-synthetic",
+        "vanilla-pod-powder",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "citric-acid"
+      ]
+    },
+    "15421": {
+      "woocommerce_id": 15421,
+      "sku": "4787",
+      "title": "Kuromi",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "alcohol-denat",
+        "almond-essential-oil",
+        "benzoin-resinoid",
+        "ylang-ylang-oil",
+        "titanium-dioxide",
+        "water-aqua",
+        "tapioca-pearl",
+        "corn-protein",
+        "sodium-coco-sulfate",
+        "propylene-glycol",
+        "dipropylene-glycol",
+        "cocamidopropyl-betaine",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "benzyl-alcohol-synthetic",
+        "cinnamyl-alcohol-synthetic",
+        "hexyl-cinnamal-synthetic",
+        "perfume-synthetic",
+        "colour-77499",
+        "colour-454101",
+        "colour-17200",
+        "colour-14700",
+        "colour-454102",
+        "colour-77491"
+      ]
+    },
+    "15415": {
+      "woocommerce_id": 15415,
+      "sku": "4786",
+      "title": "Cinnamoroll",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "rice-starch",
+        "almond-essential-oil",
+        "vanilla-absolute",
+        "carob-resinoid",
+        "cinnamon-leaf-oil",
+        "titanium-dioxide",
+        "water-aqua",
+        "cornstarch",
+        "corn-protein",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "synthetic-fluorphlogopite",
+        "dipropylene-glycol",
+        "alcohol-denat",
+        "tin-oxide",
+        "benzyl-benzoate-natural",
+        "eugenol-natural",
+        "perfume-synthetic",
+        "colour-42090",
+        "colour-454102",
+        "colour-17200",
+        "colour-45410",
+        "colour-420902"
+      ]
+    },
+    "15406": {
+      "woocommerce_id": 15406,
+      "sku": null,
+      "title": "Hello Kitty And Friends",
+      "status": "publish",
+      "ingredients": [
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "sodium-laureth-sulfate",
+        "water-aqua",
+        "fresh-strawberry-infusion",
+        "calcium-lactate",
+        "fine-sea-salt",
+        "lauryl-betaine",
+        "perfume-synthetic",
+        "lactic-acid",
+        "brazilian-orange-oil",
+        "patchouli-oil",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "calcium-sodium-borosilicate",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "amyl-cinnamal-synthetic",
+        "benzyl-salicylate-synthetic",
+        "citronellol-natural-extract",
+        "geraniol-synthetic",
+        "hexyl-cinnamal-synthetic",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "15394": {
+      "woocommerce_id": 15394,
+      "sku": null,
+      "title": "Oudhess",
+      "status": "publish",
+      "ingredients": [
+        "white-tea-infusion",
+        "propylene-glycol",
+        "glycerine",
+        "fair-trade-organic-cocoa-butter",
+        "organic-virgin-coconut-oil",
+        "water-aqua",
+        "organic-castor-oil",
+        "sodium-hydroxide",
+        "perfume-synthetic",
+        "jasmine-absolute",
+        "osmanthus-absolute",
+        "rose-oil",
+        "sandalwood-oil",
+        "oudh-oil",
+        "titanium-dioxide",
+        "citric-acid",
+        "sodium-bicarbonate",
+        "synthetic-fluorphlogopite",
+        "silica-synthetic",
+        "tin-oxide",
+        "eugenol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77491",
+        "colour-17200",
+        "colour-42090"
+      ]
+    },
+    "15383": {
+      "woocommerce_id": 15383,
+      "sku": null,
+      "title": "The Rush",
+      "status": "publish",
+      "ingredients": [
+        "rapeseed-oil-coconut-oil",
+        "fresh-lemon-peel-infusion",
+        "glycerine",
+        "fresh-geranium-leaf-infusion",
+        "propylene-glycol",
+        "water-aqua",
+        "perfume-synthetic",
+        "rose-water",
+        "titanium-dioxide",
+        "organic-virgin-coconut-oil",
+        "fir-needle-absolute",
+        "oakmoss-absolute",
+        "kenyan-geranium-oil",
+        "sodium-chloride",
+        "citric-acid",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "citral-natural",
+        "citronellol-natural",
+        "oakmoss-extract",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "pressed-mint-flowers",
+        "dried-lemon-verbena",
+        "pressed-mini-daisies",
+        "pressed-daisies"
+      ]
+    },
+    "15377": {
+      "woocommerce_id": 15377,
+      "sku": "64013",
+      "title": "Hello Kitty",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "illipe-butter",
+        "kokum-butter",
+        "rice-starch",
+        "laureth-4",
+        "brazilian-orange-oil",
+        "patchouli-oil",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "titanium-dioxide",
+        "tapioca-pearl",
+        "water-aqua",
+        "cornstarch",
+        "corn-protein",
+        "alcohol-denat",
+        "sodium-laurylglucosides-hydroxypropylsulfonate",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "dipropylene-glycol",
+        "alpha-isomethyl-ionone",
+        "amyl-cinnamal-synthetic",
+        "benzyl-salicylate-synthetic",
+        "geraniol-synthetic",
+        "hexyl-cinnamal-synthetic",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-77499",
+        "colour-14700",
+        "colour-45410",
+        "colour-470051"
+      ]
+    },
+    "15336": {
+      "woocommerce_id": 15336,
+      "sku": "64655",
+      "title": "Dust The Two Of Us",
+      "status": "draft",
+      "ingredients": [
+        "cornstarch",
+        "magnesium-carbonate",
+        "soybean-flour",
+        "babassu-flour",
+        "clary-sage-oil",
+        "bergamot-oil",
+        "jasmine-absolute",
+        "ylang-ylang-oil",
+        "cananga-oil",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "benzyl-benzoate-natural",
+        "citral-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-454102",
+        "colour-420902",
+        "colour-77491"
+      ]
+    },
+    "15323": {
+      "woocommerce_id": 15323,
+      "sku": "265ml-64652",
+      "title": "Pink Bomb",
+      "status": "draft",
+      "ingredients": [
+        "water-aqua",
+        "perfume-synthetic",
+        "fine-sea-salt",
+        "clary-sage-oil",
+        "ylang-ylang-oil",
+        "bergamot-oil",
+        "jasmine-absolute",
+        "cananga-oil",
+        "carrageenan-extract",
+        "cornstarch",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "benzyl-benzoate-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-420902",
+        "colour-45410",
+        "colour-42090",
+        "methylparaben"
+      ]
+    },
+    "15314": {
+      "woocommerce_id": 15314,
+      "sku": null,
+      "title": "Pink Bomb",
+      "status": "draft",
+      "ingredients": [
+        "fair-trade-organic-aloe-vera-gel",
+        "glycerine",
+        "sodium-laureth-sulfate",
+        "propylene-glycol",
+        "perfume-synthetic",
+        "jasmine-absolute",
+        "clary-sage-oil",
+        "ylang-ylang-oil",
+        "bergamot-oil",
+        "cananga-oil",
+        "carrageenan-extract",
+        "titanium-dioxide",
+        "water-aqua",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-420902",
+        "colour-17200",
+        "colour-45410",
+        "colour-45380"
+      ]
+    },
+    "15300": {
+      "woocommerce_id": 15300,
+      "sku": "64642",
+      "title": "French Kiss",
+      "status": "draft",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "organic-sweet-orange-oil",
+        "davana-oil",
+        "tagetes-oil",
+        "alpha-isomethyl-ionone",
+        "citral-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-470051",
+        "colour-420902"
+      ]
+    },
+    "15294": {
+      "woocommerce_id": 15294,
+      "sku": "64641",
+      "title": "Cherry Bubblegum Lip Scrub",
+      "status": "draft",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "glycerine",
+        "flavour-synthetic",
+        "citric-acid",
+        "almond-essential-oil",
+        "lime-oil",
+        "peppermint-oil",
+        "synthetic-fluorphlogopite",
+        "citral-natural",
+        "eugenol-synthetic",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77491",
+        "colour-45380"
+      ]
+    },
+    "15235": {
+      "woocommerce_id": 15235,
+      "sku": "64638",
+      "title": "Love Bug Scrubee",
+      "status": "draft",
+      "ingredients": [
+        "fair-trade-organic-cocoa-butter",
+        "illipe-butter",
+        "shea-butter",
+        "kokum-butter",
+        "ground-cherry-stones",
+        "almond-oil",
+        "perfume-synthetic",
+        "coconut-blossom-nectar",
+        "ground-almonds",
+        "extra-virgin-coconut-oil",
+        "almond-essential-oil",
+        "cocoa-absolute",
+        "davana-oil",
+        "synthetic-fluorphlogopite",
+        "benzyl-benzoate-synthetic",
+        "cinnamyl-alcohol-synthetic",
+        "coumarin-synthetic",
+        "hexyl-cinnamal-synthetic",
+        "colour-77491"
+      ]
+    },
+    "15114": {
+      "woocommerce_id": 15114,
+      "sku": "64669",
+      "title": "Candy Rain",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "perfume-synthetic",
+        "water-aqua",
+        "glycerine",
+        "tonka-absolute",
+        "cocoa-absolute",
+        "buchu-oil",
+        "almond-essential-oil",
+        "alpha-isomethyl-ionone",
+        "benzyl-benzoate-synthetic",
+        "benzyl-cinnamate-natural",
+        "benzyl-salicylate-natural",
+        "cinnamal-natural",
+        "citral-natural",
+        "coumarin-synthetic",
+        "eugenol-synthetic",
+        "isoeugenol-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "14832": {
+      "woocommerce_id": 14832,
+      "sku": "3980",
+      "title": "Let the Good Times Roll",
+      "status": "publish",
+      "ingredients": [
+        "organic-maize-flour",
+        "glycerine",
+        "talc",
+        "water-aqua",
+        "corn-oil",
+        "polenta",
+        "fair-trade-organic-cinnamon-powder",
+        "perfume-synthetic",
+        "gardenia-extract",
+        "popcorn"
+      ]
+    },
+    "14744": {
+      "woocommerce_id": 14744,
+      "sku": null,
+      "title": "Vanillary",
+      "status": "publish",
+      "ingredients": [
+        "organic-jojoba-oil",
+        "organic-castor-oil",
+        "candelilla-wax",
+        "perfume-synthetic",
+        "titanium-dioxide",
+        "vanilla-absolute",
+        "jasmine-absolute",
+        "brazilian-tonka-absolute",
+        "anise-alcohol-natural",
+        "benzyl-alcohol-natural",
+        "eugenol-natural",
+        "isoeugenol-natural",
+        "hydroxycitronellal-synthetic",
+        "cinnamal-natural",
+        "coumarin-natural",
+        "linalool-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "benzyl-cinnamate-natural",
+        "benzyl-benzoate-natural",
+        "colour-77492"
+      ]
+    },
+    "14497": {
+      "woocommerce_id": 14497,
+      "sku": "60688",
+      "title": "Celestial",
+      "status": "publish",
+      "ingredients": [
+        "vanilla-water",
+        "almond-oil",
+        "glycerine",
+        "almond-milk",
+        "fair-trade-organic-cocoa-butter",
+        "illipe-butter",
+        "organic-alcohol-denat",
+        "stearic-acid",
+        "cupuacu-butter",
+        "vanilla-pod-extract",
+        "cetearyl-alcohol",
+        "guaiacwood-oil",
+        "dipropylene-glycol",
+        "vanillin",
+        "benzoic-acid",
+        "triethanolamine"
+      ]
+    },
+    "14342": {
+      "woocommerce_id": 14342,
+      "sku": "64514",
+      "title": "Scooby Snacks™",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "water-aqua",
+        "perfume-synthetic",
+        "glycerine",
+        "vanilla-absolute",
+        "cinnamon-bark-oil",
+        "benzoin-resinoid",
+        "lemon-myrtle-oil",
+        "bergamot-oil",
+        "benzyl-benzoate-natural",
+        "cinnamal-natural",
+        "citral-natural",
+        "coumarin-natural",
+        "eugenol-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "14242": {
+      "woocommerce_id": 14242,
+      "sku": "64508",
+      "title": "Scooby-Doo™",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "cornstarch",
+        "perfume-synthetic",
+        "lime-oil",
+        "olibanum-resinoid",
+        "neroli-oil",
+        "water-aqua",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "benzyl-salicylate-natural",
+        "citral-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77491",
+        "colour-47005",
+        "colour-42090",
+        "colour-42053",
+        "colour-470051"
+      ]
+    },
+    "14213": {
+      "woocommerce_id": 14213,
+      "sku": "64507",
+      "title": "Mystery Machine™",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "cornstarch",
+        "perfume-synthetic",
+        "bergamot-oil",
+        "neroli-oil",
+        "ylang-ylang-oil",
+        "dark-sumatran-patchouli-oil",
+        "water-aqua",
+        "corn-protein",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "alcohol-denat",
+        "sodium-coco-sulfate",
+        "dipropylene-glycol",
+        "cocamidopropyl-betaine",
+        "benzyl-benzoate-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-470051",
+        "colour-191401",
+        "colour-420902",
+        "colour-42053",
+        "colour-159851",
+        "colour-42090"
+      ]
+    },
+    "14198": {
+      "woocommerce_id": 14198,
+      "sku": null,
+      "title": "Mystery Inc.™",
+      "status": "publish",
+      "ingredients": [
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "sodium-laureth-sulfate",
+        "water-aqua",
+        "fresh-carnation-petal-infusion",
+        "calcium-lactate",
+        "fine-sea-salt",
+        "lauryl-betaine",
+        "perfume-synthetic",
+        "lactic-acid",
+        "vanilla-absolute",
+        "cinnamon-bark-oil",
+        "benzoin-resinoid",
+        "lemon-myrtle-oil",
+        "bergamot-oil",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "cinnamal-natural",
+        "citral-natural",
+        "coumarin-natural",
+        "eugenol-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-45410",
+        "colour-42090",
+        "colour-77491"
+      ]
+    },
+    "14172": {
+      "woocommerce_id": 14172,
+      "sku": "964",
+      "title": "Watermelon",
+      "status": "draft",
+      "ingredients": [
+        "rapeseed-oil-coconut-oil",
+        "linseed-decoction",
+        "propylene-glycol",
+        "water-aqua",
+        "perfume-synthetic",
+        "watermelon-seed-oil",
+        "glycerine",
+        "bergamot-oil",
+        "rose-oil",
+        "linseed",
+        "titanium-dioxide",
+        "sodium-chloride",
+        "sodium-hydroxide",
+        "edta",
+        "tetrasodium-etidronate",
+        "citral-natural",
+        "isoeugenol-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-470051",
+        "colour-420902",
+        "colour-45410"
+      ]
+    },
+    "14159": {
+      "woocommerce_id": 14159,
+      "sku": "64603",
+      "title": "Super Milk",
+      "status": "publish",
+      "ingredients": [
+        "agar-agar-gel",
+        "propylene-glycol",
+        "silken-tofu",
+        "organic-extra-virgin-olive-oil",
+        "cetearyl-alcohol",
+        "cetrimonium-chloride",
+        "perfume-synthetic",
+        "cetearyl-alcohol-sodium-lauryl-sulfate",
+        "fresh-banana",
+        "cupuacu-butter",
+        "litsea-cubeba-oil",
+        "tonka-absolute",
+        "vanilla-absolute",
+        "phenoxyethanol",
+        "benzyl-alcohol-synthetic",
+        "citral-natural",
+        "coumarin-synthetic",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "14149": {
+      "woocommerce_id": 14149,
+      "sku": null,
+      "title": "Super Milk Shampoo",
+      "status": "publish",
+      "ingredients": [
+        "glycerine",
+        "meadowsweet-infusion",
+        "silken-tofu",
+        "sodium-cocoyl-isethionate",
+        "organic-agave-syrup",
+        "fresh-grape-juice",
+        "cetrimonium-chloride",
+        "perfume-synthetic",
+        "witch-hazel-extract",
+        "litsea-cubeba-oil",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "west-timor-sandalwood-oil",
+        "organic-extra-virgin-olive-oil",
+        "rice-vinegar",
+        "polyquaternium-81",
+        "salicylic-acid",
+        "citral-natural",
+        "coumarin-synthetic",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "14054": {
+      "woocommerce_id": 14054,
+      "sku": null,
+      "title": "The Comforter",
+      "status": "publish",
+      "ingredients": [
+        "marshmallow-root-infusion",
+        "rapeseed-oil-coconut-oil",
+        "glycerine",
+        "propylene-glycol",
+        "water-aqua",
+        "titanium-dioxide",
+        "perfume-synthetic",
+        "rice-bran-oil",
+        "bergamot-oil",
+        "blackcurrant-absolute",
+        "cypress-oil",
+        "sodium-chloride",
+        "citric-acid",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-454102",
+        "colour-17200"
+      ]
+    },
+    "13973": {
+      "woocommerce_id": 13973,
+      "sku": "62414",
+      "title": "Shield",
+      "status": "publish",
+      "ingredients": [
+        "horsetail-herb-infusion",
+        "cashew-cream",
+        "water-aqua",
+        "cetearyl-alcohol",
+        "perfume-synthetic",
+        "cetrimonium-chloride",
+        "c13-15-alkane",
+        "ethyl-macadamiate",
+        "propylene-glycol",
+        "extra-virgin-coconut-oil",
+        "organic-cold-pressed-grapeseed-oil",
+        "organic-macadamia-nut-oil",
+        "caprylic-capric-triglyceride",
+        "behentrimonium-chloride",
+        "benzoin-resinoid",
+        "tonka-absolute",
+        "phenoxyethanol",
+        "benzyl-alcohol-synthetic",
+        "polyvinylpyrrolidone-pvp",
+        "hydrolyzed-wheat-protein",
+        "benzyl-benzoate-natural",
+        "cinnamal-natural",
+        "citral-natural",
+        "citronellol-natural",
+        "coumarin-synthetic",
+        "geraniol-synthetic",
+        "linalool-natural",
+        "red-33-lake",
+        "red-28-lake"
+      ]
+    },
+    "13967": {
+      "woocommerce_id": 13967,
+      "sku": null,
+      "title": "Sticky Dates",
+      "status": "publish",
+      "ingredients": [
+        "water-aqua",
+        "almond-milk",
+        "coconut-milk",
+        "oat-milk",
+        "glyceryl-stearate-peg-100-stearate",
+        "ethyl-macadamiate",
+        "organic-jojoba-oil",
+        "cetearyl-alcohol",
+        "perfume-synthetic",
+        "propylene-glycol",
+        "organic-extra-virgin-olive-oil",
+        "behentrimonium-chloride",
+        "cetrimonium-chloride",
+        "carob-resinoid",
+        "benzoin-resinoid",
+        "west-timor-sandalwood-oil",
+        "organic-date-syrup",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "benzyl-alcohol-synthetic",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "farnesol-natural",
+        "iron-oxides",
+        "phenoxyethanol"
+      ]
+    },
+    "13961": {
+      "woocommerce_id": 13961,
+      "sku": "63154",
+      "title": "Banana",
+      "status": "publish",
+      "ingredients": [
+        "agar-agar-gel",
+        "water-aqua",
+        "propylene-glycol",
+        "cetearyl-alcohol",
+        "almond-milk",
+        "cetrimonium-chloride",
+        "cetearyl-alcohol-sodium-lauryl-sulfate",
+        "fresh-organic-fair-trade-bananas",
+        "extra-virgin-olive-oil",
+        "perfume-synthetic",
+        "argan-oil",
+        "cupuacu-butter",
+        "coconut-yoghurt",
+        "tonka-absolute",
+        "vanilla-absolute",
+        "coumarin-synthetic",
+        "methylparaben",
+        "propylparaben"
+      ]
+    },
+    "13947": {
+      "woocommerce_id": 13947,
+      "sku": "63143",
+      "title": "Banana",
+      "status": "publish",
+      "ingredients": [
+        "sodium-laureth-sulfate",
+        "linseed-gel",
+        "lemon-balm-infusion",
+        "molasses",
+        "fresh-organic-fair-trade-bananas",
+        "lauryl-betaine",
+        "tonka-absolute",
+        "vanilla-absolute",
+        "organic-brazil-nut-oil",
+        "cupuacu-butter",
+        "linseed-oil",
+        "coumarin-synthetic",
+        "perfume-synthetic"
+      ]
+    },
+    "13880": {
+      "woocommerce_id": 13880,
+      "sku": "64135",
+      "title": "Celebrate",
+      "status": "draft",
+      "ingredients": [
+        "tapioca-starch",
+        "cornstarch",
+        "babassu-flour",
+        "calamine-powder",
+        "sodium-bicarbonate",
+        "limonene-natural",
+        "perfume-synthetic",
+        "brazilian-orange-oil",
+        "lime-oil",
+        "fair-trade-organic-aloe-vera-gel",
+        "titanium-dioxide",
+        "tin-oxide",
+        "synthetic-fluorphlogopite",
+        "citral-natural",
+        "citronellol-natural",
+        "geraniol-natural",
+        "linalool-natural",
+        "yellow-5-lake",
+        "yellow-5"
+      ]
+    },
+    "13410": {
+      "woocommerce_id": 13410,
+      "sku": "63754",
+      "title": "Super Milk",
+      "status": "publish",
+      "ingredients": [
+        "water-aqua",
+        "perfume-synthetic",
+        "fine-sea-salt",
+        "litsea-cubeba-oil",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "carrageenan-extract",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "anise-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "citral-natural",
+        "coumarin-synthetic",
+        "eugenol-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "linalool-natural",
+        "methylparaben"
+      ]
+    },
+    "13315": {
+      "woocommerce_id": 13315,
+      "sku": "64110",
+      "title": "Snow Fairy Scrubee",
+      "status": "draft",
+      "ingredients": [
+        "fair-trade-organic-cocoa-butter",
+        "illipe-butter",
+        "shea-butter",
+        "kokum-butter",
+        "almond-oil",
+        "ground-cherry-stones",
+        "perfume-synthetic",
+        "coconut-blossom-nectar",
+        "ground-almonds",
+        "organic-virgin-coconut-oil",
+        "persian-lime-oil",
+        "titanium-dioxide",
+        "synthetic-musk",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "citral-natural",
+        "limonene-natural",
+        "colour-454102",
+        "colour-77491"
+      ]
+    },
+    "931": {
+      "woocommerce_id": 931,
+      "sku": "1994",
+      "title": "Snow Fairy",
+      "status": "draft",
+      "ingredients": [
+        "rose-water",
+        "rapeseed-oil-coconut-oil",
+        "propylene-glycol",
+        "glycerine",
+        "titanium-dioxide",
+        "water-aqua",
+        "rice-bran-oil",
+        "perfume-synthetic",
+        "persian-lime-oil",
+        "fair-trade-organic-aloe-vera-gel",
+        "sodium-chloride",
+        "citric-acid",
+        "synthetic-musk",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "alpha-isomethyl-ionone",
+        "limonene-natural",
+        "colour-454102",
+        "colour-454101"
+      ]
+    },
+    "13141": {
+      "woocommerce_id": 13141,
+      "sku": null,
+      "title": "Shoot For The Stars",
+      "status": "draft",
+      "ingredients": [
+        "fine-sea-salt",
+        "water-aqua",
+        "sodium-laureth-sulfate",
+        "sodium-cocoamphoacetate",
+        "brazilian-orange-oil",
+        "bergamot-oil",
+        "creamed-coconut",
+        "lactic-acid",
+        "cornstarch",
+        "titanium-dioxide",
+        "glycerine",
+        "lauryl-betaine",
+        "hydroxy-propyl-methyl-cellulose",
+        "synthetic-fluorphlogopite",
+        "propylene-glycol",
+        "sodium-carboxymethyl-cellulose",
+        "tin-oxide",
+        "amyl-cinnamal-synthetic",
+        "citral-natural",
+        "citronellol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-420902",
+        "colour-42090",
+        "colour-77492"
+      ]
+    },
+    "12969": {
+      "woocommerce_id": 12969,
+      "sku": "62879",
+      "title": "Golden Pear",
+      "status": "draft",
+      "ingredients": [
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "water-aqua",
+        "sodium-laureth-sulfate",
+        "calcium-lactate",
+        "fine-sea-salt",
+        "lauryl-betaine",
+        "perfume-synthetic",
+        "fresh-pear-juice",
+        "lactic-acid",
+        "cardamom-oil",
+        "brazilian-orange-oil",
+        "sandalwood-oil",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "silica-synthetic",
+        "propylene-glycol",
+        "tin-oxide",
+        "citronellol-synthetic",
+        "coumarin-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77491",
+        "colour-19140",
+        "colour-454102",
+        "colour-454101"
+      ]
+    },
+    "12928": {
+      "woocommerce_id": 12928,
+      "sku": "63973",
+      "title": "Butterbear",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "fair-trade-organic-cocoa-butter",
+        "perfume-synthetic",
+        "ylang-ylang-oil",
+        "water-aqua",
+        "corn-protein",
+        "synthetic-musk",
+        "alcohol-denat",
+        "colour-14700"
+      ]
+    },
+    "12520": {
+      "woocommerce_id": 12520,
+      "sku": "4352",
+      "title": "Ghost In The Dark",
+      "status": "draft",
+      "ingredients": [
+        "water-aqua",
+        "propylene-glycol",
+        "rapeseed-oil-coconut-oil",
+        "luminescent-zinc-sulfide",
+        "organic-virgin-coconut-oil",
+        "limonene-natural",
+        "perfume-natural",
+        "lemongrass-oil",
+        "bergamot-oil",
+        "glycerine",
+        "titanium-dioxide",
+        "sodium-chloride",
+        "citric-acid",
+        "sodium-hydroxide",
+        "edta",
+        "tetrasodium-etidronate",
+        "sodium-bicarbonate",
+        "citral-natural",
+        "geraniol-natural",
+        "linalool-natural"
+      ]
+    },
+    "12468": {
+      "woocommerce_id": 12468,
+      "sku": "763",
+      "title": "Intergalactic",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "popping-candy",
+        "perfume-synthetic",
+        "peppermint-oil",
+        "grapefruit-oil",
+        "vetivert-oil",
+        "cedarwood-oil-juniperus-virginiana",
+        "water-aqua",
+        "titanium-dioxide",
+        "cornstarch",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "silica-synthetic",
+        "dipropylene-glycol",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77491",
+        "colour-42090",
+        "colour-470051",
+        "colour-45410"
+      ]
+    },
+    "12436": {
+      "woocommerce_id": 12436,
+      "sku": "7132",
+      "title": "Honey",
+      "status": "publish",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "vegan-white-chocolate",
+        "flavour-synthetic",
+        "peppermint-oil",
+        "vanilla-absolute",
+        "sweet-wild-orange-oil",
+        "almond-essential-oil",
+        "honey",
+        "alpha-isomethyl-ionone",
+        "limonene-natural"
+      ]
+    },
+    "12423": {
+      "woocommerce_id": 12423,
+      "sku": "235",
+      "title": "Enchanted Eye Cream",
+      "status": "publish",
+      "ingredients": [
+        "lavender-honey-water",
+        "stearic-acid",
+        "organic-cold-pressed-almond-oil",
+        "glycerine",
+        "organic-jojoba-oil",
+        "cetearyl-alcohol",
+        "triethanolamine",
+        "methylparaben",
+        "propylparaben"
+      ]
+    },
+    "12377": {
+      "woocommerce_id": 12377,
+      "sku": "933",
+      "title": "Honey I Washed My Hair",
+      "status": "publish",
+      "ingredients": [
+        "sodium-coco-sulfate",
+        "fairly-traded-honey",
+        "perfume-natural",
+        "water-aqua",
+        "brazilian-orange-oil",
+        "bergamot-oil",
+        "citric-acid",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "amyl-cinnamal-synthetic",
+        "citronellol-natural"
+      ]
+    },
+    "12350": {
+      "woocommerce_id": 12350,
+      "sku": null,
+      "title": "Orange",
+      "status": "publish",
+      "ingredients": [
+        "fine-sea-salt",
+        "fresh-orange-peel-infusion",
+        "sodium-laureth-sulfate",
+        "sodium-cocoamphoacetate",
+        "fresh-orange-juice",
+        "sicilian-red-mandarin-oil",
+        "tangerine-oil",
+        "bergamot-oil",
+        "orange-peel-wax",
+        "lactic-acid",
+        "lauryl-betaine",
+        "citral-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-15510"
+      ]
+    },
+    "12316": {
+      "woocommerce_id": 12316,
+      "sku": null,
+      "title": "Pumpkin Spice Latte",
+      "status": "draft",
+      "ingredients": [
+        "glycerine",
+        "sodium-cocoamphoacetate",
+        "sodium-laureth-sulfate",
+        "water-aqua",
+        "cinnamon-stick-and-clove-infusion",
+        "calcium-lactate",
+        "fine-sea-salt",
+        "lauryl-betaine",
+        "lactic-acid",
+        "roasted-cocoa-extract",
+        "clove-bud-oil",
+        "cinnamon-leaf-oil",
+        "vanilla-absolute",
+        "coffee-absolute",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "silica-synthetic",
+        "benzyl-benzoate-natural",
+        "cinnamal-natural",
+        "cinnamyl-alcohol-natural",
+        "eugenol-natural",
+        "limonene-natural",
+        "perfume-synthetic",
+        "colour-15510",
+        "colour-77491"
+      ]
+    },
+    "641": {
+      "woocommerce_id": 641,
+      "sku": "263",
+      "title": "Lord of Misrule",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "popping-candy",
+        "cream-tartar",
+        "black-pepper-oil",
+        "dark-sumatran-patchouli-oil",
+        "vanilla-absolute",
+        "water-aqua",
+        "gardenia-extract",
+        "sodium-coco-sulfate",
+        "dipropylene-glycol",
+        "cocamidopropyl-betaine",
+        "citral-natural",
+        "coumarin-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-17200",
+        "colour-19140",
+        "colour-42090"
+      ]
+    },
+    "12221": {
+      "woocommerce_id": 12221,
+      "sku": "4162",
+      "title": "Alban Hefin",
+      "status": "publish",
+      "ingredients": [
+        "mallow-leaf-and-blackberry-leaf-infusion",
+        "rapeseed-oil-coconut-oil",
+        "glycerine",
+        "propylene-glycol",
+        "water-aqua",
+        "organic-virgin-coconut-oil",
+        "perfume-synthetic",
+        "fair-trade-organic-cocoa-butter",
+        "limonene-natural",
+        "sodium-hydroxide",
+        "fresh-strawberries",
+        "palmarosa-oil",
+        "lemongrass-oil",
+        "lemon-myrtle-oil",
+        "citronella-oil",
+        "organic-castor-oil",
+        "titanium-dioxide",
+        "sodium-chloride",
+        "citric-acid",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "benzyl-benzoate-natural",
+        "citral-natural",
+        "citronellol-natural",
+        "geraniol-natural",
+        "linalool-natural",
+        "colour-42090",
+        "colour-19140",
+        "colour-73360",
+        "colour-42053"
+      ]
+    },
+    "12215": {
+      "woocommerce_id": 12215,
+      "sku": "2511",
+      "title": "Honey I Washed the Kids",
+      "status": "publish",
+      "ingredients": [
+        "water-aqua",
+        "propylene-glycol",
+        "rapeseed-oil-coconut-oil",
+        "honey",
+        "geteme-tree-flower-honey",
+        "organic-virgin-coconut-oil",
+        "perfume-synthetic",
+        "glycerine",
+        "sweet-wild-orange-oil",
+        "bergamot-oil",
+        "aloe-extract",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "sodium-chloride",
+        "citric-acid",
+        "sodium-hydroxide",
+        "sodium-bicarbonate",
+        "edta",
+        "tetrasodium-etidronate",
+        "limonene-natural",
+        "linalool-natural",
+        "amyl-cinnamal-synthetic",
+        "citronellol-natural",
+        "geraniol-natural"
+      ]
+    },
+    "11924": {
+      "woocommerce_id": 11924,
+      "sku": null,
+      "title": "Cup o' Coffee",
+      "status": "publish",
+      "ingredients": [
+        "organic-agave-syrup",
+        "kaolin",
+        "glycerine",
+        "coffee-infusion",
+        "talc",
+        "ground-coffee",
+        "bentone-gel",
+        "perfume-synthetic",
+        "vetivert-oil",
+        "vanilla-absolute",
+        "roasted-cocoa-extract",
+        "coriander-seed-oil",
+        "caffeine-powder",
+        "coumarin-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "11701": {
+      "woocommerce_id": 11701,
+      "sku": "63183",
+      "title": "Mostly",
+      "status": "publish",
+      "ingredients": [
+        "thyme-infusion",
+        "organic-orange-blossom-honey",
+        "glycerine",
+        "stearic-acid",
+        "sodium-cocoamphoacetate",
+        "glyceryl-stearate-peg-100-stearate",
+        "wheatgerm-oil",
+        "triethanolamine",
+        "cetearyl-alcohol",
+        "organic-soya-yoghurt",
+        "fresh-apple-juice",
+        "perfume-synthetic",
+        "cupuacu-butter",
+        "peppermint-oil",
+        "australian-sandalwood-oil",
+        "lavender-oil",
+        "witch-hazel-extract",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "11275": {
+      "woocommerce_id": 11275,
+      "sku": "63496",
+      "title": "Hello Kitty And Friends",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "perfume-synthetic",
+        "water-aqua",
+        "glycerine",
+        "alpha-isomethyl-ionone",
+        "brazilian-orange-oil",
+        "limonene-natural",
+        "patchouli-oil",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "amyl-cinnamal-synthetic",
+        "anise-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "benzyl-salicylate-synthetic",
+        "cinnamal-natural",
+        "citral-natural",
+        "citronellol-natural-extract",
+        "eugenol-natural",
+        "geraniol-synthetic",
+        "hexyl-cinnamal-synthetic",
+        "hydroxycitronellal-synthetic",
+        "isoeugenol-natural",
+        "linalool-natural"
+      ]
+    },
+    "1580": {
+      "woocommerce_id": 1580,
+      "sku": "978",
+      "title": "Golden egg",
+      "status": "draft",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "fair-trade-organic-cocoa-butter",
+        "peg-7-glyceryl-cocoate",
+        "cornstarch",
+        "bergamot-oil",
+        "brazilian-orange-oil",
+        "cream-tartar",
+        "gardenia-extract",
+        "water-aqua",
+        "organic-extra-virgin-olive-oil",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "sodium-coco-sulfate",
+        "cocamidopropyl-betaine",
+        "dipropylene-glycol",
+        "silica-synthetic",
+        "tin-oxide",
+        "amyl-cinnamal-synthetic",
+        "citronellol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-77491",
+        "colour-191401",
+        "colour-47005",
+        "colour-42090",
+        "colour-19140"
+      ]
+    },
+    "8791": {
+      "woocommerce_id": 8791,
+      "sku": "62890",
+      "title": "Vegan Leather Jacket",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "perfume-synthetic",
+        "eugenol-natural",
+        "clove-bud-oil",
+        "vetivert-oil",
+        "tonka-absolute",
+        "tobacco-absolute",
+        "anise-alcohol-natural",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "benzyl-salicylate-natural",
+        "cinnamal-natural",
+        "cinnamyl-alcohol-natural",
+        "citral-natural",
+        "citronellol-natural",
+        "coumarin-natural",
+        "oakmoss-extract",
+        "farnesol-natural",
+        "geraniol-natural",
+        "isoeugenol-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "8761": {
+      "woocommerce_id": 8761,
+      "sku": "63264",
+      "title": "Pink Bomb",
+      "status": "publish",
+      "ingredients": [
+        "organic-castor-oil",
+        "berry-wax",
+        "rose-petals-extracted-in-glycerine",
+        "flavour-synthetic",
+        "jasmine-absolute",
+        "clary-sage-oil",
+        "ylang-ylang-oil",
+        "tocopherol",
+        "stevia",
+        "cherry-kernel-oil",
+        "titanium-dioxide",
+        "synthetic-musk",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "alpha-isomethyl-ionone",
+        "benzyl-benzoate-synthetic",
+        "citral-natural",
+        "eugenol-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77947",
+        "colour-77510",
+        "colour-454102"
+      ]
+    },
+    "2399": {
+      "woocommerce_id": 2399,
+      "sku": "62536",
+      "title": "Turmeric Roll",
+      "status": "publish",
+      "ingredients": [
+        "ground-almonds",
+        "kaolin",
+        "sunflower-petals-extracted-in-glycerine",
+        "glycerine",
+        "water-aqua",
+        "lavender-oil",
+        "witch-hazel-extract",
+        "neroli-oil",
+        "geranium-oil",
+        "orange-flower-absolute",
+        "rose-absolute",
+        "turmeric-powder",
+        "fresh-aloe-gel-barbadensis",
+        "citral-natural",
+        "citronellol-natural",
+        "coumarin-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "1537": {
+      "woocommerce_id": 1537,
+      "sku": "63016",
+      "title": "Clear The Air",
+      "status": "draft",
+      "ingredients": [
+        "fair-trade-organic-cocoa-butter",
+        "illipe-butter",
+        "cetearyl-olivate-sorbitan-olivate",
+        "peg-7-glyceryl-cocoate",
+        "polysorbate-20",
+        "glyceryl-stearate",
+        "silica-synthetic",
+        "kokum-butter",
+        "organic-shea-butter",
+        "perfume-synthetic",
+        "almond-oil",
+        "eucalyptus-oil",
+        "lemongrass-oil",
+        "peppermint-oil",
+        "rosemary-oil",
+        "moringa-oil",
+        "titanium-dioxide",
+        "water-aqua",
+        "propylene-glycol",
+        "citral-natural",
+        "geraniol-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-420902",
+        "colour-42090"
+      ]
+    },
+    "1384": {
+      "woocommerce_id": 1384,
+      "sku": null,
+      "title": "Turmeric Latte",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "perfume-synthetic",
+        "water-aqua",
+        "glycerine",
+        "coumarin-synthetic",
+        "benzoin-resinoid",
+        "tonka-absolute",
+        "vanilla-absolute",
+        "anise-alcohol-natural",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "eugenol-synthetic",
+        "isoeugenol-natural",
+        "limonene-natural"
+      ]
+    },
+    "1155": {
+      "woocommerce_id": 1155,
+      "sku": "63256",
+      "title": "Plaque Sabbath",
+      "status": "publish",
+      "ingredients": [
+        "xylitol",
+        "water-aqua",
+        "glycerine",
+        "silica-synthetic",
+        "liquorice-root-infusion",
+        "sorbitol",
+        "sodium-methyl-cocoyl-taurate",
+        "sodium-carboxymethyl-starch",
+        "xanthan-gum",
+        "clove-bud-oil",
+        "brazilian-orange-oil",
+        "tangerine-oil",
+        "activated-charcoal",
+        "stevia",
+        "menthol-crystals",
+        "cinnamal-synthetic",
+        "cinnamyl-alcohol-synthetic",
+        "citral-synthetic",
+        "eugenol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "flavour-synthetic"
+      ]
+    },
+    "1126": {
+      "woocommerce_id": 1126,
+      "sku": "63791",
+      "title": "Sleepy Dust",
+      "status": "publish",
+      "ingredients": [
+        "tapioca-starch",
+        "magnesium-carbonate",
+        "sodium-bicarbonate",
+        "chamomile-powder",
+        "lavender-powder",
+        "perfume-synthetic",
+        "lavender-oil",
+        "benzoin-resinoid",
+        "tonka-absolute",
+        "ylang-ylang-oil",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamal-natural",
+        "coumarin-synthetic",
+        "eugenol-natural",
+        "geraniol-natural",
+        "isoeugenol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-454102",
+        "colour-420902"
+      ]
+    },
+    "960": {
+      "woocommerce_id": 960,
+      "sku": "60829",
+      "title": "Cherry",
+      "status": "publish",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "cherry-kernel-oil",
+        "shea-butter",
+        "citric-acid",
+        "davana-oil",
+        "lime-oil",
+        "cocoa-absolute",
+        "almond-essential-oil",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "eugenol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "flavour-synthetic",
+        "colour-77491",
+        "colour-158501"
+      ]
+    },
+    "913": {
+      "woocommerce_id": 913,
+      "sku": "5030",
+      "title": "Deep Sleep",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "lavender-flowers",
+        "german-chamomile-flowers",
+        "lavender-oil",
+        "chamomile-oil",
+        "lavender-absolute",
+        "neroli-oil",
+        "water-aqua",
+        "dipropylene-glycol",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-17200",
+        "colour-42090"
+      ]
+    },
+    "892": {
+      "woocommerce_id": 892,
+      "sku": "1863",
+      "title": "Apple Crumble Bubbleroon",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "cream-tartar",
+        "sodium-laureth-sulfate",
+        "fair-trade-organic-cocoa-butter",
+        "lauryl-betaine",
+        "perfume-synthetic",
+        "cornstarch",
+        "myrrh-resinoid",
+        "orange-flower-absolute",
+        "cinnamon-leaf-oil",
+        "fresh-apple-pulp",
+        "shea-butter",
+        "guar-gum-natural",
+        "titanium-dioxide",
+        "laureth-4",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "silica-synthetic",
+        "eugenol-natural",
+        "hydroxycitronellal-natural",
+        "linalool-natural",
+        "colour-14700",
+        "colour-77491",
+        "makrut-lime-leaf"
+      ]
+    },
+    "889": {
+      "woocommerce_id": 889,
+      "sku": "1873",
+      "title": "Lemon Crumble Bubbleroon",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "cream-tartar",
+        "sodium-laureth-sulfate",
+        "fair-trade-organic-cocoa-butter",
+        "lauryl-betaine",
+        "cornstarch",
+        "sicilian-lemon-oil",
+        "laureth-4",
+        "limonene-natural",
+        "fresh-lemon",
+        "shea-butter",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "citral-natural",
+        "colour-470051",
+        "makrut-lime-leaf"
+      ]
+    },
+    "877": {
+      "woocommerce_id": 877,
+      "sku": "4367",
+      "title": "Big Blue",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "coarse-sea-salt",
+        "fine-sea-salt",
+        "perfume-synthetic",
+        "kombu-seaweed",
+        "lemon-oil",
+        "lavender-oil",
+        "seaweed-absolute",
+        "water-aqua",
+        "dipropylene-glycol",
+        "eugenol-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-42090",
+        "colour-19140"
+      ]
+    },
+    "874": {
+      "woocommerce_id": 874,
+      "sku": "5027",
+      "title": "Pink Bomb",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "perfume-synthetic",
+        "soybean-flour",
+        "jasmine-absolute",
+        "clary-sage-oil",
+        "ylang-ylang-oil",
+        "water-aqua",
+        "titanium-dioxide",
+        "synthetic-musk",
+        "propylene-glycol",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "alpha-isomethyl-ionone",
+        "colour-17200",
+        "colour-42090",
+        "colour-14700",
+        "colour-45410",
+        "rice-paper-flower"
+      ]
+    },
+    "871": {
+      "woocommerce_id": 871,
+      "sku": "5019",
+      "title": "Avobath",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "fresh-avocado",
+        "organic-extra-virgin-olive-oil",
+        "lemongrass-oil",
+        "bergamot-oil",
+        "gardenia-extract",
+        "titanium-dioxide",
+        "cornstarch",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "citral-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-191401",
+        "colour-420902"
+      ]
+    },
+    "778": {
+      "woocommerce_id": 778,
+      "sku": "60438",
+      "title": "Veganese",
+      "status": "publish",
+      "ingredients": [
+        "agar-agar-gel",
+        "rosemary-infusion",
+        "lavender-flower-infusion-lavandula-angustifolia",
+        "cetearyl-alcohol",
+        "water-aqua",
+        "propylene-glycol",
+        "cetearyl-alcohol-sodium-lauryl-sulfate",
+        "sicilian-lemon-oil",
+        "benzoin-resinoid",
+        "fresh-organic-lemon-juice",
+        "cetrimonium-chloride",
+        "citral-natural",
+        "limonene-natural",
+        "perfume-synthetic",
+        "methylparaben",
+        "propylparaben"
+      ]
+    },
+    "761": {
+      "woocommerce_id": 761,
+      "sku": "2578",
+      "title": "Peach Crumble Bubbleroon",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "cream-tartar",
+        "sodium-laureth-sulfate",
+        "fair-trade-organic-cocoa-butter",
+        "lauryl-betaine",
+        "cornstarch",
+        "perfume-synthetic",
+        "grapefruit-oil",
+        "davana-oil",
+        "elemi-oil",
+        "tagetes-oil",
+        "fresh-peach",
+        "shea-butter",
+        "guar-gum-natural",
+        "titanium-dioxide",
+        "talc",
+        "laureth-4",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "geraniol-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-77491",
+        "colour-19140",
+        "colour-454101",
+        "colour-159851",
+        "colour-191401",
+        "colour-45410",
+        "colour-17200",
+        "colour-454102",
+        "colour-158501",
+        "makrut-lime-leaf"
+      ]
+    },
+    "712": {
+      "woocommerce_id": 712,
+      "sku": null,
+      "title": "Power",
+      "status": "publish",
+      "ingredients": [
+        "water-aqua",
+        "maple-syrup",
+        "sweet-potato-puree",
+        "cetearyl-alcohol",
+        "cetrimonium-chloride",
+        "ethyl-macadamiate",
+        "propylene-glycol",
+        "perfume-synthetic",
+        "behentrimonium-chloride",
+        "almond-oil",
+        "hydrolyzed-wheat-protein",
+        "organic-extra-virgin-olive-oil",
+        "tonka-absolute",
+        "benzoin-resinoid",
+        "vanilla-absolute",
+        "phenoxyethanol",
+        "benzyl-alcohol-synthetic",
+        "coumarin-synthetic",
+        "eugenol-synthetic"
+      ]
+    },
+    "706": {
+      "woocommerce_id": 706,
+      "sku": "60540",
+      "title": "Renee's Shea Souffle",
+      "status": "publish",
+      "ingredients": [
+        "shea-butter",
+        "extra-virgin-coconut-oil",
+        "organic-avocado-oil",
+        "organic-castor-oil",
+        "almond-oil",
+        "perfume-synthetic",
+        "bay-oil",
+        "jasmine-absolute",
+        "tonka-absolute",
+        "tangerine-oil",
+        "benzyl-alcohol-synthetic",
+        "benzyl-benzoate-natural",
+        "citral-natural",
+        "coumarin-synthetic",
+        "eugenol-natural",
+        "farnesol-natural",
+        "geraniol-synthetic",
+        "hydroxycitronellal-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "695": {
+      "woocommerce_id": 695,
+      "sku": "61098",
+      "title": "Beauty Sleep",
+      "status": "publish",
+      "ingredients": [
+        "fair-trade-organic-brazilian-honey",
+        "kaolin",
+        "mullein-leaf-and-linseed-decoction",
+        "glycerine",
+        "ground-organic-aduki-beans",
+        "organic-orange-blossom-honey-water",
+        "lemon-verbena-and-valerian-root-extracted-in-fair-trade-organic-brazilian-honey",
+        "extra-virgin-coconut-oil",
+        "bentone-gel",
+        "orange-flower-absolute",
+        "neroli-oil",
+        "myrrh-resinoid",
+        "lavender-oil",
+        "benzoin-resinoid",
+        "tonka-absolute",
+        "ylang-ylang-oil",
+        "organic-jojoba-oil",
+        "organic-extra-virgin-olive-oil",
+        "fresh-coconut",
+        "organic-avocado-oil",
+        "organic-cold-pressed-evening-primrose-oil",
+        "evening-primrose-seeds",
+        "wheatgerm-oil",
+        "fresh-organic-lemon-juice",
+        "fresh-pineapple-juice",
+        "fresh-orange-juice",
+        "organic-cold-pressed-grapeseed-oil",
+        "water-aqua",
+        "titanium-dioxide",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "stearic-acid",
+        "triethanolamine",
+        "cetearyl-alcohol",
+        "propylene-glycol",
+        "benzyl-benzoate-natural",
+        "citral-natural",
+        "coumarin-natural",
+        "farnesol-natural",
+        "geraniol-natural",
+        "hydroxycitronellal-synthetic",
+        "limonene-natural",
+        "linalool-natural",
+        "perfume-synthetic",
+        "colour-17200",
+        "colour-42090"
+      ]
+    },
+    "545": {
+      "woocommerce_id": 545,
+      "sku": "271",
+      "title": "Ultrabland",
+      "status": "publish",
+      "ingredients": [
+        "almond-oil",
+        "rose-water",
+        "beeswax",
+        "honey",
+        "fresh-iris-extract",
+        "glycerine",
+        "rose-absolute",
+        "tincture-benzoin",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "methylparaben",
+        "propylparaben"
+      ]
+    },
+    "511": {
+      "woocommerce_id": 511,
+      "sku": "1662",
+      "title": "Pansy",
+      "status": "publish",
+      "ingredients": [
+        "organic-drf-alcohol",
+        "perfume-synthetic",
+        "water-aqua",
+        "glycerine",
+        "limonene-natural",
+        "bergamot-oil",
+        "orange-flower-absolute",
+        "rosemary-oil",
+        "galbanum-oil",
+        "labdanum-resinoid",
+        "alpha-isomethyl-ionone",
+        "benzyl-benzoate-natural",
+        "citral-natural",
+        "coumarin-synthetic",
+        "oakmoss-extract",
+        "farnesol-natural",
+        "geraniol-natural",
+        "hexyl-cinnamal-synthetic",
+        "hydroxycitronellal-synthetic",
+        "linalool-natural"
+      ]
+    },
+    "503": {
+      "woocommerce_id": 503,
+      "sku": "7324",
+      "title": "Karma",
+      "status": "publish",
+      "ingredients": [
+        "organic-alcohol-denat",
+        "perfume-synthetic",
+        "water-aqua",
+        "limonene-natural",
+        "patchouli-oil",
+        "glycerine",
+        "brazilian-orange-oil",
+        "lavandin-oil",
+        "pine-oil",
+        "lemongrass-oil",
+        "elemi-oil",
+        "cassie-absolute",
+        "cinnamal-natural",
+        "citral-natural",
+        "geraniol-natural",
+        "citronellol-natural",
+        "linalool-natural",
+        "benzyl-alcohol-natural",
+        "benzyl-benzoate-natural",
+        "benzyl-cinnamate-natural",
+        "cinnamyl-alcohol-natural",
+        "hydroxycitronellal-natural",
+        "isoeugenol-natural",
+        "coumarin-natural",
+        "eugenol-natural",
+        "farnesol-natural"
+      ]
+    },
+    "465": {
+      "woocommerce_id": 465,
+      "sku": "5220",
+      "title": "Peachy",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "grapefruit-oil",
+        "davana-oil",
+        "elemi-oil",
+        "tagetes-oil",
+        "fresh-peach-juice",
+        "cream-tartar",
+        "water-aqua",
+        "titanium-dioxide",
+        "talc",
+        "sodium-coco-sulfate",
+        "propylene-glycol",
+        "dipropylene-glycol",
+        "cocamidopropyl-betaine",
+        "tin-oxide",
+        "synthetic-fluorphlogopite",
+        "alcohol-denat",
+        "geraniol-synthetic",
+        "limonene-natural",
+        "perfume-synthetic",
+        "colour-454102",
+        "colour-159851",
+        "colour-191401",
+        "colour-454101",
+        "colour-420902",
+        "colour-19140",
+        "colour-158501",
+        "colour-77491",
+        "colour-17200"
+      ]
+    },
+    "401": {
+      "woocommerce_id": 401,
+      "sku": "3977",
+      "title": "Herbalism",
+      "status": "publish",
+      "ingredients": [
+        "ground-almonds",
+        "kaolin",
+        "glycerine",
+        "chlorophyllin-water",
+        "nettle-rosemary-and-rice-vinegar-extract",
+        "rice-bran",
+        "gardenia-extract",
+        "rose-absolute",
+        "chamomile-blue-oil",
+        "sage-oil",
+        "perfume-synthetic"
+      ]
+    },
+    "177": {
+      "woocommerce_id": 177,
+      "sku": "3057",
+      "title": "Mint Julips",
+      "status": "publish",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "vanilla-absolute",
+        "tagetes-oil",
+        "peppermint-oil",
+        "limonene-natural",
+        "flavour-synthetic"
+      ]
+    },
+    "173": {
+      "woocommerce_id": 173,
+      "sku": "3056",
+      "title": "Bubblegum",
+      "status": "publish",
+      "ingredients": [
+        "caster-sugar",
+        "organic-jojoba-oil",
+        "alpha-isomethyl-ionone",
+        "flavour-synthetic",
+        "colour-453803"
+      ]
+    },
+    "170": {
+      "woocommerce_id": 170,
+      "sku": "6246",
+      "title": "Lip Service",
+      "status": "publish",
+      "ingredients": [
+        "shea-butter",
+        "apricot-kernel-oil",
+        "glycerine",
+        "fair-trade-organic-cocoa-butter",
+        "beeswax",
+        "organic-extra-virgin-olive-oil",
+        "tangerine-oil",
+        "flavour-natural",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "131": {
+      "woocommerce_id": 131,
+      "sku": "63793",
+      "title": "The Greench",
+      "status": "publish",
+      "ingredients": [
+        "calcium-carbonate",
+        "sodium-bicarbonate",
+        "magnesium-trisilicate",
+        "lycopodium-powder",
+        "perfume-natural",
+        "water-aqua",
+        "thyme-oil",
+        "tea-tree-oil",
+        "benzoin-resinoid",
+        "powdered-sage",
+        "powdered-tea-tree",
+        "powdered-rosemary",
+        "limonene-natural",
+        "linalool-natural"
+      ]
+    },
+    "60": {
+      "woocommerce_id": 60,
+      "sku": "2486",
+      "title": "The Comforter",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "cream-tartar",
+        "sodium-laureth-sulfate",
+        "lauryl-betaine",
+        "perfume-synthetic",
+        "titanium-dioxide",
+        "bergamot-oil",
+        "cassis-absolute",
+        "cypress-oil",
+        "limonene-natural",
+        "linalool-natural",
+        "colour-45410",
+        "colour-17200"
+      ]
+    },
+    "18504": {
+      "woocommerce_id": 18504,
+      "sku": "65154",
+      "title": "Princess Peach",
+      "status": "publish",
+      "ingredients": [
+        "organic-castor-oil",
+        "glycerine",
+        "berry-wax",
+        "flavour-synthetic",
+        "davana-oil",
+        "litsea-cubeba-oil",
+        "almond-essential-oil",
+        "stevia",
+        "sunflower-oil",
+        "fresh-peach-juice",
+        "peach-kernel-oil",
+        "tocopherol",
+        "synthetic-fluorphlogopite",
+        "citral-natural",
+        "geraniol-natural",
+        "limonene-natural",
+        "linalool-natural",
+        "ci77947",
+        "ci454102",
+        "ci159851",
+        "ci191401"
+      ]
+    },
+    "18488": {
+      "woocommerce_id": 18488,
+      "sku": null,
+      "title": "Protect The Galaxy",
+      "status": "publish",
+      "ingredients": [
+        "water-aqua",
+        "glycerine",
+        "sodium-laureth-sulfate",
+        "propylene-glycol",
+        "rose-oil",
+        "davana-oil",
+        "chamomile-blue-oil",
+        "tagetes-oil",
+        "carrageenan-extract",
+        "citric-acid",
+        "titanium-dioxide",
+        "fair-trade-organic-aloe-vera-powder",
+        "synthetic-fluorphlogopite",
+        "tin-oxide",
+        "silica-synthetic",
+        "alpha-isomethyl-ionone",
+        "coumarin-synthetic",
+        "linalool-natural",
+        "geraniol-synthetic",
+        "limonene-natural",
+        "perfume-synthetic",
+        "ci454101",
+        "ci17200",
+        "ci42090"
+      ]
+    },
+    "17271": {
+      "woocommerce_id": 17271,
+      "sku": "65195",
+      "title": "Yoshi Egg",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "cornstarch",
+        "water-aqua",
+        "glycerine",
+        "clove-bud-oil",
+        "labdanum-resinoid",
+        "lemon-oil",
+        "orange-oil",
+        "almond-essential-oil",
+        "benzoin-resinoid",
+        "titanium-dioxide",
+        "carrageenan-extract",
+        "gardenia-extract",
+        "fresh-apple-infusion",
+        "silica-synthetic",
+        "tin-oxide",
+        "sodium-coco-sulfate",
+        "dipropylene-glycol",
+        "synthetic-fluorphlogopite",
+        "sodium-laureth-sulfate",
+        "propylene-glycol",
+        "alpha-isomethyl-ionone",
+        "benzyl-alcohol-synthetic",
+        "coumarin-synthetic",
+        "eugenol-natural",
+        "limonene-natural",
+        "perfume-synthetic",
+        "ci14700",
+        "ci159851",
+        "ci191401",
+        "ci17200",
+        "ci77491",
+        "ci19140",
+        "ci42090"
+      ]
+    },
+    "886": {
+      "woocommerce_id": 886,
+      "sku": "5021",
+      "title": "Butterball",
+      "status": "publish",
+      "ingredients": [
+        "sodium-bicarbonate",
+        "citric-acid",
+        "fair-trade-organic-cocoa-butter",
+        "synthetic-musk",
+        "ylang-ylang-oil",
+        "perfume-synthetic"
+      ]
+    },
+    "18258": {
+      "woocommerce_id": 18258,
+      "sku": "64958",
+      "title": "Cupcake",
+      "status": "publish",
+      "ingredients": [
+        "rhassoul-mud",
+        "glycerine",
+        "water-aqua",
+        "kaolin",
+        "fair-trade-cocoa-powder",
+        "fair-trade-organic-cocoa-butter",
+        "peppermint-oil",
+        "vanilla-absolute",
+        "west-timor-sandalwood-oil",
+        "linseed-infusion",
+        "fresh-mint",
+        "farnesol-natural",
+        "limonene-natural",
+        "perfume-synthetic"
+      ]
+    }
+  }
+}

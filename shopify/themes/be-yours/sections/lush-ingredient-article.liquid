@@ -1,0 +1,297 @@
+{% comment %}
+  Section: lush-ingredient-article
+
+  The header of an ingredient's article page: photograph, type label, name,
+  Latin name, benefit chips and the article body.
+
+  Requires (all on the article):
+    custom.ingredient_type      — "Natural" or "Synthetic"
+    custom.ingredient_subtitle  — Latin name
+    custom.ingredient_benefits  — list of single line text
+
+  Used by `templates/article.ingredient.json`.
+
+  Written 2026-08-05 to replace KSA's `article.ingredient-blog-post.json`,
+  which cannot work. That template drives a stock `image-with-text` section
+  and puts Liquid into its `heading` (inline_richtext), `subheading`
+  (inline_richtext), `text` (richtext) and `image` (image_picker) settings.
+  Shopify only evaluates Liquid in settings declared `"type": "liquid"`, so
+  those pages render the literal characters `{{ article.title }}` and show no
+  image. Logged as #13 in ksa-improvements-backlog.md.
+
+  Doing it as real Liquid also fixes the Arabic: the type label is a locale
+  key here, whereas KSA concatenated the English word "Ingredient" onto the
+  metafield value. Note the metafield itself stays English — the list snippet
+  compares it against "Natural" to pick a colour, so it is a controlled
+  vocabulary, not display text, and must not be translated.
+{% endcomment %}
+
+{%- liquid
+  assign type = article.metafields.custom.ingredient_type.value | default: 'Synthetic'
+  assign subtitle = article.metafields.custom.ingredient_subtitle.value
+  assign benefits = article.metafields.custom.ingredient_benefits.value
+
+  if type == 'Natural'
+    assign type_modifier = 'natural'
+    assign type_label = 'blogs.ingredient.type_natural' | t
+  else
+    assign type_modifier = 'synthetic'
+    assign type_label = 'blogs.ingredient.type_synthetic' | t
+  endif
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --lush-ing-natural: {{ section.settings.natural_color }};
+    --lush-ing-synthetic: {{ section.settings.synthetic_color }};
+    --lush-ing-chip-bg: {{ section.settings.benefits_background_color }};
+    --lush-ing-chip-color: {{ section.settings.benefits_text_color }};
+
+    display: block;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__media {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__image {
+    width: 100%;
+    height: {{ section.settings.image_height }}px;
+    object-fit: cover;
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__type {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__type::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: var(--lush-ing-natural);
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__type--synthetic::before {
+    background-color: var(--lush-ing-synthetic);
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__title {
+    margin: 0 0 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__subtitle {
+    margin: 0 0 1.5rem;
+    font-style: italic;
+    opacity: 0.75;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .lush-ingredient-article__benefit {
+    font-size: {{ section.settings.benefits_text_size }}px;
+    padding: 0.5em 1em;
+    line-height: 1.5em;
+    border-radius: {{ section.settings.benefits_border_radius }}px;
+    background: var(--lush-ing-chip-bg);
+    color: var(--lush-ing-chip-color);
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .lush-ingredient-article {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-article__image {
+      height: {{ section.settings.image_height | times: 0.6 | round }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="page-width">
+  <div class="lush-ingredient-article">
+    {%- if article.image -%}
+      <figure class="lush-ingredient-article__media">
+        <img
+          src="{{ article.image | image_url: width: 1200 }}"
+          alt="{{ article.title | escape }}"
+          class="lush-ingredient-article__image"
+          width="{{ article.image.width }}"
+          height="{{ article.image.height }}"
+          loading="eager"
+        >
+      </figure>
+    {%- endif -%}
+
+    <div class="lush-ingredient-article__content rte">
+      <p class="lush-ingredient-article__type lush-ingredient-article__type--{{ type_modifier }} h5">
+        {{ type_label }}
+      </p>
+
+      <h1 class="lush-ingredient-article__title h1">{{ article.title }}</h1>
+
+      {%- if subtitle != blank -%}
+        <p class="lush-ingredient-article__subtitle">{{ subtitle }}</p>
+      {%- endif -%}
+
+      {%- if benefits != blank -%}
+        <ul class="lush-ingredient-article__benefits" aria-label="{{ 'blogs.ingredient.benefits' | t }}">
+          {%- for benefit in benefits -%}
+            <li class="lush-ingredient-article__benefit">{{ benefit }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.show_content -%}
+        {{ article.content }}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ingredient article",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["article"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show article content",
+      "info": "Turn off if the article body is shown by a separate section below.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 650
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Type"
+    },
+    {
+      "type": "color",
+      "id": "natural_color",
+      "label": "Natural colour",
+      "default": "#138645"
+    },
+    {
+      "type": "color",
+      "id": "synthetic_color",
+      "label": "Synthetic colour",
+      "default": "#1a1b18"
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "range",
+      "id": "benefits_text_size",
+      "label": "Benefits text size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "benefits_background_color",
+      "label": "Benefits background colour",
+      "default": "#138645"
+    },
+    {
+      "type": "color",
+      "id": "benefits_text_color",
+      "label": "Benefits text colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "benefits_border_radius",
+      "label": "Benefits border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredient article"
+    }
+  ]
+}
+{% endschema %}

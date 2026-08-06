@@ -71,16 +71,48 @@ The translations themselves are good quality (`sections.collection_template.no_p
 
 ## 5. Dependencies that are not theme work
 
-The ingredients feature reads four product metafields in the `custom` namespace:
+### What the feature actually reads
 
-```
-custom.ingredients        custom.ingredient_benefits
-custom.ingredients_cards  custom.ingredient_type
-```
+Not four metafields but **five**, and — the part that shapes everything — `ingredients` and `ingredients_cards` are **lists of blog article references**, not text. The ingredient content lives on *articles*, and the product just points at them.
 
-Porting the Liquid gets us a feature with nothing to display. Qatar needs the **definitions** created (surface C, `store-settings-ledger.md`) and the **content** populated. Qatar's WooCommerce source holds ingredient text inside product descriptions, with the broken-link issues already noted in `client-data-quality-notes.md`.
+| Metafield | Lives on | Type | Feeds |
+|---|---|---|---|
+| `custom.ingredients` | product | list of article refs | accordion list: name, type colour, link |
+| `custom.ingredients_cards` | product | list of article refs | cards grid: image, benefits, link |
+| `custom.ingredient_type` | **article** | `Natural` / `Synthetic` | link colour + legend |
+| `custom.ingredient_benefits` | **article** | list of text | card benefit chips |
+| `custom.ingredient_subtitle` | **article** | text (Latin name) | `article.ingredient-blog-post.json` |
 
-Worth raising with Bassam: KSA and Qatar sell largely the same Lush products, so KSA's ingredient metafield values may be reusable by SKU or handle match. That would need read access to KSA's Admin API — a different credential from the theme password, and a separate decision.
+So the prerequisite is not "populate some product fields" — it is **an ingredient blog, one article per ingredient**, plus two reference lists per product. Definitions are surface C (`store-settings-ledger.md`).
+
+### Decision 2026-08-05: content comes from lush.com, not from KSA
+
+Neither original option survived contact with the data. Bassam's counter-proposal did, and it is better than both.
+
+**What Qatar's WooCommerce source holds** (measured against the staging DB, 538 EN products):
+
+- **127 products** carry an ingredient block; **453 distinct ingredients**; median 20 per product, max 46.
+- Each appears as an `<a>` to `lush.com/uk/en/i/<slug>` — external links, dead-ish from a Shopify storefront.
+- **Natural/Synthetic is fully recoverable** from a per-ingredient CSS class in the scraped markup: 452 of 453 slugs classify cleanly (327 Natural / 125 Synthetic), one conflict (`tocopherol`). Cross-checked against the 38 slugs whose URL ends `-natural`/`-synthetic`: **38 agree, 0 disagree.**
+- **No images, no benefit phrases, no Latin names** — nothing in the source produces the editorial layer.
+- **Arabic: zero.** 0 ingredient links across all 526 Arabic descriptions.
+
+**Why not KSA by SKU.** A product's ingredient list is its formulation; inheriting it from a sibling franchise asserts Qatar's products are KSA's. And it was never needed — see below. **This closes the KSA Admin API read question for the ingredients feature; no KSA credential is required.**
+
+**The source is Lush HQ's own ingredient library**, at the very URLs already sitting in Qatar's product descriptions. Verified 2026-08-05 against a 30-slug sample (10 most common + 20 random):
+
+- **30/30 return HTTP 200 in both `en` and `ar`.** `lush.com/uk/ar/i/<slug>` serves professionally written Arabic — `خلاصة الفانيليا`, `زيت الهيل`, `بيكربونات الصوديوم`. Arabic titles on 27/30; the 3 misses fall back to English.
+- Every page maps 1:1 onto the schema: `<h1>` → article title (**matching the link text in Qatar's descriptions**), the Latin line → `ingredient_subtitle` (stays Latin in AR), a `BENEFITS`/`الفوائد` tag block → `ingredient_benefits`, which carries the Natural/Synthetic value → `ingredient_type`, and body prose → article body.
+- **Hero image on 15 of 30**, from `unicorn.lush.com/media/…`. The misses are the chemical entries (citric acid, tin oxide, titanium dioxide, limonene) — precisely the ones no one features on a card. Every oil, extract and botanical had one.
+- AR bodies are separately authored Lush copy, not machine translations of the EN.
+
+**So: lush.com supplies the ingredient article library in both locales; Qatar's own descriptions supply the per-product wiring** (which ingredients, and their type). Qatar's formulations stay Qatar's; the editorial layer comes from the brand owner.
+
+Notes for the build:
+
+- `www.lush.com` **403s every non-browser client** (curl and plain fetch alike, any UA). Harvesting needs a real browser session; fetch from within the page context works. 453 × 2 locales = ~906 pages — throttle it and cache to disk, harvest once.
+- **Images must be downloaded and re-uploaded to Qatar's Files.** Required regardless: `shopify://` CDN URLs are per-store, and hotlinking `unicorn.lush.com` is not an option.
+- Reconcile the CSS-class classification against each page's own `BENEFITS` value; where they disagree, the page wins. That also resolves `tocopherol`.
 
 ## 6. Page templates KSA has
 

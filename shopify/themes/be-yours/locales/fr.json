@@ -83,6 +83,12 @@
       "share": "Partager cet article",
       "success": "Votre commentaire a été posté avec succès! Merci!",
       "success_moderated": "Votre commentaire a été publié avec succès. Nous le publierons dans quelques instants, car notre blog est modéré."
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "Tarification basée sur le volume"
       },
       "xr_button": "Voir dans votre espace",
-      "xr_button_label": "Afficher dans votre espace, charge l'élément dans la fenêtre de réalité augmentée"
+      "xr_button_label": "Afficher dans votre espace, charge l'élément dans la fenêtre de réalité augmentée",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {

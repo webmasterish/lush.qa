@@ -83,6 +83,12 @@
       "share": "この記事を共有する",
       "success": "あなたのコメントが掲載されました。ありがとうございます。",
       "success_moderated": "あなたのコメントが送信されました。ただ今ブ現在メンテナンス中です。メンテナンス終了後、掲載いたします。"
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "量による価格"
       },
       "xr_button": "あなたのスペースで見る",
-      "xr_button_label": "オーグメンテッド・リアリティ ウィンドウでアイテムをロードし、あなたのスペースでみる。"
+      "xr_button_label": "オーグメンテッド・リアリティ ウィンドウでアイテムをロードし、あなたのスペースでみる。",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {

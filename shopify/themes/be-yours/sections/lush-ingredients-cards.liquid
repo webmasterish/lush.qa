@@ -1,0 +1,645 @@
+{% comment %}
+  Section: lush-ingredients-cards
+
+  The featured-ingredient cards grid on the product page: image, name, benefit
+  chips and a link through to the ingredient's article.
+
+  Requires:
+    product.metafields.custom.ingredients_cards — list of blog article references
+    <article>.metafields.custom.ingredient_benefits — list of single line text
+
+  This is the hero subset, not the full INCI list — that is
+  `snippets/lush-ingredients-list.liquid`, rendered in a collapsible row.
+
+  Ported from Lush KSA 2026-08-05. Changed from the KSA original:
+    - the image alt used `ingredient.name`, but the referenced object is an
+      Article, which has `title` and no `name`, so every card shipped alt="".
+      Now uses `ingredient.title`
+    - every CSS class carried a `section.id` suffix to avoid collisions between
+      instances. Settings now come through CSS custom properties scoped to the
+      section wrapper, so class names are stable and readable and the stylesheet
+      is a fraction of the size
+    - dropped ~90 lines of commented-out CSS, and grid-template-columns media
+      queries left behind when the grid became a flex layout
+    - dropped a `font-size: {{ section.settings.card_text_size }}px` rule for a
+      setting that does not exist in the schema; it rendered as `font-size: px`
+      and was discarded by the browser, so text-link size is unchanged
+    - dropped a per-section custom element whose only job was an Enter-key
+      handler on cards that have no tabindex and never receive keydown. The
+      card's links are natively keyboard accessible
+    - added `enabled_on: templates: [product]`; the section reads `product` and
+      renders nothing anywhere else
+{% endcomment %}
+
+{%- if product.metafields.custom.ingredients_cards != blank -%}
+  {%- liquid
+    assign cards = product.metafields.custom.ingredients_cards.value
+    assign gap = section.settings.card_spacing
+    assign cols_d = section.settings.columns_desktop
+    assign cols_t = section.settings.columns_tablet
+    assign cols_m = section.settings.columns_mobile | plus: 0
+    assign image_height = 600 | times: section.settings.image_aspect_ratio | divided_by: 100
+    assign default_read_more = 'blogs.ingredient.read_more' | t
+  -%}
+
+  {% style %}
+    #shopify-section-{{ section.id }} {
+      --lush-ing-gap: {{ gap }}px;
+      --lush-ing-card-width: calc((100% - {{ gap | times: cols_d | minus: gap }}px) / {{ cols_d }});
+      --lush-ing-container: {{ section.settings.container_width }}px;
+      --lush-ing-pad-top: {{ section.settings.section_padding_top }}px;
+      --lush-ing-pad-bottom: {{ section.settings.section_padding_bottom }}px;
+      --lush-ing-title-size: {{ section.settings.title_size }}px;
+      --lush-ing-title-color: {{ section.settings.title_color }};
+      --lush-ing-title-align: {{ section.settings.title_alignment }};
+      --lush-ing-title-spacing: {{ section.settings.title_spacing }}px;
+      --lush-ing-card-bg: {{ section.settings.card_background }};
+      --lush-ing-card-border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+      --lush-ing-card-radius: {{ section.settings.card_border_radius }}px;
+      --lush-ing-card-pad: {{ section.settings.card_padding }}px;
+      --lush-ing-card-align: {{ section.settings.card_text_alignment }};
+      --lush-ing-ratio: {{ section.settings.image_aspect_ratio }}%;
+      --lush-ing-image-bg: {{ section.settings.image_background }};
+      --lush-ing-name-size: {{ section.settings.card_title_size }}px;
+      --lush-ing-name-color: {{ section.settings.card_title_color }};
+      --lush-ing-chip-size: {{ section.settings.card_benefits_text_size }}px;
+      --lush-ing-chip-bg: {{ section.settings.card_benefits_background_color }};
+      --lush-ing-chip-color: {{ section.settings.card_benefits_text_color }};
+      --lush-ing-radius: {{ section.settings.button_border_radius }}px;
+      --lush-ing-btn-bg: {{ section.settings.button_background }};
+      --lush-ing-btn-bg-hover: {{ section.settings.button_hover_background }};
+      --lush-ing-btn-color: {{ section.settings.button_text_color }};
+      --lush-ing-btn-size: {{ section.settings.button_text_size }}px;
+      --lush-ing-link-color: {{ section.settings.link_color }};
+      --lush-ing-link-color-hover: {{ section.settings.link_hover_color }};
+
+      display: block;
+      width: 100%;
+      padding: var(--lush-ing-pad-top) 0 var(--lush-ing-pad-bottom);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredients-cards__container {
+      max-width: var(--lush-ing-container);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredients-cards__header {
+      margin-bottom: var(--lush-ing-title-spacing);
+      text-align: var(--lush-ing-title-align);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredients-cards__title {
+      font-size: var(--lush-ing-title-size);
+      color: var(--lush-ing-title-color);
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredients-cards__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--lush-ing-gap);
+      justify-content: center;
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card {
+      width: var(--lush-ing-card-width);
+      max-width: 300px;
+      background-color: var(--lush-ing-card-bg);
+      border: var(--lush-ing-card-border);
+      border-radius: var(--lush-ing-card-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: var(--lush-ing-ratio);
+      overflow: hidden;
+      background-color: var(--lush-ing-image-bg);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__image,
+    #shopify-section-{{ section.id }} .lush-ingredient-card__image-placeholder {
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__image {
+      object-fit: cover;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__image-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--lush-ing-image-bg);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__image-placeholder svg {
+      width: 60%;
+      height: 60%;
+      opacity: 0.3;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__content {
+      padding: var(--lush-ing-card-pad);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: var(--lush-ing-card-align);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__name {
+      font-size: var(--lush-ing-name-size);
+      color: var(--lush-ing-name-color);
+      margin: 0 0 12px;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__benefits {
+      margin: 0 0 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__benefit {
+      font-size: var(--lush-ing-chip-size);
+      padding: 0.5em 1em;
+      line-height: 1.5em;
+      border-radius: var(--lush-ing-radius);
+      background: var(--lush-ing-chip-bg);
+      color: var(--lush-ing-chip-color);
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__link--button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--lush-ing-btn-bg);
+      color: var(--lush-ing-btn-color);
+      border-radius: var(--lush-ing-radius);
+      text-decoration: none;
+      font-size: var(--lush-ing-btn-size);
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__link--button:hover {
+      background-color: var(--lush-ing-btn-bg-hover);
+    }
+
+    {%- if section.settings.card_text_alignment == 'center' -%}
+      #shopify-section-{{ section.id }} .lush-ingredient-card__link--button {
+        margin: 0 auto;
+      }
+    {%- elsif section.settings.card_text_alignment == 'right' -%}
+      #shopify-section-{{ section.id }} .lush-ingredient-card__link--button {
+        margin-inline-start: auto;
+      }
+    {%- endif -%}
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__link--link {
+      color: var(--lush-ing-link-color);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .lush-ingredient-card__link--link:hover {
+      color: var(--lush-ing-link-color-hover);
+    }
+
+    @media screen and (max-width: 989px) {
+      #shopify-section-{{ section.id }} {
+        --lush-ing-card-width: calc((100% - {{ gap | times: cols_t | minus: gap }}px) / {{ cols_t }});
+      }
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} {
+        --lush-ing-gap: {{ gap | times: 0.75 }}px;
+        --lush-ing-card-width: calc((100% - {{ gap | times: cols_m | minus: gap }}px) / {{ cols_m }});
+        --lush-ing-title-size: {{ section.settings.title_size | times: 0.8 }}px;
+        --lush-ing-card-pad: {{ section.settings.card_padding | times: 0.75 }}px;
+      }
+    }
+  {% endstyle %}
+
+  <div class="lush-ingredients-cards" {{ section.shopify_attributes }}>
+    <div class="lush-ingredients-cards__container">
+      {%- if section.settings.section_title != blank -%}
+        <div class="lush-ingredients-cards__header">
+          <h2 class="lush-ingredients-cards__title">{{ section.settings.section_title }}</h2>
+        </div>
+      {%- endif -%}
+
+      <div class="lush-ingredients-cards__grid">
+        {%- for ingredient in cards -%}
+          <div class="lush-ingredient-card">
+            <div class="lush-ingredient-card__image-wrapper">
+              {%- if ingredient.image -%}
+                <a href="{{ ingredient.url }}" tabindex="-1" aria-hidden="true">
+                  <img
+                    src="{{ ingredient.image | image_url: width: 600 }}"
+                    alt="{{ ingredient.title | escape }}"
+                    class="lush-ingredient-card__image"
+                    loading="lazy"
+                    width="600"
+                    height="{{ image_height }}"
+                  >
+                </a>
+              {%- else -%}
+                <div class="lush-ingredient-card__image-placeholder">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="lush-ingredient-card__content">
+              {%- if ingredient.title != blank -%}
+                <h3 class="lush-ingredient-card__name">{{ ingredient.title }}</h3>
+              {%- endif -%}
+
+              {%- comment -%}
+                Benefit chips. Lush's own ingredient library leaves benefit_1..3
+                empty on most entries and shows the Natural/Synthetic type in
+                that slot instead, so do the same rather than render a gap.
+              {%- endcomment -%}
+              {%- assign benefits = ingredient.metafields.custom.ingredient_benefits.value -%}
+              <div class="lush-ingredient-card__benefits">
+                {%- if benefits != blank -%}
+                  {%- for benefit in benefits -%}
+                    <span class="lush-ingredient-card__benefit">{{ benefit }}</span>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- assign card_type = ingredient.metafields.custom.ingredient_type.value | default: 'Synthetic' -%}
+                  {%- if card_type == 'Natural' -%}
+                    <span class="lush-ingredient-card__benefit">{{ 'blogs.ingredient.type_natural' | t }}</span>
+                  {%- else -%}
+                    <span class="lush-ingredient-card__benefit">{{ 'blogs.ingredient.type_synthetic' | t }}</span>
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+
+              {%- if section.settings.show_read_more and ingredient.url != blank -%}
+                <a
+                  href="{{ ingredient.url }}"
+                  class="lush-ingredient-card__link lush-ingredient-card__link--{{ section.settings.read_more_style }}"
+                >
+                  {{- section.settings.read_more_text | default: default_read_more -}}
+                  <span class="visually-hidden">{{ ingredient.title }}</span>
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Ingredients cards",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_title",
+      "label": "Title",
+      "default": "What's in it for you"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1a1b18"
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "label": "Title spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container width",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Grid layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns on tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "card_spacing",
+      "label": "Card spacing",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color",
+      "default": "#d2d5d9"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "card_text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Card image"
+    },
+    {
+      "type": "range",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Image background",
+      "default": "#f3f3f3"
+    },
+    {
+      "type": "header",
+      "content": "Card text"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Title size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Title color",
+      "default": "#1a1b18"
+    },
+    {
+      "type": "range",
+      "id": "card_benefits_text_size",
+      "label": "Benefits text size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "card_benefits_background_color",
+      "label": "Benefits background color",
+      "default": "#138645"
+    },
+    {
+      "type": "color",
+      "id": "card_benefits_text_color",
+      "label": "Benefits text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Read more link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_read_more",
+      "label": "Show read more link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read more text",
+      "info": "Leave empty to use the translated default, which follows the storefront language."
+    },
+    {
+      "type": "select",
+      "id": "read_more_style",
+      "label": "Style",
+      "options": [
+        { "value": "button", "label": "Button" },
+        { "value": "link", "label": "Text link" }
+      ],
+      "default": "button"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#1a1b18"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Button text size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#1a1b18"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients cards"
+    }
+  ]
+}
+{% endschema %}

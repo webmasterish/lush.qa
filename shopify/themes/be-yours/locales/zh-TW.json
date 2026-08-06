@@ -83,6 +83,12 @@
       "share": "分享這篇文章",
       "success": "您的評論已成功發布！謝謝！",
       "success_moderated": "您的評論已成功發布。我們將在稍後發布它，因為我們的博客已經過審核。"
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "批發價"
       },
       "xr_button": "在您的空間中查看",
-      "xr_button_label": "在您的空間中查看，在增強現實窗口中加載項目"
+      "xr_button_label": "在您的空間中查看，在增強現實窗口中加載項目",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {

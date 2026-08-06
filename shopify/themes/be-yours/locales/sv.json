@@ -83,6 +83,12 @@
       "share": "Dela den här artikeln",
       "success": "Din kommentar postades framgångsrikt! Tack!",
       "success_moderated": "Din kommentar postades framgångsrikt. Vi kommer att publicera den om en liten stund, eftersom vår blogg är modererad."
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "Volymprissättning"
       },
       "xr_button": "Visa i ditt utrymme",
-      "xr_button_label": "Visa i ditt utrymme, laddar objekt i augmented reality-fönstret"
+      "xr_button_label": "Visa i ditt utrymme, laddar objekt i augmented reality-fönstret",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {

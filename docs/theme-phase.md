@@ -46,7 +46,7 @@ Live state to know before touching anything:
 
 **Next: T4 features.** In rough order of value:
 
-1. **Ingredients feature** — port `lush-ingredients-cards.liquid` + `lush-ingredients-list.liquid` from KSA. Open decision first: where the content comes from (Qatar's WooCommerce descriptions, or KSA's `custom.*` metafields matched by SKU). Same decision as the product-translation backfill.
+1. ~~**Ingredients feature**~~ — **theme code complete 2026-08-05**, `theme check` clean; see T4 below. Content source settled the same day: **lush.com's own ingredient library**, in both locales, harvested at the URLs already embedded in Qatar's product descriptions (`theme-porting-list.md` §5). Qatar's descriptions supply the per-product wiring (453 ingredients across 127 products); lush.com supplies the article layer. No KSA credential needed. **Remaining work is data, not code**, and it waits on Dee taking the harvest to Lush HQ.
 2. Product badges — vegan / bestseller / new / limited edition, metafield-driven.
 3. Cart drawer upsells, back-in-stock, smart search and filtering.
 4. Then T5: CMS pages, URL redirects, and the store settings still open in `store-settings-ledger.md`.
@@ -220,7 +220,7 @@ Then, regardless of route:
 - [x] Section inventory → 56 of the 58 types KSA uses exist in 9.2; both gaps are DotAim's own code
 - [x] Customization diff → 10 custom files identified, including the ingredients feature and a floating WhatsApp button
 - [x] Arabic locale assessed → 413 valid keys to port, 86 new keys to translate, ~2,984 non-theme keys to drop
-- [x] Metafields the theme reads → `custom.ingredients`, `custom.ingredient_benefits`, `custom.ingredients_cards`, `custom.ingredient_type`
+- [x] Metafields the theme reads → `custom.ingredients`, `custom.ingredient_benefits`, `custom.ingredients_cards`, `custom.ingredient_type`, and (found 2026-08-05) `custom.ingredient_subtitle`
 - [ ] Inventory KSA's installed apps → cost and client approval if any are paid (storefront shows none, but the admin list is unchecked)
 
 ### T2 — Foundation parity — **complete 2026-08-04**
@@ -244,7 +244,8 @@ Then, regardless of route:
 
 ### T4 — Features
 Per context doc §8: mega menu, smart search with suggestions, advanced filtering, product badges (vegan / bestseller / new / limited edition), back-in-stock, zoom galleries, related products, cart drawer with upsells, countdown timers, hero banners.
-- [ ] **Ingredients feature** — promised to Dee in the 14 July session and referenced in the client report. **It already exists on KSA** as `sections/lush-ingredients-cards.liquid` + `snippets/lush-ingredients-list.liquid` + `templates/article.ingredient-blog-post.json`, so this is a port of working code, not a build from scratch. Needs the backing metafield definitions on Qatar.
+- [x] **Ingredients feature — theme code done 2026-08-05**, `theme check` clean. `sections/lush-ingredients-cards.liquid` and `snippets/lush-ingredients-list.liquid` ported from KSA with three defects fixed (empty `alt`, untranslated legend, JS-hidden empty state — backlog #10–12). KSA's `article.ingredient-blog-post.json` was **not** ported: it puts Liquid into stock `image-with-text` settings that never evaluate it, so it renders literal `{{ article.title }}` (backlog #13). Replaced by `sections/lush-ingredient-article.liquid` + `templates/article.ingredient.json`. Five locale keys added in all 14 locale files, Arabic taken from Lush HQ's own wording.
+- [ ] **Ingredients data** — blocked on Dee, deliberately. Needs: the five metafield definitions (surface C), an **ingredient blog**, ~453 articles in EN + AR, and the images re-uploaded to Qatar's Files. Harvester built and proven end to end on 3 real ingredients: `shopify/themes/ingredients/` (`harvest-ingredients.py` + `fetch.md`). Nothing fetched at scale until HQ agrees.
 - [x] `locales/ar.json` — done in T2, not T4: ported and repaired, 499/499 keys, `theme check` clean
 
 ### T5 — Content & store settings

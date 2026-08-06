@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "ingredient_header": {
+      "type": "lush-ingredient-article",
+      "settings": {
+        "show_content": true,
+        "image_height": 650,
+        "image_border_radius": 0,
+        "natural_color": "#138645",
+        "synthetic_color": "#1a1b18",
+        "benefits_text_size": 12,
+        "benefits_background_color": "#138645",
+        "benefits_text_color": "#ffffff",
+        "benefits_border_radius": 4,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "breadcrumb": {
+          "type": "breadcrumb",
+          "settings": {
+            "text_style": "uppercase",
+            "show_divider": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        },
+        "back_to_blog": {
+          "type": "back_to_blog",
+          "settings": {}
+        },
+        "next_previous_posts": {
+          "type": "next_previous_posts",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "breadcrumb",
+        "share",
+        "back_to_blog",
+        "next_previous_posts"
+      ],
+      "settings": {
+        "show_gravatar": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_date": false,
+            "show_author": false,
+            "show_comment_count": false
+          }
+        }
+      },
+      "block_order": [
+        "title"
+      ],
+      "settings": {
+        "blog": "ingredients",
+        "post_limit": 3,
+        "show_view_all": true,
+        "show_divider": false,
+        "heading": "More ingredients",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_image": true,
+        "image_ratio": "landscape",
+        "image_position": "center center",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 72,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    }
+  },
+  "order": [
+    "ingredient_header",
+    "main",
+    "featured-blog"
+  ]
+}

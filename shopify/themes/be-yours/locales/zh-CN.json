@@ -83,6 +83,12 @@
       "share": "分享这篇文章",
       "success": "您的评论已成功发布！谢谢！",
       "success_moderated": "您的评论已成功发布。我们将在稍后发布它，因为我们的博客已经过审核。"
+    },
+    "ingredient": {
+      "type_natural": "Natural Ingredient",
+      "type_synthetic": "Safe Synthetic Ingredient",
+      "benefits": "Benefits",
+      "read_more": "Read more"
     }
   },
   "customer": {
@@ -468,7 +474,11 @@
         "title": "批量定价"
       },
       "xr_button": "在您的空间中查看",
-      "xr_button_label": "在您的空间中查看，在增强现实窗口中加载项目"
+      "xr_button_label": "在您的空间中查看，在增强现实窗口中加载项目",
+      "ingredients": {
+        "legend_natural": "Natural Ingredients",
+        "legend_synthetic": "Safe Synthetics"
+      }
     }
   },
   "recipient": {
