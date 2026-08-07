@@ -353,7 +353,9 @@
   },
   "products": {
     "facets": {
-      "apply": "Søke om",
+      "apply": "Søke om",
+      "availability_in_stock": "In stock",
+      "availability_out_of_stock": "Out of stock",
       "clear": "Slett",
       "clear_all": "Slett alt",
       "clear_filter": "Slett filter",

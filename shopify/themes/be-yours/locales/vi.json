@@ -353,7 +353,9 @@
   },
   "products": {
     "facets": {
-      "apply": "Áp dụng",
+      "apply": "Áp dụng",
+      "availability_in_stock": "In stock",
+      "availability_out_of_stock": "Out of stock",
       "clear": "Xóa",
       "clear_all": "Xóa tất cả",
       "clear_filter": "Xóa bộ lọc",

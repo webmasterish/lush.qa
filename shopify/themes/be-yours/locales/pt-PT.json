@@ -353,7 +353,9 @@
   },
   "products": {
     "facets": {
-      "apply": "Aplicar",
+      "apply": "Aplicar",
+      "availability_in_stock": "In stock",
+      "availability_out_of_stock": "Out of stock",
       "clear": "Apagar",
       "clear_all": "Apagar tudo",
       "clear_filter": "Apagar filtro ",

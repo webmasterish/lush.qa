@@ -345,6 +345,8 @@
   "products": {
     "facets": {
       "apply": "تطبيق",
+      "availability_in_stock": "متوفر",
+      "availability_out_of_stock": "غير متوفر",
       "clear": "مسح",
       "clear_all": "مسح الكل",
       "clear_filter": "إلغاء الفلتر",

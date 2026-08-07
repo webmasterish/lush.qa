@@ -353,7 +353,9 @@
   },
   "products": {
     "facets": {
-      "apply": "應用",
+      "apply": "應用",
+      "availability_in_stock": "In stock",
+      "availability_out_of_stock": "Out of stock",
       "clear": "清除",
       "clear_all": "全部清除",
       "clear_filter": "清除過濾器",

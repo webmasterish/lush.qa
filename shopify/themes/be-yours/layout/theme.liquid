@@ -173,5 +173,13 @@
     {%- endif -%}
     
     {% render 'js-utilities' %}
+
+    {%- comment -%}
+      DotAim: the availability filter's values in the shopper's language.
+      Collection and search only, and self-disabling on the English storefront.
+    {%- endcomment -%}
+    {%- if template contains 'collection' or template contains 'search' -%}
+      {% render 'dotaim-facet-labels' %}
+    {%- endif -%}
   </body>
 </html>

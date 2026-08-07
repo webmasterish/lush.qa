@@ -1,0 +1,97 @@
+{%- comment -%}
+  The availability filter's values, in the shopper's language.
+
+  Shopify returns "In stock" / "Out of stock" as filter *values*, and nothing
+  translates them: `FILTER` is a translatable resource but its only
+  translatable field is `label`, which is why "Availability" and "Price" are
+  Arabic on /ar while the choices under them are English. Verified against the
+  live store and the 2026-01 Admin API, 2026-08-07.
+
+  So the storefront fixes it. This runs only where the strings actually differ
+  from Shopify's English, so on the English storefront it renders nothing at
+  all, and it keys off the input's value (`1` in stock, `0` out of stock)
+  rather than off the English text, which no locale can be sure of.
+
+  Rendered from layout/theme.liquid on collection and search templates only.
+  Stock facets.liquid stays unforked -- see rule 10 in docs/theme-phase.md.
+
+  If Shopify ever localizes these values, delete this snippet and its render
+  line: the locale keys it uses will already match what Shopify sends.
+{%- endcomment -%}
+
+{%- liquid
+  assign in_stock = 'products.facets.availability_in_stock' | t
+  assign out_of_stock = 'products.facets.availability_out_of_stock' | t
+-%}
+
+{%- if in_stock != 'In stock' or out_of_stock != 'Out of stock' -%}
+  <script>
+    (function () {
+      var BY_VALUE = { '1': {{ in_stock | json }}, '0': {{ out_of_stock | json }} };
+      var FROM_ENGLISH = { 'In stock': BY_VALUE['1'], 'Out of stock': BY_VALUE['0'] };
+
+      function setText(node, value) {
+        // Only when it differs, so the observer below cannot feed itself.
+        if (node.textContent !== value) node.textContent = value;
+      }
+
+      function relabelCheckboxes(root) {
+        root.querySelectorAll('input[name="filter.v.availability"]').forEach(function (input) {
+          var label = input.closest('label');
+          var text = BY_VALUE[input.value];
+          if (!label || !text) return;
+
+          // The label reads: <input><span class="icon"></span>"In stock&nbsp;"<span>(307)</span>
+          // -- the value is a bare text node between the two spans. Keep the
+          // surrounding whitespace exactly: the trailing one is a &nbsp; that
+          // holds the count against the label.
+          label.childNodes.forEach(function (node) {
+            if (node.nodeType !== Node.TEXT_NODE || !node.textContent.trim()) return;
+            var parts = node.textContent.match(/^(\s*)[\s\S]*?(\s*)$/);
+            setText(node, parts[1] + text + parts[2]);
+          });
+
+          if (label.title) label.title = text;
+        });
+      }
+
+      function relabelActiveChips(root) {
+        // Chips read "{filter label}: {value label}", so only the tail is ours.
+        root.querySelectorAll('.active-facets__button').forEach(function (chip) {
+          chip.childNodes.forEach(function (node) {
+            if (node.nodeType !== Node.TEXT_NODE) return;
+            var trimmed = node.textContent.trim();
+            Object.keys(FROM_ENGLISH).forEach(function (english) {
+              if (trimmed.slice(-english.length) === english) {
+                setText(node, node.textContent.replace(english, FROM_ENGLISH[english]));
+              }
+            });
+          });
+        });
+      }
+
+      function relabel() {
+        relabelCheckboxes(document);
+        relabelActiveChips(document);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', relabel);
+      } else {
+        relabel();
+      }
+
+      // Filtering, sorting and the mobile drawer all re-render the facets from
+      // the Section Rendering API, which replaces this markup wholesale.
+      var queued = false;
+      new MutationObserver(function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () {
+          queued = false;
+          relabel();
+        });
+      }).observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+{%- endif -%}

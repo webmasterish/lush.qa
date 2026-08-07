@@ -353,7 +353,9 @@
   },
   "products": {
     "facets": {
-      "apply": "適用",
+      "apply": "適用",
+      "availability_in_stock": "In stock",
+      "availability_out_of_stock": "Out of stock",
       "clear": "削除",
       "clear_all": "すべて削除する",
       "clear_filter": "フィルターをクリア",
