@@ -55,7 +55,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: {{ section.settings.vertical_alignment }};
   }
 
   #shopify-section-{{ section.id }} .lush-ingredient-article__media {
@@ -65,7 +65,8 @@
   #shopify-section-{{ section.id }} .lush-ingredient-article__image {
     width: 100%;
     height: {{ section.settings.image_height }}px;
-    object-fit: cover;
+    object-fit: {{ section.settings.image_fit }};
+    object-position: top center;
     border-radius: {{ section.settings.image_border_radius }}px;
   }
 
@@ -190,6 +191,28 @@
     {
       "type": "header",
       "content": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "info": "Contain shows the whole photograph; cover fills the box and crops from the bottom. Ingredient photographs are not a single aspect ratio, so contain is the safe default.",
+      "options": [
+        { "value": "contain", "label": "Contain (show the whole image)" },
+        { "value": "cover", "label": "Cover (fill and crop)" }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "info": "How the photograph and the text sit against each other when one is taller.",
+      "options": [
+        { "value": "start", "label": "Top" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "start"
     },
     {
       "type": "range",

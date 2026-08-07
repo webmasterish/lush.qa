@@ -27,9 +27,17 @@ ENV = REPO / 'shopify/migration_from_woocommerce/migration-tool/config/projects/
 LOCALE = 'ar'
 
 # Ordered roughly by how visible a gap would be to a shopper.
+#
+# FILTER, PRODUCT_OPTION and PRODUCT_OPTION_VALUE cover the collection filter
+# sidebar, which the first version of this script missed entirely: the filter
+# headings are FILTER `label`s, and the choices under them are option values.
+# Filters built on tags or product type are not translatable at all -- Shopify
+# exposes no translation for either -- so a gap there is a data-model problem,
+# not a missing string.
 TYPES = ['MENU', 'LINK', 'SHOP_POLICY', 'ONLINE_STORE_THEME_SECTION_GROUP',
          'ONLINE_STORE_THEME_JSON_TEMPLATE', 'ONLINE_STORE_THEME_SETTINGS_CATEGORY',
-         'PAGE', 'BLOG', 'ARTICLE', 'COLLECTION', 'PRODUCT']
+         'PAGE', 'BLOG', 'ARTICLE', 'COLLECTION', 'PRODUCT',
+         'FILTER', 'PRODUCT_OPTION', 'PRODUCT_OPTION_VALUE']
 
 
 def load_env():
@@ -72,9 +80,14 @@ QUERY = """query($type: TranslatableResourceType!, $locale: String!, $after: Str
 # Keys whose "value" is not prose - translating them is meaningless.
 SKIP_KEYS = {'handle', 'json_value', 'meta_description', 'meta_title'}
 
-# Values that are not prose: resource references, asset paths, dates, numbers.
-# Counting these as translation gaps makes the report dishonest.
-NOT_PROSE = re.compile(r'^(shopify://|https?://|#[0-9a-fA-F]{3,8}$|[\d\-/.,:\s]+$)')
+# Values that are not prose: resource references, asset paths, dates, numbers,
+# CSS selectors, mailto:/tel: links, and theme settings holding Liquid.
+# Counting these as translation gaps makes the report dishonest -- and the
+# Liquid ones must NOT be translated: a `text` setting containing
+# `{{ product.metafields... }}` is evaluated at render time, so an Arabic copy
+# of the tag would just be a second, wrong tag.
+NOT_PROSE = re.compile(r'^(shopify://|https?://|mailto:|tel:|[.#][\w-]+[\s,]|\{\{|\{%'
+                       r'|#[0-9a-fA-F]{3,8}$|[\d\-/.,:\s+]+$)')
 
 
 def audit(rtype, detail=False):

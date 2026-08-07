@@ -1163,5 +1163,35 @@
         "label": "t:settings_schema.glass_design.settings.glass_tint_color.label"
       }
     ]
+  },
+  {
+    "name": "Lush (DotAim)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Settings DotAim added for Lush Qatar. Read by snippets/dotaim-custom-styles.liquid, not by Be Yours."
+      },
+      {
+        "type": "header",
+        "content": "Ingredients"
+      },
+      {
+        "type": "select",
+        "id": "lush_ingredient_card_image_fit",
+        "label": "Ingredient blog card image fit",
+        "info": "Applies to the article cards on the ingredients blog and to \"More ingredients\" on an ingredient page. Contain shows the whole photograph; cover fills the card and crops it. Lush's ingredient photographs are not a single aspect ratio, so contain is the default.",
+        "options": [
+          {
+            "value": "contain",
+            "label": "Contain (show the whole image)"
+          },
+          {
+            "value": "cover",
+            "label": "Cover (fill and crop)"
+          }
+        ],
+        "default": "contain"
+      }
+    ]
   }
 ]

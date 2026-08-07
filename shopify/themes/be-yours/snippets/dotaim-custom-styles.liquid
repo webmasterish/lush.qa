@@ -109,4 +109,33 @@
   html[dir='rtl'] .card__badge .badge {
     transform: translateX(10px);
   }
+
+  /* --- Ingredients ------------------------------------------------------ */
+
+  {%- comment -%}
+    Article cards are stock Be Yours (snippets/card-article.liquid), which
+    always fills the card with object-fit: cover. Lush's ingredient
+    photographs are not a single aspect ratio -- lush.com serves them around
+    1000x937 -- so cover crops them differently from one card to the next.
+    Contain shows the whole photograph instead.
+
+    Scoped by blog handle rather than by template, so it holds on the blog
+    listing and on an ingredient article's "More ingredients" section without
+    depending on which template suffix the editor happens to be using. It does
+    NOT reach an ingredients carousel dropped on the home page -- that page has
+    no `blog` in scope -- so if one is ever added, widen this.
+
+    Overridable from Theme settings > Lush (DotAim).
+  {%- endcomment -%}
+  {%- if blog.handle == 'ingredients' and settings.lush_ingredient_card_image_fit == 'contain' -%}
+    .article-card__image .image-fit {
+      object-fit: contain;
+    }
+
+    /* The wrapper's placeholder grey would otherwise show as letterboxing. */
+    .article-card__image-wrapper,
+    .article-card__image {
+      background-color: rgb(var(--color-background));
+    }
+  {%- endif -%}
 {%- endstyle -%}
