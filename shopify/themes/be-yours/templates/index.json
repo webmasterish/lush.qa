@@ -17,13 +17,13 @@
           "settings": {
             "image": "shopify://shop_images/lush-qa-hero-karma.jpg",
             "image_position": "center center",
-            "text_box_position": "middle-left",
+            "text_box_position": "bottom-left",
             "subheading": "",
             "subheading_size": "h5",
             "heading": "Karma",
             "heading_size": "h1",
             "heading_tag": "h2",
-            "text": "Give customers details about the slide image or content on the template.",
+            "text": "",
             "text_size": "typeset",
             "button_label": "Shop now",
             "button_link": "shopify://collections/best-sellers",
@@ -42,13 +42,13 @@
           "settings": {
             "image": "shopify://shop_images/lush-qa-hero-lip-balm.jpg",
             "image_position": "center center",
-            "text_box_position": "middle-left",
+            "text_box_position": "bottom-left",
             "subheading": "",
             "subheading_size": "h5",
             "heading": "Lip Balms",
             "heading_size": "h1",
             "heading_tag": "h2",
-            "text": "Give customers details about the slide image or content on the template.",
+            "text": "",
             "text_size": "typeset",
             "button_label": "Shop now",
             "button_link": "shopify://collections/best-sellers",
@@ -67,13 +67,13 @@
           "settings": {
             "image": "shopify://shop_images/lush-qa-hero-supermilk.jpg",
             "image_position": "center center",
-            "text_box_position": "middle-left",
+            "text_box_position": "bottom-left",
             "subheading": "",
             "subheading_size": "h5",
             "heading": "Supermilk Haircare",
             "heading_size": "h1",
             "heading_tag": "h2",
-            "text": "Give customers details about the slide image or content on the template.",
+            "text": "",
             "text_size": "typeset",
             "button_label": "Shop now",
             "button_link": "shopify://collections/best-sellers",
@@ -92,13 +92,13 @@
           "settings": {
             "image": "shopify://shop_images/lush-qa-hero-spa-gift.jpg",
             "image_position": "center center",
-            "text_box_position": "middle-left",
+            "text_box_position": "bottom-left",
             "subheading": "",
             "subheading_size": "h5",
             "heading": "Spa Gifts",
             "heading_size": "h1",
             "heading_tag": "h2",
-            "text": "Give customers details about the slide image or content on the template.",
+            "text": "",
             "text_size": "typeset",
             "button_label": "Shop now",
             "button_link": "shopify://collections/best-sellers",
@@ -140,7 +140,7 @@
         "colors_navigation_background": "#1a1b18",
         "colors_highlight": "#ffb503",
         "padding_top": 0,
-        "padding_bottom": 56
+        "padding_bottom": 52
       }
     },
     "categories": {
@@ -557,6 +557,42 @@
         "highlight_style": "marker"
       }
     },
+    "blog_posts": {
+      "type": "featured-blog",
+      "blocks": {
+        "title_xP3XHD": {
+          "type": "title",
+          "settings": {
+            "show_date": false,
+            "show_author": false,
+            "show_comment_count": false
+          }
+        }
+      },
+      "block_order": [
+        "title_xP3XHD"
+      ],
+      "settings": {
+        "blog": "news",
+        "post_limit": 3,
+        "show_view_all": true,
+        "show_divider": false,
+        "heading": "From the Lush blog",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_image": true,
+        "image_ratio": "landscape",
+        "image_position": "center center",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
     "lush_values": {
       "type": "guarantees",
       "blocks": {
@@ -676,24 +712,6 @@
         "padding_bottom": 36,
         "enable_highlight": false,
         "highlight_style": "marker"
-      }
-    },
-    "blog_posts": {
-      "type": "featured-blog",
-      "settings": {
-        "blog": "news",
-        "post_limit": 3,
-        "show_view_all": true,
-        "heading": "From the Lush blog",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "heading_tag": "h2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_image": true,
-        "image_ratio": "landscape",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     }
   },

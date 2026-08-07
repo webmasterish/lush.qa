@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "narrow": true,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "multicolumn_YPHen9": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_4WEgpY": {
+          "type": "column",
+          "settings": {
+            "background_color": "#f2f2f2",
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "image": "shopify://shop_images/Lush_Landmark_Mall_-_Doha_Qatar.jpg",
+            "title": "<strong>Lush Landmark Mall</strong>",
+            "title_size": "h3",
+            "text": "<p><a href=\"tel:+97444874265\" title=\"Call us\"><strong>+974 44874265</strong></a><br/><br/>You can ask anything you want to know about our products.<br/><a href=\"mailto:wecarelush@almana.com\" title=\"Email us\"><strong>wecarelush@almana.com</strong></a></p>",
+            "show_popup": false,
+            "popup_image_position": "top",
+            "justify_text": false,
+            "button_label": "Direction",
+            "button_link": "https://www.google.com/maps/place/Lush+Landmark+Mall/data=!4m2!3m1!1s0x0:0x1c693d033b6eef33?sa=X&ved=1t:2428&ictx=111",
+            "button_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "column_4WEgpY"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "image_ratio": "landscape",
+        "image_position": "center center",
+        "text_alignment": "left",
+        "show_divider": false,
+        "image_width": "full",
+        "columns_desktop": 3,
+        "open_in_new_tab": true,
+        "heading": "Branches",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "mobile_text_alignment": "left",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "colors_highlight": "#ffb503",
+        "padding_top": 32,
+        "padding_bottom": 36,
+        "card_border_radius": 0,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multicolumn_YPHen9"
+  ]
+}

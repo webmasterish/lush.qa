@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ingredient_header": {
@@ -28,7 +37,9 @@
         },
         "share": {
           "type": "share",
-          "settings": {}
+          "settings": {
+            "share_label": "Share"
+          }
         },
         "back_to_blog": {
           "type": "back_to_blog",

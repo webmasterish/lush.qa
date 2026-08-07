@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header-group.name",
   "type": "header",
@@ -60,6 +69,7 @@
       "blocks": {
         "mega_bath_and_shower": {
           "type": "mega_menu",
+          "disabled": true,
           "settings": {
             "menu_title": "Bath and Shower",
             "narrow": false,
@@ -81,6 +91,7 @@
         },
         "mega_face": {
           "type": "mega_menu",
+          "disabled": true,
           "settings": {
             "menu_title": "Face",
             "narrow": false,
@@ -102,6 +113,7 @@
         },
         "mega_body": {
           "type": "mega_menu",
+          "disabled": true,
           "settings": {
             "menu_title": "Body",
             "narrow": false,
@@ -123,6 +135,7 @@
         },
         "mega_hair": {
           "type": "mega_menu",
+          "disabled": true,
           "settings": {
             "menu_title": "Hair",
             "narrow": false,
@@ -144,6 +157,7 @@
         },
         "mega_fragrances": {
           "type": "mega_menu",
+          "disabled": true,
           "settings": {
             "menu_title": "Fragrances",
             "narrow": false,
@@ -165,6 +179,7 @@
         },
         "mega_gifts": {
           "type": "mega_menu",
+          "disabled": true,
           "settings": {
             "menu_title": "Gifts",
             "narrow": false,
@@ -194,7 +209,7 @@
         "mega_gifts"
       ],
       "settings": {
-        "logo": "{{ shop.brand.logo }}",
+        "logo": "shopify://shop_images/lush_logo_for_web_black_en_trimmed.png",
         "logo_height": 48,
         "mobile_logo_height": 40,
         "logo_position": "top-center",
