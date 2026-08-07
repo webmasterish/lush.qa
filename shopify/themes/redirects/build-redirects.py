@@ -171,6 +171,9 @@ def main():
     fixed = json.loads(FIXED.read_text())['map']
     paths = [p.strip() for p in URLS.read_text().splitlines() if p.strip()]
     paths = [p for p in paths if not p.startswith(IGNORE) and p != '/']
+    # A path with a space in it (an encoded %20 in the archive) is not a path
+    # Shopify will accept, and there is exactly one: /Angels-on bare-skin.
+    paths = [p for p in paths if ' ' not in p]
 
     products, collections = load_catalogue()
     resolved, unmatched = resolve(paths, fixed, products, collections)
@@ -200,9 +203,20 @@ def main():
         return
 
     load_env()
-    already = existing_paths()
-    todo = {p: t for p, t in resolved.items() if p not in already}
-    print(f'\n{len(already)} redirects already on the store; creating {len(todo)}')
+    # Shopify matches redirect paths case-insensitively and stores one slot per
+    # path, so /Bath-and-Shower and /bath-and-shower cannot both exist. The old
+    # site served both spellings; treat them as one.
+    already = {p.lower() for p in existing_paths()}
+    todo, skipped_case = {}, 0
+    for path, target in resolved.items():
+        key = path.lower()
+        if key in already:
+            skipped_case += 1
+            continue
+        already.add(key)
+        todo[path] = target
+    print(f'\n{len(already) - len(todo)} redirects already on the store; '
+          f'creating {len(todo)}, skipping {skipped_case} that differ only by case')
 
     created = failed = 0
     for path, target in sorted(todo.items()):

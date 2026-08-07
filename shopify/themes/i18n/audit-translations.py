@@ -34,10 +34,25 @@ LOCALE = 'ar'
 # Filters built on tags or product type are not translatable at all -- Shopify
 # exposes no translation for either -- so a gap there is a data-model problem,
 # not a missing string.
-TYPES = ['MENU', 'LINK', 'SHOP_POLICY', 'ONLINE_STORE_THEME_SECTION_GROUP',
+# Every type Shopify has, taken from the TranslatableResourceType enum on
+# 2026-08-07 rather than from anyone's memory of it. Auditing a subset is how
+# the collection filter sidebar and the whole of SHOP -- Translate & Adapt's
+# "Checkout & system", which holds the storefront's own system strings, the
+# /collections/all heading among them -- went unnoticed for a month.
+#
+# Re-introspect after an API version bump:
+#   { __type(name:"TranslatableResourceType"){ enumValues{ name } } }
+TYPES = ['SHOP', 'MENU', 'LINK', 'SHOP_POLICY',
+         'ONLINE_STORE_THEME', 'ONLINE_STORE_THEME_APP_EMBED',
+         'ONLINE_STORE_THEME_LOCALE_CONTENT', 'ONLINE_STORE_THEME_SECTION_GROUP',
          'ONLINE_STORE_THEME_JSON_TEMPLATE', 'ONLINE_STORE_THEME_SETTINGS_CATEGORY',
+         'ONLINE_STORE_THEME_SETTINGS_DATA_SECTIONS',
          'PAGE', 'BLOG', 'ARTICLE', 'COLLECTION', 'PRODUCT',
-         'FILTER', 'PRODUCT_OPTION', 'PRODUCT_OPTION_VALUE']
+         'FILTER', 'PRODUCT_OPTION', 'PRODUCT_OPTION_VALUE',
+         'METAFIELD', 'METAOBJECT',
+         'EMAIL_TEMPLATE', 'PACKING_SLIP_TEMPLATE', 'PAYMENT_GATEWAY',
+         'DELIVERY_METHOD_DEFINITION', 'SELLING_PLAN', 'SELLING_PLAN_GROUP',
+         'ARTICLE_IMAGE', 'COLLECTION_IMAGE', 'MEDIA_IMAGE']
 
 
 def load_env():

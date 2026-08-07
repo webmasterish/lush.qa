@@ -15,6 +15,7 @@ Arabic, so menus read the same as the collection pages they point at.
     ./apply-translations.py            # dry run: what would be registered
     ./apply-translations.py --apply    # register
     ./apply-translations.py --missing  # untranslated strings NOT in ar.json
+    ./apply-translations.py --retranslate   # also correct ones that drifted
 
 Needs write_translations.
 """
@@ -57,7 +58,7 @@ def gql(query, variables=None):
 
 QUERY = """query($t: TranslatableResourceType!, $after: String) {
   translatableResources(resourceType: $t, first: 50, after: $after) {
-    nodes { resourceId translatableContent { key value digest } translations(locale:"ar"){ key outdated } }
+    nodes { resourceId translatableContent { key value digest } translations(locale:"ar"){ key value outdated } }
     pageInfo { hasNextPage endCursor } } }"""
 
 
@@ -68,6 +69,13 @@ def main():
     table = {**spec.get('from_collections', {}), **spec.get('authored', {})}
     apply = '--apply' in sys.argv
     show_missing = '--missing' in sys.argv
+    # The dictionary is the source of truth. Without this, a string that is
+    # already translated is never revisited -- which hides the case that
+    # actually bit us: three collection titles registered as their own English,
+    # so every audit called them done while the Arabic storefront showed
+    # "Fresh Masks".
+    retranslate = '--retranslate' in sys.argv
+    corrections = []
 
     total_hits = total_written = 0
     missing = {}
@@ -83,6 +91,7 @@ def main():
                 # Re-registering from the dictionary is exactly the fix, so
                 # treat outdated as untranslated.
                 done = {t['key'] for t in node['translations'] if not t['outdated']}
+                current = {t['key']: t['value'] for t in node['translations']}
                 payload = []
                 for c in node['translatableContent']:
                     val = (c['value'] or '').strip()
@@ -101,6 +110,17 @@ def main():
                         continue
                     payload.append({'key': c['key'], 'value': ar, 'locale': locale,
                                     'translatableContentDigest': c['digest']})
+
+                if retranslate:
+                    for c in node['translatableContent']:
+                        val = (c['value'] or '').strip()
+                        ar = table.get(val)
+                        if not ar or c['key'] not in done:
+                            continue
+                        if current.get(c['key']) != ar:
+                            corrections.append((rtype, val, current.get(c['key']), ar))
+                            payload.append({'key': c['key'], 'value': ar, 'locale': locale,
+                                            'translatableContentDigest': c['digest']})
                 if not payload:
                     continue
                 total_hits += len(payload)
@@ -121,6 +141,12 @@ def main():
         for val, rtype in list(missing.items())[:60]:
             print(f"  [{rtype.replace('ONLINE_STORE_THEME_', '')[:14]:14}] {' '.join(val.split())[:78]}")
         return
+
+    if retranslate and corrections:
+        print(f"{len(corrections)} already-translated strings differ from the dictionary:")
+        for rtype, src, was, now in corrections[:40]:
+            print(f"  [{rtype[:14]:14}] {src[:34]:34} {was!r} -> {now!r}")
+        print()
 
     print(f"matched {total_hits} strings against ar.json ({len(table)} entries)")
     print(f"not in the dictionary, left alone: {len(missing)}  (see --missing)")
