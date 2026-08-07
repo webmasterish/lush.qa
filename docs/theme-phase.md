@@ -50,7 +50,11 @@ Added 2026-08-07:
 - **Menu regrouped and mega menus back on.** Seven families, three levels, four columns to a row — see the ledger. The two-level shape was the actual cause of the three-row panels: Be Yours makes every second-level item a column.
 - **Sort dropdown and the filter values are handled the same way**, in `dotaim-facet-labels.liquid`: Shopify sends both in English regardless of locale. Nine sort keys added to all 14 locale files.
 - **Phone numbers render LTR inside Arabic**, so `+974 44874265` keeps its `+` and country code on the correct end.
-- **Still English on `/ar` and not fixable by us:** the `/collections/all` heading reads "Products" because that pseudo-collection has no translatable resource. The fix is a real collection to point the menu at, which is a decision, not a bug.
+- **"Checkout & system" is a whole translation surface we had not touched** (found by Bassam in Translate & Adapt). It is `ONLINE_STORE_THEME_LOCALE_CONTENT`: 4,458 keys of Shopify's own storefront and checkout copy, and **Shopify serves English until each key is overridden** — proved on the live Arabic checkout, which renders English apart from overridden keys. 170 storefront-facing ones are now Arabic (`system-strings-ar.json` + `apply-system-strings.py`); this is what fixed the `/collections/all` heading. **`shopify.checkout.*` (2,455) and `customer_accounts.*` (1,222) are still English and are the client's decision** — Translate & Adapt's bulk auto-translate is the sane route.
+- **`audit-translations.py` now walks all 30 resource types**, introspected from the API. It had covered 14, which is why this surface and the filter sidebar stayed invisible.
+- **Redirects applied**: 457 live and spot-checked. Shopify matches redirect paths case-insensitively, so `/Hair` and `/hair` share one slot — the script now treats them as one instead of reporting failures.
+- **Found while auditing, not yet fixed:** the shipping rates are named in Arabic as their *source* value ("قياسي", "سريع"), so the **English** checkout shows Arabic rate names. They want English sources with Arabic translations. "International" is the one English rate.
+- **Page titles are a partial fix.** The `<title>` on `/ar/cart`, `/ar/collections`, `/ar/search` and 404 still renders English hours after the override was registered, while the same override visibly works where the string is page content. Cosmetic, tab-title only; re-check before launch.
 
 Live state to know before touching anything:
 
