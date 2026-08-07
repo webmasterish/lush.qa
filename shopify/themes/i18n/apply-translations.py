@@ -52,7 +52,7 @@ def gql(query, variables=None):
 
 QUERY = """query($t: TranslatableResourceType!, $after: String) {
   translatableResources(resourceType: $t, first: 50, after: $after) {
-    nodes { resourceId translatableContent { key value digest } translations(locale:"ar"){ key } }
+    nodes { resourceId translatableContent { key value digest } translations(locale:"ar"){ key outdated } }
     pageInfo { hasNextPage endCursor } } }"""
 
 
@@ -72,14 +72,23 @@ def main():
         while True:
             page = gql(QUERY, {'t': rtype, 'after': cursor})['translatableResources']
             for node in page['nodes']:
-                done = {t['key'] for t in node['translations']}
+                # Outdated is not done: Shopify sets that flag when the English
+                # changes after translation, and the stale Arabic keeps
+                # rendering until it is re-registered against the new digest.
+                # Re-registering from the dictionary is exactly the fix, so
+                # treat outdated as untranslated.
+                done = {t['key'] for t in node['translations'] if not t['outdated']}
                 payload = []
                 for c in node['translatableContent']:
                     val = (c['value'] or '').strip()
                     if not val or c['key'] in done or c['key'] == 'handle':
                         continue
-                    # Not prose: resource refs, asset paths, dates, colours.
-                    if re.match(r'^(shopify://|https?://|#[0-9a-fA-F]{3,8}$|[\d\-/.,:\s]+$)', val):
+                    # Not prose: resource refs, asset paths, dates, colours,
+                    # contact links, CSS selectors, and settings holding Liquid
+                    # (a `text` setting is evaluated at render time, so an
+                    # Arabic copy of the tag would just be a second, wrong tag).
+                    if re.match(r'^(shopify://|https?://|mailto:|tel:|[.#][\w-]+[\s,]|\{\{|\{%'
+                                r'|#[0-9a-fA-F]{3,8}$|[\d\-/.,:\s+]+$)', val):
                         continue
                     ar = table.get(val)
                     if ar is None:
