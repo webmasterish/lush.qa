@@ -27,9 +27,10 @@ import urllib.request
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 ENV = REPO / 'shopify/migration_from_woocommerce/migration-tool/config/projects/lush-qatar.env'
-STRINGS = HERE / 'system-strings-ar.json'
+STRINGS = [HERE / 'system-strings-ar.json', HERE / 'checkout-strings-ar.json']
 
-PLACEHOLDER = re.compile(r'%\{[a-z_]+\}')
+# Shopify uses both shapes, sometimes in the same string.
+PLACEHOLDER = re.compile(r'%\{[a-zA-Z_]+\}|\{\{\s*[a-zA-Z_]+\s*\}\}')
 
 
 def load_env():
@@ -87,9 +88,18 @@ def theme_locale_resource():
 
 def main():
     apply = '--apply' in sys.argv
+    # The resource has a hard ceiling on translated keys (TOO_MANY_KEYS_FOR_
+    # RESOURCE, 3,400 on this store). --max writes only the first N pending, and
+    # file order is priority order, so the strings every buyer reads win the
+    # remaining slots.
+    limit = None
+    if '--max' in sys.argv:
+        limit = int(sys.argv[sys.argv.index('--max') + 1])
     load_env()
 
-    wanted = json.loads(STRINGS.read_text())['strings']
+    wanted = {}
+    for path in STRINGS:
+        wanted.update(json.loads(path.read_text())['strings'])
     theme, node = theme_locale_resource()
     source = {c['key']: c for c in node['translatableContent']}
     current = {t['key']: t['value'] for t in node['translations']}
@@ -107,8 +117,9 @@ def main():
         # A dropped placeholder renders as literal text to a customer, and a
         # renamed one renders as nothing at all. Neither is visible from here,
         # so check before writing rather than after.
-        want = set(PLACEHOLDER.findall(content['value'] or ''))
-        got = set(PLACEHOLDER.findall(arabic))
+        norm = lambda s: {re.sub(r'\s+', '', p) for p in PLACEHOLDER.findall(s or '')}
+        want = norm(content['value'])
+        got = norm(arabic)
         if want != got:
             problems.append((key, f'placeholders {sorted(want)} -> {sorted(got)}'))
             continue
@@ -125,6 +136,10 @@ def main():
         for key, why in problems:
             print(f'  {key:60} {why}')
 
+    if limit is not None and len(payload) > limit:
+        print(f'\ncapped at {limit} of {len(payload)} pending (file order is priority order)')
+        payload = payload[:limit]
+
     print(f'\nto register {len(payload)}, already correct {skipped}')
 
     if not apply:
@@ -132,8 +147,10 @@ def main():
         return
 
     written = 0
-    for i in range(0, len(payload), 100):   # translationsRegister caps at 100
-        batch = payload[i:i + 100]
+    # translationsRegister rejects large batches with "Too many translation
+    # keys" -- it started failing at index 84, so keep well under it.
+    for i in range(0, len(payload), 50):
+        batch = payload[i:i + 50]
         res = gql("""mutation($id: ID!, $t: [TranslationInput!]!) {
             translationsRegister(resourceId: $id, translations: $t) {
               translations { key } userErrors { field message } } }""",
