@@ -46,7 +46,11 @@ Added 2026-08-07:
 - **Shopify's own `shop-js` bundle logs `Unsupported locale: "ar"`** on every Arabic page. Shop-branded UI (Shop Pay, Login with Shop) will therefore render English on `/ar` and nothing in the theme can change that. Worth setting Dee's expectations on before launch.
 - **Arabic registered** for the editor session: 13 strings, then 3 more that were sitting *outdated* — `apply-translations.py` had been treating an outdated translation as done, so stale Arabic kept rendering after Bassam changed the English. Remaining gaps are deliberate (Be Yours gift-card demo copy, contact details, Liquid).
 - **Product-level Arabic is the big remaining gap:** `product_type` missing on all 537 products, `title` on 108, `body_html` on 111. Collections: 32 strings.
-- **Label backfill is run.** 54 active products carry `theme.label` — 34 New, 21 Bestseller — each with its Arabic registered, verified rendering in both locales. Drafts were skipped by design, which is why Limited Edition (all seasonal drafts) is still zero. Vegan still has no source and needs Dee.
+- **Label backfill is run.** 54 active products carry `theme.label` — 34 New, 21 Bestseller — each with its Arabic registered, verified rendering in both locales. Drafts were skipped by design, which is why Limited Edition (all seasonal drafts) is still zero. Vegan still has no source and needs Dee. One colour per label from the theme's own palette: Bestseller `#1a1b18`, New `#ffb503`, Limited Edition and Vegan `#138645`. Sale red `#c0270b` is deliberately unused so a label never reads as a discount.
+- **Menu regrouped and mega menus back on.** Seven families, three levels, four columns to a row — see the ledger. The two-level shape was the actual cause of the three-row panels: Be Yours makes every second-level item a column.
+- **Sort dropdown and the filter values are handled the same way**, in `dotaim-facet-labels.liquid`: Shopify sends both in English regardless of locale. Nine sort keys added to all 14 locale files.
+- **Phone numbers render LTR inside Arabic**, so `+974 44874265` keeps its `+` and country code on the correct end.
+- **Still English on `/ar` and not fixable by us:** the `/collections/all` heading reads "Products" because that pseudo-collection has no translatable resource. The fix is a real collection to point the menu at, which is a decision, not a bug.
 
 Live state to know before touching anything:
 
@@ -290,10 +294,10 @@ Per context doc §8: mega menu, smart search with suggestions, advanced filterin
 - [x] `locales/ar.json` — done in T2, not T4: ported and repaired, 499/499 keys, `theme check` clean
 
 ### T5 — Content & store settings
-- [ ] CMS pages migration (open from Phase 3)
+- [x] **CMS pages — nothing outstanding, established 2026-08-07.** The "16 pages" figure was an early estimate that never survived contact with the site. The archived URL inventory (`shopify/themes/redirects/legacy-urls.txt`, 875 paths) shows the old site's only non-catalogue pages were `/about`, `/contact-us`, the three policies, and the blog. Contact and the policies exist; **About is the single page that has no Shopify equivalent** and needs a decision, not a migration
 - [x] Blog migration — 3 posts imported with images and Arabic translations 2026-08-04 (`shopify/themes/blog/`)
-- [ ] URL redirects / 301 map (open from Phase 3)
-- [ ] Legal policy pages — **partly done**: privacy, refund and terms are written and translated (Bassam). Shipping, contact information and the rest are still empty
+- [ ] **URL redirects / 301 map — built, not applied.** `shopify/themes/redirects/build-redirects.py` resolves 471 of the 875 archived legacy URLs (325 products, 132 collections, policies, blog, account) against the migration database. 252 of the rest are `/product-tag/` URLs that were never migrated; the remainder are products and categories that no longer exist
+- [x] **Legal policies — done as far as they go** (Bassam, 2026-08-07): privacy, refund and terms are written and translated. Shipping and contact-information policies are the client's call, are not tracked here, and anyone can add them from Settings > Policies. The footer's automatic policy list is switched off, because Shopify does not translate policy titles and it was rendering an English duplicate under the Arabic menu links
 - [ ] Everything else per `store-settings-ledger.md`: payments (local Qatar gateway — Shopify Payments is unavailable in Qatar), shipping, taxes, checkout branding, notifications, Google Analytics
 
 ### T6 — QA & sign-off
