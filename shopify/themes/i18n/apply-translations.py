@@ -25,8 +25,13 @@ REPO = HERE.parents[2]
 ENV = REPO / 'shopify/migration_from_woocommerce/migration-tool/config/projects/lush-qatar.env'
 DICT = HERE / 'ar.json'
 
+# COLLECTION is here for titles only: a handful of collections came through the
+# migration without Arabic, and their names are already in the dictionary
+# because the menu needed them. Collection *descriptions* are the client's
+# marketing copy and never match a dictionary entry, so they are left alone.
 TYPES = ['MENU', 'LINK', 'PAGE', 'BLOG', 'ONLINE_STORE_THEME_SECTION_GROUP',
-         'ONLINE_STORE_THEME_JSON_TEMPLATE', 'ONLINE_STORE_THEME_SETTINGS_CATEGORY']
+         'ONLINE_STORE_THEME_JSON_TEMPLATE', 'ONLINE_STORE_THEME_SETTINGS_CATEGORY',
+         'COLLECTION']
 
 
 def load_env():
