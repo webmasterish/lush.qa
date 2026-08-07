@@ -1,0 +1,31 @@
+{
+  "_source": "Hand-written targets for the legacy paths that are not a product, collection or tag. Everything else is resolved from the migration database by build-redirects.py.",
+  "_note": "Written 2026-08-07 from the archived URL inventory in legacy-urls.txt. lush.qa itself was already down (\"Error establishing a database connection\"), so the inventory came from the Internet Archive rather than from a crawl.",
+  "map": {
+    "/shop": "/collections/all",
+    "/catalog": "/collections/all",
+    "/brand/lush": "/collections/all",
+    "/my-account": "/account",
+    "/cart": "/cart",
+    "/checkout": "/checkout",
+
+    "/blog": "/blogs/news",
+    "/news": "/blogs/news",
+    "/category/latest-news": "/blogs/news",
+
+    "/about": "/pages/about",
+    "/contact-us": "/pages/contact",
+
+    "/Privacy-Policy": "/policies/privacy-policy",
+    "/terms-conditions": "/policies/terms-of-service",
+    "/refunds": "/policies/refund-policy",
+    "/refund_returns": "/policies/refund-policy",
+
+    "/go-with-the-flo": "/blogs/news/go-with-the-flo",
+    "/how-its-made-oudhess-bath-bomb": "/blogs/news/how-its-made-oudhess-bath-bomb",
+    "/a-scent-as-old-as-time-a-history-of-essential-oils": "/blogs/news/a-scent-as-old-as-time-a-history-of-essential-oils"
+  },
+  "_pending": {
+    "/about": "There is no About page on the store yet. Create it before applying this line, or drop the line -- a redirect to a missing page is a 404 with extra steps."
+  }
+}
