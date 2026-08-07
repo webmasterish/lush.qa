@@ -26,7 +26,7 @@ Status: `done` · `todo` · `blocked` · `n/a`
 |---|---|---|---|---|---|
 | Legal policies | Settings > Policies | Refund, privacy, terms, shipping, contact info. Qatar-specific text — needs Dee's sign-off, and Arabic versions | text no, structure yes | todo | DotAim drafts, Dee approves |
 | Payments | Settings > Payments | Local Qatar gateway (QNB / Tap / Telr). **Shopify Payments is unavailable in Qatar.** COD. Apple/Google Pay if the gateway supports them | no | todo | client + DotAim |
-| Shipping | Settings > Shipping and delivery | Zones, rates, free-shipping threshold, local delivery | reference only | todo | Dee provides rates |
+| Shipping | Settings > Shipping and delivery | Zones, rates, local delivery. **Rate names renamed to English 2026-08-07 (Bassam) and Arabic registered 2026-08-08**: Standard/قياسي, Express/سريع, International/دولي. **Free-shipping threshold cleared**: it held `USD:500,EUR:475,JPY:65000` with no QAR, so the mini-cart's currency match never succeeded and the progress bar never rendered. Set `QAR:<amount>` once Dee confirms the threshold | reference only | partly done | Dee provides rates |
 | Taxes | Settings > Taxes and duties | Qatar tax treatment, prices tax-inclusive or not | no | todo | client finance |
 | Checkout | Settings > Checkout | Branding (logo, colors, fonts), customer accounts, marketing consent, abandoned-cart timing | yes | todo | DotAim |
 | Notifications | Settings > Notifications | Branded order/shipping email templates, sender address, AR versions | yes | todo | DotAim |
