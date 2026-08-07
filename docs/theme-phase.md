@@ -32,11 +32,11 @@ Two consequences:
 Method note that softens the missing 8.4 vanilla: Shopify's theme-update flow **replaces theme code with the new version's stock code** while migrating settings across. KSA's live 8.4.0 was produced by that flow, so its code is largely stock 8.4 and its customization is concentrated in settings and templates — consistent with the storefront evidence (stock asset filenames, no `custom.css`, no app extensions). Any *file that exists on KSA-live but not in a vanilla copy* is an unambiguous customization regardless of version, which gives a reliable inventory without a matching-version baseline.
 - KSA carries a custom `SAR` riyal-symbol font. That is KSA-only and must not be carried into Qatar.
 
-## Resume here (state at 2026-08-07)
+## Resume here (state at 2026-08-08)
 
-**T4 is under way. Two features are code-complete and verified live in both locales: ingredients and product tile labels.**
+**The build is complete.** The storefront is finished and verified live in both locales; what remains is the visual QA pass, client decisions, and launch. Next session starts from `resume-prompt-launch.md`; the launch mechanics, owners and invoicing are in `handover-and-launch-plan.md`.
 
-Added 2026-08-07:
+Added 2026-08-07 and 2026-08-08:
 
 - **Bassam's editor session is pulled and committed** (`1e99ff6`): mega menus disabled on all six families, per-locale logo files, hero slides bottom-left, date/author/comments off on blog and article, a titled blog section on the home page, the contact page reworked, and two new templates — `blog.ingredients-blog` and `page.branches`.
 - **Ingredient imagery fits rather than crops.** `lush-ingredient-article` has `image_fit` (contain by default) and `vertical_alignment` (top by default); article cards on the ingredients blog get the same from **Theme settings > Lush (DotAim)**, applied in `dotaim-custom-styles.liquid` scoped to `blog.handle == 'ingredients'`. Stock `card-article.liquid` stays unforked. Verified live, EN + AR.
