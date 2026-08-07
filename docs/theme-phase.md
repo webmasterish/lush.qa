@@ -287,7 +287,7 @@ Then, regardless of route:
 - [x] Hero and the three campaign banners — imagery imported from the WooCommerce site 2026-08-04; all ten homepage sections live and verified in both locales
 - [x] Home, collection, product, cart, search, 404 — all verified live in both locales. Search, 404 and cart already matched KSA and needed no work
 - [x] Page, blog, article — templates done and verified; 3 articles imported EN+AR and the Branches page created. The **16 WooCommerce CMS pages are still to migrate** (T5)
-- [ ] Customer account templates — **not started**; depends on the Settings > Customer accounts choice in `store-settings-ledger.md`
+- [x] ~~Customer account templates~~ — **not needed, settled 2026-08-07.** The store runs **new customer accounts**, so the account pages are Shopify-hosted and `templates/customers/*` never render. What does matter is Arabic for Shopify's `customer_accounts.*` strings
 - [ ] Section-by-section **visual** pass against KSA, desktop + mobile, EN + AR — **not done**. Everything so far was verified by inspecting rendered HTML, which proves content and structure but not how it looks. Belongs with T6
 
 ### T4 — Features
