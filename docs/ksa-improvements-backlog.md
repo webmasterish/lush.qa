@@ -40,6 +40,8 @@ Found 2026-08-05 while reading the code for the Qatar port. All three are fixed 
 
 | 13 | **`templates/article.ingredient-blog-post.json` cannot work.** It drives a stock `image-with-text` section and puts Liquid into settings that never evaluate it: `{{ article.title }}` into `heading` (`inline_richtext`), `{{ article.metafields.custom.ingredient_type.value }} Ingredient` into `subheading` (`inline_richtext`), `{{ article.content }}` into `text` (`richtext`), and `{{ article.image }}` into `image` (`image_picker`). Shopify only evaluates Liquid in settings declared `"type": "liquid"`. | Any article on this template renders the literal characters `{{ article.title }}` and shows no image. Either KSA's ingredient articles display raw Liquid today, or the template was built and never assigned to an article — **worth checking on the live site**. Qatar does not port it; `sections/lush-ingredient-article.liquid` does the same job as real Liquid. | **High if any article uses it** |
 
+| 14 | **Notification emails have no Arabic.** Checked 2026-08-08 while auditing Qatar: the KSA store's notification templates carry no Arabic either, so an Arabic-speaking customer gets an English order confirmation, shipping confirmation and cancellation. | Every transactional email a customer receives is English, on a store whose storefront is bilingual. Not visible anywhere in the admin unless someone opens the per-language preview under Settings > Notifications. | Medium — customer-visible, but only after they buy |
+
 ## Housekeeping
 
 | # | Issue |
