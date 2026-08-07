@@ -345,6 +345,17 @@
   "products": {
     "facets": {
       "apply": "تطبيق",
+      "sort_options": {
+         "manual": "مميّز",
+         "most-relevant": "الأكثر صلة",
+         "best-selling": "الأكثر مبيعًا",
+         "title-ascending": "أبجديًا، من أ إلى ي",
+         "title-descending": "أبجديًا، من ي إلى أ",
+         "price-ascending": "السعر، من الأقل إلى الأعلى",
+         "price-descending": "السعر، من الأعلى إلى الأقل",
+         "created-ascending": "التاريخ، من الأقدم إلى الأحدث",
+         "created-descending": "التاريخ، من الأحدث إلى الأقدم"
+      },
       "availability_in_stock": "متوفر",
       "availability_out_of_stock": "غير متوفر",
       "clear": "مسح",

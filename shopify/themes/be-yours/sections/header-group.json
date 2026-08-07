@@ -69,11 +69,10 @@
       "blocks": {
         "mega_bath_and_shower": {
           "type": "mega_menu",
-          "disabled": true,
           "settings": {
             "menu_title": "Bath and Shower",
             "narrow": false,
-            "show_menu_image": true,
+            "show_menu_image": false,
             "defer_loading": true,
             "promo_image_ratio_1": "adapt",
             "promo_image_position_1": "center center",
@@ -91,11 +90,10 @@
         },
         "mega_face": {
           "type": "mega_menu",
-          "disabled": true,
           "settings": {
             "menu_title": "Face",
             "narrow": false,
-            "show_menu_image": true,
+            "show_menu_image": false,
             "defer_loading": true,
             "promo_image_ratio_1": "adapt",
             "promo_image_position_1": "center center",
@@ -113,11 +111,10 @@
         },
         "mega_body": {
           "type": "mega_menu",
-          "disabled": true,
           "settings": {
             "menu_title": "Body",
             "narrow": false,
-            "show_menu_image": true,
+            "show_menu_image": false,
             "defer_loading": true,
             "promo_image_ratio_1": "adapt",
             "promo_image_position_1": "center center",
@@ -135,11 +132,10 @@
         },
         "mega_hair": {
           "type": "mega_menu",
-          "disabled": true,
           "settings": {
             "menu_title": "Hair",
             "narrow": false,
-            "show_menu_image": true,
+            "show_menu_image": false,
             "defer_loading": true,
             "promo_image_ratio_1": "adapt",
             "promo_image_position_1": "center center",
@@ -157,11 +153,10 @@
         },
         "mega_fragrances": {
           "type": "mega_menu",
-          "disabled": true,
           "settings": {
             "menu_title": "Fragrances",
             "narrow": false,
-            "show_menu_image": true,
+            "show_menu_image": false,
             "defer_loading": true,
             "promo_image_ratio_1": "adapt",
             "promo_image_position_1": "center center",
@@ -179,11 +174,31 @@
         },
         "mega_gifts": {
           "type": "mega_menu",
-          "disabled": true,
           "settings": {
             "menu_title": "Gifts",
             "narrow": false,
-            "show_menu_image": true,
+            "show_menu_image": false,
+            "defer_loading": true,
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "",
+            "promo_text_1": "",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "",
+            "promo_text_2": "",
+            "promo_overlay_content_2": false,
+            "promo_link_2": ""
+          }
+        },
+        "mega_explore": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_title": "Explore",
+            "narrow": false,
+            "show_menu_image": false,
             "defer_loading": true,
             "promo_image_ratio_1": "adapt",
             "promo_image_position_1": "center center",
@@ -201,6 +216,7 @@
         }
       },
       "block_order": [
+        "mega_explore",
         "mega_bath_and_shower",
         "mega_face",
         "mega_body",

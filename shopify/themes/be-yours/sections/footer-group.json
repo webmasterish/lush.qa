@@ -50,7 +50,7 @@
         "enable_country_selector": true,
         "enable_language_selector": true,
         "payment_enable": false,
-        "show_policy": true,
+        "show_policy": false,
         "copyright_text": "",
         "colors_text": "#f3f3f3",
         "colors_heading": "#ffffff",

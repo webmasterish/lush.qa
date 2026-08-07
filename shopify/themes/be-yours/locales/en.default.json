@@ -353,9 +353,20 @@
   },
   "products": {
     "facets": {
-      "apply": "Apply",
+      "apply": "Apply",
       "availability_in_stock": "In stock",
       "availability_out_of_stock": "Out of stock",
+      "sort_options": {
+        "manual": "Featured",
+        "most-relevant": "Most relevant",
+        "best-selling": "Best selling",
+        "title-ascending": "Alphabetically, A-Z",
+        "title-descending": "Alphabetically, Z-A",
+        "price-ascending": "Price, low to high",
+        "price-descending": "Price, high to low",
+        "created-ascending": "Date, old to new",
+        "created-descending": "Date, new to old"
+      },
       "clear": "Clear",
       "clear_all": "Clear all",
       "clear_filter": "Clear filter",

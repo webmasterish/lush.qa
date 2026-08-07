@@ -69,6 +69,17 @@
     margin-inline-end: 1rem;
   }
 
+  /* A phone number is a left-to-right sequence even inside Arabic text. Left
+     to the RTL flow, "+974 44874265" renders with the + and the country code
+     on the wrong end. `direction: ltr` on the number itself fixes it without
+     affecting the paragraph around it; `display: inline-block` keeps the
+     override from leaking into the surrounding line. */
+  html[dir='rtl'] a[href^='tel:'] {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
+
   /* --- Ported from lushlebanon.com -------------------------------------- */
 
   /* Slideshow subheading: Lebanon sizes it off the heading scale rather than

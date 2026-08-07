@@ -1,11 +1,14 @@
 {%- comment -%}
-  The availability filter's values, in the shopper's language.
+  The availability filter's values and the sort dropdown, in the shopper's
+  language.
 
-  Shopify returns "In stock" / "Out of stock" as filter *values*, and nothing
-  translates them: `FILTER` is a translatable resource but its only
-  translatable field is `label`, which is why "Availability" and "Price" are
-  Arabic on /ar while the choices under them are English. Verified against the
-  live store and the 2026-01 Admin API, 2026-08-07.
+  Shopify returns "In stock" / "Out of stock" as filter *values*, and returns
+  the sort options ("Featured", "Best selling", "Price, low to high") already
+  worded, in English, whatever the storefront locale is. Nothing translates
+  either: `FILTER` is a translatable resource but its only translatable field
+  is `label`, which is why "Availability" and "Price" are Arabic on /ar while
+  everything under them is English. Verified against the live store and the
+  2026-01 Admin API, 2026-08-07.
 
   So the storefront fixes it. This runs only where the strings actually differ
   from Shopify's English, so on the English storefront it renders nothing at
@@ -22,13 +25,27 @@
 {%- liquid
   assign in_stock = 'products.facets.availability_in_stock' | t
   assign out_of_stock = 'products.facets.availability_out_of_stock' | t
+  assign featured = 'products.facets.sort_options.manual' | t
 -%}
 
-{%- if in_stock != 'In stock' or out_of_stock != 'Out of stock' -%}
+{%- if in_stock != 'In stock' or out_of_stock != 'Out of stock' or featured != 'Featured' -%}
   <script>
     (function () {
       var BY_VALUE = { '1': {{ in_stock | json }}, '0': {{ out_of_stock | json }} };
       var FROM_ENGLISH = { 'In stock': BY_VALUE['1'], 'Out of stock': BY_VALUE['0'] };
+
+      // Sort options are keyed by Shopify's own stable sort keys.
+      var SORT = {
+        'manual': {{ featured | json }},
+        'most-relevant': {{ 'products.facets.sort_options.most-relevant' | t | json }},
+        'best-selling': {{ 'products.facets.sort_options.best-selling' | t | json }},
+        'title-ascending': {{ 'products.facets.sort_options.title-ascending' | t | json }},
+        'title-descending': {{ 'products.facets.sort_options.title-descending' | t | json }},
+        'price-ascending': {{ 'products.facets.sort_options.price-ascending' | t | json }},
+        'price-descending': {{ 'products.facets.sort_options.price-descending' | t | json }},
+        'created-ascending': {{ 'products.facets.sort_options.created-ascending' | t | json }},
+        'created-descending': {{ 'products.facets.sort_options.created-descending' | t | json }}
+      };
 
       function setText(node, value) {
         // Only when it differs, so the observer below cannot feed itself.
@@ -70,9 +87,26 @@
         });
       }
 
+      function relabelSort(root) {
+        // Two surfaces render the same options: a <select> on desktop and a
+        // radio list in the mobile drawer.
+        root.querySelectorAll('select[name="sort_by"] option').forEach(function (option) {
+          var text = SORT[option.value];
+          if (text) setText(option, text);
+        });
+
+        root.querySelectorAll('input[name="sort_by"]').forEach(function (input) {
+          var text = SORT[input.value];
+          var label = input.closest('label');
+          var span = label && label.querySelector('.label');
+          if (text && span) setText(span, text);
+        });
+      }
+
       function relabel() {
         relabelCheckboxes(document);
         relabelActiveChips(document);
+        relabelSort(document);
       }
 
       if (document.readyState === 'loading') {

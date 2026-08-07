@@ -1,342 +1,243 @@
 {
-  "_source": "Derived from lush.qa WooCommerce category hierarchy, 2026-08-04. See docs/navigation-plan.md.",
+  "_source": "Derived from lush.qa WooCommerce category hierarchy, 2026-08-04. Regrouped 2026-08-07. See docs/navigation-plan.md.",
   "_note": "Collections referenced by handle; the apply script resolves handles to IDs at run time.",
+  "_shape": "Three levels, deliberately. Be Yours renders each SECOND-level item as a mega-menu COLUMN (snippets/mega-menu.liquid) and the third level as the links inside it, four columns to a row. The first cut was two levels with six to eight children per family, so every child became its own column and the panel wrapped onto three rows. Keep any family to four columns or fewer. Column headings that have no collection of their own point at the family collection.",
   "handle": "main-menu",
   "title": "Main menu",
   "items": [
     {
-      "title": "Bath and Shower",
+      "title": "Explore",
+      "type": "HTTP",
+      "url": "/collections",
       "items": [
         {
-          "title": "Bath Bombs",
-          "handle": "bathbomb",
-          "type": "COLLECTION"
+          "title": "Trending Now",
+          "handle": "trending-now",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Best Sellers", "handle": "best-sellers", "type": "COLLECTION" },
+            { "title": "5 Star Reviews", "handle": "5-star-reviews", "type": "COLLECTION" },
+            { "title": "New Products", "handle": "new-products", "type": "COLLECTION" },
+            { "title": "Lunar New Year", "handle": "lunar-new-year", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Body Scrubs",
-          "handle": "body-scrubs",
-          "type": "COLLECTION"
+          "title": "Collaborations",
+          "handle": "collaborations",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Scooby-Doo! X LUSH", "handle": "scooby-doo-x-lush", "type": "COLLECTION" },
+            { "title": "The Super Mario Galaxy Movie × Lush", "handle": "the-super-mario-galaxy-movie-x-lush", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Bubble Bars",
-          "handle": "bubble-bar",
-          "type": "COLLECTION"
+          "title": "Shop by mood",
+          "type": "HTTP",
+          "url": "/collections",
+          "items": [
+            { "title": "Sleep Better", "handle": "sleep-better", "type": "COLLECTION" },
+            { "title": "Lavender Range/Sleepy", "handle": "lavender-range-sleepy-2", "type": "COLLECTION" },
+            { "title": "Muscle Recovery", "handle": "muscle-recovery", "type": "COLLECTION" },
+            { "title": "Magnesium Range", "handle": "magnesium-range", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Luxury Bath Oils",
-          "handle": "luxury-bath-oils",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Shower gels & Jellies",
-          "handle": "shower-gels",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Shower Moisturisers",
-          "handle": "shower-moisturisers",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Soap",
-          "handle": "soap",
-          "type": "COLLECTION"
+          "title": "Lush Life",
+          "type": "HTTP",
+          "url": "/collections",
+          "items": [
+            { "title": "Lush Party", "handle": "lush-party", "type": "COLLECTION" },
+            { "title": "Lifestyle", "handle": "lifestyle", "type": "COLLECTION" },
+            { "title": "Apparel", "handle": "apparel", "type": "COLLECTION" },
+            { "title": "Ingredients", "handle": "ingredients", "type": "BLOG" }
+          ]
         }
-      ],
+      ]
+    },
+    {
+      "title": "Bath and Shower",
       "handle": "bath-and-shower",
-      "type": "COLLECTION"
+      "type": "COLLECTION",
+      "items": [
+        {
+          "title": "Bath",
+          "handle": "bath-and-shower",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Bath Bombs", "handle": "bathbomb", "type": "COLLECTION" },
+            { "title": "Bubble Bars", "handle": "bubble-bar", "type": "COLLECTION" },
+            { "title": "Luxury Bath Oils", "handle": "luxury-bath-oils", "type": "COLLECTION" }
+          ]
+        },
+        {
+          "title": "Shower",
+          "handle": "bath-and-shower",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Shower gels & Jellies", "handle": "shower-gels", "type": "COLLECTION" },
+            { "title": "Shower Moisturisers", "handle": "shower-moisturisers", "type": "COLLECTION" }
+          ]
+        },
+        { "title": "Soap", "handle": "soap", "type": "COLLECTION" },
+        { "title": "Body Scrubs", "handle": "body-scrubs", "type": "COLLECTION" }
+      ]
     },
     {
       "title": "Face",
+      "handle": "face",
+      "type": "COLLECTION",
       "items": [
         {
-          "title": "Cleansers & Scrubs",
-          "handle": "cleansers-scrubs",
-          "type": "COLLECTION"
+          "title": "Cleanse",
+          "handle": "face",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Cleansers & Scrubs", "handle": "cleansers-scrubs", "type": "COLLECTION" },
+            { "title": "Face Masks", "handle": "face-masks", "type": "COLLECTION" },
+            { "title": "Toners", "handle": "toners", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Face Masks",
-          "handle": "face-masks",
-          "type": "COLLECTION"
+          "title": "Moisturise",
+          "handle": "face",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Moisturisers", "handle": "moisturisers", "type": "COLLECTION" },
+            { "title": "Lip Scrubs & Balms", "handle": "lip-scrubs-balms-face", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Lip Scrubs & Balms",
-          "handle": "lip-scrubs-balms-face",
-          "type": "COLLECTION"
+          "title": "Fresh",
+          "handle": "fresh",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Fresh Cleansers", "handle": "fresh-cleansers-2", "type": "COLLECTION" },
+            { "title": "Fresh Masks", "handle": "fresh-masks-2", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Make Up",
-          "handle": "make-up-face",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Moisturisers",
-          "handle": "moisturisers",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Oral Care",
-          "handle": "oral-care",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Shaving",
-          "handle": "shaving",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Toners",
-          "handle": "toners",
-          "type": "COLLECTION"
+          "title": "More",
+          "handle": "face",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Make Up", "handle": "make-up-face", "type": "COLLECTION" },
+            { "title": "Shaving", "handle": "shaving", "type": "COLLECTION" },
+            { "title": "Oral Care", "handle": "oral-care", "type": "COLLECTION" }
+          ]
         }
-      ],
-      "handle": "face",
-      "type": "COLLECTION"
+      ]
     },
     {
       "title": "Body",
+      "handle": "body",
+      "type": "COLLECTION",
       "items": [
         {
-          "title": "Body Lotions & Body Butter",
-          "handle": "body-lotions",
-          "type": "COLLECTION"
+          "title": "Moisturise",
+          "handle": "body",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Body Lotions & Body Butter", "handle": "body-lotions", "type": "COLLECTION" },
+            { "title": "Massage Bars", "handle": "massage-bars", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Deodorants & Dusting Powders",
-          "handle": "deodorants-powders",
-          "type": "COLLECTION"
+          "title": "Hands & Feet",
+          "handle": "body",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Hand Care", "handle": "hand-care-body", "type": "COLLECTION" },
+            { "title": "Foot Care", "handle": "foot-care", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Foot Care",
-          "handle": "foot-care",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Hand Care",
-          "handle": "hand-care-body",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Massage Bars",
-          "handle": "massage-bars",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Sun Care",
-          "handle": "sun-care",
-          "type": "COLLECTION"
+          "title": "Everyday",
+          "handle": "body",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Deodorants & Dusting Powders", "handle": "deodorants-powders", "type": "COLLECTION" },
+            { "title": "Sun Care", "handle": "sun-care", "type": "COLLECTION" }
+          ]
         }
-      ],
-      "handle": "body",
-      "type": "COLLECTION"
+      ]
     },
     {
       "title": "Hair",
+      "handle": "hair",
+      "type": "COLLECTION",
       "items": [
         {
-          "title": "Afro Hair Care",
-          "handle": "afro-hair-care",
-          "type": "COLLECTION"
+          "title": "Wash & Condition",
+          "handle": "hair",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Shampoo", "handle": "shampoo", "type": "COLLECTION" },
+            { "title": "Conditioners", "handle": "conditioners", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Conditioners",
-          "handle": "conditioners",
-          "type": "COLLECTION"
+          "title": "Treat",
+          "handle": "hair",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Hair Treatments", "handle": "hair-treatments", "type": "COLLECTION" },
+            { "title": "Henna", "handle": "henna", "type": "COLLECTION" },
+            { "title": "Afro Hair Care", "handle": "afro-hair-care", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Hair Treatments",
-          "handle": "hair-treatments",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Henna",
-          "handle": "henna",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Shampoo",
-          "handle": "shampoo",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Hair Styling",
-          "handle": "styling",
-          "type": "COLLECTION"
+          "title": "Style",
+          "handle": "hair",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Hair Styling", "handle": "styling", "type": "COLLECTION" }
+          ]
         }
-      ],
-      "handle": "hair",
-      "type": "COLLECTION"
+      ]
     },
     {
       "title": "Fragrances",
+      "handle": "fragrances",
+      "type": "COLLECTION",
       "items": [
-        {
-          "title": "Body Sprays",
-          "handle": "body-sprays",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Candles",
-          "handle": "candles",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Glitter Mist",
-          "handle": "glitter-mist",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Home Fragrance",
-          "handle": "home-fragrance",
-          "type": "COLLECTION"
-        },
         {
           "title": "Perfumes",
           "handle": "perfumes",
-          "type": "COLLECTION"
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Solid Perfume", "handle": "solid-perfume", "type": "COLLECTION" },
+            { "title": "Body Sprays", "handle": "body-sprays", "type": "COLLECTION" },
+            { "title": "Glitter Mist", "handle": "glitter-mist", "type": "COLLECTION" }
+          ]
         },
         {
-          "title": "Solid Perfume",
-          "handle": "solid-perfume",
-          "type": "COLLECTION"
+          "title": "For the Home",
+          "handle": "home-fragrance",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Home Fragrance", "handle": "home-fragrance", "type": "COLLECTION" },
+            { "title": "Candles", "handle": "candles", "type": "COLLECTION" }
+          ]
         }
-      ],
-      "handle": "fragrances",
-      "type": "COLLECTION"
+      ]
     },
     {
       "title": "Gifts",
-      "items": [
-        {
-          "title": "Gifts between 200 - 500 QAR",
-          "handle": "gifts-between-200-500-qar",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Gifts over 500 QAR",
-          "handle": "gifts-over-500-qar",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Gifts under 200 QAR",
-          "handle": "gifts-under-200-qar",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "Knot Wraps",
-          "handle": "knot-wraps",
-          "type": "COLLECTION"
-        }
-      ],
       "handle": "gifts",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Fresh",
+      "type": "COLLECTION",
       "items": [
         {
-          "title": "Fresh Cleansers",
-          "handle": "fresh-cleansers-2",
-          "type": "COLLECTION"
+          "title": "By price",
+          "handle": "gifts",
+          "type": "COLLECTION",
+          "items": [
+            { "title": "Gifts under 200 QAR", "handle": "gifts-under-200-qar", "type": "COLLECTION" },
+            { "title": "Gifts between 200 - 500 QAR", "handle": "gifts-between-200-500-qar", "type": "COLLECTION" },
+            { "title": "Gifts over 500 QAR", "handle": "gifts-over-500-qar", "type": "COLLECTION" }
+          ]
         },
-        {
-          "title": "Fresh Masks",
-          "handle": "fresh-masks-2",
-          "type": "COLLECTION"
-        }
-      ],
-      "handle": "fresh",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Collaborations",
-      "items": [
-        {
-          "title": "Scooby-Doo! X LUSH",
-          "handle": "scooby-doo-x-lush",
-          "type": "COLLECTION"
-        },
-        {
-          "title": "The Super Mario Galaxy Movie × Lush",
-          "handle": "the-super-mario-galaxy-movie-x-lush",
-          "type": "COLLECTION"
-        }
-      ],
-      "handle": "collaborations",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "New Products",
-      "items": [
-        {
-          "title": "Lunar New Year",
-          "handle": "lunar-new-year",
-          "type": "COLLECTION"
-        }
-      ],
-      "handle": "new-products",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Sleep Better",
-      "items": [
-        {
-          "title": "Lavender Range/Sleepy",
-          "handle": "lavender-range-sleepy-2",
-          "type": "COLLECTION"
-        }
-      ],
-      "handle": "sleep-better",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Muscle Recovery",
-      "items": [
-        {
-          "title": "Magnesium Range",
-          "handle": "magnesium-range",
-          "type": "COLLECTION"
-        }
-      ],
-      "handle": "muscle-recovery",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Lifestyle",
-      "items": [
-        {
-          "title": "Apparel",
-          "handle": "apparel",
-          "type": "COLLECTION"
-        }
-      ],
-      "handle": "lifestyle",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Best Sellers",
-      "handle": "best-sellers",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "5 Star Reviews",
-      "handle": "5-star-reviews",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Trending Now",
-      "handle": "trending-now",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Lush Party",
-      "handle": "lush-party",
-      "type": "COLLECTION"
-    },
-    {
-      "title": "Sun Care",
-      "handle": "sun-care",
-      "type": "COLLECTION"
+        { "title": "Knot Wraps", "handle": "knot-wraps", "type": "COLLECTION" }
+      ]
     }
   ]
 }

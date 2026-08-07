@@ -353,9 +353,20 @@
   },
   "products": {
     "facets": {
-      "apply": "应用",
+      "apply": "应用",
       "availability_in_stock": "In stock",
       "availability_out_of_stock": "Out of stock",
+      "sort_options": {
+        "manual": "Featured",
+        "most-relevant": "Most relevant",
+        "best-selling": "Best selling",
+        "title-ascending": "Alphabetically, A-Z",
+        "title-descending": "Alphabetically, Z-A",
+        "price-ascending": "Price, low to high",
+        "price-descending": "Price, high to low",
+        "created-ascending": "Date, old to new",
+        "created-descending": "Date, new to old"
+      },
       "clear": "清除",
       "clear_all": "全部清除",
       "clear_filter": "清除过滤器",

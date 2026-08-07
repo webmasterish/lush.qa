@@ -138,7 +138,8 @@
     }
 
     #shopify-section-{{ section.id }} .lush-ingredient-card__image {
-      object-fit: cover;
+      object-fit: {{ section.settings.image_fit }};
+      object-position: top center;
     }
 
     #shopify-section-{{ section.id }} .lush-ingredient-card__image-placeholder {
@@ -500,6 +501,17 @@
     {
       "type": "header",
       "content": "Card image"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "info": "Contain shows the whole photograph; cover fills the card and crops from the bottom. Lush's ingredient photographs are not a single aspect ratio, so contain is the default.",
+      "options": [
+        { "value": "contain", "label": "Contain (show the whole image)" },
+        { "value": "cover", "label": "Cover (fill and crop)" }
+      ],
+      "default": "contain"
     },
     {
       "type": "range",

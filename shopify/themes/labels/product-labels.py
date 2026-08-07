@@ -46,6 +46,32 @@ DB = REPO / 'shopify/migration_from_woocommerce/migration-tool/var/migration-too
 NAMESPACE = 'theme'
 DEFAULT_COLOR = '#ffb503'          # the Lush highlight yellow already used in the theme
 
+# One color per label, from the palette already in the theme rather than from
+# anywhere new: #ffb503 is the highlight/reviews color, #1a1b18 is the heading
+# black, #138645 is the green the ingredient pages use for natural ingredients.
+# The theme picks black or white badge text by contrast, so both read cleanly.
+#
+# Deliberately unused here: #c0270b, which is the sale price and sale badge
+# color -- a label in that red would read as a discount.
+#
+# `theme.label_color` is a single value per product, so a product carrying two
+# labels gets the color of whichever comes first in COLOR_PRIORITY.
+COLORS = {
+    'Bestseller': '#1a1b18',
+    'New': '#ffb503',
+    'Limited Edition': '#138645',
+    'Vegan': '#138645',
+}
+COLOR_PRIORITY = ['Limited Edition', 'Bestseller', 'New', 'Vegan']
+
+
+def color_for(labels):
+    """The badge color for a product, given the labels it carries."""
+    for name in COLOR_PRIORITY:
+        if name in labels:
+            return COLORS[name]
+    return DEFAULT_COLOR
+
 # The controlled vocabulary and its Arabic. Kept here rather than in the store
 # so the wording is versioned and reviewable.
 AR = {
@@ -206,7 +232,8 @@ def register_arabic(product, labels):
 
 
 def cmd_set(args):
-    apply_labels(product_by_handle(args.handle), args.labels, args.color, args.dry_run)
+    color = args.color if args.color != DEFAULT_COLOR else color_for(args.labels)
+    apply_labels(product_by_handle(args.handle), args.labels, color, args.dry_run)
 
 
 def cmd_show(args):
@@ -281,7 +308,8 @@ def cmd_backfill(args):
             print(f'    ... and {len(targets) - 10} more')
         return
     for sid, product in targets.items():
-        apply_labels(product, mapping[sid], args.color, False)
+        color = args.color if args.color != DEFAULT_COLOR else color_for(mapping[sid])
+        apply_labels(product, mapping[sid], color, False)
         time.sleep(0.25)
 
 
@@ -289,7 +317,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('--dry-run', action='store_true')
-    p.add_argument('--color', default=DEFAULT_COLOR)
+    p.add_argument('--color', default=DEFAULT_COLOR,
+                   help='override the per-label color in COLORS')
     p.add_argument('--include-drafts', action='store_true',
                    help='label draft products too (default: ACTIVE only)')
     sub = p.add_subparsers(dest='command', required=True)
