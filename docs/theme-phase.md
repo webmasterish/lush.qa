@@ -32,9 +32,17 @@ Two consequences:
 Method note that softens the missing 8.4 vanilla: Shopify's theme-update flow **replaces theme code with the new version's stock code** while migrating settings across. KSA's live 8.4.0 was produced by that flow, so its code is largely stock 8.4 and its customization is concentrated in settings and templates — consistent with the storefront evidence (stock asset filenames, no `custom.css`, no app extensions). Any *file that exists on KSA-live but not in a vanilla copy* is an unambiguous customization regardless of version, which gives a reliable inventory without a matching-version baseline.
 - KSA carries a custom `SAR` riyal-symbol font. That is KSA-only and must not be carried into Qatar.
 
-## Resume here (state at 2026-08-06)
+## Resume here (state at 2026-08-07)
 
 **T4 is under way. Two features are code-complete and verified live in both locales: ingredients and product tile labels.**
+
+Added 2026-08-07:
+
+- **Bassam's editor session is pulled and committed** (`1e99ff6`): mega menus disabled on all six families, per-locale logo files, hero slides bottom-left, date/author/comments off on blog and article, a titled blog section on the home page, the contact page reworked, and two new templates — `blog.ingredients-blog` and `page.branches`.
+- **Ingredient imagery fits rather than crops.** `lush-ingredient-article` has `image_fit` (contain by default) and `vertical_alignment` (top by default); article cards on the ingredients blog get the same from **Theme settings > Lush (DotAim)**, applied in `dotaim-custom-styles.liquid` scoped to `blog.handle == 'ingredients'`. Stock `card-article.liquid` stays unforked. Verified live, EN + AR.
+- **The product template now reads `custom.category_label` and `custom.subtitle`** through `text` blocks, which do evaluate Liquid (trap 2, corrected below). It renders nothing today because **no product carries either metafield** — 0 of 309 active, checked. That is a data gap, not a code gap.
+- **The collection filter sidebar was never audited.** `audit-translations.py` now covers `FILTER`, `PRODUCT_OPTION` and `PRODUCT_OPTION_VALUE`. Both filter labels are translated; the option names that matter are four strings (`Size` ×105, `Gram` ×23, `Color`, `Guests`) since `Title` / `Default Title` never display. **"In stock" / "Out of stock" render English on `/ar` and no Shopify resource translates them** — the only routes are a theme-side override or living with it.
+- **Product-level Arabic is the big remaining gap:** `product_type` missing on all 537 products, `title` on 108, `body_html` on 111. Collections: 32 strings. Nine new strings are in `i18n/ar.json` and `apply-translations.py` has not been run since.
 
 Live state to know before touching anything:
 
@@ -47,13 +55,14 @@ Live state to know before touching anything:
 ### Traps found this session — do not relearn these
 
 1. **`theme check` clean does not mean Shopify accepts the file.** `"default": ""` on a `text` setting passes locally and is rejected server-side; `push-code` still exits reporting success with the error in a separate block. **Grep pushes for `error`, not just `success`.**
-2. **Liquid in section settings is not evaluated** unless the setting is declared `"type": "liquid"`. `text`, `inline_richtext`, `richtext` and `image_picker` all render it literally. This is what makes KSA's ingredient article template non-functional (backlog #13) and what would have broken the How to use / How To Store rows.
+2. **Liquid in section settings is evaluated in `text` and `textarea` settings, and nowhere else.** `richtext`, `inline_richtext` and `image_picker` render it literally or drop it. Shopify documents only `"type": "liquid"` as Liquid-enabled, so `text` working is undocumented behaviour to lean on knowingly, not to assume: verified on the live store 2026-08-07, where a `text` block set to `{{ product.vendor }}` resolves to the vendor. This is the exact split that makes KSA's ingredient article template non-functional (backlog #13) — it puts Liquid into `inline_richtext`, `richtext` and `image_picker` — and it is why the header logo silently rendered nothing while it held `{{ shop.brand.logo }}` in an `image_picker`.
 3. **Metafield definitions created via the API default to `storefront: NONE`** — the theme then cannot read them and the markup renders empty with no error anywhere. Admin-created ones default to `PUBLIC_READ`. Set `access` explicitly.
 4. **Metafield translations are their own resource**, addressed by the metafield's GID with a single key `value`, not by the owning product. For list types the value is the whole JSON array.
 5. **WooCommerce slug ≠ Shopify handle.** 140 of 538 products share a name, so Shopify invented handles (`banoffee-pie-2`) and the tidy one is often a draft. Match on `dotaim_migration.source_id`.
 
 ### Next, in order
 
+0. **Register the Arabic that is already written** — `apply-translations.py --apply`. Most of what the audit reports missing is in the dictionary already and simply predates Bassam's editor session.
 1. **Product label backfill** — built and dry-run clean (186/186 matched, 54 live). Needs Bassam's go-ahead: `shopify/themes/labels/product-labels.py backfill`. Vegan has no source data and needs Dee.
 2. **Remaining T4**: cart drawer upsells, back-in-stock, smart search and filtering. Also unrendered: `custom.subtitle`, `custom.category_label`.
 3. **T5 content** — the biggest unstarted chunk: 16 CMS pages, the 301 redirect map, the empty legal pages.
@@ -254,7 +263,7 @@ Then, regardless of route:
 ### T2 — Foundation parity — **complete 2026-08-04**
 - [x] Theme settings: colors, typography, buttons, spacing, layout — header/footer/announcement colours ported from KSA; Bassam set accent, button labels, page width 1200 and navigation size in the editor 2026-08-04
 - [x] Fonts — `LushHandwritten_Bd` in theme assets, applied Lebanon-style to display type only. **No separate Arabic face was needed**: KSA has none either, and Arabic renders in the body font. `SAR` deliberately skipped
-- [x] Logo, favicon, brand assets — in Settings > Brand (Bassam). The header uses `{{ shop.brand.logo }}`, so seasonal swaps need no code change. Transparent white logo uploaded but the transparent header is still switched off
+- [x] Logo, favicon, brand assets — in Settings > Brand (Bassam). **Corrected 2026-08-07:** the header's `logo` is an `image_picker`, which does not evaluate Liquid, so the `{{ shop.brand.logo }}` it held rendered nothing. It now holds the file itself, with the Arabic logo registered as a translation of that setting, which is also how Arabic gets its own wordmark. Seasonal swaps are therefore a header setting change plus its Arabic counterpart, not a Files upload. Transparent white logo uploaded but the transparent header is still switched off
 - [x] RTL + `locales/ar.json` — RTL via `localization.text_direction_trigger`, no theme fork; 499/499 locale keys. **`ar.schema.json` deliberately skipped** — it translates theme-editor labels for Arabic-speaking admins, not the storefront, and KSA has none
 - [x] Header, footer, announcement bar section groups — footer columns done 2026-08-04 (Customer Service, We Are Lush); announcement bar deliberately off
 - [x] Navigation menus — applied 2026-08-04 from `shopify/themes/nav/main-menu.json`; mega menus enabled for the six large families
