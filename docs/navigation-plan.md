@@ -1,6 +1,8 @@
 # Navigation plan — proposed Qatar menus
 
-Menus are **surface C** (Content > Menus): store data with no file representation, so this doc is the only record until they exist. The header's mega menu and all four footer columns read from them, which makes this the gating item for finishing the header and footer.
+**Applied 2026-08-07 and live.** The main menu was restructured from 17 top-level items to 7 families, three levels deep, via `shopify/themes/nav/main-menu.json` (`apply-nav.py --apply`); footer menus unchanged. This doc is now the design rationale and the record of *why* the shape is what it is, not an outstanding plan.
+
+Menus are **surface C** (Content > Menus): store data with no file representation, so this doc plus that JSON are the only record of them.
 
 ## Source: the existing WooCommerce site, not KSA
 

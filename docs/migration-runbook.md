@@ -7,10 +7,10 @@ Living checklist for the Lush Qatar WooCommerce → Shopify migration. Update st
 - [x] IP geo-lock on lush.qa (was Qatar/UAE/UK) — removed
 - [x] WooCommerce admin access — provided
 - [x] WooCommerce REST API (read-only) — key "DotAim read access for migration" created & verified 2026-07-12 (read-only; we do not write to the WP site)
-- [ ] Server SSH (preferred) / FTP access — pending from Sibin (needed for steps that can't run from wp-admin)
-- [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover
+- [x] Server SSH (preferred) / FTP access — **dropped, never needed.** The migration ran entirely off the WooCommerce admin and REST API
+- [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover. Asked 2026-08-08 who currently holds the DNS
 - [x] Shopify store — CLI authenticated 2026-07-12 (see Environment & tooling below). **Session invalidated by the 2026-07-28 ownership transfer** (401); the migration app's offline token is unaffected and still works.
-- [ ] Theme Access password for `lush-qatar.myshopify.com` — needed to start the theme phase
+- [x] Theme Access password for `lush-qatar.myshopify.com` — obtained; the theme phase ran on it and completed 2026-08-08
 - [x] Theme Access password for the KSA store (pull-only reference) — generated 2026-08-03
 
 Store references:

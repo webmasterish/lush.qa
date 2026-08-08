@@ -1,5 +1,7 @@
 # Resume prompt — M8 wrap-up (final verify + client report)
 
+> **Spent. Do not execute.** M8 was completed in July: the full migration ran, the data was reconciled on 2026-07-20, and the client report it was meant to produce was sent that day (`client-report-dee-draft.md`). Kept only as a record of how the milestone was framed. The live resume prompt is `resume-prompt-launch.md`.
+
 Paste everything below the line into a new Claude Code session (started from `repo/`) to finish milestone M8. It is written to be executed by a less capable model without asking questions.
 
 ---

@@ -1,5 +1,7 @@
 # Lush Qatar — Shopify demo plan
 
+> **Delivered 2026-07-14.** Kept as the record of what was shown and as the base for the launch training session, which extends it with the Qatar-specific features (labels, ingredients, the two languages) rather than starting over. Agenda for that session is in `handover-and-launch-plan.md`.
+
 Working document for the demo/training walkthrough. Two purposes:
 1. **Internal reference** for Bassam to run the session smoothly.
 2. A **client-facing reference document** to share with attendees at the start of the meeting, conveying a professional, structured process. Time is reserved at the end for questions.

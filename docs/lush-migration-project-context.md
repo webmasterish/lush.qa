@@ -103,13 +103,15 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 - Platform: **WooCommerce** (WordPress) at `lush.qa`
 - Previously geo-restricted (Cloudflare) to **Qatar / UAE / UK** — blocked external access and analysis (e.g., PageSpeed) from Lebanon. **Now lifted.**
 - WooCommerce admin access: **granted and working**
-- Server SSH (preferred) / FTP access: **still pending** from Sibin — needed for migration steps that can't run from wp-admin
+- Server SSH (preferred) / FTP access: **never provided, and never needed.** The whole migration ran off the WooCommerce admin and REST API. Dropped as a request 2026-07-20; do not chase it
+- **`lush.qa` is down** with a database connection error (observed from 2026-08-04). Images were still reachable and were recovered; no further data sync from the source is possible, so confirm the last sync date before cutover
 
 ### Target
 - Platform: **Shopify**
 - Dev store admin: `https://admin.shopify.com/store/lush-qatar`
 - Dev store URL: `https://lush-qatar.myshopify.com/`
-- Theme: **Be Yours by RoarTheme** (not yet installed/purchased; client buys the $350 license)
+- Theme: **Be Yours by RoarTheme**, licence purchased by the client 2026-07-29. Live theme is `Be Yours - Lush Qatar (by DotAim)` #152710447243, Be Yours 9.2.0
+- Store ownership transferred to Al Mana 2026-07-28; Shopify Grow plan, client card on file
 
 ### Reference sites
 - **DotAim-built (live):** Lush KSA `https://lush.sa.com/` · Lush Lebanon `https://lushlebanon.com/`
@@ -118,8 +120,8 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 ### Access status
 - [x] IP geo-lock on lush.qa (was Qatar/UAE/UK) — **REMOVED**
 - [x] WooCommerce admin access — **PROVIDED**
-- [ ] Server SSH/FTP access — **PENDING** (requested from Sibin)
-- [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover stage
+- [x] Server SSH/FTP access — **DROPPED, never needed** (see above)
+- [ ] DNS management — coordinate with Nirmal / Al Mana IT at cutover. **Asked 2026-08-08** who holds lush.qa's DNS today; recommendation is a Cloudflare account owned by Al Mana IT with access delegated to DotAim
 
 ---
 

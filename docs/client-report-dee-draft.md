@@ -1,6 +1,6 @@
-# DRAFT: data migration report for Dee
+# Data migration report for Dee
 
-**Status: draft for Bassam's review. Not sent to the client.**
+**Status: SENT 2026-07-20** as "Lush.qa Migration to Shopify: Data migration complete (progress report)", to Dee with Mario, Sibin and Nirmal copied. Kept as the record of what went out. The follow-up thread is worth knowing about: finance asked how to pay, and conflated this report's Shopify plan and theme costs with DotAim's own invoice, which is why later invoice emails separate the two explicitly. Superseded by `client-report-store-build-draft.md`.
 Sources: `client-data-quality-notes.md` + `migration-tool report` (2026-07-20).
 Conventions applied: warm and professional, no em-dashes, no technical jargon.
 

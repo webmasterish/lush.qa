@@ -1,6 +1,8 @@
 # Arabic translation gaps — for the client
 
-Running record of Arabic content that is **missing at source** and cannot be filled by DotAim, kept so it can be raised with Dee's team in one go once theme work is finished (Bassam's instruction, 2026-08-04). Nothing here blocks the build.
+Running record of Arabic content that is **missing at source** and cannot be filled by DotAim. Nothing here blocks the build.
+
+**Raised with Dee 2026-08-08** in the store build report, as the two "items on your current data": the machine-translated Arabic product names (Toners as printer ink) and the three product photographs that no longer exist anywhere. The ask was a native review of the Arabic product copy before launch. Anything added below after that date has not been raised yet.
 
 Regenerate the numbers any time with:
 
