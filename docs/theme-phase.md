@@ -311,9 +311,4 @@ Per context doc §8: mega menu, smart search with suggestions, advanced filterin
 - [ ] Lighthouse pass — not run. (`theme check` is already clean: 200 files, no offenses, and is run before every commit)
 - [ ] Full AR/RTL sweep, mobile + desktop, both locales
 - [ ] Side-by-side parity review against KSA
-- [ ] Dee's review on the password-protected storefront, then launch (DNS cutover, per the runbook's Phase 6)
-
-## Open with Bassam
-
-- Check whether an archived copy of the KSA theme from the original migration exists locally. If the KSA library no longer holds an untouched 8.4, this is the remaining route to an exact customization diff.
-- Collaborator permissions for `shopify.partner@dotaim.com` may need widening for Admin API work; request scoped permissions rather than using the admin account.
+- [ ] Dee's review on the password-protected storefront — **link and password sent 2026-08-08**, awaiting her feedback — then launch (DNS cutover, per the runbook's Phase 6)
