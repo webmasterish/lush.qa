@@ -77,7 +77,7 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 | Stage | Trigger | Amount | Status |
 |---|---|---|---|
 | Stage 1 | Deposit to begin | $1,350 | **PAID** (Stripe fee $59.70) |
-| Stage 2 | On completion of data migration & store setup | $675 | Pending |
+| Stage 2 | On completion of data migration & store setup | $675 | **Trigger met 2026-08-08.** Invoice drafted (`docs/client-email-stage2-invoice-draft.md`), not yet issued |
 | Stage 3 | On launch | $675 | Pending |
 
 ### Third-party costs (billed directly to Lush Qatar via Shopify — NOT through DotAim)
@@ -92,6 +92,7 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 - **LUSHQA-0001** — Master/full reference invoice ($2,700, full 50/25/25 breakdown). Issued via **InvoiceNinja** (document only, not payable) for the client's finance/audit records.
 - **LUSHQA-0002** — Stripe deposit invoice ($1,350). **PAID.**
 - Stripe sequence continues: 0003 (Stage 2), 0004 (Stage 3), each referencing LUSHQA-0001.
+- **LUSHQA-0003** — Stripe Stage 2 invoice ($675). Trigger met 2026-08-08 when the store build report went out. Email drafted at `docs/client-email-stage2-invoice-draft.md`; the Stripe invoice itself still has to be issued and the card link pasted in.
 - Stripe and Payoneer are both under **DotAim LLC**. Payoneer payment links aren't available in DotAim's region; payment is collected via Stripe hosted card links (link emailed manually rather than sent from the Stripe dashboard).
 
 ---
@@ -199,11 +200,16 @@ Now live at `lushlebanon.com`, migrated by DotAim. Previously on WooCommerce via
 ---
 
 ## 12. Immediate next steps
-1. **Set up the Claude Code project** for the migration work.
-2. **Prepare for the first demo — scheduled 14 July, 9:30 Qatar time.** Load the dev store with representative real data and build a polished, highly professional walkthrough of the Shopify admin/dashboard and the agreed features (see §8). This is the first live presentation to the team.
-3. Obtain **server SSH/FTP access** from Sibin (last outstanding access item).
-4. Review the WooCommerce store; assess **data volumes against the agreed scope** (500 products / 5,000 customers / 5,000 orders) and flag if the data-migration cost needs revising.
-5. Export and document the current data structure; build the migration checklist (in-house migration, no third-party tools — see §7).
+
+*Superseded 2026-08-08. Phases 1 to 4 are complete: the demo ran on 14 July, the data migrated and reconciled on 20 July, and the store build finished on 8 August. Server SSH/FTP was never needed, the WooCommerce admin was enough. Data volumes came in under the agreed scope.*
+
+The project is now in the launch phase, and the operational plan lives in **`docs/handover-and-launch-plan.md`** rather than here. In short:
+
+1. **Store build report sent to Dee 2026-08-08**, cc Mario, IT and the two shared Lush Qatar mailboxes. It lists what the client must decide or supply before launch.
+2. **Stage 2 invoice** to issue (see §5).
+3. **Payment gateway is the critical path** and is entirely on the client's side. Nothing else blocks.
+4. **Bassam's visual QA pass** against KSA, desktop and mobile, both locales.
+5. Then training, DNS cutover, 72 hours of monitoring, Stage 3.
 
 ---
 

@@ -6,6 +6,8 @@ Internal. How the Qatar project gets from "built" to "launched and handed over",
 
 Build is done. What is left is other people's decisions, one QA pass, and the launch mechanics.
 
+**2026-08-08: the store build report went to Dee**, cc Mario, IT, Ann and the two shared Lush Qatar mailboxes. The clock on everything below starts from there. A short WhatsApp to Dee followed, pointing at the email and at the gateway, and deliberately not repeating that the current site is down: that fact is already in the email, in writing, in front of Mario and IT, and repeating it on a personal channel reads as pressure rather than information.
+
 | | Status |
 |---|---|
 | Phases 1 to 4 (discovery, setup, data, theme and features) | **Complete** |
@@ -31,8 +33,8 @@ Everything else runs alongside and none of it blocks. **The gateway is the only 
 | Shipping rates, free delivery threshold | Dee | Yes, checkout is incomplete without rates |
 | Tax treatment | Client finance | Yes |
 | DNS window and execution | Nirmal, Sibin | Yes, it is the launch |
-| Vegan product list | Dee | No, labels can be added after |
-| Lush HQ sign off on the ingredient library | Dee to HQ | No, feature works with what is wired |
+| Vegan product list | Dee, **but not yet asked** | No, labels can be added after |
+| Ingredient library content | Nobody, deliberately | No, feature works with what is wired |
 | Notification email Arabic | Client | No, but customers get English receipts until done |
 | Google Analytics property | Client | No |
 | Native Arabic review of product copy | Client | No |
@@ -74,16 +76,17 @@ Per the agreed 50/25/25 schedule in the context document.
 | Stage | Trigger | Amount | Status |
 |---|---|---|---|
 | Stage 1 | Deposit to begin | $1,350 | Paid |
-| **Stage 2** | **On completion of data migration and store setup** | **$675** | **Due now** |
+| **Stage 2** | **On completion of data migration and store setup** | **$675** | **Trigger met 2026-08-08. Email drafted, Stripe invoice not yet issued** |
 | Stage 3 | On launch | $675 | After cutover |
 
 **Stage 2 is defensibly due.** Its trigger is data migration and store setup, both of which are complete: the data landed and was reconciled on 20 July, and the store build finished this week. It is not tied to launch, and launch is now gated on the client's payment gateway rather than on us. Raising it alongside the report is the natural moment, and it also signals that the remaining wait is on their side without having to say so.
 
-Invoice via Stripe as sequence 0003, referencing LUSHQA-0001.
+Invoice via Stripe as sequence 0003, referencing LUSHQA-0001. Email drafted at `client-email-stage2-invoice-draft.md`; it goes as its own message rather than inside the build report, so the good news is not delivered attached to a bill. Issue the Stripe invoice and paste the card link before sending.
 
 ## Risks worth naming now
 
 - **The gateway timeline is not ours to control** and is the whole launch date. Say so in writing now, so a slip is understood as theirs rather than becoming ours by silence.
 - **The current site is down** with a database error. If it stays down, the client loses sales until cutover, which is an argument for moving quickly rather than a problem for us. It also means no further data sync is possible from it, so anything added to the old site since the last sync will not come across. Worth confirming the last sync date before cutover.
 - **English receipts to Arabic customers** until the notification templates are translated. Named in the report so it is their informed choice.
+- **The ingredient library stays at 3 ingredients** and the report does not say where the other 450 could come from. Populating it is a separate paid piece of work to be offered after launch, so the store build report demonstrates the feature and stops there. Do not raise HQ sign off until there is a scope and a price attached.
 - **Store password removal is a one way door.** It happens at cutover, not before.
