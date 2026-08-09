@@ -20,7 +20,9 @@ Dee stays on the To line because she is the contact and the account holder. Jeff
 
 **Subject:** Lush.qa Migration to Shopify: Stage 2 invoice (LUSHQA-0003)
 
-**Send as its own email, not as a reply to the build thread.** Finance needs a subject line they can file and find; "Re: Store build and setup complete" is neither. It also keeps the invoice off a thread carrying six recipients and two shared mailboxes, which is a wider audience than a bill needs. **Send it after the courtesy reply to Dee's email**, not before, so the last thing she hears from us is not a request for money.
+**Send as its own email, not as a reply to the build thread.** Finance needs a subject line they can file and find; "Re: Store build and setup complete" is neither. It also keeps the invoice off a thread carrying six recipients and two shared mailboxes, which is a wider audience than a bill needs.
+
+Dee's 2026-08-09 reply ("the team and I will go through it and give you feedback, and will also discuss with Finance regarding our payment gateway") **needs no answer** and was not given one: it asks nothing, she is already organising the review herself, and the gateway is deliberately left alone. Note that her email mentions no vacation and names no one — that came from the WhatsApp thread, and the two channels must not be crossed in what we write.
 
 ---
 
