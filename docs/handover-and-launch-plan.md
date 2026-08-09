@@ -18,11 +18,15 @@ Nothing in the remaining work is DotAim build effort of any size. The critical p
 
 ## Dee is away until the end of August
 
-Told to Bassam on WhatsApp 2026-08-09: she is on vacation in the UK and back at the end of the month. She has asked **Nirmal, Ann and Kyaw** to review the store and report to her, and said she will look into the payment gateway fee herself and come back.
+Told to Bassam on WhatsApp 2026-08-09: she is on vacation in the UK and back at the end of the month, though she is plainly still reading email. She has asked **Nirmal, Ann and Kyaw** to review the store and report back to her.
 
-That last part is the problem. **The gateway is the launch date, and she has just attached it to her own return**, which costs roughly three weeks with `lush.qa` down throughout. The move is to get the application started by someone else while she is away, asked once, warmly, without handing a holidaying client a task list. If nobody is nominated within a few days, Mario is on the email thread and raising it there is fair — but going over her head early would cost more than the three weeks is worth.
+**The gateway is going to Finance, not waiting for her return.** Her WhatsApp said she would look at "the payment gateway fee" herself; her email an hour later said she "will also discuss with Finance regarding our payment gateway". The email is the one to believe. Read "fee" as the *cost* of a gateway — setup and per-transaction charges — rather than a slip: she says herself she is not technical and routes anything financial to Finance. If she is waiting to understand the cost before starting, that is a hidden blocker, and the useful move is to offer Finance help evaluating providers rather than to repeat the ask. **It has now been made twice, in the email and on WhatsApp. Do not make it a third time.**
 
-**Kyaw is new to us.** Not in any prior thread, role unknown. Worth establishing before the review feedback arrives, so it can be weighted properly.
+**Escalation, if it stalls.** Mario phoned Bassam unprompted on Thursday 2026-08-06, friendly, just to check nothing was outstanding on access (he was still thinking of the server access, long since dropped). Bassam said nothing was needed, that the build was ahead of schedule, and mentioned in passing that the old site is down; **Mario did not comment on that**. The call is worth remembering for two reasons: there is a warm direct line to the approver if the gateway stalls, and Mario already knows about the outage without treating it as a crisis, so raising it again adds nothing.
+
+**Kyaw** is probably the data-entry and customer-support person; he attended the earlier meetings. His address may be `wecarelush@almana.com`, which is on the thread. Unconfirmed, so weight his feedback accordingly and confirm when he surfaces.
+
+**Note on Dee's reply-all:** her 2026-08-09 email dropped Nirmal and Ann from the copy list while keeping Mario, Sibin and the two shared mailboxes. Probably Outlook rather than intent, but it means the two people she named as reviewers are not on the live thread. Re-add them on any reply that concerns the review.
 
 ## The critical path
 
