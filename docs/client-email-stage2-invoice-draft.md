@@ -14,9 +14,13 @@ Jeffrey is the senior accountant and the only finance contact Bassam has dealt w
 
 Dee stays on the To line because she is the contact and the account holder. Jeffrey is copied because she is on vacation until the end of August and the invoice should not wait three weeks for her.
 
-**Stripe delivery.** The Stripe invoice goes to Dee as the customer contact, which is what marks it sent rather than leaving it draft. To have Stripe email Jeffrey too, edit the **customer** record rather than the invoice: Dashboard > the customer's detail page > edit details > Billing information > unselect **"Same as account email"**. That exposes a comma-separated "To" line and an **"Add more recipients"** link for CC addresses, which apply to invoice and subscription emails. Set it once on the customer and it carries to Stage 3.
+**Stripe delivery: Dee only.** The Stripe invoice goes to Dee as the customer contact, which is what finalises it as sent rather than leaving it a draft. **Jeffrey is deliberately not added to the Stripe customer record** (Bassam's call): the PDF is attached to our own email anyway, the Stripe CC is a persistent setting that would silently pull him into every future Stripe mail including Stage 3, and the client never asked for him to be on it. Copying him on our email is a judgement we can make; wiring him into their billing records is not.
+
+*(For reference if it is ever wanted: Stripe's additional recipients live on the customer record, not the invoice. Dashboard > customer detail page > edit details > Billing information > unselect "Same as account email", which exposes a comma-separated "To" line and an "Add more recipients" link for CCs.)*
 
 **Subject:** Lush.qa Migration to Shopify: Stage 2 invoice (LUSHQA-0003)
+
+**Send as its own email, not as a reply to the build thread.** Finance needs a subject line they can file and find; "Re: Store build and setup complete" is neither. It also keeps the invoice off a thread carrying six recipients and two shared mailboxes, which is a wider audience than a bill needs. **Send it after the courtesy reply to Dee's email**, not before, so the last thing she hears from us is not a request for money.
 
 ---
 

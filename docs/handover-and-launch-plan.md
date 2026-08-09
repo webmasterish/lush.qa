@@ -26,7 +26,9 @@ Told to Bassam on WhatsApp 2026-08-09: she is on vacation in the UK and back at 
 
 **Kyaw** is probably the data-entry and customer-support person; he attended the earlier meetings. His address may be `wecarelush@almana.com`, which is on the thread. Unconfirmed, so weight his feedback accordingly and confirm when he surfaces.
 
-**Note on Dee's reply-all:** her 2026-08-09 email dropped Nirmal and Ann from the copy list while keeping Mario, Sibin and the two shared mailboxes. Probably Outlook rather than intent, but it means the two people she named as reviewers are not on the live thread. Re-add them on any reply that concerns the review.
+**Reply to threads as the client leaves them.** Dee's 2026-08-09 email dropped Nirmal and Ann from the copy list while keeping Mario, Sibin and the two shared mailboxes. **Do not add them back** (Bassam's call, and the right one): we cannot know whether that was her mail client or her intent, and re-adding people to a list the client curated presumes on how they run their own team. It is also consistent with what she said she would do, which is collect the team's feedback herself and come back. Feedback flows through Dee, not through the thread.
+
+**The gateway offer is held, not dropped.** Offering to help Finance evaluate providers is genuinely useful, but making it in the same breath as her saying she will discuss it with Finance reads as impatience, and she is on holiday. The offer does not expire. Make it when Finance actually surfaces, where it lands as responsiveness rather than eagerness.
 
 ## The critical path
 
