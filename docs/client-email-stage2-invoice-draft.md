@@ -8,15 +8,17 @@
 3. Replace `[PASTE STRIPE CARD LINK HERE]` with the hosted card link.
 
 **To:** Dee (`moradeke_ogunbiyi@almana.com`)
-**Cc:** Mario (`mario_faluh@almana.com`)
+**Cc:** Mario (`mario_faluh@almana.com`), Kumarraju (`kumarraju_beera@almana.com`), Kumaran (`kumaran_ponnaiah@almana.com`)
 
-Matches the Stage 1 precedent (2026-07-02), which went to Dee with Mario copied. Dee looped in finance herself last time (`kumarraju_beera@almana.com`, `kumaran_ponnaiah@almana.com`); adding them here would save a round trip, but it presumes on how she routes payments internally, so it is left to you.
+Stage 1 went to Dee with only Mario copied, and finance was left to her. **That changed on 2026-08-09**, when Dee said she is on vacation in the UK until the end of the month. Copying the two finance colleagues she introduced herself on 26 July is now the helpful move rather than a presumptuous one: without it the invoice sits unread for three weeks. She stays on the To line because it is her project.
 
 **Subject:** Lush.qa Migration to Shopify: Stage 2 invoice (LUSHQA-0003)
 
 ---
 
 Dear Dee,
+
+Enjoy the break, and apologies for one piece of admin landing while you are away. I am copying your finance colleagues directly so that nothing waits on your return.
 
 Following my email confirming that the store build and setup are complete, please find attached the Stage 2 invoice, LUSHQA-0003, for $675.
 

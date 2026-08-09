@@ -16,6 +16,14 @@ Build is done. What is left is other people's decisions, one QA pass, and the la
 
 Nothing in the remaining work is DotAim build effort of any size. The critical path runs through the client.
 
+## Dee is away until the end of August
+
+Told to Bassam on WhatsApp 2026-08-09: she is on vacation in the UK and back at the end of the month. She has asked **Nirmal, Ann and Kyaw** to review the store and report to her, and said she will look into the payment gateway fee herself and come back.
+
+That last part is the problem. **The gateway is the launch date, and she has just attached it to her own return**, which costs roughly three weeks with `lush.qa` down throughout. The move is to get the application started by someone else while she is away, asked once, warmly, without handing a holidaying client a task list. If nobody is nominated within a few days, Mario is on the email thread and raising it there is fair — but going over her head early would cost more than the three weeks is worth.
+
+**Kyaw is new to us.** Not in any prior thread, role unknown. Worth establishing before the review feedback arrives, so it can be weighted properly.
+
 ## The critical path
 
 ```
