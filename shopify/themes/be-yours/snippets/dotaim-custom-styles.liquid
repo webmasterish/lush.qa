@@ -121,6 +121,19 @@
     transform: translateX(10px);
   }
 
+  /* --- Category label on the product card ------------------------------- */
+
+  /* Rendered under the title by `card-product.liquid` when a section passes
+     `show_category_label`. It borrows `caption-with-letter-spacing` for its
+     type, so this only has to place it: tight under the title, clear of the
+     price, and muted so it reads as a category rather than as a second
+     heading. Follows the card's own text alignment on its own. */
+  .card-information__category {
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
   /* --- Ingredients ------------------------------------------------------ */
 
   {%- comment -%}

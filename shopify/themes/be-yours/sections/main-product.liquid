@@ -961,6 +961,7 @@
                           show_secondary_image: false,
                           show_quick_buy: true,
                           show_vendor: block.settings.show_vendor,
+                          show_category_label: block.settings.show_category_label,
                           show_rating: false,
                           enable_quick_view: false,
                           enable_color_swatches: false,
@@ -2824,6 +2825,13 @@
           "id": "show_vendor",
           "default": false,
           "label": "t:sections.all.product_card.show_vendor.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_category_label",
+          "default": false,
+          "label": "Show category label",
+          "info": "Shows the product's Category label under its title. Set per product under Custom data."
         },
         {
           "type": "checkbox",

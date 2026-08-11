@@ -49,6 +49,7 @@
                       show_secondary_image: section.settings.show_secondary_image,
                       show_quick_buy: section.settings.show_quick_buy,
                       show_vendor: section.settings.show_vendor,
+                      show_category_label: section.settings.show_category_label,
                       show_rating: section.settings.show_rating,
                       enable_quick_view: section.settings.enable_quick_view,
                       enable_color_swatches: section.settings.enable_color_swatches,
@@ -300,6 +301,13 @@
       "id": "show_vendor",
       "default": false,
       "label": "t:sections.all.product_card.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category_label",
+      "default": false,
+      "label": "Show category label",
+      "info": "Shows the product's Category label under its title. Set per product under Custom data."
     },
     {
       "type": "checkbox",

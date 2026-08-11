@@ -8,6 +8,7 @@
   - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
   - show_quick_buy: {Boolean} Show the quick add to cart button. Default: false (optional)
   - show_vendor: {Boolean} Show the product vendor. Default: false
+  - show_category_label: {Boolean} Show custom.category_label under the title. Default: false (DotAim)
   - show_rating: {Boolean} Show the product rating. Default: false
   - enable_quick_view: {Boolean} Enable the quick view feature. Default: true
   - enable_color_swatches: {Boolean} Enable the product color swatches. Default: false
@@ -403,6 +404,13 @@
       <a href="{{ card_url }}" class="card-information__text h4" tabindex="-1">
         {{ card_product.title | escape }}
       </a>
+
+      {%- comment -%} DotAim: category label under the title. See dotaim-custom-styles.liquid. {%- endcomment -%}
+      {%- if show_category_label and card_product.metafields.custom.category_label != blank -%}
+        <div class="card-information__category caption-with-letter-spacing">
+          {{- card_product.metafields.custom.category_label.value -}}
+        </div>
+      {%- endif -%}
 
       {% render 'price', product: card_product %}
       {%- if card_product.quantity_price_breaks_configured? -%}
