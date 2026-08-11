@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -21,7 +30,7 @@
       "type": "main-collection-subs",
       "disabled": true,
       "settings": {
-        "menu": "sub-collections",
+        "menu": "",
         "per_row": 5,
         "columns_mobile": "1",
         "horizontal_on_mobile": true,
@@ -53,11 +62,13 @@
         "enable_image_fill": true,
         "show_secondary_image": true,
         "show_vendor": false,
+        "show_category_label": true,
         "show_rating": true,
         "show_quick_buy": true,
         "enable_quick_view": true,
         "enable_color_swatches": true,
         "enable_countdown": true,
+        "show_product_highlights": false,
         "padding_top": 0,
         "padding_bottom": 72
       }
@@ -76,12 +87,14 @@
         "image_position": "center center",
         "enable_image_fill": true,
         "show_secondary_image": true,
-        "show_vendor": true,
+        "show_vendor": false,
+        "show_category_label": true,
         "show_rating": true,
         "show_quick_buy": true,
         "enable_quick_view": true,
         "enable_color_swatches": true,
         "enable_countdown": true,
+        "show_product_highlights": false,
         "padding_top": 60,
         "padding_bottom": 36
       }

@@ -247,12 +247,32 @@
         "padding_top": 12,
         "padding_bottom": 12
       }
+    },
+    "dotaim_whatsapp": {
+      "type": "dotaim-whatsapp-button",
+      "settings": {
+        "phone_number": "97466572759",
+        "welcome_message": "",
+        "show_label": false,
+        "label_text": "",
+        "show_label_on_mobile": true,
+        "side": "auto",
+        "bottom_spacing": 20,
+        "side_spacing": 20,
+        "show_on_mobile": true,
+        "button_size": 60,
+        "icon_size": 32,
+        "button_color": "#25d366",
+        "button_hover_color": "#128c7e",
+        "icon_color": "#ffffff"
+      }
     }
   },
   "order": [
     "popup",
     "cookie-banner",
     "age-verifier",
-    "mobile-dock"
+    "mobile-dock",
+    "dotaim_whatsapp"
   ]
 }

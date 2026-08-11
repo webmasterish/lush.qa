@@ -182,7 +182,8 @@
         "enable_quick_view": true,
         "enable_color_swatches": true,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "show_category_label": true
       }
     }
   },

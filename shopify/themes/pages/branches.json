@@ -1,8 +1,29 @@
 {
-  "_source": "Branch details taken from lush.qa/contact-us (WordPress page 4960), read 2026-08-04. That page lists ONE showroom. KSA's Branches page lists several, so confirm with Dee whether Qatar has more before this goes in front of customers.",
+  "_source": "Five Lush Qatar stores. Landmark came from lush.qa/contact-us (WordPress page 4960), read 2026-08-04. The other four were named by Ann Mati by email 2026-08-11, with the instruction to source details from Google.",
+  "_provenance": {
+    "high — fetched directly from the mall's own store page 2026-08-11": [
+      "Doha Festival City: phone +974 4441 8738, First Floor",
+      "Place Vendome: Ground Floor"
+    ],
+    "medium — from a search summary, not a direct page fetch": [
+      "Villaggio: Ground Floor, Entrance 4",
+      "Mall of Qatar: Ground Floor"
+    ],
+    "client data": [
+      "Landmark: phone +974 44874265, from their own current site"
+    ],
+    "deliberately omitted": "Opening hours. Every source published MALL hours, not Lush's own, and they disagreed with each other across sources. Sending a customer to a closed shop is worse than not stating hours. Ann to supply."
+  },
+  "_pending_from_client": [
+    "per-store phone numbers for Place Vendome, Villaggio and Mall of Qatar",
+    "confirmation of the Doha Festival City number, which we took from the mall directory rather than from them",
+    "opening hours for all five",
+    "unit numbers, and a store photograph per branch for the page's cards"
+  ],
+  "_note": "This body populates the page's `main-page` section, which is DISABLED on templates/page.branches.json — the page renders from its `multicolumn` section instead. Applying this file keeps the page record correct but changes nothing on screen. See docs/theme-phase.md.",
   "handle": "branches",
   "title": "Branches",
   "title_ar": "الفروع",
-  "body": "<h2>Our Showroom</h2>\n<p><strong>Lush Landmark Mall</strong><br>\nDoha, Qatar<br>\n<a href=\"tel:+97444874265\">+974 44874265</a></p>\n<h2>Quick Help</h2>\n<p>You can ask anything you want to know about our products.<br>\n<a href=\"mailto:wecarelush@almana.com\">wecarelush@almana.com</a></p>",
-  "body_ar": "<h2>صالة العرض</h2>\n<p><strong>لَش لاندمارك مول</strong><br>\nالدوحة، قطر<br>\n<a href=\"tel:+97444874265\">+974 44874265</a></p>\n<h2>مساعدة سريعة</h2>\n<p>يمكنك سؤالنا عن أي شيء تود معرفته عن منتجاتنا.<br>\n<a href=\"mailto:wecarelush@almana.com\">wecarelush@almana.com</a></p>"
+  "body": "<h2>Our Stores</h2>\n<p><strong>Lush Landmark Mall</strong><br>\nLandmark Mall, Doha<br>\n<a href=\"tel:+97444874265\">+974 44874265</a></p>\n<p><strong>Lush Place Vendôme</strong><br>\nPlace Vendôme, Lusail<br>\nGround Floor</p>\n<p><strong>Lush Doha Festival City</strong><br>\nDoha Festival City, Umm Salal Mohammed<br>\nFirst Floor<br>\n<a href=\"tel:+97444418738\">+974 4441 8738</a></p>\n<p><strong>Lush Villaggio Mall</strong><br>\nVillaggio Mall, Aspire Zone, Al Waab<br>\nGround Floor, Entrance 4</p>\n<p><strong>Lush Mall of Qatar</strong><br>\nMall of Qatar, Al Rayyan<br>\nGround Floor</p>\n<h2>Quick Help</h2>\n<p>You can ask anything you want to know about our products.<br>\n<a href=\"mailto:wecarelush@almana.com\">wecarelush@almana.com</a></p>",
+  "body_ar": "<h2>متاجرنا</h2>\n<p><strong>لَش لاندمارك مول</strong><br>\nلاندمارك مول، الدوحة<br>\n<a href=\"tel:+97444874265\">+974 44874265</a></p>\n<p><strong>لَش بلاس فندوم</strong><br>\nبلاس فندوم، لوسيل<br>\nالطابق الأرضي</p>\n<p><strong>لَش دوحة فستيفال سيتي</strong><br>\nدوحة فستيفال سيتي، أم صلال محمد<br>\nالطابق الأول<br>\n<a href=\"tel:+97444418738\">+974 4441 8738</a></p>\n<p><strong>لَش فيلاجيو مول</strong><br>\nفيلاجيو مول، منطقة أسباير، الوعب<br>\nالطابق الأرضي، المدخل 4</p>\n<p><strong>لَش مول قطر</strong><br>\nمول قطر، الريان<br>\nالطابق الأرضي</p>\n<h2>مساعدة سريعة</h2>\n<p>يمكنك سؤالنا عن أي شيء تود معرفته عن منتجاتنا.<br>\n<a href=\"mailto:wecarelush@almana.com\">wecarelush@almana.com</a></p>"
 }

@@ -15,6 +15,56 @@
         "slide_karma": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Scent_2026_Karma_MENA_1_HIRES_copy1.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "Cruelty-free",
+            "subheading_size": "h5",
+            "heading": "Fragrances",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "",
+            "text_size": "typeset",
+            "button_label": "Explore",
+            "button_link": "shopify://collections/fragrances",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_zMmQVH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/honey_i_washed_the_kids_body_spray_soap_shower_gel_honey_i_washed_my_hair_shampoo_bar_social_asset_2020_20_281_29.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "Fairly Traded",
+            "subheading_size": "h5",
+            "heading": "Honey",
+            "heading_size": "h0",
+            "heading_tag": "h2",
+            "text": "",
+            "text_size": "typeset",
+            "button_label": "Explore",
+            "button_link": "shopify://products/fairly-traded-honey",
+            "button_size": "medium",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_size": "medium",
+            "button_alt_style_secondary": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "image_kLEmEk": {
+          "type": "image",
+          "settings": {
             "image": "shopify://shop_images/lush-qa-hero-karma.jpg",
             "image_position": "center center",
             "text_box_position": "bottom-left",
@@ -115,6 +165,8 @@
       },
       "block_order": [
         "slide_karma",
+        "image_zMmQVH",
+        "image_kLEmEk",
         "slide_lipbalm",
         "slide_supermilk",
         "slide_spagift"
@@ -143,76 +195,6 @@
         "padding_bottom": 52
       }
     },
-    "categories": {
-      "type": "collection-list",
-      "blocks": {
-        "cat_bath-and-shower": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "bath-and-shower",
-            "image_position": "center center"
-          }
-        },
-        "cat_face": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "face",
-            "image_position": "center center"
-          }
-        },
-        "cat_body": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "body",
-            "image_position": "center center"
-          }
-        },
-        "cat_hair": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "hair",
-            "image_position": "center center"
-          }
-        },
-        "cat_fragrances": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "fragrances",
-            "image_position": "center center"
-          }
-        },
-        "cat_gifts": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "gifts",
-            "image_position": "center center"
-          }
-        }
-      },
-      "block_order": [
-        "cat_bath-and-shower",
-        "cat_face",
-        "cat_body",
-        "cat_hair",
-        "cat_fragrances",
-        "cat_gifts"
-      ],
-      "settings": {
-        "show_view_all": false,
-        "show_divider": false,
-        "columns_desktop": 6,
-        "heading": "Popular Categories",
-        "heading_size": "h2",
-        "heading_alignment": "center",
-        "heading_tag": "h2",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "apply_overlay": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "trending": {
       "type": "featured-collection",
       "settings": {
@@ -235,6 +217,7 @@
         "show_secondary_image": true,
         "secondary_image_max": 1,
         "show_vendor": false,
+        "show_category_label": true,
         "show_rating": false,
         "show_quick_buy": true,
         "enable_quick_view": true,
@@ -246,74 +229,6 @@
         "padding_bottom": 36,
         "enable_highlight": false,
         "highlight_style": "marker"
-      }
-    },
-    "gifts_banner": {
-      "type": "image-with-text",
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "heading": "LUSH GIFTS",
-            "heading_size": "h2",
-            "heading_tag": "h2",
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "t": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our large collection of gifts inspires every reason to celebrate.</p>",
-            "text_size": "typeset2",
-            "secondary_color": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "button_size": "medium",
-            "button_label": "Shop Gifts",
-            "button_link": "shopify://collections/gifts",
-            "button_style_secondary": false,
-            "button_alt_label": "",
-            "button_alt_link": "",
-            "button_alt_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "h",
-        "t",
-        "b"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/lush-qa-banner-gifts.png",
-        "image_position": "center center",
-        "layout": "image_first",
-        "text_box_position": "middle",
-        "text_alignment": "left",
-        "image_ratio": "500px",
-        "enlarge_content": false,
-        "full_width": false,
-        "show_divider": false,
-        "image_behavior": "none",
-        "mobile_layout": "image_first",
-        "mobile_text_alignment": "left",
-        "mobile_image_ratio": "auto",
-        "enable_video_looping": false,
-        "video_url": "",
-        "use_custom_colors": false,
-        "colors_button_label": "#ffffff",
-        "colors_button_background": "#1a1b18",
-        "colors_text": "#212326",
-        "colors_background": "#ffffff",
-        "gradient_background": "",
-        "colors_highlight": "#ffb503",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "new_products": {
@@ -338,6 +253,7 @@
         "show_secondary_image": true,
         "secondary_image_max": 1,
         "show_vendor": false,
+        "show_category_label": true,
         "show_rating": false,
         "show_quick_buy": true,
         "enable_quick_view": true,
@@ -349,74 +265,6 @@
         "padding_bottom": 36,
         "enable_highlight": false,
         "highlight_style": "marker"
-      }
-    },
-    "fragrance_banner": {
-      "type": "image-with-text",
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "heading": "Unisex fragrances for everyone",
-            "heading_size": "h2",
-            "heading_tag": "h2",
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "t": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Made in house, with the finest essential oils.</p>",
-            "text_size": "typeset2",
-            "secondary_color": false,
-            "enable_highlight": false,
-            "highlight_style": "marker"
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "button_size": "medium",
-            "button_label": "Shop Fragrances",
-            "button_link": "shopify://collections/fragrances",
-            "button_style_secondary": false,
-            "button_alt_label": "",
-            "button_alt_link": "",
-            "button_alt_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "h",
-        "t",
-        "b"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/lush-qa-banner-fragrances.png",
-        "image_position": "center center",
-        "layout": "image_first",
-        "text_box_position": "middle",
-        "text_alignment": "left",
-        "image_ratio": "500px",
-        "enlarge_content": false,
-        "full_width": false,
-        "show_divider": false,
-        "image_behavior": "none",
-        "mobile_layout": "image_first",
-        "mobile_text_alignment": "left",
-        "mobile_image_ratio": "auto",
-        "enable_video_looping": false,
-        "video_url": "",
-        "use_custom_colors": false,
-        "colors_button_label": "#ffffff",
-        "colors_button_background": "#1a1b18",
-        "colors_text": "#212326",
-        "colors_background": "#ffffff",
-        "gradient_background": "",
-        "colors_highlight": "#ffb503",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "best_sellers": {
@@ -441,6 +289,7 @@
         "show_secondary_image": true,
         "secondary_image_max": 1,
         "show_vendor": false,
+        "show_category_label": true,
         "show_rating": false,
         "show_quick_buy": true,
         "enable_quick_view": true,
@@ -454,35 +303,45 @@
         "highlight_style": "marker"
       }
     },
-    "bath_banner": {
+    "image_with_text_HYNKmG": {
       "type": "image-with-text",
       "blocks": {
-        "h": {
+        "subheading_cfcUDL": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Natural 100% Vegan",
+            "subheading_size": "h5",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "heading_CPc4V4": {
           "type": "heading",
           "settings": {
-            "heading": "We have bath products for every mood",
-            "heading_size": "h2",
+            "heading": "Scented Candles",
+            "heading_size": "h1",
             "heading_tag": "h2",
             "enable_highlight": false,
             "highlight_style": "marker"
           }
         },
-        "t": {
+        "text_U7DWim": {
           "type": "text",
           "settings": {
-            "text": "<p>Banish boring bath times with our relaxing, luxurious range.</p>",
+            "text": "<p>We believe in long candle lit baths and filling the world with perfume, and so we've created a range of scented candles inspired by our favourite fragrances. Our scented candles use beautiful, high quality, ethically-sourced essential oils just like we do in every product we make. The natural wax base means that all of our scented candles are palm, GM and soy free, whilst also being 100% vegan.</p>",
             "text_size": "typeset2",
             "secondary_color": false,
             "enable_highlight": false,
             "highlight_style": "marker"
           }
         },
-        "b": {
+        "button_rEEPrD": {
           "type": "button",
           "settings": {
             "button_size": "medium",
-            "button_label": "Shop Bath & Shower",
-            "button_link": "shopify://collections/bath-and-shower",
+            "button_label": "Know More",
+            "button_link": "shopify://collections/candles",
             "button_style_secondary": false,
             "button_alt_label": "",
             "button_alt_link": "",
@@ -491,17 +350,19 @@
         }
       },
       "block_order": [
-        "h",
-        "t",
-        "b"
+        "subheading_cfcUDL",
+        "heading_CPc4V4",
+        "text_U7DWim",
+        "button_rEEPrD"
       ],
+      "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/lush-qa-banner-bath-shower.png",
+        "image": "shopify://shop_images/intergalatic_honey_i_washed_the_kids_29_high_street_can_1692e2a0_thumbnail_4.avif",
         "image_position": "center center",
-        "layout": "image_first",
+        "layout": "text_first",
         "text_box_position": "middle",
         "text_alignment": "left",
-        "image_ratio": "500px",
+        "image_ratio": "650px",
         "enlarge_content": false,
         "full_width": false,
         "show_divider": false,
@@ -510,7 +371,6 @@
         "mobile_text_alignment": "left",
         "mobile_image_ratio": "auto",
         "enable_video_looping": false,
-        "video_url": "",
         "use_custom_colors": false,
         "colors_button_label": "#ffffff",
         "colors_button_background": "#1a1b18",
@@ -518,43 +378,287 @@
         "colors_background": "#ffffff",
         "gradient_background": "",
         "colors_highlight": "#ffb503",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 52,
+        "padding_bottom": 0
       }
     },
-    "featured": {
-      "type": "featured-collection",
+    "image_with_text_pjRCHB": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_DXz8Yx": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "They Are Back!",
+            "subheading_size": "h5",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "heading_JA4FpB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lush x Super Mario Galaxy Movie",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text_xgABCW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Enter a new world of fun and freshness with our latest stellar collaboration: The Super Mario Galaxy Movie × Lush.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "button_WiCiLF": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/the-super-mario-galaxy-movie-x-lush",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_DXz8Yx",
+        "heading_JA4FpB",
+        "text_xgABCW",
+        "button_WiCiLF"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "collection": "5-star-reviews",
-        "product_list": [],
-        "products_to_show": 4,
-        "horizontal_scroll": false,
-        "show_view_all": true,
-        "show_divider": false,
-        "enable_drag": false,
-        "heading": "Featured Products",
-        "heading_size": "h2",
-        "heading_alignment": "left",
-        "heading_tag": "p",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
+        "image": "shopify://shop_images/9066_group_shot_core_range.webp",
         "image_position": "center center",
-        "enable_image_fill": true,
-        "show_secondary_image": true,
-        "secondary_image_max": 1,
-        "show_vendor": false,
-        "show_rating": false,
-        "show_quick_buy": true,
-        "enable_quick_view": true,
-        "enable_color_swatches": true,
-        "enable_countdown": true,
-        "show_product_highlights": false,
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 52,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_FWJPi6": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_3Pz7Bj": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Skin Care",
+            "subheading_size": "h5",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "heading_fKmrPb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Moisturisers",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text_AAUzXP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Looking for the moisturiser of your dreams? Hydrating, soothing, however you want your face to feel, find the best moisturiser for you. For mature skin, vegan skin, for men - our moisturisers are for everyone.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "button_QtHD87": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Know More",
+            "button_link": "shopify://collections/moisturisers",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_3Pz7Bj",
+        "heading_fKmrPb",
+        "text_AAUzXP",
+        "button_QtHD87"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/sp_vanishing_cream_2024_60.jpg",
+        "image_position": "center center",
+        "layout": "text_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 52,
+        "padding_bottom": 0
+      }
+    },
+    "tab_collage_fragrances": {
+      "type": "tab-collage",
+      "blocks": {
+        "p_pansy_3": {
+          "type": "product",
+          "settings": {
+            "product": "karma-3",
+            "image_position": "center center",
+            "heading": "",
+            "description": "",
+            "button_label": "Shop now",
+            "button_link": "shopify://products/karma-3",
+            "button_size": "medium",
+            "button_style_secondary": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "p_inhale_exhale": {
+          "type": "product",
+          "settings": {
+            "product": "american-cream",
+            "image_position": "center center",
+            "heading": "",
+            "description": "",
+            "button_label": "Shop now",
+            "button_link": "shopify://products/american-cream",
+            "button_size": "medium",
+            "button_style_secondary": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "p_29_high_street": {
+          "type": "product",
+          "settings": {
+            "product": "chelsea-morning",
+            "image_position": "center center",
+            "heading": "",
+            "description": "",
+            "button_label": "Shop now",
+            "button_link": "shopify://products/chelsea-morning",
+            "button_size": "medium",
+            "button_style_secondary": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "p_rose_jam_4": {
+          "type": "product",
+          "settings": {
+            "product": "lord-of-misrule-4",
+            "image_position": "center center",
+            "heading": "",
+            "description": "",
+            "button_label": "Shop now",
+            "button_link": "shopify://products/lord-of-misrule-4",
+            "button_size": "medium",
+            "button_style_secondary": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "p_pansy_3",
+        "p_inhale_exhale",
+        "p_29_high_street",
+        "p_rose_jam_4"
+      ],
+      "settings": {
+        "layout": "text_first",
+        "text_box_position": "top",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "make_collapsible_rows": true,
+        "full_width": true,
+        "show_divider": false,
+        "heading": "Best Selling Fragrances",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "mobile_layout": "text_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "200px",
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#1A1B18",
+        "colors_border": "#d2d5d9",
+        "colors_background": "#F7EEDD",
+        "gradient_background": "",
         "colors_highlight": "#ffb503",
         "padding_top": 36,
         "padding_bottom": 36,
         "enable_highlight": false,
         "highlight_style": "marker"
+      }
+    },
+    "video_hero": {
+      "type": "video-hero",
+      "settings": {
+        "video_url": "https://www.youtube.com/watch?v=iyspcxcBfDY",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "650px",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "400px",
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 28,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "blog_posts": {
@@ -572,6 +676,7 @@
       "block_order": [
         "title_xP3XHD"
       ],
+      "disabled": true,
       "settings": {
         "blog": "news",
         "post_limit": 3,
@@ -713,19 +818,569 @@
         "enable_highlight": false,
         "highlight_style": "marker"
       }
+    },
+    "countdown_fragrance": {
+      "type": "countdown-timer",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Fragrance",
+            "subheading_size": "h3",
+            "secondary_color": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "head": {
+          "type": "heading",
+          "settings": {
+            "heading": "Perfumes",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Solid perfumes, body sprays and scents built on essential oils and absolutes.</p>",
+            "text_size": "typeset",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "btn": {
+          "type": "button",
+          "settings": {
+            "button_label": "Know More",
+            "button_link": "shopify://collections/perfumes",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "head",
+        "text",
+        "btn"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-fragrances.png",
+        "image_position": "center center",
+        "layout": "text_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": true,
+        "show_divider": false,
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt",
+        "use_custom_colors": true,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#f3f3f3",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "gifts_banner": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "LUSH GIFTS",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our large collection of gifts inspires every reason to celebrate.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Shop Gifts",
+            "button_link": "shopify://collections/gifts",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-gifts.png",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "countdown_bath": {
+      "type": "countdown-timer",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Bath and Shower",
+            "subheading_size": "h3",
+            "secondary_color": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "head": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bath Bombs",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Drop one in, watch it fizz, and turn a bath into something worth staying in.</p>",
+            "text_size": "typeset",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "btn": {
+          "type": "button",
+          "settings": {
+            "button_label": "Know More",
+            "button_link": "shopify://collections/bathbomb",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "head",
+        "text",
+        "btn"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-bath-shower.png",
+        "image_position": "center center",
+        "layout": "text_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "650px",
+        "enlarge_content": false,
+        "full_width": true,
+        "show_divider": false,
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt",
+        "use_custom_colors": true,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#f3f3f3",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "overlay_branches": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Visit us",
+            "subheading_size": "h4",
+            "secondary_color": true,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "head": {
+          "type": "heading",
+          "settings": {
+            "heading": "Find your nearest Lush",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Five stores across Qatar, with our team on hand to help you choose.</p>",
+            "text_size": "typeset",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "btn": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "See our stores",
+            "button_link": "shopify://pages/branches",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "head",
+        "text",
+        "btn"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-hero-supermilk.jpg",
+        "image_position": "center center",
+        "text_box_position": "flex-end",
+        "text_alignment": "left",
+        "image_ratio": "550px",
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_text_box_position": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "200px",
+        "video_url": "",
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_overlay": "#f3f3f3",
+        "colors_overlay_opacity": 92,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "cat_bath-and-shower": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "bath-and-shower",
+            "image_position": "center center"
+          }
+        },
+        "cat_face": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "face",
+            "image_position": "center center"
+          }
+        },
+        "cat_body": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "body",
+            "image_position": "center center"
+          }
+        },
+        "cat_hair": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hair",
+            "image_position": "center center"
+          }
+        },
+        "cat_fragrances": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fragrances",
+            "image_position": "center center"
+          }
+        },
+        "cat_gifts": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gifts",
+            "image_position": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "cat_bath-and-shower",
+        "cat_face",
+        "cat_body",
+        "cat_hair",
+        "cat_fragrances",
+        "cat_gifts"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_view_all": false,
+        "show_divider": false,
+        "columns_desktop": 6,
+        "heading": "Popular Categories",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "apply_overlay": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "fragrance_banner": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Unisex fragrances for everyone",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Made in house, with the finest essential oils.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Shop Fragrances",
+            "button_link": "shopify://collections/fragrances",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-fragrances.png",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "bath_banner": {
+      "type": "image-with-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "We have bath products for every mood",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Banish boring bath times with our relaxing, luxurious range.</p>",
+            "text_size": "typeset2",
+            "secondary_color": false,
+            "enable_highlight": false,
+            "highlight_style": "marker"
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "button_size": "medium",
+            "button_label": "Shop Bath & Shower",
+            "button_link": "shopify://collections/bath-and-shower",
+            "button_style_secondary": false,
+            "button_alt_label": "",
+            "button_alt_link": "",
+            "button_alt_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/lush-qa-banner-bath-shower.png",
+        "image_position": "center center",
+        "layout": "image_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "enlarge_content": false,
+        "full_width": false,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_layout": "image_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "gradient_background": "",
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "5-star-reviews",
+        "product_list": [],
+        "products_to_show": 4,
+        "horizontal_scroll": false,
+        "show_view_all": true,
+        "show_divider": false,
+        "enable_drag": false,
+        "heading": "Featured Products",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "p",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "secondary_image_max": 1,
+        "show_vendor": false,
+        "show_category_label": true,
+        "show_rating": false,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "show_product_highlights": false,
+        "colors_highlight": "#ffb503",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_highlight": false,
+        "highlight_style": "marker"
+      }
     }
   },
   "order": [
     "hero",
-    "categories",
     "trending",
-    "gifts_banner",
     "new_products",
-    "fragrance_banner",
     "best_sellers",
-    "bath_banner",
-    "featured",
+    "image_with_text_HYNKmG",
+    "image_with_text_pjRCHB",
+    "image_with_text_FWJPi6",
+    "tab_collage_fragrances",
+    "video_hero",
     "blog_posts",
-    "lush_values"
+    "lush_values",
+    "countdown_fragrance",
+    "gifts_banner",
+    "countdown_bath",
+    "overlay_branches",
+    "categories",
+    "fragrance_banner",
+    "bath_banner",
+    "featured"
   ]
 }
