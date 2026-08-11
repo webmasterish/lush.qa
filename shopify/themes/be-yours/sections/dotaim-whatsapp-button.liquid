@@ -1,0 +1,309 @@
+{% comment %}
+  Section: dotaim-whatsapp-button
+
+  A floating WhatsApp button, fixed to the bottom corner of every page, that
+  opens a chat with the store's number and an optional pre-filled message.
+
+  Lives in the `custom.overlay` section group alongside the popup, cookie
+  banner and mobile dock. Add it there, not to a page template.
+
+  Rebuilt 2026-08-11 from Lush KSA's `blocks/ai_gen_block_5ca9f34.liquid`.
+  Changed from the KSA original, all of which matter on a bilingual store:
+
+    - KSA pins the button with `right:`, so on an RTL page it sat on the wrong
+      side, over the text it was covering. Placement is now logical
+      (`inset-inline-end`) and follows reading direction by default, with an
+      explicit Left/Right override for when the client wants it pinned.
+    - the aria-label was hardcoded English and read out in English to Arabic
+      screen-reader users. It now comes from a locale key, as does the
+      optional visible label.
+    - it ignored the mobile dock. The dock is enabled on this store, fixed to
+      the bottom at z-index 20, so a bottom-right button landed on top of it.
+      The mobile offset now clears `--mobile-dock-height`, the same variable
+      `section-popup.css` uses, with a 0px fallback for when the dock is off.
+    - minimum button size raised 50px -> 44px floor on the tap target and the
+      icon given `aria-hidden`, since the link already carries the label.
+    - per-instance CSS classes (`...-{{ ai_gen_id }}`) replaced by settings on
+      CSS custom properties scoped to the section wrapper, matching
+      `lush-ingredients-cards`. Class names are stable and greppable.
+    - the `{% doc %} @prompt` block is gone.
+
+  Reusable: no Lush-specific or Qatar-specific content. Drop this file plus its
+  two locale keys into any Be Yours theme and it works.
+{% endcomment %}
+
+{%- liquid
+  assign phone = section.settings.phone_number | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+'
+  assign side = section.settings.side
+-%}
+
+{%- if phone != blank -%}
+  {%- liquid
+    assign wa_url = 'https://wa.me/' | append: phone
+    if section.settings.welcome_message != blank
+      assign wa_url = wa_url | append: '?text=' | append: section.settings.welcome_message | url_encode
+    endif
+
+    assign aria = 'sections.whatsapp.aria_label' | t
+
+    comment
+      `| default:` cannot be chained into `| t` here — it would put the client's
+      own wording through the translator and render "Translation missing".
+    endcomment
+    assign label = section.settings.label_text
+    if label == blank
+      assign label = 'sections.whatsapp.label' | t
+    endif
+  -%}
+
+  {% style %}
+    #shopify-section-{{ section.id }} {
+      --wa-size: {{ section.settings.button_size }}px;
+      --wa-icon: {{ section.settings.icon_size }}px;
+      --wa-bottom: {{ section.settings.bottom_spacing }}px;
+      --wa-side: {{ section.settings.side_spacing }}px;
+      --wa-bg: {{ section.settings.button_color }};
+      --wa-bg-hover: {{ section.settings.button_hover_color }};
+      --wa-fg: {{ section.settings.icon_color }};
+    }
+
+    .dotaim-whatsapp {
+      position: fixed;
+      bottom: var(--wa-bottom);
+      {% if side == 'left' %}
+        left: var(--wa-side);
+      {% elsif side == 'right' %}
+        right: var(--wa-side);
+      {% else %}
+        inset-inline-end: var(--wa-side);
+      {% endif %}
+      z-index: 12;
+    }
+
+    .dotaim-whatsapp__link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: var(--wa-size);
+      padding: 0 calc((var(--wa-size) - var(--wa-icon)) / 2);
+      background-color: var(--wa-bg);
+      color: var(--wa-fg);
+      border-radius: calc(var(--wa-size) / 2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* No label: a circle, not a pill. */
+    .dotaim-whatsapp__link:not(:has(.dotaim-whatsapp__label)) {
+      width: var(--wa-size);
+      justify-content: center;
+      padding: 0;
+    }
+
+    .dotaim-whatsapp__link:hover {
+      background-color: var(--wa-bg-hover);
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .dotaim-whatsapp__icon {
+      width: var(--wa-icon);
+      height: var(--wa-icon);
+      flex: 0 0 auto;
+      fill: currentColor;
+    }
+
+    .dotaim-whatsapp__label {
+      font-size: 14px;
+      line-height: 1;
+      white-space: nowrap;
+      padding-inline-end: 6px;
+    }
+
+    @media screen and (max-width: 749px) {
+      .dotaim-whatsapp {
+        /* Clear the mobile dock, which is fixed to the bottom when enabled. */
+        bottom: calc(var(--wa-bottom) + var(--mobile-dock-height, 0px));
+      }
+
+      {%- unless section.settings.show_on_mobile %}
+        .dotaim-whatsapp {
+          display: none;
+        }
+      {% endunless -%}
+
+      {%- unless section.settings.show_label_on_mobile %}
+        .dotaim-whatsapp__label {
+          display: none;
+        }
+      {% endunless -%}
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dotaim-whatsapp__link {
+        transition: none;
+      }
+      .dotaim-whatsapp__link:hover {
+        transform: none;
+      }
+    }
+  {% endstyle %}
+
+  <div class="dotaim-whatsapp">
+    <a
+      class="dotaim-whatsapp__link"
+      href="{{ wa_url }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="{{ aria | escape }}"
+    >
+      <svg class="dotaim-whatsapp__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      {%- if section.settings.show_label and label != blank -%}
+        <span class="dotaim-whatsapp__label">{{ label }}</span>
+      {%- endif -%}
+    </a>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "WhatsApp button",
+  "enabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "WhatsApp"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "default": "97466572759",
+      "info": "With country code, no spaces. The button is hidden until this is filled in."
+    },
+    {
+      "type": "textarea",
+      "id": "welcome_message",
+      "label": "Pre-filled message",
+      "info": "Optional. Appears already typed in the customer's chat. Translate it under Translate & Adapt so Arabic customers get Arabic."
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "Show a text label next to the icon",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "label_text",
+      "label": "Label text",
+      "info": "Leave empty to use the theme's own translated wording."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_label_on_mobile",
+      "label": "Show the label on mobile",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Placement"
+    },
+    {
+      "type": "select",
+      "id": "side",
+      "label": "Side",
+      "options": [
+        { "value": "auto", "label": "Follow language direction" },
+        { "value": "right", "label": "Always right" },
+        { "value": "left", "label": "Always left" }
+      ],
+      "default": "auto",
+      "info": "Following language direction puts it bottom right in English and bottom left in Arabic."
+    },
+    {
+      "type": "range",
+      "id": "bottom_spacing",
+      "label": "Distance from the bottom",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20,
+      "info": "On mobile the button automatically clears the mobile dock when the dock is switched on."
+    },
+    {
+      "type": "range",
+      "id": "side_spacing",
+      "label": "Distance from the side",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button size",
+      "min": 44,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button colour",
+      "default": "#25D366"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button colour on hover",
+      "default": "#128C7E"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon and label colour",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WhatsApp button"
+    }
+  ]
+}
+{% endschema %}

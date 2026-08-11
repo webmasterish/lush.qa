@@ -642,6 +642,10 @@
     },
     "video": {
       "load_video": "Ladda video: {{ description }}"
+    },
+    "whatsapp": {
+      "aria_label": "Contact us on WhatsApp",
+      "label": "Chat with us"
     }
   },
   "templates": {

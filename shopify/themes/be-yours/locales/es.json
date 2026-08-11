@@ -644,6 +644,10 @@
     },
     "video": {
       "load_video": "Cargar vídeo: {{ description }}"
+    },
+    "whatsapp": {
+      "aria_label": "Contact us on WhatsApp",
+      "label": "Chat with us"
     }
   },
   "templates": {

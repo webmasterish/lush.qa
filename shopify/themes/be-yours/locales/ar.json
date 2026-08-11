@@ -633,6 +633,10 @@
     },
     "video": {
       "load_video": "تحميل الفيديو: {{ description }}"
+    },
+    "whatsapp": {
+      "aria_label": "تواصل معنا عبر واتساب",
+      "label": "تحدث معنا"
     }
   },
   "templates": {
