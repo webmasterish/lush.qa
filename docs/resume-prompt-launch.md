@@ -24,9 +24,21 @@ Added after the client call, all live and verified in both locales:
 ## Waiting on the client, and nothing else blocks
 
 1. **Qatar payment gateway.** The only real blocker. Client finance plus their provider. Nothing on our side shortens it.
-2. **DNS.** Lush UK holds it. Agreed approach: **we create a Cloudflare account in the client's name and Lush HQ points the nameservers at it**, exactly as done for KSA and Lebanon. The ask to Lush HQ is one nameserver change. Mail records (SPF, DKIM, DMARC) live in the same zone and must move with it.
+2. **DNS.** Approach: **DotAim creates a Cloudflare account in the client's name (`almanadev@gmail.com`, handed over with its mailbox) and the registrar points the nameservers at it**, as done for KSA and Lebanon.
 
-Also outstanding, none blocking: **opening hours for the five branches** (Ann), the shipping figure confirmed with management (Ann; QAR 20 for all Qatar is set for now, free above QAR 250), and tax confirmed in writing by Finance.
+   Verified from public DNS on 2026-08-12, so do not re-derive: **lush.qa is already on Cloudflare** (`terin.ns.cloudflare.com` / `tia.ns.cloudflare.com`), registrar **ROUTEDGE**, DNSSEC **off** (no DS or DNSKEY), **no apex SPF and no `_dmarc`**, and MX is `10 mail.lush.qa` which **resolves to nothing**, so the domain receives no mail today. Staff email is on `almana.com` (Rackspace) and is untouched by any of this. An earlier client email warned that SPF/DKIM/DMARC would break; that overstated it, and the Cloudflare draft deliberately does not repeat it.
+
+   **Who holds the existing Cloudflare account is unknown.** The only basis for "Lush UK" is Ann's line "Lush UK Controls DNS", which names DNS rather than a Cloudflare account. Could equally be ROUTEDGE or whoever built the WooCommerce site. Ask, do not assume.
+
+   **State as of 2026-08-12: the new account exists and lush.qa is already added to it, Pending.** Cloudflare assigned **`arely.ns.cloudflare.com`** and **`fonzie.ns.cloudflare.com`**. No zone hold blocked the add, so that worry is closed. **The imported records are wrong and must not go live as they are**: Cloudflare's scan pulled in 10 A and 6 AAAA records all pointing at Cloudflare's own proxy IPs (`104.21.58.148`, `172.67.204.127`, `2606:4700:…`) across `lush.qa`, `www`, `ftp`, `ipv4` and `server`. Switch the nameservers with those in place and the site returns **Error 1000**. The apex and `www` get replaced by Shopify's records anyway; `ftp`, `ipv4` and `server` need either the export or a decision that they can be dropped. Details sent to Sibin 2026-08-12, draft at `docs/client-email-cloudflare-sibin-draft.md`.
+
+   **The move procedure, per Cloudflare's own move-domain guide:** add the domain to the *new* account first (it sits Pending and changes nothing), update nameservers at the registrar, then Overview > Re-check now. The old account then shows it as "Moved Away" and clears automatically after fourteen days. **Nobody deletes anything by hand** — an earlier draft claimed the zone had to be released first and that was wrong. Still required: get the **DNS record export** from the current account before the nameservers change (Cloudflare's scan imports the proxied records and causes a 1000 error), confirm **no zone hold** (only the holder can lift one, and it is the one true blocker), confirm no paid add-ons, and note that **SSL certificates do not transfer** and are reissued in the new account.
+
+**Shipping and tax are settled** (2026-08-12): free delivery on orders **QAR 300 and up**, **QAR 20** below that, one rate for all of Qatar, 1 to 2 business days, approved by Ann. Tax confirmed as not applicable and switched off. Policies corrected to match, in both languages.
+
+**Cash on delivery is the live question.** Bassam proposed it as a way to launch without waiting for the gateway; Kyaw confirmed they already do cash and card on delivery. **Ann asked to confirm internally and has not replied**, so it stays off the group email until she does. If it is approved it removes the only hard blocker and DNS becomes the last one.
+
+Also outstanding, none blocking: **opening hours for the five branches** (Ann), and tax confirmed in writing by Finance.
 
 The email covering all of this was **sent 2026-08-12** as a reply on the existing thread, cc Jeffrey Flores (finance) and Sibin. Text and reasoning: `docs/client-email-blockers-draft.md`. Do not chase the gateway again; it has now been raised three times.
 
