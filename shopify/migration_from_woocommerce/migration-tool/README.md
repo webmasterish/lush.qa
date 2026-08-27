@@ -46,12 +46,21 @@ Options: `--limit N`, `--offset N` (stable source-id ordering, chunks never over
 
 For a new Woo→Shopify migration (WPML source supported out of the box), no code changes on the common path:
 
-1. `config/projects/<name>.json` — copy `lush-qatar.json`, adjust store URLs, locales, currency, `source_label`. Keep `production: false` + `allow_wipe: true` while targeting a dev store.
+1. `config/projects/<name>.json` — copy `lush-qatar.json`, adjust store URLs, locales, currency, `source_label`. Keep `production: false` + `allow_wipe: true` + `locked: false` while targeting a dev store.
 2. `config/projects/<name>.env` — copy `.env.example`; add a **read-only** Woo REST key and the Shopify Dev Dashboard app credentials; mint the offline token (`mint-token url` / `exchange`).
 3. `node src/cli.js --project <name>` — validates config and connectivity expectations.
 4. `define-metafields` — create the migration-namespace definitions.
 5. `extract --entities all --limit 10` then `load --entities all --limit 10` — smoke test, check results in the store admin.
 6. `wipe --entities all --confirm <store-domain>` to clear the smoke test, then run the full migration (UI or CLI).
+7. When the migration is finished and the store is live, set `production: true`, `allow_wipe: false` and `locked: true`.
+
+### Locking a finished project
+
+`target.locked` is checked in `createRun()`, which every run goes through, so it stops the CLI
+and the web UI alike — `extract`, `load`, `full`, `verify`, `rebuild-map` and `wipe` all refuse
+before touching anything. Read-only commands (the config summary, `report`) still work. It is
+deliberately blunt: a finished migration should take no action at all, rather than rely on each
+command guarding itself. `production` only ever gated `wipe`, which was not enough on its own.
 
 ## Lush Qatar migration results (completed 2026-07-20)
 

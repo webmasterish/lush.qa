@@ -44,6 +44,16 @@ export function recoverStaleRuns() {
 // caller executes it itself (CLI foreground). Inserting directly as
 // 'running' closes the race where the worker could grab a CLI-owned run.
 export function createRun(cfg, type, entities, options = {}, initialStatus = "queued") {
+  // A finished project is locked so nothing can act on the live store by
+  // accident. Both entry points (CLI and POST /api/runs) come through here.
+  if (cfg.project.target.locked) {
+    const err = new Error(
+      `project '${cfg.project.name}' is locked: no runs may be created. ` +
+        `Set target.locked to false in config/projects/${cfg.project.name}.json to re-enable.`,
+    );
+    err.projectLocked = true;
+    throw err;
+  }
   const db = getDb();
   const res = db
     .prepare("INSERT INTO runs (project, type, entities, options, status, created_at, heartbeat_at) VALUES (?, ?, ?, ?, ?, ?, ?)")

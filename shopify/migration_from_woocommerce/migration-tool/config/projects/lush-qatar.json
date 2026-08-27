@@ -14,8 +14,9 @@
     "primary_locale": "en",
     "secondary_locales": ["ar"],
     "currency": "QAR",
-    "production": false,
-    "allow_wipe": true
+    "production": true,
+    "allow_wipe": false,
+    "locked": true
   },
   "phone_default_country": "+974",
   "metafield_namespace": "dotaim_migration",

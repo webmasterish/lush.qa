@@ -178,6 +178,6 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error(e.stack ?? String(e));
+  console.error(e.projectLocked ? e.message : (e.stack ?? String(e)));
   process.exit(1);
 });

@@ -95,6 +95,7 @@ export function loadConfig(projectName) {
   project.target.secondary_locales ??= [];
   project.target.production ??= false;
   project.target.allow_wipe ??= false;
+  project.target.locked ??= false;
 
   return { project, env, paths: { root: ROOT, jsonPath, envPath } };
 }
@@ -116,6 +117,7 @@ export function configSummary({ project, env }) {
       locales: [project.target.primary_locale, ...project.target.secondary_locales],
       currency: project.target.currency,
       production: project.target.production,
+      locked: project.target.locked,
     },
     metafield_namespace: project.metafield_namespace,
     credentials: {
