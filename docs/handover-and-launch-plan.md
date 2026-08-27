@@ -81,6 +81,23 @@ The recording plus the demo reference document from 14 July becomes their refere
 4. **72 hours.** Watch orders, error rates and search console. Fix anything that surfaces.
 5. **Close out.** Confirm handover, remove DotAim staff access per the ledger, Stage 3 invoice.
 
+### Access to revoke at close-out
+
+Do this once the store is stable and the handover document has gone out, not before: the token
+and the staff account are still how we fix things during the monitoring window.
+
+| What | Where | Why it waits |
+|---|---|---|
+| Shopify offline Admin API token | Shopify admin, uninstall/revoke the custom app | The real guard on the migration tool. `target.locked` in the project config is a deliberate speed bump; a revoked credential is absolute. Still needed if any translation or metafield work comes up before handover |
+| `dev@dotaim.com` from staff order notifications | Settings > Notifications > Staff notifications | Named to the client in the launch email as ours, for the monitoring period, removed at handover. Removing it is therefore a promise kept, not housekeeping |
+| DotAim staff account | Settings > Users, per `store-settings-ledger.md` | Last, after everything else is confirmed |
+| `WOO_STORE_URL` in `config/projects/lush-qatar.env` | Local only | `https://lush.qa` now resolves to Shopify, so an extract would send the WooCommerce key and secret to a third party. Clear the value. The Woo REST key itself can no longer be revoked, the site is unreachable, so it dies with the server |
+
+**Back up `var/migration-tool.sqlite` before any of this.** 45MB, gitignored, one machine. Now that
+lush.qa points at Shopify and the origin IP was never captured, it is the only surviving copy of the
+WooCommerce source data: 538 products, 1,955 customers and 3,192 orders with full payloads. It is
+also the only place the one unmigrated product's variation data still exists.
+
 Do not schedule cutover on a Thursday or the day before a public holiday. Qatar's weekend and Al Mana's coverage both matter more than our convenience.
 
 ## Invoicing
