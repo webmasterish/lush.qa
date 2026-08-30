@@ -12,11 +12,13 @@ Build is done. What is left is other people's decisions, one QA pass, and the la
 |---|---|
 | Phases 1 to 4 (discovery, setup, data, theme and features) | **Complete** |
 | Phase 5 (testing and QA) | Visual pass against KSA outstanding, Bassam doing it last |
-| Phase 6 (training and launch) | **Launched 2026-08-27.** Training and close-out still outstanding |
+| Phase 6 (training and launch) | **Launched 2026-08-27. Completion report and final invoice sent 2026-08-30.** Only the training session and close-out access revocation remain |
 
 Nothing in the remaining work is DotAim build effort of any size. The critical path runs through the client.
 
-**Update, 2026-08-30: the store is live and trading.** DNS cut over on 2026-08-27 and the password came off at cutover as planned, confirmed by real customer orders from that morning onward (#4207, 2026-08-27 10:36, is the first). The monitoring window is therefore running, and post-launch support has started in earnest: the care team (Kyaw, `wecarelush@almana.com`) now raises customer-facing issues to Dee, who forwards them to Bassam. The first was the delivery-charge incident on 2026-08-30, written up in `store-settings-ledger.md`. Still outstanding from the launch sequence: the training session, close-out access revocation, and the Stage 3 invoice.
+**Update, 2026-08-30: the store is live and trading.** DNS cut over on 2026-08-27 and the password came off at cutover as planned, confirmed by real customer orders from that morning onward (#4207, 2026-08-27 10:36, is the first). The monitoring window is therefore running, and post-launch support has started in earnest: the care team (Kyaw, `wecarelush@almana.com`) now raises customer-facing issues to Dee, who forwards them to Bassam. The first was the delivery-charge incident on 2026-08-30, written up in `store-settings-ledger.md`. Still outstanding from the launch sequence: the training session and close-out access revocation.
+
+**Update, 2026-08-30 evening: handover is done on paper.** The project completion report went to Dee, cc Mario, Sibin, Nirmal, Ann, `wecarelush@almana.com` and `amfgqatar@almana.com`, as its own new thread, email only with no attachments. The Stage 3 invoice (LUSHQA-0004, $675) went separately the same day to Dee, cc Mario and Jeffrey, PDF attached with the hosted Stripe card link inline. Both recorded at `client-report-completion-draft.md` and `client-email-stage3-invoice-draft.md`. **Training is next: Dee asked for Wednesday 2026-09-02 but has not given a time**, and the report asks her for one along with what she wants covered. Access revocation waits on the client saying they are ready, which the report explicitly invited.
 
 ## Dee is away until the end of August
 
@@ -52,7 +54,6 @@ Everything else runs alongside and none of it blocks. **The gateway is the only 
 | Vegan product list | Dee, **but not yet asked** | No, labels can be added after |
 | Ingredient library content | Nobody, deliberately | No, feature works with what is wired |
 | Notification email Arabic | Client | No, but customers get English receipts until done |
-| Google Analytics property | Client | No |
 | Native Arabic review of product copy | Client | No |
 
 ## Training session
@@ -92,7 +93,7 @@ and the staff account are still how we fix things during the monitoring window.
 |---|---|---|
 | Shopify offline Admin API token | Shopify admin, uninstall/revoke the custom app | The real guard on the migration tool. `target.locked` in the project config is a deliberate speed bump; a revoked credential is absolute. Still needed if any translation or metafield work comes up before handover |
 | `dev@dotaim.com` from staff order notifications | Settings > Notifications > Staff notifications | Named to the client in the launch email as ours, for the monitoring period, removed at handover. Removing it is therefore a promise kept, not housekeeping |
-| DotAim staff account | Settings > Users, per `store-settings-ledger.md` | Last, after everything else is confirmed |
+| DotAim admin account, also `dev@dotaim.com` | Settings > Users, per `store-settings-ledger.md` | Last, after everything else is confirmed. Same address as the notification recipient above, so removing one does not remove the other |
 | `WOO_STORE_URL` in `config/projects/lush-qatar.env` | Local only | `https://lush.qa` now resolves to Shopify, so an extract would send the WooCommerce key and secret to a third party. Clear the value. The Woo REST key itself can no longer be revoked, the site is unreachable, so it dies with the server |
 
 **Back up `var/migration-tool.sqlite` before any of this.** 45MB, gitignored, one machine. Now that
@@ -109,12 +110,12 @@ Per the agreed 50/25/25 schedule in the context document.
 | Stage | Trigger | Amount | Status |
 |---|---|---|---|
 | Stage 1 | Deposit to begin | $1,350 | Paid |
-| **Stage 2** | **On completion of data migration and store setup** | **$675** | **Trigger met 2026-08-08. Email drafted, Stripe invoice not yet issued** |
-| Stage 3 | On launch | $675 | After cutover |
+| Stage 2 | On completion of data migration and store setup | $675 | **Paid 2026-08-24** (LUSHQA-0003) |
+| **Stage 3** | **On launch** | **$675** | **Invoiced and sent 2026-08-30** (LUSHQA-0004). Awaiting payment |
 
-**Stage 2 is defensibly due.** Its trigger is data migration and store setup, both of which are complete: the data landed and was reconciled on 20 July, and the store build finished this week. It is not tied to launch, and launch is now gated on the client's payment gateway rather than on us. Raising it alongside the report is the natural moment, and it also signals that the remaining wait is on their side without having to say so.
+**Both later stages are settled or sent.** Stage 2's trigger was data migration and store setup, met 2026-08-08; it was invoiced 08-09, resent on request 08-23 and paid 08-24. Stage 3's trigger is launch, met 2026-08-27, invoiced and sent 08-30 alongside the completion report.
 
-Invoice via Stripe as sequence 0003, referencing LUSHQA-0001. Email drafted at `client-email-stage2-invoice-draft.md`; it goes as its own message rather than inside the build report, so the good news is not delivered attached to a bill. Issue the Stripe invoice and paste the card link before sending.
+**What makes these get paid, worth repeating on the next project:** the invoice goes as its own message rather than inside the report, so good news is not delivered attached to a bill; it goes to Dee with Mario and Jeffrey copied; and the hosted Stripe card link sits in the body, not just in the attached PDF. Stage 2 was paid the day after Dee received that link, on her own card.
 
 ## Risks worth naming now
 

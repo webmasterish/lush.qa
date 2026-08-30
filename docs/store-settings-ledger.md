@@ -42,7 +42,7 @@ Status: `done` · `todo` · `blocked` · `n/a`
 | Analytics | Settings > Customer events / theme | **Dropped 2026-08-11.** Client agreed on the call to rely on Shopify's own reports rather than add Google Analytics | n/a | **n/a** | closed |
 | Apps | Apps | Inventory what KSA depends on before installing anything. Any paid app is a client cost and needs approval | audit first | todo | DotAim proposes |
 | Domain | Settings > Domains | lush.qa cutover via Cloudflare, coordinated with Nirmal | no | blocked until launch | IT + DotAim |
-| Users | Settings > Users | Confirm DotAim staff access post-transfer, and remove it at handover | no | todo | Bassam |
+| Users | Settings > Users | **DotAim's admin account is `dev@dotaim.com`**, the same address used for staff order notifications, so both close-out items are one address in two places. Kept deliberately after launch so we can act quickly while the store settles; named to the client in the completion report of 2026-08-30 as removable whenever they ask | no | **kept until the client asks** | Bassam |
 
 ## Theme settings that are overridden in code
 

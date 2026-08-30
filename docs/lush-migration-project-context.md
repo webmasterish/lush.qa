@@ -61,6 +61,8 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 
 ---
 
+- **Kumaran Ponnaiah** (`kumaran_ponnaiah@almana.com`) appears on the launch thread, but his role has never been established. Deliberately left off the completion report of 2026-08-30 for that reason. Ask before adding him to anything client-facing.
+
 ## 4. Commercial terms (agreed)
 
 ### DotAim services — total $2,700
@@ -77,8 +79,8 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 | Stage | Trigger | Amount | Status |
 |---|---|---|---|
 | Stage 1 | Deposit to begin | $1,350 | **PAID** (Stripe fee $59.70) |
-| Stage 2 | On completion of data migration & store setup | $675 | **Trigger met 2026-08-08.** Invoice drafted (`docs/client-email-stage2-invoice-draft.md`), not yet issued |
-| Stage 3 | On launch | $675 | Pending |
+| Stage 2 | On completion of data migration & store setup | $675 | **PAID 2026-08-24** by Dee on her own card, the day after she asked for the invoice to be resent |
+| Stage 3 | On launch | $675 | **Invoiced and sent 2026-08-30** as LUSHQA-0004, with the completion report the same day. Trigger was the 2026-08-27 launch |
 
 ### Third-party costs (billed directly to Lush Qatar via Shopify — NOT through DotAim)
 - **Shopify Grow Plan:** ~$54/month annual ($648/yr) or $72/month monthly — MENA regional pricing (NOT the US rate of $79/$105).
@@ -92,7 +94,9 @@ Al Mana is a major Qatari conglomerate (55+ companies, operations across 8 count
 - **LUSHQA-0001** — Master/full reference invoice ($2,700, full 50/25/25 breakdown). Issued via **InvoiceNinja** (document only, not payable) for the client's finance/audit records.
 - **LUSHQA-0002** — Stripe deposit invoice ($1,350). **PAID.**
 - Stripe sequence continues: 0003 (Stage 2), 0004 (Stage 3), each referencing LUSHQA-0001.
-- **LUSHQA-0003** — Stripe Stage 2 invoice ($675). Trigger met 2026-08-08 when the store build report went out. Email drafted at `docs/client-email-stage2-invoice-draft.md`; the Stripe invoice itself still has to be issued and the card link pasted in.
+- **LUSHQA-0003** — Stripe Stage 2 invoice ($675). Sent 2026-08-09, resent on request 2026-08-23, **paid 2026-08-24**.
+- **LUSHQA-0004** — Stripe Stage 3 invoice ($675), the final one. Sent 2026-08-30 to Dee, cc Mario and Jeffrey, PDF attached and hosted card link inline. Email recorded at `docs/client-email-stage3-invoice-draft.md`.
+- **What actually gets these paid:** the hosted Stripe card link in the body, to Dee, with Mario and Jeffrey copied. Stage 2 was paid the day after she received it.
 - Stripe and Payoneer are both under **DotAim LLC**. Payoneer payment links aren't available in DotAim's region; payment is collected via Stripe hosted card links (link emailed manually rather than sent from the Stripe dashboard).
 
 ---
@@ -157,7 +161,7 @@ Previous DotAim migrations (KSA and Lebanon) were done using the paid third-part
 - **Cart & checkout:** slide-out cart drawer with upsells, cards, COD, digital wallets (Apple/Google Pay), local Qatar payment gateways, gift cards
 - **WhatsApp integration:** order confirmations, shipping/delivery updates, optional abandoned-cart reminders (deferrable)
 - **Email automation:** welcome series, abandoned-cart recovery, post-purchase, back-in-stock, order/shipping notifications, branded templates
-- **Blog & content, analytics** (Google Analytics)
+- **Blog & content.** Analytics: Google Analytics dropped 2026-08-11; Shopify's own reports are what the client uses
 - **Bilingual (Arabic/English):** the Qatar site will be bilingual, mirroring the Saudi store.
 
 ### Demo / training session
