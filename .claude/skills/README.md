@@ -22,6 +22,14 @@ The instructional content of each skill is otherwise unchanged.
 
 To add later, same treatment (strip telemetry): `shopify-admin` (Admin API + schema search/validate; ~5 MB of schema assets) for the data-migration phase, and `shopify-liquid` for the Be Yours theme phase.
 
+## Local skills
+
+Not from the toolkit, written for this project, no telemetry to strip:
+
+| Skill | Purpose |
+|---|---|
+| `done` | End-of-session wrap-up: persist memory + docs, safety checks, commit this session's files, push, write a session file to `__/sessions/` |
+
 ## License
 
 Vendored under the MIT License. Original copyright retained:
