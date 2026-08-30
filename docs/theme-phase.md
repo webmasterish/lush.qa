@@ -348,7 +348,7 @@ Per context doc §8: mega menu, smart search with suggestions, advanced filterin
 - [x] Blog migration — 3 posts imported with images and Arabic translations 2026-08-04 (`shopify/themes/blog/`)
 - [x] **URL redirects / 301 map — applied 2026-08-07**, 457 live and spot-checked (see the ledger). `shopify/themes/redirects/build-redirects.py` resolves 471 of the 875 archived legacy URLs (325 products, 132 collections, policies, blog, account) against the migration database. 252 of the rest are `/product-tag/` URLs that were never migrated; the remainder are products and categories that no longer exist, and are deliberately left to 404
 - [x] **Legal policies — done as far as they go** (Bassam, 2026-08-07): privacy, refund and terms are written and translated. Shipping and contact-information policies are the client's call, are not tracked here, and anyone can add them from Settings > Policies. The footer's automatic policy list is switched off, because Shopify does not translate policy titles and it was rendering an English duplicate under the Arabic menu links
-- [ ] Everything else per `store-settings-ledger.md`: payments (local Qatar gateway — Shopify Payments is unavailable in Qatar), shipping, taxes, checkout branding, notifications, Google Analytics
+- [ ] Everything else per `store-settings-ledger.md`: payments (local Qatar gateway — Shopify Payments is unavailable in Qatar), shipping, taxes, checkout branding, notifications (Google Analytics dropped 2026-08-11)
 
 ### T6 — QA & sign-off
 - [ ] Lighthouse pass — not run. (`theme check` is already clean: 200 files, no offenses, and is run before every commit)

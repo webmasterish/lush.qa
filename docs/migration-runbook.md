@@ -94,7 +94,7 @@ Detailed feature list is in `lush-migration-project-context.md` (§8). Highlight
 - [ ] Cart & checkout: slide-out cart with upsells, cards, COD, Apple/Google Pay, local gateway, gift cards
 - [ ] WhatsApp integration: order confirmations, shipping updates, optional abandoned-cart (deferrable)
 - [ ] Email automation: welcome, abandoned cart, post-purchase, back-in-stock, order/shipping, branded templates
-- [ ] Blog & content, Google Analytics
+- [ ] Blog & content (Google Analytics dropped 2026-08-11; Shopify reports only)
 - [ ] Bilingual AR/EN throughout
 
 ## Phase 5 — Testing & QA

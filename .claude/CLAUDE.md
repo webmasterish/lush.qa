@@ -66,7 +66,7 @@ Secrets live in gitignored `.env` files (see the `.env.example` beside each): `s
 - **Google Drive** — proposals, invoices, project documents.
 - **context7** — fetch current Shopify/library docs; prefer it over memory for API/CLI/config details.
 - **Shopify** — relevant skills from the Shopify AI Toolkit (`github.com/Shopify/Shopify-AI-Toolkit`) are **vendored into `.claude/skills/` with telemetry stripped** (see `.claude/skills/README.md`). `shopify-onboarding-merchant` is the path for connecting the store and importing WooCommerce data; `shopify-use-shopify-cli` drives the CLI. Add `shopify-admin` and `shopify-liquid` (same telemetry-stripping treatment) at the data-migration and theme phases.
-- Analytics will be **Google Analytics**, added later when needed. (Matomo is not used on this project.)
+- Analytics: **Google Analytics was dropped 2026-08-11.** The client agreed on the call to rely on Shopify's own reports. Do not re-offer it. (Matomo is not used on this project either.)
 
 ---
 
