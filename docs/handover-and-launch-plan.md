@@ -12,9 +12,11 @@ Build is done. What is left is other people's decisions, one QA pass, and the la
 |---|---|
 | Phases 1 to 4 (discovery, setup, data, theme and features) | **Complete** |
 | Phase 5 (testing and QA) | Visual pass against KSA outstanding, Bassam doing it last |
-| Phase 6 (training and launch) | Not started, gated on payments |
+| Phase 6 (training and launch) | **Launched 2026-08-27.** Training and close-out still outstanding |
 
 Nothing in the remaining work is DotAim build effort of any size. The critical path runs through the client.
+
+**Update, 2026-08-30: the store is live and trading.** DNS cut over on 2026-08-27 and the password came off at cutover as planned, confirmed by real customer orders from that morning onward (#4207, 2026-08-27 10:36, is the first). The monitoring window is therefore running, and post-launch support has started in earnest: the care team (Kyaw, `wecarelush@almana.com`) now raises customer-facing issues to Dee, who forwards them to Bassam. The first was the delivery-charge incident on 2026-08-30, written up in `store-settings-ledger.md`. Still outstanding from the launch sequence: the training session, close-out access revocation, and the Stage 3 invoice.
 
 ## Dee is away until the end of August
 
