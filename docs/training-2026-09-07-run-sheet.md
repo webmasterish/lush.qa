@@ -71,7 +71,7 @@ Then land the point: there are 23 orders waiting. Offer to walk through clearing
 
 **Duplicate order numbers, mention here.** Orders #4213, #4217 and #4219 each exist twice, once as a July migrated order and once as a new one. This is not a fault, it is the migrated history and the new counter overlapping. 299 of the next 300 order numbers will do the same. When searching, check the date and whether the source is "web". See the fix under Recommendations below.
 
-### 10:50, Products and inventory, 15 min
+### 10:50, Products and inventory, 12 min
 
 1. Find and edit a product. Title, description, images, price, stock.
 2. **Active versus Draft versus Archived.** The most important five minutes of the session. Active means customers see it, Draft means nobody does.
@@ -80,10 +80,56 @@ Then land the point: there are 23 orders waiting. Offer to walk through clearing
 5. **Stock levels and the correct way to hide a sold-out item.** They do not need Draft for this. Show "Continue selling when out of stock" being off, which makes Shopify show Sold out automatically and bring the product back on its own when stock is added. This is the habit change that stops the problem recurring.
 6. **The physical product checkbox.** Tie back to 30 August. One unticked box on 11 products stopped delivery charges applying. It is now correct on all 769 variants. Show them where it is so they know not to touch it when creating new products.
 7. Collections, briefly, and how a product reaches a collection.
+8. **The third case: online but sold only in the shop.** See below. Deck board 06 covers it.
 
-### 11:05, Content and the storefront, 10 min
+#### The in-store-only case, and a correction worth having straight
 
-They have already proved they can do this, so pitch it as confirmation rather than instruction.
+Bassam raised this as a case the team will hit: a product they want visible on the website but only sold in the branches. Draft hides it completely, Active makes it buyable, so neither fits.
+
+**Checked, and Qatar does not have this.** The mechanism exists in the KSA theme only:
+
+- `__reference/ksa-8.4.0-live/` implements it in `snippets/card-product.liquid`, `sections/main-product.liquid` and `sections/main-product-modal.liquid`. A product in a collection with the handle `only-in-stores` keeps its page, gains an "In store only" badge taken from the collection title, has its add-to-cart removed, and is exempted from the sold-out treatment.
+- The Qatar theme (`shopify/themes/be-yours/`, Be Yours **9.2.0**, against KSA's 8.4.0) contains no reference to `only_in_stores`.
+- The live Qatar store has **no collection with the handle `only-in-stores`**, so even if the theme code were there it would do nothing.
+
+The deck therefore presents it as a KSA capability that Qatar does not have, and stops there. It does not offer to build it, price it, or imply it is coming. If they say they want it, that is a scoping conversation for afterwards, not a promise made in the room.
+
+### 11:02, Analytics, 8 min
+
+Added because management is in the room. Mario and Dee care how the store is performing, not how to fulfil an order, and without this the whole hour is aimed at the operators.
+
+1. Where it lives: Analytics in the left menu. Dashboard, Reports, Live view.
+2. Read the real numbers off the dashboard live. Sessions, visitors, conversion rate, average order value, top products.
+3. Explain each one in plain words. Sessions counts visits, not people. Conversion rate is the share of visits ending in an order, and is the single most useful number they have.
+4. Sessions by traffic source and by device. Device split matters here, and it justifies the mobile slider work they already did.
+5. Live view if there is anyone on the site. It lands better than any chart.
+
+**No figures are printed in the deck for this section, deliberately.** The API token has no `read_reports` scope, so these cannot be pulled ahead of time, and a slide with stale numbers is worse than none. Open the dashboard and read them.
+
+Two connections worth making out loud, because they tie the management view to the operator view:
+
+- Conversion rate should improve once the 121 hidden products come back, since roughly a third of the catalogue is currently unreachable.
+- Repeat purchase reflects whether customers hear from you after ordering, which is exactly what marking orders fulfilled controls.
+
+### 11:10, Settings and team access, 8 min
+
+Two parts. A fast tour so they know where things are, then the one decision worth making.
+
+1. Store details, payments and checkout, delivery, notifications, policies. Show where, not how. Nothing here needs changing in the session.
+2. Notifications is worth a pause: it is where the shipping confirmation template lives, which connects back to the fulfilment section.
+3. **Users.** Open Settings > Users and look at the list together.
+
+**The access problem.** Every account currently has full access: any product, every order, all customer data, payment settings, and the ability to add or remove other people. Fine for three trusted people, a lot of exposure across thirteen, and it makes an accident impossible to trace.
+
+Shopify handles this with roles assigned per user, and roles stack if somebody wears two hats. There are predefined roles to start from, so this is not a build. The deck proposes a starting shape: full access for Dee and Mario, a brand and merchandising role, an orders and fulfilment role, and view only.
+
+Frame it as Dee's decision to make after the call, not something to change live. Nobody should lose access mid-session.
+
+> ⚠️ **Verify before Monday.** The claim that everyone has full access came from Bassam, not from the API. `staffMembers` needs a `read_users` scope the token does not have, so it could not be checked. Open Settings > Users and confirm before saying it in the room.
+
+### 11:18, Content and the storefront, 5 min
+
+Cut from 10 minutes to make room for analytics and access. They have already proved they can do this, so pitch it as confirmation rather than instruction. **This is the section to drop first if the session runs long.**
 
 1. Theme editor, live preview, desktop and mobile toggle. Credit them for the Halloween slider they built within hours of launch, including the separate mobile image.
 2. Homepage sections, reordering, the slider specifically.
@@ -91,9 +137,9 @@ They have already proved they can do this, so pitch it as confirmation rather th
 4. Saving versus publishing, and how to preview without going live.
 5. Arabic. Show where translations are edited and note that 36 published products still have no Arabic description.
 
-### 11:15, Questions and what is open on their side, 10 min
+### 11:23, Questions and what is open on their side, 7 min
 
-Open the floor first, and let it run. If it goes quiet, use the open items list below as prompts.
+Open the floor first, and let it run. If it goes quiet, use the open items list below as prompts. The ongoing-support mention now lives inside this block rather than as its own slot: one or two sentences, after everything else has landed, and no pricing to the room.
 
 Read out what is theirs, briefly, without dwelling:
 
@@ -101,12 +147,6 @@ Read out what is theirs, briefly, without dwelling:
 - Arabic for 36 published products.
 - Product 9026 "No Way to Say Goodbye", still missing, needs creating by hand with two sizes. **Note:** the "No Way To Say Goodbye" already in the store at QAR 75 is a different product, so do not let anyone conclude it is done.
 - 6 email DNS records with IT. Sibin is not on this call, so this needs Nirmal or Dee to carry it. Until they are added, customer emails still send from a Shopify address rather than `wecarelush@almana.com`.
-
-### 11:25, Ongoing support, 5 min
-
-Keep it short and unpushy, and only after everything else has landed. By this point they will have seen 23 unfulfilled orders and 121 hidden products, so the case makes itself.
-
-One or two sentences: the support options are in the original proposal, happy to talk it through separately with Dee. Do not quote pricing to the whole room.
 
 Close by recommending they keep a recording. Recording is theirs to do, not ours.
 
@@ -139,6 +179,9 @@ Verification is a one time step, either a DNS TXT record through IT or a meta ta
 | What happened with the delivery charge? | 11 products had the physical product box unticked, so Shopify did not think they needed delivering. Fixed on 30 August. All 769 variants verified correct, and every order since has charged correctly. |
 | Is our old website data safe? | Yes. 61 collections, 536 products, 3,111 customers and 3,179 historical orders are all in Shopify, with the content as of 3 August. |
 | Can we see how many people visit the site? | Yes, Analytics. Show it live. |
+| Can we stop some staff seeing orders or customer data? | Yes. Settings > Users, assign each person a role with only the permissions they need. Roles stack if somebody wears two hats. |
+| Can we show a product online but only sell it in the shop? | Not on this store today. The Saudi site has it, built as an "Only in stores" collection that hides the buy button. Qatar would need it added. |
+| Why is there no Google Analytics? | You decided on 11 August to rely on Shopify's own reports, which cover sessions, sources, devices and conversion. Nothing was lost. |
 
 ## Do before the session
 
@@ -147,7 +190,10 @@ Verification is a one time step, either a DNS TXT record through IT or a meta ta
 - [ ] Ask Dee whether all 13 attendees have staff accounts.
 - [ ] Have tabs pre-opened: Orders list, one unfulfilled order, Products filtered to Draft sorted by inventory, Analytics dashboard, theme editor, Branches page.
 - [ ] Decide whether to offer clearing the fulfilment backlog live or straight after the call.
+- [ ] **Confirm on Settings > Users that everyone really does have full access** before saying so in the room. The API could not verify it (`read_users` scope missing).
+- [ ] Read Analytics once on the morning so the numbers are in your head before you screen-share them.
 - [ ] Check whether Dee wants the session recorded, and remind her it is theirs to record.
+- [ ] Regenerate the PDF if any figure changes: see Materials below.
 
 ## Materials
 
@@ -156,10 +202,23 @@ All untracked, in `shopify/__/2026-09-07/`:
 | File | What it is |
 | --- | --- |
 | `lush-training-deck.html` | The deck, openable straight in a browser. Arrow keys page between the 11 boards. Same content as the private artifact, kept locally so the session does not depend on being online or logged in. |
+| `lush-training-deck.pdf` | 14 pages, one board per A4 landscape sheet. This is the shareable copy. |
 | `check.sh` | The read-only store check. Re-run it Monday morning and it reprints every number in the deck. |
 | `orders.jsonl`, `products.jsonl`, `variants.jsonl`, `migrated.jsonl`, `mig_nums.txt` | The captured 2026-09-03 data the figures were read from. Overwritten on the next run, so the current copies are the audit trail for the numbers quoted above. |
 
-The artifact version of the deck is at `https://claude.ai/code/artifact/3914c366-f39b-4866-a785-0d0fe5e60d23`. It is private and has not been shared with anyone.
+To rebuild the PDF after editing the HTML:
+
+```
+cd shopify/__/2026-09-07
+google-chrome --headless=new --disable-gpu --no-sandbox --no-pdf-header-footer \
+  --virtual-time-budget=20000 --run-all-compositor-stages-before-draw \
+  --print-to-pdf=lush-training-deck.pdf "file://$PWD/lush-training-deck.html"
+pdfinfo lush-training-deck.pdf | grep Pages   # expect 14
+```
+
+If the page count is not 14, a board has outgrown its sheet. The print rules live in the single `@media print` block at the end of the stylesheet, and the levers that matter most are `.board` padding and the shared `margin-top` on `.stats, .agenda, .owners, figure, .cols, ol.steps, table`.
+
+The artifact version of the deck is at `https://claude.ai/code/artifact/3914c366-f39b-4866-a785-0d0fe5e60d23`, kept in sync with the local file. It is private and has not been shared with anyone.
 
 ## Verified store state, 2026-09-03
 
