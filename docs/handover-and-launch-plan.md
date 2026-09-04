@@ -58,7 +58,17 @@ Everything else runs alongside and none of it blocks. **The gateway is the only 
 
 ## Training session
 
-Two hours, recorded, per the original scope. Run it **after** the gateway is connected so the checkout can be demonstrated with something real, and **before** the DNS switch so the team is ready on day one.
+**Update, 2026-09-04: scheduled and prepared.** Monday **2026-09-07, 10:30 to 11:30 Qatar time**, Google Meet, organised by Dee from her personal Gmail with **13 invited**. The full plan, timings and demo checklist live in **`docs/training-2026-09-07-run-sheet.md`**; the deck and a re-runnable store check are in `shopify/__/2026-09-07/`.
+
+Three things below are now out of date and the run sheet supersedes them:
+
+- **One hour, not two.** Dee set a 60 minute slot with a hard stop, so the agenda below does not fit. The run sheet cuts discounts, gift cards and the blog, and adds analytics and team access instead, because Mario is attending and the original list is aimed only at operators.
+- **It is happening after launch, not before.** The store went live 2026-08-27 and has been trading for over a week, so this is no longer preparation. Two live findings now drive the session: 23 of 25 orders have never been marked fulfilled, and 121 in-stock products sit behind a Draft flag.
+- **Recording is the client's to do.** The original scope said recorded; the completion report handed that to them, and the run sheet only reminds Dee.
+
+Attendee note: **Sibin is not invited** and he owns the six outstanding email CNAMEs, so that item cannot be closed in the room.
+
+Original scope, kept for reference. Two hours, recorded. Run it **after** the gateway is connected so the checkout can be demonstrated with something real, and **before** the DNS switch so the team is ready on day one.
 
 Cover, in this order:
 
