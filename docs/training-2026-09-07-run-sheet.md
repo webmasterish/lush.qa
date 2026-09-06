@@ -211,8 +211,8 @@ All untracked, in `shopify/__/2026-09-07/`:
 
 | File | What it is |
 | --- | --- |
-| `lush-training-deck.html` | The deck, openable straight in a browser. Arrow keys page between the 11 boards. Same content as the private artifact, kept locally so the session does not depend on being online or logged in. |
-| `lush-training-deck.pdf` | 14 pages, one board per A4 landscape sheet. This is the shareable copy. |
+| `lush-training-deck.html` | The deck source, openable straight in a browser. Arrow keys page between the 14 boards. Same content as the private artifact, kept locally so the session does not depend on being online or logged in. The Lush logo is embedded as a data URI rather than linked, so the file stays standalone. Note the logo comes from the private `../brand/logo/` folder, which is why this file stays in gitignored `__/`. |
+| `Lush-Qatar-Shopify-Training-2026-09-07.pdf` | 14 pages, one board per A4 landscape sheet. **This is the copy that goes to the client**, named so it still makes sense sitting in someone's Downloads folder a month from now. |
 | `check.sh` | The read-only store check. Re-run it Monday morning and it reprints every number in the deck. |
 | `orders.jsonl`, `products.jsonl`, `variants.jsonl`, `migrated.jsonl`, `mig_nums.txt` | The captured 2026-09-06 data the figures were read from. **`check.sh` overwrites these on every run**, so copy them aside before re-running if the current numbers still need to be provable. |
 | `capture-2026-09-03/` | The 2026-09-03 capture, kept so the week-on-week movement in the state table can be checked. |
@@ -223,11 +223,23 @@ To rebuild the PDF after editing the HTML:
 cd shopify/__/2026-09-07
 google-chrome --headless=new --disable-gpu --no-sandbox --no-pdf-header-footer \
   --virtual-time-budget=20000 --run-all-compositor-stages-before-draw \
-  --print-to-pdf=lush-training-deck.pdf "file://$PWD/lush-training-deck.html"
-pdfinfo lush-training-deck.pdf | grep Pages   # expect 14
+  --print-to-pdf=Lush-Qatar-Shopify-Training-2026-09-07.pdf "file://$PWD/lush-training-deck.html"
+pdfinfo Lush-Qatar-Shopify-Training-2026-09-07.pdf | grep Pages   # expect 14
 ```
 
 If the page count is not 14, a board has outgrown its sheet. The print rules live in the single `@media print` block at the end of the stylesheet, and the levers that matter most are `.board` padding and the shared `margin-top` on `.stats, .agenda, .owners, figure, .cols, ol.steps, table`.
+
+## Sharing the deck with the room
+
+**File to send:** `Lush-Qatar-Shopify-Training-2026-09-07.pdf`.
+
+**Send it at the end, not the start.** Two boards, the fulfilment one and the access one, are pointed. Read cold, "24 orders waiting" and "everyone currently has full access" land as criticism; heard with the framing in the run sheet, they land as "you already did this right, let us keep it going". Sharing at the start invites people to read ahead of that framing, and the deck is built to be presented rather than read alone.
+
+**Use Drive as the single copy, and link to it. Do not attach the PDF to the email.** One canonical file means one version, it can be corrected in place afterwards without a second email, and the link keeps working long after the Meet chat is gone. Meet chat disappears for anyone who joined late or dropped out, so it is not a delivery mechanism on its own, only a convenience during the call.
+
+⚠️ **Check the Drive sharing setting before the call.** Dee organised from a personal Gmail (`moradekebabayale@gmail.com`) and three other attendees are on personal Gmail addresses too. If the file is shared to the `almana.com` domain only, four people in the room cannot open it. Set it to **anyone with the link, viewer**.
+
+So the sequence is: paste the link in Meet chat as you wrap up, then email the same link with a three line recap of what was agreed and who owns it. That email is also the natural place to confirm the two decisions that came out of the session, the access levels and the order prefix.
 
 The artifact version of the deck is at `https://claude.ai/code/artifact/3914c366-f39b-4866-a785-0d0fe5e60d23`, kept in sync with the local file. It is private and has not been shared with anyone.
 
