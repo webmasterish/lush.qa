@@ -68,6 +68,8 @@ Three things below are now out of date and the run sheet supersedes them:
 
 Attendee note: **Sibin is not invited** and he owns the six outstanding email CNAMEs, so that item cannot be closed in the room.
 
+**Update, 2026-09-07: materials are final.** Deck refreshed against live store data on 2026-09-06 and exported as `shopify/__/2026-09-07/Lush-Qatar-Shopify-Training-2026-09-07.pdf`, 14 pages. The store moved in the week before the session and it changes the emphasis: fulfilment started and then lapsed, with 11 orders fulfilled but only 1 of the 23 placed since 31 August, and the hidden in-stock drafts grew from 121 products to 139. The handover plan for the PDF is in the run sheet: one copy on Drive, link shared at the end rather than the start, sharing set to anyone with the link because several attendees are on personal Gmail addresses.
+
 Original scope, kept for reference. Two hours, recorded. Run it **after** the gateway is connected so the checkout can be demonstrated with something real, and **before** the DNS switch so the team is ready on day one.
 
 Cover, in this order:
