@@ -52,6 +52,16 @@
         <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
       {%- endif -%}
 
+      {%- comment -%}
+        Mirrors main-product.liquid: products in the 'only-in-stores' collection
+        keep their quick view but lose the variant picker and buy buttons.
+      {%- endcomment -%}
+      {%- assign only_in_stores = false -%}
+      {%- assign only_in_stores_match = product.collections | where: 'handle', 'only-in-stores' -%}
+      {%- if only_in_stores_match.size > 0 -%}
+        {%- assign only_in_stores = true -%}
+      {%- endif -%}
+
       <drawer-close-button class="quick-view__close">
         <span class="icon icon-plus-alt"></span>
       </drawer-close-button>
@@ -290,6 +300,9 @@
                   {%- liquid
                     assign show_badges = block.settings.show_badges
                     assign price_class = 'price--' | append: block.settings.price_size
+                    if only_in_stores and show_badges
+                      assign show_badges = false
+                    endif
                     render 'price', product: product, use_variant: true, show_badges: show_badges, price_class: price_class, sale_badge_basis: block.settings.sale_badge_basis
                   -%}
                 </div>
@@ -307,6 +320,9 @@
                       {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                     {%- endif -%}
                   </div>
+                {%- endif -%}
+                {%- if only_in_stores and block.settings.show_badges -%}
+                  <span class="badge badge--in-store" style="--color-badge-background: #000000; --color-badge-border: #000000; --color-badge-foreground: #ffffff;">{{ only_in_stores_match.first.title }}</span>
                 {%- endif -%}
                 <div {{ block.shopify_attributes }}>
                   {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
@@ -410,6 +426,15 @@
                   if product.selected_or_first_available_variant.incoming and inventory_visible == false and product.selected_or_first_available_variant.inventory_quantity <= block.settings.inventory_threshold
                     assign show_incoming = true
                   endif
+
+                  comment
+                    Mirrors main-product.liquid: no low-stock urgency on a
+                    product the customer cannot buy online.
+                  endcomment
+                  if only_in_stores
+                    assign inventory_visible = false
+                    assign show_incoming = false
+                  endif
                 -%}
                 {%- if product.selected_or_first_available_variant.available and inventory_visible -%}
                   <li class="product__inventory-item">
@@ -442,9 +467,13 @@
 
               {{ 'component-product-inventory.css' | asset_url | stylesheet_tag }}
             {%- when 'variant_picker' -%}
-              {% render 'product-variant-picker', block: block, product: product, update_url: false, product_form_id: product_form_id %}
+              {%- unless only_in_stores -%}
+                {% render 'product-variant-picker', block: block, product: product, update_url: false, product_form_id: product_form_id %}
+              {%- endunless -%}
             {%- when 'buy_buttons' -%}
-              {% render 'buy-buttons', block: block, product: product, section_id: section.id, product_form_id: product_form_id %}
+              {%- unless only_in_stores -%}
+                {% render 'buy-buttons', block: block, product: product, section_id: section.id, product_form_id: product_form_id %}
+              {%- endunless -%}
             {%- when 'rating' -%}
               {%- if product.metafields.reviews.rating.value != blank -%}
                 {% liquid

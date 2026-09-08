@@ -72,6 +72,17 @@
   }
 {%- endstyle -%}
 
+{%- comment -%}
+  Products in the 'only-in-stores' collection stay browsable but cannot be
+  bought online. The badge text is the collection's own title, so the wording is
+  editable in the admin (and translatable) without touching the theme.
+{%- endcomment -%}
+{%- assign only_in_stores = false -%}
+{%- assign only_in_stores_match = product.collections | where: 'handle', 'only-in-stores' -%}
+{%- if only_in_stores_match.size > 0 -%}
+  {%- assign only_in_stores = true -%}
+{%- endif -%}
+
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- if first_3d_model -%}
   {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
@@ -625,6 +636,11 @@
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
+                {%- if only_in_stores -%}
+                  <div>
+                    <span class="badge badge--in-store" style="--color-badge-background: #000000; --color-badge-border: #000000; --color-badge-foreground: #ffffff;">{{ only_in_stores_match.first.title }}</span>
+                  </div>
+                {%- endif -%}
               {%- endif -%}
             </div>
             {%- if block.settings.show_price -%}
@@ -652,6 +668,9 @@
                 {%- liquid
                   assign show_badges = block.settings.show_badges
                   assign price_class = 'price--' | append: block.settings.price_size
+                  if only_in_stores and show_badges
+                    assign show_badges = false
+                  endif
                   render 'price', product: product, use_variant: true, show_badges: show_badges, price_class: price_class, sale_badge_basis: block.settings.sale_badge_basis
                 -%}
               </div>
@@ -668,6 +687,11 @@
                   {%- if shop.shipping_policy.body != blank -%}
                     {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                   {%- endif -%}
+                </div>
+              {%- endif -%}
+              {%- if only_in_stores and block.settings.show_badges -%}
+                <div>
+                  <span class="badge badge--in-store" style="--color-badge-background: #000000; --color-badge-border: #000000; --color-badge-foreground: #ffffff;">{{ only_in_stores_match.first.title }}</span>
                 </div>
               {%- endif -%}
               <div {{ block.shopify_attributes }}>
@@ -792,6 +816,16 @@
                 if product.selected_or_first_available_variant.incoming and inventory_visible == false and product.selected_or_first_available_variant.inventory_quantity <= block.settings.inventory_threshold
                   assign show_incoming = true
                 endif
+
+                comment
+                  In-store-only products keep real stock, so the low-stock
+                  notice would otherwise urge customers to hurry and buy
+                  something the page gives them no way to buy.
+                endcomment
+                if only_in_stores
+                  assign inventory_visible = false
+                  assign show_incoming = false
+                endif
               -%}
               {%- if product.selected_or_first_available_variant.available and inventory_visible -%}
                 <li class="product__inventory-item">
@@ -823,11 +857,15 @@
             </ul>
             {{ 'component-product-inventory.css' | asset_url | stylesheet_tag }}
           {%- when 'variant_picker' -%}
-            {% render 'product-variant-picker', block: block, product: product, product_form_id: product_form_id %}
+            {%- unless only_in_stores -%}
+              {% render 'product-variant-picker', block: block, product: product, product_form_id: product_form_id %}
+            {%- endunless -%}
           {%- when 'sibling_products' -%}
             {%- render 'sibling-products', block: block, product: product, section_id: section.id -%}
           {%- when 'buy_buttons' -%}
-            {% render 'buy-buttons', block: block, product: product, section_id: section.id, product_form_id: product_form_id, show_pickup_availability: true %}
+            {%- unless only_in_stores -%}
+              {% render 'buy-buttons', block: block, product: product, section_id: section.id, product_form_id: product_form_id, show_pickup_availability: true %}
+            {%- endunless -%}
           {%- when 'rating' -%}
             {%- if product.metafields.reviews.rating.value != blank -%}
               {% liquid
@@ -1118,10 +1156,16 @@
             <div class="sticky-cart__content-heading">
               <p class="h4 small-hide medium-hide">{{ product.title | escape }}</p>
               <div class="no-js-hidden" id="Price-Alt-{{ section.id }}">
-                {%- render 'price', product: product, use_variant: true, show_badges: true -%}
+                {%- if only_in_stores -%}
+                  {%- render 'price', product: product, use_variant: true, show_badges: false -%}
+                  <span class="badge badge--in-store" style="--color-badge-background: #000000; --color-badge-border: #000000; --color-badge-foreground: #ffffff;">{{ only_in_stores_match.first.title }}</span>
+                {%- else -%}
+                  {%- render 'price', product: product, use_variant: true, show_badges: true -%}
+                {%- endif -%}
               </div>
             </div>
           </div>
+          {%- unless only_in_stores -%}
           <product-form class="sticky-cart__form">
             <div class="product-form__error-message-wrapper" role="alert" hidden>
               {%- render 'icon', icon: 'error-red' -%}
@@ -1239,6 +1283,7 @@
               </div>
             {%- endform -%}
           </product-form>
+          {%- endunless -%}
         </div>
       </div>
     </animate-sticky>

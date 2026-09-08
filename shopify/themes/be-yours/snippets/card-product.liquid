@@ -55,6 +55,17 @@
     assign card_url = card_product.url | within: card_collection
     assign card_url_with_default = card_product.url | within: card_collection | default: '#'
   endif
+
+  comment
+    Products in the 'only-in-stores' collection stay browsable but cannot be
+    bought online. The badge text is the collection's own title, so the wording
+    is editable in the admin (and translatable) without touching the theme.
+  endcomment
+  assign only_in_stores = false
+  assign only_in_stores_match = card_product.collections | where: 'handle', 'only-in-stores'
+  if only_in_stores_match.size > 0
+    assign only_in_stores = true
+  endif
 -%}
 
 {%- if enable_color_swatches -%}
@@ -472,7 +483,13 @@
     </div>
 
     <div class="card-information__button{% if show_countdown %} with-countdown{% endif %}">
-      {%- if card_product.available -%}
+      {%- comment -%}
+        In-store-only is checked before availability, unlike KSA. Qatar uses this
+        for products that are genuinely in stock but reserved for the branches,
+        so keying off availability would leave an Add to cart button on them.
+      {%- endcomment -%}
+      {%- if only_in_stores -%}
+      {%- elsif card_product.available -%}
         {%- if show_countdown -%}
           <countdown-timer class="countdown countdown--compact" data-date="{{ card_product.metafields.theme.countdown.value | escape }}" data-compact="true"></countdown-timer>
         {%- endif -%}
@@ -523,6 +540,11 @@
   </div>
 
   <div class="card__badge">
+    {%- if only_in_stores -%}
+      <span class="badge badge--in-store" aria-hidden="true" style="--color-badge-background: #000000; --color-badge-border: #000000; --color-badge-foreground: #ffffff;">
+        {{ only_in_stores_match.first.title }}
+      </span>
+    {%- endif -%}
     {%- if card_product.metafields.theme.label.value != blank -%}
       {%- capture badge_styles -%}
         {%- if card_product.metafields.theme.label_color.value != blank -%}
@@ -545,7 +567,7 @@
       {%- endfor -%}
     {%- endif -%}
     
-    {%- if card_product.available == false -%}
+    {%- if card_product.available == false and only_in_stores == false -%}
       <span class="badge badge--soldout" aria-hidden="true">
         {{ 'products.product.sold_out' | t }}
       </span>
