@@ -12,7 +12,7 @@ Build is done. What is left is other people's decisions, one QA pass, and the la
 |---|---|
 | Phases 1 to 4 (discovery, setup, data, theme and features) | **Complete** |
 | Phase 5 (testing and QA) | Visual pass against KSA outstanding, Bassam doing it last |
-| Phase 6 (training and launch) | **Launched 2026-08-27. Completion report and final invoice sent 2026-08-30.** Only the training session and close-out access revocation remain |
+| Phase 6 (training and launch) | **Launched 2026-08-27. Completion report and final invoice sent 2026-08-30. Training delivered 2026-09-07, recap emailed 2026-09-09.** Only close-out access revocation remains |
 
 Nothing in the remaining work is DotAim build effort of any size. The critical path runs through the client.
 
@@ -69,6 +69,14 @@ Three things below are now out of date and the run sheet supersedes them:
 Attendee note: **Sibin is not invited** and he owns the six outstanding email CNAMEs, so that item cannot be closed in the room.
 
 **Update, 2026-09-07: materials are final.** Deck refreshed against live store data on 2026-09-06 and exported as `shopify/__/2026-09-07/Lush-Qatar-Shopify-Training-2026-09-07.pdf`, 14 pages. The store moved in the week before the session and it changes the emphasis: fulfilment started and then lapsed, with 11 orders fulfilled but only 1 of the 23 placed since 31 August, and the hidden in-stock drafts grew from 121 products to 139. The handover plan for the PDF is in the run sheet: one copy on Drive, link shared at the end rather than the start, sharing set to anyone with the link because several attendees are on personal Gmail addresses.
+
+**Update, 2026-09-09: delivered, and the recap has gone out.** The session ran on 2026-09-07 and covered every planned point. Bassam recorded it locally, ~82 minutes; the recording is **not shared with the client** and stays in the private `../meetings/2026-09-07/`, with a transcript beside it produced by `scripts/transcribe-meeting.sh`.
+
+What actually came out of it was less training than operations. Dee named the real cause of the 139 hidden drafts: **store managers withhold stock from online because they carry their own branch targets**, and her fix is to order stock for online separately. Until that happens the team was hiding in-stock products behind Draft, which destroys the product URLs. That is what the "Only in Stores" feature was built for, same week (see `store-settings-ledger.md`). Mario joined only at the end and used it to signal new business, unprompted and confidential: a **Kuwait** operation starting, where Al Mana has been trying for years to take the Mango market back from Mango's own Spain-run online store, and a new Italian brand opening November or December, most likely **Falconeri** (Bassam's identification from the recording; unconfirmed, and Mario said he would share more the following month).
+
+The recap email went to Dee on 2026-09-09, cc Mario, Ann, Nirmal and `wecarelush`, **sent by Bassam**, with the training PDF and storefront screenshots attached. It reported the four items already done (announcement bar set live during the call, decimal separator corrected to a full stop, cash-or-card wording at checkout, and "Only in Stores" built and live), answered the questions raised, and listed what is now on the client's side. Draft kept at `shopify/__/2026-09-08/recap-email-draft.md`; Bassam edited it before sending, so the sent copy is the Gmail thread, not that file.
+
+Still outstanding after the session: **access levels** (Dee's decision on the call was to cut admins back to Nirmal plus one other, with Bassam to propose the shape for Dee and Ann), branch opening hours, Arabic for the remaining products, the ingredients library, a decision on an order-number prefix to stop live numbers colliding with migrated history, and the DNS records for the sender address, which is the client's task with Nirmal. Close-out access revocation still waits on the client saying they are ready.
 
 Original scope, kept for reference. Two hours, recorded. Run it **after** the gateway is connected so the checkout can be demonstrated with something real, and **before** the DNS switch so the team is ready on day one.
 
