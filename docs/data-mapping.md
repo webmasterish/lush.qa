@@ -79,7 +79,7 @@ Findings from inspecting real `wc/v3` payloads that shape the mapping below:
 | `role`, `username`, `avatar_url`, `is_paying_customer` | — | Ignore |
 
 > Passwords do not migrate. Decide whether to trigger Shopify account-invite/reset flow at cutover.
-> Marketing consent is never set by migration (no implicit opt-ins).
+> Marketing consent is never set by migration (no implicit opt-ins). **Verified 2026-09-09: there was nothing to carry across anyway.** Every `meta_data` key present on the 1,955 staged customers (`opencart_salt`, `opencart_pass`, `icl_admin_language`, `default_password_nag`, `wc_last_active`, `icl_admin_language_migrated_to_wp47`, `elementor_admin_notices`, `xstore_wishlist_ids_0`, `xstore_compare_ids_0`, `xstore_wishlist_u`, `wfls-last-login`, `wc_order_count_wp`, `wc_money_spent_wp`) and on the 3,192 staged orders (`wpml_language`, `_wc_order_attribution_*`, `_wcpdf_*`, `is_vat_exempt`, the `_*_hash` internals) was enumerated. No newsletter plugin, no `mailchimp_woocommerce_is_subscribed`, no opt-in field of any kind. The old site never asked, so no migrated customer can be marked subscribed on a consent basis. See the Checkout row of `store-settings-ledger.md` for the resulting position on the live store.
 > Guest purchasers (orders with `customer_id: 0` — common on lush.qa) are not created as customers in v1; their orders carry the billing email only.
 
 ## Orders
